@@ -718,6 +718,12 @@ namespace AppManager.Core {
                 // Store the release tag for version-less apps
                 if (release.tag_name != null && new_record != null) {
                     new_record.last_release_tag = release.tag_name;
+                    // Persist remote version if the installer couldn't extract
+                    // one from the AppImage (no X-AppImage-Version, no metainfo).
+                    if ((new_record.version == null || new_record.version.strip() == "")
+                            && release.version != null) {
+                        new_record.version = release.version;
+                    }
                     registry.persist();
                 }
 
@@ -1181,6 +1187,8 @@ namespace AppManager.Core {
             public string? filename { get; set; }
             public string? url { get; set; }
             public string? version { get; set; }
+            /** Remote file length declared in the zsync header ("Length:" field). */
+            public int64 length { get; set; default = -1; }
             
             public ZsyncFileInfo() {
                 Object();
@@ -1254,6 +1262,8 @@ namespace AppManager.Core {
                             info.filename = value;
                             // Extract version from filename (e.g., "krita-5.2.15-x86_64.AppImage" -> "5.2.15")
                             info.version = VersionUtils.sanitize(value);
+                        } else if (key == "length" && value != "") {
+                            info.length = int64.parse(value);
                         } else if (key == "url" && value != "") {
                             info.url = value;
                         }
@@ -1269,7 +1279,16 @@ namespace AppManager.Core {
 
         /**
          * Check if zsync update is available for a record.
-         * Compares the remote version from the release with the installed version.
+         *
+         * Detection follows the zsync2 philosophy: content comparison is the
+         * authority, versions are used only as a fast-path optimisation and
+         * for display.
+         *
+         * 1. Fast path  – version comparison (both local & remote available).
+         * 2. Primary    – compare remote file Length (from zsync header) with
+         *                 local file size.  Different size ⇒ update available.
+         * 3. Secondary  – fingerprint (HTTP HEAD Last-Modified + Content-Length
+         *                 of the .zsync file itself) for the rare same-size case.
          */
         private UpdateProbeResult probe_zsync(InstallationRecord record, UpdateSource source, GLib.Cancellable? cancellable) {
             if (!(source is ZsyncDirectSource)) {
@@ -1279,32 +1298,42 @@ namespace AppManager.Core {
             var zsync_source = source as ZsyncDirectSource;
             var remote_version = zsync_source.remote_version;
             var current_version = record.version;
-            
-            // If we don't have version info from gh-releases-zsync, try to fetch it from the zsync file header
-            if (remote_version == null || remote_version.strip() == "") {
-                var zsync_info = fetch_zsync_file_info(zsync_source.zsync_url, cancellable);
-                if (zsync_info != null && zsync_info.version != null && zsync_info.version.strip() != "") {
-                    remote_version = zsync_info.version;
-                }
+
+            // Sanitize: non-version tags like "latest" produce null.
+            if (remote_version != null) {
+                remote_version = VersionUtils.sanitize(remote_version);
             }
-            
-            // If we have version info, use version comparison
-            if (remote_version != null && remote_version.strip() != "") {
-                // Compare versions
-                if (current_version != null && current_version.strip() != "") {
-                    var cmp = compare_versions(remote_version, current_version);
-                    if (cmp <= 0) {
-                        // Remote version is same or older than current
-                        return new UpdateProbeResult(record, false, remote_version, UpdateSkipReason.ALREADY_CURRENT, _("Already up to date"));
-                    }
-                    // Remote version is newer
-                    return new UpdateProbeResult(record, true, remote_version);
+
+            // ── Fast path: version comparison when both sides are known ──
+            if (remote_version != null && remote_version.strip() != ""
+                    && current_version != null && current_version.strip() != "") {
+                var cmp = compare_versions(remote_version, current_version);
+                if (cmp <= 0) {
+                    return new UpdateProbeResult(record, false, remote_version, UpdateSkipReason.ALREADY_CURRENT, _("Already up to date"));
                 }
-                // No current version to compare, assume update available
                 return new UpdateProbeResult(record, true, remote_version);
             }
-            
-            // Fallback to fingerprint comparison for zsync URLs without version info
+
+            // ── Primary: content-based comparison via zsync header Length ──
+            var zsync_info = fetch_zsync_file_info(zsync_source.zsync_url, cancellable);
+
+            if (zsync_info != null && zsync_info.length > 0) {
+                int64 local_size = 0;
+                try {
+                    var local_file = File.new_for_path(record.installed_path);
+                    var fi = local_file.query_info(FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NONE);
+                    local_size = fi.get_size();
+                } catch (Error e) {
+                    warning("Failed to stat local file for %s: %s", record.name, e.message);
+                }
+
+                if (local_size > 0 && zsync_info.length != local_size) {
+                    // Remote file size differs from local – update available.
+                    return new UpdateProbeResult(record, true, remote_version);
+                }
+            }
+
+            // ── Secondary: fingerprint comparison (same-size / bootstrap) ──
             try {
                 var message = send_head(zsync_source.zsync_url, cancellable);
                 var fingerprint = build_direct_fingerprint(message);
@@ -1316,7 +1345,7 @@ namespace AppManager.Core {
                 var stored = get_stored_fingerprint(record);
                 
                 if (stored == null) {
-                    // First time: record baseline fingerprint
+                    // First time: record baseline fingerprint, no update.
                     store_fingerprint(record, message);
                     registry.persist(false);
                     return new UpdateProbeResult(record, false, fingerprint, UpdateSkipReason.ALREADY_CURRENT, _("Baseline recorded"));
@@ -1346,96 +1375,115 @@ namespace AppManager.Core {
             var zsync_source = source as ZsyncDirectSource;
             var zsync_url = zsync_source.zsync_url;
             
-            // Get version info for checking and display
-            string? new_version = zsync_source.remote_version;
-            if (new_version == null || new_version.strip() == "") {
-                var zsync_info = fetch_zsync_file_info(zsync_url, null);
-                if (zsync_info != null && zsync_info.version != null) {
-                    new_version = zsync_info.version;
-                }
-            }
-            
-            // Check if update is actually needed before downloading
+            // Remote version for display / post-upgrade persistence.
+            string? release_version = VersionUtils.sanitize(zsync_source.remote_version);
             var current_version = record.version;
-            if (new_version != null && new_version.strip() != "") {
-                // Compare versions if both are available
-                if (current_version != null && current_version.strip() != "") {
-                    var cmp = compare_versions(new_version, current_version);
-                    if (cmp <= 0) {
-                        // Remote version is same or older than current - skip
-                        record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
-                        log_update_event(record, "SKIP", "already current");
-                        return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), new_version, UpdateSkipReason.ALREADY_CURRENT);
-                    }
+
+            // ── Fast path: version comparison when both sides are known ──
+            if (release_version != null && release_version.strip() != ""
+                    && current_version != null && current_version.strip() != "") {
+                var cmp = compare_versions(release_version, current_version);
+                if (cmp <= 0) {
+                    record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
+                    log_update_event(record, "SKIP", "already current");
+                    return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), release_version, UpdateSkipReason.ALREADY_CURRENT);
                 }
+                // Version says update needed – fall through to download.
             } else {
-                // Fallback to fingerprint comparison for zsync URLs without version info
-                try {
-                    var message = send_head(zsync_url, cancellable);
-                    var fingerprint = build_direct_fingerprint(message);
-                    
-                    if (fingerprint != null) {
-                        var stored = get_stored_fingerprint(record);
-                        
-                        if (stored == null) {
-                            // First time: record baseline fingerprint and skip
-                            store_fingerprint(record, message);
-                            registry.persist(false);
-                            record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
-                            log_update_event(record, "SKIP", "baseline recorded");
-                            return new UpdateResult(record, UpdateStatus.SKIPPED, _("Baseline recorded"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
-                        }
-                        
-                        if (stored == fingerprint) {
-                            record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
-                            log_update_event(record, "SKIP", "already current");
-                            return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
-                        }
-                    }
-                } catch (Error e) {
-                    // Non-fatal: continue with update attempt if fingerprint check fails
-                    warning("Failed to check zsync fingerprint for %s: %s", record.name, e.message);
+                // ── Primary: content-based comparison via zsync header Length ──
+                var zsync_info = fetch_zsync_file_info(zsync_url, cancellable);
+
+                // Also pick up version from the zsync filename if the API tag was useless.
+                if (release_version == null && zsync_info != null
+                        && zsync_info.version != null && zsync_info.version.strip() != "") {
+                    release_version = zsync_info.version;
                 }
+
+                bool content_matches = false;
+                if (zsync_info != null && zsync_info.length > 0) {
+                    int64 local_size = 0;
+                    try {
+                        var local_file = File.new_for_path(record.installed_path);
+                        var fi = local_file.query_info(FileAttribute.STANDARD_SIZE, FileQueryInfoFlags.NONE);
+                        local_size = fi.get_size();
+                    } catch (Error e) {
+                        warning("Failed to stat local file for %s: %s", record.name, e.message);
+                    }
+                    if (local_size > 0 && zsync_info.length == local_size) {
+                        content_matches = true;
+                    }
+                }
+
+                // ── Secondary: fingerprint comparison (same-size / bootstrap) ──
+                if (content_matches) {
+                    // Sizes match – check fingerprint as tie-breaker for the
+                    // rare case where the file size stayed identical.
+                    try {
+                        var message = send_head(zsync_url, cancellable);
+                        var fingerprint = build_direct_fingerprint(message);
+                        if (fingerprint != null) {
+                            var stored = get_stored_fingerprint(record);
+                            if (stored == null) {
+                                // First time: record baseline, assume current.
+                                store_fingerprint(record, message);
+                                registry.persist(false);
+                                record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
+                                log_update_event(record, "SKIP", "baseline recorded");
+                                return new UpdateResult(record, UpdateStatus.SKIPPED, _("Baseline recorded"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
+                            }
+                            if (stored == fingerprint) {
+                                record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
+                                log_update_event(record, "SKIP", "already current");
+                                return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
+                            }
+                        }
+                    } catch (Error e) {
+                        warning("Failed to check zsync fingerprint for %s: %s", record.name, e.message);
+                    }
+                }
+                // Sizes differ, or fingerprint mismatch – proceed with update.
             }
             
             var zsync_bin = AppPaths.zsync_path;
             if (zsync_bin == null) {
-                // Fall back to full download if zsync is not available
                 warning("zsync2 not available, falling back to full download for %s", record.name);
-                return update_zsync_fallback(record, zsync_url, new_version, cancellable);
+                return update_zsync_fallback(record, zsync_url, release_version, cancellable);
             }
 
             try {
                 record_downloading(record);
 
-                // Create temp directory for zsync output
                 var temp_dir = AppManager.Utils.FileUtils.create_temp_dir("appmgr-zsync-");
                 
                 try {
-                    // Run zsync2 with the existing AppImage as seed
                     var output_path = run_zsync(zsync_bin, zsync_url, record.installed_path, temp_dir, cancellable);
-                    
-                    // Upgrade using the downloaded file
                     var new_record = installer.upgrade(output_path, record);
                     
-                    // Update fingerprint for future checks
+                    // Persist remote version for apps that lack embedded
+                    // version metadata – enables the fast path on future checks.
+                    if (new_record != null
+                            && (new_record.version == null || new_record.version.strip() == "")
+                            && release_version != null) {
+                        new_record.version = release_version;
+                    }
+                    
+                    // Store the new fingerprint for future checks.
                     try {
                         var message = send_head(zsync_url, null);
                         if (new_record != null) {
                             store_fingerprint(new_record, message);
-                            registry.persist();
                         }
                     } catch (Error e) {
-                        // Non-fatal: fingerprint update failed
+                        // Non-fatal
                     }
+                    registry.persist();
                     
                     record_succeeded(record);
-                    var version_msg = (new_version != null && new_version.strip() != "") 
-                        ? _("Updated to %s").printf(new_version) 
+                    var version_msg = (release_version != null && release_version.strip() != "") 
+                        ? _("Updated to %s").printf(release_version) 
                         : _("Updated");
-                    log_update_event(record, "UPDATED", "zsync delta update to %s".printf(new_version ?? "unknown"));
-                    // Return new_record so the UI can refresh with updated data
-                    return new UpdateResult(new_record ?? record, UpdateStatus.UPDATED, version_msg, new_version);
+                    log_update_event(record, "UPDATED", "zsync delta update to %s".printf(release_version ?? "unknown"));
+                    return new UpdateResult(new_record ?? record, UpdateStatus.UPDATED, version_msg, release_version);
                 } finally {
                     AppManager.Utils.FileUtils.remove_dir_recursive(temp_dir);
                 }
@@ -1483,16 +1531,25 @@ namespace AppManager.Core {
                     AppManager.Utils.FileUtils.remove_dir_recursive(download.temp_dir);
                 }
 
+                // Persist remote version for apps that don't embed version
+                // metadata (no X-AppImage-Version, no metainfo).
+                if (new_record != null
+                        && (new_record.version == null || new_record.version.strip() == "")
+                        && new_version != null
+                        && VersionUtils.sanitize(new_version) != null) {
+                    new_record.version = new_version;
+                }
+
                 // Update fingerprint for future checks
                 try {
                     var message = send_head(zsync_url, null);
                     if (new_record != null) {
                         store_fingerprint(new_record, message);
-                        registry.persist();
                     }
                 } catch (Error e) {
                     // Non-fatal
                 }
+                registry.persist();
 
                 record_succeeded(record);
                 var version_msg = (new_version != null && new_version.strip() != "") 
