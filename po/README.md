@@ -9,26 +9,27 @@
 
 | Language | Code | Status |
 | -------- | ---- | ------ |
-| Arabic | ar | 0% |
-| German | de | 67% |
-| Greek | el | 0% |
-| Spanish | es | 80% |
-| Estonian | et | 67% |
-| Finnish | fi | 67% |
+| Arabic | ar | 100% |
+| German | de | 100% |
+| Greek | el | 100% |
+| Spanish | es | 100% |
+| Estonian | et | 100% |
+| Finnish | fi | 100% |
 | French | fr | 100% |
-| Italian | it | 67% |
-| Japanese | ja | 67% |
-| Kazakh | kk | 90% |
-| Korean | ko | 0% |
-| Lithuanian | lt | 67% |
-| Latvian | lv | 67% |
-| Norwegian Bokmål | nb | 67% |
-| Dutch | nl | 90% |
-| Polish | pl | 0% |
+| Italian | it | 100% |
+| Japanese | ja | 100% |
+| Kazakh | kk | 100% |
+| Korean | ko | 100% |
+| Lithuanian | lt | 100% |
+| Latvian | lv | 100% |
+| Norwegian Bokmål | nb | 100% |
+| Dutch | nl | 100% |
+| Polish | pl | 100% |
 | Portuguese (Brazil) | pt_BR | 100% |
-| Swedish | sv | 67% |
+| Swedish | sv | 100% |
+| Ukrainian | uk | 100% |
 | Vietnamese | vi | 100% |
-| Chinese (Simplified) | zh_CN | 67% |
+| Chinese (Simplified) | zh_CN | 100% |
 
 ## Note
 

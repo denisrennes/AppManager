@@ -1,35 +1,33 @@
-# Kazakh translation for AppManager.
-# Copyright (C) 2026 AppManager's COPYRIGHT HOLDER
-# This file is distributed under the same license as the AppManager package.
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026.
+# Ukrainian translations for app-manager package.
+# Copyright (C) 2026 THE app-manager'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the app-manager package.
+# Automatically generated, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: app-manager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-26 10:50+0200\n"
-"PO-Revision-Date: 2026-02-12 07:21+0500\n"
-"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
-"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
-"Language: kk\n"
+"PO-Revision-Date: 2026-02-26 10:50+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/application.vala:246
 msgid "Incompatible AppImage"
-msgstr "Үйлесімсіз AppImage"
+msgstr "Несумісний AppImage"
 
 #: src/application.vala:247
 msgid ""
 "This AppImage is incompatible or corrupted. Missing required files (AppRun, "
 ".desktop, or icon)."
 msgstr ""
-"Бұл AppImage үйлесімсіз немесе зақымдалған. Қажетті файлдар (AppRun, "
-".desktop немесе таңбаша) жоқ."
+"Це зображення програми несумісне або пошкоджене. Відсутні необхідні файли "
+"(AppRun, .desktop або значок)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -37,28 +35,28 @@ msgstr ""
 #: src/windows/dialog_window.vala:95 src/windows/drop_window.vala:99
 #: src/windows/drop_window.vala:109
 msgid "Close"
-msgstr "Жабу"
+msgstr "Закрити"
 
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
 msgid "unknown"
-msgstr "белгісіз"
+msgstr "невідомий"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr "Архитектура сәйкессіздігі"
+msgstr "Невідповідність архітектури"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr "Бұл қолданба %s үшін құрастырылған және мұнда іске қосыла алмайды"
+msgstr "Ця програма створена для %s і не може працювати тут"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
 #, c-format
 msgid "Open %s?"
-msgstr "%s ашу керек пе?"
+msgstr "Відкрити %s?"
 
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
@@ -66,16 +64,16 @@ msgid ""
 "Origins of %s application can not be verified. Are you sure you want to open"
 " it?"
 msgstr ""
-"%s қолданбасының шығу тегін растау мүмкін емес. Оны ашқыңыз келетініне "
-"сенімдісіз бе?"
+"Походження програми %s неможливо перевірити. Ви впевнені, що хочете його "
+"відкрити?"
 
 #: src/application.vala:363 src/windows/drop_window.vala:244
 msgid "Install the AppImage to add it to your applications."
-msgstr "AppImage файлын қолданбаларыңызға қосу үшін орнатыңыз."
+msgstr "Установіть AppImage, щоб додати його до своїх програм."
 
 #: src/application.vala:365 src/windows/drop_window.vala:247
 msgid "Install"
-msgstr "Орнату"
+msgstr "встановити"
 
 #: src/application.vala:366 src/application.vala:397
 #: src/windows/details_window.vala:911 src/windows/drop_window.vala:248
@@ -83,40 +81,40 @@ msgstr "Орнату"
 #: src/windows/preferences_window.vala:432
 #: src/windows/preferences_window.vala:466
 msgid "Cancel"
-msgstr "Бас тарту"
+msgstr "Скасувати"
 
 #. Use icon with verification badge overlay
 #: src/application.vala:384 src/windows/drop_window.vala:418
 #, c-format
 msgid "Update %s?"
-msgstr "%s жаңарту керек пе?"
+msgstr "Оновити %s?"
 
 #. App version
 #: src/application.vala:388 src/windows/details_window.vala:135
 #: src/windows/drop_window.vala:394
 msgid "Version unknown"
-msgstr "Нұсқасы белгісіз"
+msgstr "Версія невідома"
 
 #: src/application.vala:393 src/application.vala:536
 #: src/windows/drop_window.vala:401 src/windows/drop_window.vala:558
 msgid "Unknown version"
-msgstr "Белгісіз нұсқа"
+msgstr "Невідома версія"
 
 #: src/application.vala:394 src/windows/drop_window.vala:402
 #, c-format
 msgid "Will update to version %s"
-msgstr "%s нұсқасына дейін жаңартылады"
+msgstr "Буде оновлено до версії %s"
 
 #: src/application.vala:396 src/windows/details_window.vala:819
 #: src/windows/drop_window.vala:421
 msgid "Update"
-msgstr "Жаңарту"
+msgstr "оновлення"
 
 #. Use icon with verification badge overlay
 #: src/application.vala:415 src/windows/drop_window.vala:448
 #, c-format
 msgid "Replace %s?"
-msgstr "%s алмастыру керек пе?"
+msgstr "Замінити %s?"
 
 #: src/application.vala:421 src/windows/drop_window.vala:452
 #, c-format
@@ -124,13 +122,13 @@ msgid ""
 "A newer item named %s already exists in this location. Do you want to "
 "replace it with the older one you're copying?"
 msgstr ""
-"%s атты жаңалау элемент осы орналасуда бар. Оны сіз көшіріп жатқан "
-"ескілеуімен алмастырғыңыз келе ме?"
+"Новіший елемент під назвою %s вже існує в цьому місці. Бажаєте замінити його"
+" старішим, який ви копіюєте?"
 
 #: src/application.vala:423 src/windows/drop_window.vala:454
 #, c-format
 msgid "Installed: %s | Incoming: %s"
-msgstr "Орнатылғаны: %s | Келіп жатқаны: %s"
+msgstr "Встановлено: %s | Вхідні: %s"
 
 #: src/application.vala:427 src/windows/drop_window.vala:458
 #, c-format
@@ -138,163 +136,164 @@ msgid ""
 "An item named %s already exists in this location. Do you want to replace it "
 "with one you're copying?"
 msgstr ""
-"%s атты элемент осы орналасуда бар. Оны сіз көшіріп жатқанмен алмастырғыңыз "
-"келе ме?"
+"Елемент під назвою %s вже існує в цьому місці. Бажаєте замінити його тим, що"
+" копіюєте?"
 
 #: src/application.vala:432 src/windows/drop_window.vala:462
 msgid "Stop"
-msgstr "Тоқтату"
+msgstr "СТІЙ"
 
 #: src/application.vala:433 src/windows/drop_window.vala:463
 msgid "Replace"
-msgstr "Алмастыру"
+msgstr "Замінити"
 
 #: src/application.vala:520 src/windows/drop_window.vala:541
 msgid "Successfully Updated"
-msgstr "Сәтті жаңартылды"
+msgstr "Успішно оновлено"
 
 #: src/application.vala:520 src/windows/drop_window.vala:539
 msgid "Successfully Installed"
-msgstr "Сәтті орнатылды"
+msgstr "Успішно встановлено"
 
 #: src/application.vala:537 src/windows/drop_window.vala:559
 #, c-format
 msgid "Version %s"
-msgstr "Нұсқасы %s"
+msgstr "Версія %s"
 
 #: src/application.vala:541 src/windows/drop_window.vala:563
 msgid "Open"
-msgstr "Ашу"
+msgstr "ВІДЧИНЕНО"
 
 #: src/application.vala:542 src/windows/drop_window.vala:564
 msgid "Done"
-msgstr "Дайын"
+msgstr "Готово"
 
 #: src/application.vala:567 src/windows/drop_window.vala:590
 msgid "Installation failed"
-msgstr "Орнату сәтсіз аяқталды"
+msgstr "Помилка встановлення"
 
 #: src/application.vala:569 src/windows/drop_window.vala:600
 msgid "Dismiss"
-msgstr "Елемеу"
+msgstr "Відхилити"
 
 #: src/application.vala:777
 msgid "Uninstall failed"
-msgstr "Өшіру сәтсіз аяқталды"
+msgstr "Не вдалося видалити"
 
 #: src/application.vala:778
 #, c-format
 msgid "%s could not be removed: %s"
-msgstr "%s өшірілмеді: %s"
+msgstr "%s не вдалося видалити: %s"
 
 #: src/application.vala:785
 msgid "Moved to Trash"
-msgstr "Қоқыс шелегіне жылжытылды"
+msgstr "Переміщено в кошик"
 
 #: src/application.vala:793
 msgid "Extraction is only available for portable installations."
-msgstr "Тарқату тек портативті орнатулар үшін қолжетімді."
+msgstr "Екстракція доступна лише для портативних установок."
 
 #: src/application.vala:829
 msgid "Extracted for faster launch"
-msgstr "Жылдам іске қосу үшін тарқатылды"
+msgstr "Видобуто для швидшого запуску"
 
 #: src/application.vala:832
 msgid "Extraction complete"
-msgstr "Тарқату аяқталды"
+msgstr "Видобуток завершено"
 
 #: src/application.vala:833
 #, c-format
 msgid "%s was extracted and will open faster."
-msgstr "%s тарқатылды және жылдам ашылады."
+msgstr "%s було видобуто і відкриватиметься швидше."
 
 #: src/application.vala:844
 msgid "Extraction failed"
-msgstr "Тарқату сәтсіз аяқталды"
+msgstr "Не вдалося видобути"
 
 #: src/application.vala:845
 #, c-format
 msgid "%s could not be extracted: %s"
-msgstr "%s тарқатылмады: %s"
+msgstr "%s не вдалося роздобути: %s"
 
 #: src/core/background_update_service.vala:314
 msgid "App updates available"
-msgstr "Қолданба жаңартулары бар"
+msgstr "Доступні оновлення програми"
 
 #. Always show aggregate count
 #: src/core/background_update_service.vala:316
 #, c-format
 msgid "%d app update(s) available"
-msgstr "%d қолданба жаңартуы бар"
+msgstr "Доступні оновлення програми %d"
 
 #. Build actions array: pairs of (action_key, label)
 #. "default" action is invoked when user clicks the notification body
 #: src/core/background_update_service.vala:325
 msgid "Open AppManager"
-msgstr "AppManager қолданбасын ашу"
+msgstr "Відкрийте AppManager"
 
 #: src/core/installer.vala:614 src/windows/details_window.vala:771
 msgid "Move to Trash"
-msgstr "Қоқыс шелегіне жылжыту"
+msgstr "Перемістити в кошик"
 
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr "Жол абсолютті болуы тиіс"
+msgstr "Шлях повинен бути абсолютним"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr "Бұл ағымдағы бума болып тұр"
+msgstr "Це вже поточний каталог"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr "Бумаға жазу рұқсаты жоқ"
+msgstr "Каталог не доступний для запису"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr "Бумаға қол жеткізу мүмкін емес: %s"
+msgstr "Неможливо отримати доступ до каталогу: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr "Жол бар, бірақ ол бума емес"
+msgstr "Шлях існує, але не є каталогом"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr "Жол жарамсыз"
+msgstr "Недійсний шлях"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr "Аталық бума жоқ"
+msgstr "Батьківський каталог не існує"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr "Буманы жасау мүмкін емес: аталық объектіге жазу рұқсаты жоқ"
+msgstr ""
+"Неможливо створити каталог: батьківський каталог не доступний для запису"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr "Аталық бумаға қол жеткізу мүмкін емес: %s"
+msgstr "Не вдається отримати доступ до батьківського каталогу: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr "Буманы жасау сәтсіз аяқталды: %s"
+msgstr "Не вдалося створити каталог: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr "Тарқатылған буманы жасау сәтсіз аяқталды: %s"
+msgstr "Не вдалося створити розпакований каталог: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr "%s көшірілуде (%d/%d)…"
+msgstr "Перенесення %s (%d/%d)…"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -302,25 +301,25 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
-"Кейбір қолданбалар көшірілмеді:\n"
+"Деякі програми не вдалося перенести:\n"
 "%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
-msgstr "Жаңарту адресі бапталмаған"
+msgstr "Адресу оновлення не налаштовано"
 
 #: src/core/updater.vala:582 src/core/updater.vala:651
 msgid "Update source not supported"
-msgstr "Жаңарту көзіне қолдау жоқ"
+msgstr "Джерело оновлення не підтримується"
 
 #: src/core/updater.vala:598 src/core/updater.vala:669
 msgid "Unable to read releases"
-msgstr "Релиздерді оқу мүмкін емес"
+msgstr "Неможливо прочитати випуски"
 
 #: src/core/updater.vala:603 src/core/updater.vala:695
 #, c-format
 msgid "No matching AppImage found for %s"
-msgstr "%s үшін сәйкес келетін AppImage табылмады"
+msgstr "Не знайдено відповідного AppImage для %s"
 
 #. Version comparison: if both have versions, compare them
 #. Remote version is same or older than current
@@ -332,213 +331,212 @@ msgstr "%s үшін сәйкес келетін AppImage табылмады"
 #: src/core/updater.vala:1426 src/core/updater.vala:1437
 #: src/core/updater.vala:1461
 msgid "Already up to date"
-msgstr "Ескірмеген"
+msgstr "Вже актуально"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
 #, c-format
 msgid "Updated to %s"
-msgstr "%s нұсқасына дейін жаңартылды"
+msgstr "Оновлено до %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr "Сервер өзгерістерді бақылау тақырыптамаларын ұсынбайды"
+msgstr "Сервер не надає заголовків відстеження змін"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr "Базалық сызық жазылды"
+msgstr "Базовий рівень записаний"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
 msgid "Updated"
-msgstr "Жаңартылды"
+msgstr "Оновлено"
 
 #: src/core/updater.vala:965
 msgid ""
 "GitHub authentication failed (401). Check your token in Preferences → "
 "GitHub."
 msgstr ""
-"GitHub аутентификациясы орындалмады (401). Теңшелімдер → GitHub ішінде "
-"таңбалауышыңызды тексеріңіз."
+"Помилка автентифікації GitHub (401). Перевірте свій маркер у Налаштуваннях →"
+" GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
-"GitHub API жылдамдығы шегінен асып кетті. Лимитіңізді ұлғайту үшін "
-"Теңшелімдер → GitHub ішінде таңбалауышты қосыңыз."
+"Перевищено ліміт швидкості GitHub API. Щоб збільшити ліміт, додайте токен у "
+"«Налаштування» → GitHub."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
-"GitHub кіруге тыйым салынған (403). Сіздің таңбалауышыңызда қажетті "
-"рұқсаттар болмауы мүмкін."
+"Доступ до GitHub заборонено (403). Ваш маркер може не мати необхідних "
+"дозволів."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr "zsync көзінің түрі белгісіз"
+msgstr "Невідомий тип джерела zsync"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr "Белгісіз zsync көзі"
+msgstr "Невідоме джерело zsync"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr "zsync сілтемесінен жүктеп алу сілтемесін анықтау мүмкін емес"
+msgstr "Не вдається визначити URL-адресу завантаження з URL-адреси zsync"
 
 #: src/windows/details_window.vala:100
 #, c-format
 msgid "⚠️ '%s' is not in $PATH. App will not launch from the terminal"
-msgstr "⚠️ '%s' жолы $PATH ішінде жоқ. Қолданба терминалдан іске қосылмайды"
+msgstr "⚠️ '%s' не в $PATH. Програма не запускається з терміналу"
 
 #: src/windows/details_window.vala:160
 msgid "Show in Files"
-msgstr "Файлдарда көрсету"
+msgstr "Показати у файлах"
 
 #: src/windows/details_window.vala:162
 msgid "Portable"
-msgstr "Портативті"
+msgstr "Портативний"
 
 #: src/windows/details_window.vala:162
 msgid "Extracted"
-msgstr "Тарқатылған"
+msgstr "Видобуто"
 
 #. Terminal app card (only show if is_terminal)
 #: src/windows/details_window.vala:184
 msgid "Terminal"
-msgstr "Терминал"
+msgstr "Термінал"
 
 #: src/windows/details_window.vala:192
 msgid "This app supports efficient delta updates"
-msgstr "Бұл қолданба тиімді дельта жаңартуларды қолдайды"
+msgstr "Ця програма підтримує ефективні дельта-оновлення"
 
 #: src/windows/details_window.vala:199
 msgid "Hidden"
-msgstr "Жасырын"
+msgstr "Прихований"
 
 #: src/windows/details_window.vala:209
 msgid "Properties"
-msgstr "Қасиеттер"
+msgstr "Властивості"
 
 #: src/windows/details_window.vala:214
 msgid "Command line arguments"
-msgstr "Командалық жол аргументтері"
+msgstr "Аргументи командного рядка"
 
 #: src/windows/details_window.vala:246
 msgid "Update info"
-msgstr "Жаңарту ақпараты"
+msgstr "Оновити інформацію"
 
 #: src/windows/details_window.vala:252
 msgid "How update links work"
-msgstr "Жаңарту сілтемелері қалай жұмыс істейді"
+msgstr "Як працюють посилання на оновлення"
 
 #: src/windows/details_window.vala:271
 msgid "Update Link"
-msgstr "Жаңарту сілтемесі"
+msgstr "Оновити посилання"
 
 #: src/windows/details_window.vala:320
 msgid "Web Page"
-msgstr "Веб парақ"
+msgstr "Веб-сторінка"
 
 #: src/windows/details_window.vala:349
 msgid "Open web page"
-msgstr "Веб парақты ашу"
+msgstr "Відкрити веб-сторінку"
 
 #: src/windows/details_window.vala:363
 msgid "Advanced"
-msgstr "Кеңейтілген"
+msgstr "Просунутий"
 
 #: src/windows/details_window.vala:390
 msgid "Environment Variables"
-msgstr "Орта айнымалылары"
+msgstr "Змінні середовища"
 
 #: src/windows/details_window.vala:391
 msgid "Set custom environment variables for this app"
-msgstr "Бұл қолданба үшін таңдауыңызша орта айнымалыларын орнатыңыз"
+msgstr "Установіть спеціальні змінні середовища для цієї програми"
 
 #: src/windows/details_window.vala:444
 msgid "NAME"
-msgstr "АТАУЫ"
+msgstr "ІМ'Я"
 
 #: src/windows/details_window.vala:458
 msgid "value"
-msgstr "мәні"
+msgstr "значення"
 
 #: src/windows/details_window.vala:470
 msgid "Remove variable"
-msgstr "Айнымалыны өшіру"
+msgstr "Видалити змінну"
 
 #: src/windows/details_window.vala:595
 msgid "Keywords"
-msgstr "Кілт сөздер"
+msgstr "Ключові слова"
 
 #: src/windows/details_window.vala:605
 msgid "Icon name"
-msgstr "Таңбаша аты"
+msgstr "Назва значка"
 
 #: src/windows/details_window.vala:615
 msgid "Startup WM Class"
-msgstr "Іске қосу WM класы"
+msgstr "Стартап WM Class"
 
 #: src/windows/details_window.vala:625
 msgid "Version"
-msgstr "Нұсқасы"
+msgstr "Версія"
 
 #: src/windows/details_window.vala:637
 msgid "Hide from app drawer"
-msgstr "Қолданбалар мәзірінен жасыру"
+msgstr "Сховати з панелі програм"
 
 #: src/windows/details_window.vala:638
 msgid "Don't show in application menu"
-msgstr "Қолданбалар мәзірінде көрсетпеу"
+msgstr "Не показувати в меню програми"
 
 #: src/windows/details_window.vala:649
 msgid "Add to $PATH"
-msgstr "$PATH ішіне қосу"
+msgstr "Додати до $PATH"
 
 #: src/windows/details_window.vala:650
 #, c-format
 msgid "Create a launcher in %s so you can run it from the terminal"
-msgstr "Оны терминалдан іске қосу үшін %s ішінде жөнелткішті жасау"
+msgstr "Створіть програму запуску в %s, щоб ви могли запускати її з терміналу"
 
 #: src/windows/details_window.vala:711
 msgid "Actions"
-msgstr "Әрекеттер"
+msgstr "Дії"
 
 #. Extract button
 #: src/windows/details_window.vala:750
 msgid "Extract AppImage"
-msgstr "AppImage тарқату"
+msgstr "Витягніть AppImage"
 
 #: src/windows/details_window.vala:787
 msgid "Restore default"
-msgstr "Бастапқысын қалпына келтіру"
+msgstr "Відновити за замовчуванням"
 
 #: src/windows/details_window.vala:799 src/windows/main_window.vala:493
 #: src/windows/main_window.vala:561
 msgid "Updating..."
-msgstr "Жаңартылуда..."
+msgstr "Оновлення..."
 
 #: src/windows/details_window.vala:801
 msgid "Checking..."
-msgstr "Тексерілуде..."
+msgstr "Перевірка..."
 
 #: src/windows/details_window.vala:823
 msgid "Check Update"
-msgstr "Жаңартуды тексеру"
+msgstr "Перевірте оновлення"
 
 #: src/windows/details_window.vala:889
 msgid ""
 "Update info lets AppManager fetch new builds for you. Paste the download "
 "link and AppManager will do the rest."
 msgstr ""
-"Жаңарту ақпараты AppManager қолданбасына сіз үшін жаңа құрастырылымдарды "
-"алуға мүмкіндік береді. Жүктеп алу сілтемесін кірістіріңіз, қалғанын "
-"AppManager орындайды."
+"Інформація про оновлення дозволяє AppManager отримувати нові збірки для вас."
+" Вставте посилання для завантаження, а AppManager зробить усе інше."
 
 #: src/windows/details_window.vala:890
 msgid ""
@@ -546,100 +544,100 @@ msgid ""
 " links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
-"Қазіргі уақытта GitHub және GitLab URL пішімдеріне толықтай қолдау бар. Егер"
-" сервер Last-Modified немесе Content-Length тақырыптамаларын ұсынса, тікелей"
-" жүктеп алу сілтемелері де жұмыс істейді."
+"Наразі формати URL GitHub і GitLab повністю підтримуються. Прямі посилання "
+"для завантаження також працюють, якщо сервер надає заголовки Last-Modified "
+"або Content-Length."
 
 #: src/windows/details_window.vala:891
 msgid "Update links"
-msgstr "Жаңарту сілтемелері"
+msgstr "Оновити посилання"
 
 #: src/windows/details_window.vala:892
 msgid "Got it"
-msgstr "Түсінікті"
+msgstr "зрозумів"
 
 #: src/windows/details_window.vala:909
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
 msgstr ""
-"Тарқату қолданбаны жылдам ашылатындай етеді, бірақ ол дискіде көбірек орын "
-"алады. Бұл әрекетті автоматты түрде кері қайтару мүмкін емес."
+"Витяг розпакує програму, щоб вона відкривалася швидше, але займає більше "
+"місця на диску. Цю дію не можна скасувати автоматично."
 
 #: src/windows/details_window.vala:910
 msgid "Extract application?"
-msgstr "Қолданбаны тарқату керек пе?"
+msgstr "Витягнути заявку?"
 
 #: src/windows/details_window.vala:912
 msgid "Extract"
-msgstr "Тарқату"
+msgstr "Екстракт"
 
 #: src/windows/dialog_window.vala:86
 msgid "App removed"
-msgstr "Қолданба өшірілді"
+msgstr "Додаток видалено"
 
 #: src/windows/dialog_window.vala:94
 msgid "The application was uninstalled successfully."
-msgstr "Қолданба сәтті өшірілді."
+msgstr "Програму успішно видалено."
 
 #: src/windows/drop_window.vala:56 src/windows/drop_window.vala:80
 msgid "AppImage Installer"
-msgstr "AppImage орнатқышы"
+msgstr "Інсталятор AppImage"
 
 #. Add Verify button to headerbar
 #: src/windows/drop_window.vala:91 src/windows/drop_window.vala:1014
 msgid "Verify"
-msgstr "Растау"
+msgstr "Підтвердити"
 
 #: src/windows/drop_window.vala:92
 msgid "Verify AppImage with SHA256 hash"
-msgstr "AppImage файлын SHA256 хешімен растау"
+msgstr "Перевірте AppImage за допомогою хешу SHA256"
 
 #. Verification failed banner
 #: src/windows/drop_window.vala:118
 msgid "SHA256 hash does not match. Verification failed."
-msgstr "SHA256 хеші сәйкес келмейді. Растау сәтсіз аяқталды."
+msgstr "Хеш SHA256 не збігається. Не вдалося перевірити."
 
 #: src/windows/drop_window.vala:140
 #, c-format
 msgid "Drag and drop to install into %s"
-msgstr "%s ішіне орнату үшін сүйреп апарыңыз"
+msgstr "Перетягніть, щоб установити в %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
-msgstr "Бұл – терминал қолданбасы және ол портативті режимде орнатылады."
+msgstr "Це термінальна програма, яку буде встановлено в портативному режимі."
 
 #: src/windows/drop_window.vala:320
 msgid "This AppImage is incompatible or corrupted"
-msgstr "Бұл AppImage үйлесімсіз немесе зақымдалған"
+msgstr "Цей AppImage несумісний або пошкоджений"
 
 #: src/windows/drop_window.vala:322
 msgid "Missing required files (AppRun, .desktop, or icon)"
-msgstr "Қажетті файлдар (AppRun, .desktop немесе таңбаша) жоқ"
+msgstr "Відсутні необхідні файли (AppRun, .desktop або значок)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr "Архитектура сәйкессіздігі"
+msgstr "Невідповідність архітектури"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
-msgstr "AppImage файлын орнатуға дайындау мүмкін емес"
+msgstr "Неможливо підготувати AppImage до встановлення"
 
 #: src/windows/drop_window.vala:541
 msgid "Successfully Replaced"
-msgstr "Сәтті алмастырылды"
+msgstr "Успішно замінено"
 
 #: src/windows/drop_window.vala:975
 msgid "Verify AppImage"
-msgstr "AppImage файлын растау"
+msgstr "Перевірте AppImage"
 
 #: src/windows/drop_window.vala:993
 msgid "Verify the authenticity of this AppImage."
-msgstr "Бұл AppImage файлының түпнұсқалығын растау."
+msgstr "Перевірте автентичність цього AppImage."
 
 #: src/windows/drop_window.vala:999
 msgid "Enter the SHA256 hash "
-msgstr "SHA256 хешін енгізіңіз "
+msgstr "Введіть хеш SHA256"
 
 #: src/windows/main_window.vala:56 src/windows/main_window.vala:166
 #: data/com.github.AppManager.metainfo.xml:4
@@ -648,387 +646,387 @@ msgstr "AppManager"
 
 #: src/windows/main_window.vala:215
 msgid "Get more ..."
-msgstr "Көбірек алу ..."
+msgstr "Отримати більше..."
 
 #: src/windows/main_window.vala:227
 msgid "Find more AppImages"
-msgstr "Көбірек AppImage табу"
+msgstr "Знайдіть більше AppImages"
 
 #: src/windows/main_window.vala:228
 msgid "Browse these sources to discover and download AppImages"
-msgstr "AppImage файлдарын табу және жүктеп алу үшін осы көздерді шолыңыз"
+msgstr "Перегляньте ці джерела, щоб знайти та завантажити AppImages"
 
 #: src/windows/main_window.vala:278 src/windows/main_window.vala:350
 msgid "No AppImage apps installed"
-msgstr "AppImage қолданбалары орнатылмаған"
+msgstr "Немає встановлених програм AppImage"
 
 #: src/windows/main_window.vala:283
 msgid "Download AppImage and double click to install with AppManager"
 msgstr ""
-"AppImage файлын жүктеп алыңыз және AppManager көмегімен орнату үшін екі рет "
-"шертіңіз"
+"Завантажте AppImage і двічі клацніть, щоб установити за допомогою AppManager"
 
 #: src/windows/main_window.vala:350
 msgid "No results found"
-msgstr "Ешнәрсе табылмады"
+msgstr "Результатів не знайдено"
 
 #: src/windows/main_window.vala:429 src/windows/main_window.vala:892
 msgid "My Apps"
-msgstr "Менің қолданбаларым"
+msgstr "Мої програми"
 
 #: src/windows/main_window.vala:500 src/windows/main_window.vala:568
 msgid "Update available"
-msgstr "Жаңарту бар"
+msgstr "Доступне оновлення"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
 msgid "Unknown"
-msgstr "Белгісіз"
+msgstr "Невідомий"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
-msgstr "тарқатылған"
+msgstr "видобутий"
 
 #: src/windows/main_window.vala:691
 msgid "Updated just now"
-msgstr "Жаңа ғана жаңартылды"
+msgstr "Оновлено щойно"
 
 #: src/windows/main_window.vala:691
 msgid "Installed just now"
-msgstr "Жаңа ғана орнатылды"
+msgstr "Встановив щойно"
 
 #: src/windows/main_window.vala:699
 #, c-format
 msgid "Updated %d min ago"
-msgstr "%d мин бұрын жаңартылды"
+msgstr "Оновлено %d хвилин тому"
 
 #: src/windows/main_window.vala:699
 #, c-format
 msgid "Installed %d min ago"
-msgstr "%d мин бұрын орнатылды"
+msgstr "Встановлено %d хвилин тому"
 
 #: src/windows/main_window.vala:707
 #, c-format
 msgid "Updated %d hours ago"
-msgstr "%d сағат бұрын жаңартылды"
+msgstr "Оновлено %d годин тому"
 
 #: src/windows/main_window.vala:707
 #, c-format
 msgid "Installed %d hours ago"
-msgstr "%d сағат бұрын орнатылды"
+msgstr "Установлено %d годин тому"
 
 #: src/windows/main_window.vala:714
 #, c-format
 msgid "Updated %d days ago"
-msgstr "%d күн бұрын жаңартылды"
+msgstr "Оновлено %d днів тому"
 
 #: src/windows/main_window.vala:714
 #, c-format
 msgid "Installed %d days ago"
-msgstr "%d күн бұрын орнатылды"
+msgstr "Встановлено %d днів тому"
 
 #: src/windows/main_window.vala:730 src/windows/preferences_window.vala:34
 msgid "Preferences"
-msgstr "Баптаулар"
+msgstr "Уподобання"
 
 #: src/windows/main_window.vala:731
 msgid "Keyboard shortcuts"
-msgstr "Пернетақта жарлықтары"
+msgstr "Комбінації клавіш"
 
 #: src/windows/main_window.vala:732 src/windows/main_window.vala:1515
 msgid "About AppManager"
-msgstr "AppManager туралы"
+msgstr "Про AppManager"
 
 #: src/windows/main_window.vala:733
 msgid "Quit"
-msgstr "Шығу"
+msgstr "Вийти"
 
 #: src/windows/main_window.vala:745
 msgid "Support AppManager"
-msgstr "AppManager қолданбасына қолдау көрсету"
+msgstr "Підтримка AppManager"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr "Маған кофе алып беру"
+msgstr "Купи мені каву"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr "GitHub-та демеуші болу"
+msgstr "Станьте спонсором GitHub"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr "Маған демеуші болу ♡"
+msgstr "Спонсоруйте мене ♡"
 
 #: src/windows/main_window.vala:795
 msgid "Star AppManager on GitHub"
-msgstr "GitHub-та AppManager-ді жұлдызшамен белгілеу"
+msgstr "Зірка AppManager на GitHub"
 
 #: src/windows/main_window.vala:800
 msgid "Star AppManager"
-msgstr "AppManager-ді жұлдызшамен белгілеу"
+msgstr "Зірочка AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr "Үлес қосқандарды GitHub-тан қарау"
+msgstr "Перегляньте співавторів на GitHub"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr "Үлес қосқандар"
+msgstr "Дописувачі"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
-msgstr "Іздеу"
+msgstr "Пошук"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr "Бұл жобаға қолдау көрсету"
+msgstr "Підтримайте цей проект"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
-msgstr "Көбірек әрекеттер"
+msgstr "Більше дій"
 
 #: src/windows/main_window.vala:870
 msgid "Search apps..."
-msgstr "Қолданбаларды іздеу..."
+msgstr "Пошук програм..."
 
 #. FUSE is not installed warning banner
 #: src/windows/main_window.vala:878
 msgid "FUSE is not installed. Some AppImages may fail to run"
-msgstr "FUSE орнатылмаған. Кейбір AppImage файлдары іске қосылмауы мүмкін"
+msgstr "FUSE не встановлений. Деякі AppImages можуть не працювати"
 
 #: src/windows/main_window.vala:880
 msgid "Learn More"
-msgstr "Көбірек білу"
+msgstr "Дізнайтеся більше"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr "Тор көрінісіне ауысу"
+msgstr "Перейти в режим сітки"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr "Тізім көрінісіне ауысыңыз"
+msgstr "Переключитися на перегляд списку"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
-msgstr "Жаңартулар қазірдің өзінде орындалуда"
+msgstr "Оновлення вже запущені"
 
 #: src/windows/main_window.vala:1047
 msgid "Cancel update"
-msgstr "Жаңартудан бас тарту"
+msgstr "Скасувати оновлення"
 
 #: src/windows/main_window.vala:1078
 msgid "Cancelling..."
-msgstr "Бас тартылуда..."
+msgstr "Скасування..."
 
 #: src/windows/main_window.vala:1104
 msgid "Update check cancelled"
-msgstr "Жаңартуды тексеруден бас тартылды"
+msgstr "Перевірку оновлення скасовано"
 
 #: src/windows/main_window.vala:1134
 #, c-format
 msgid "%d app(s) have updates"
-msgstr "%d қолданбада жаңартулар бар"
+msgstr "Додатки %d мають оновлення"
 
 #: src/windows/main_window.vala:1137
 msgid "No updates available right now"
-msgstr "Қазір қолжетімді жаңартулар жоқ"
+msgstr "Зараз немає оновлень"
 
 #: src/windows/main_window.vala:1144
 msgid "Nothing queued for updating"
-msgstr "Жаңарту үшін кезекте ешнәрсе жоқ"
+msgstr "Нічого не стоїть у черзі на оновлення"
 
 #: src/windows/main_window.vala:1171
 msgid "Update cancelled"
-msgstr "Жаңартудан бас тартылды"
+msgstr "Оновлення скасовано"
 
 #: src/windows/main_window.vala:1308
 msgid "Checking updates"
-msgstr "Жаңартуларды тексеру"
+msgstr "Перевірка оновлень"
 
 #: src/windows/main_window.vala:1311
 msgid "Update Apps"
-msgstr "Қолданбаларды жаңарту"
+msgstr "Оновити програми"
 
 #: src/windows/main_window.vala:1314
 msgid "Updating apps"
-msgstr "Қолданбалар жаңартылуда"
+msgstr "Оновлення програм"
 
 #: src/windows/main_window.vala:1317
 msgid "Check updates"
-msgstr "Жаңартуларды тексеру"
+msgstr "Перевірте оновлення"
 
 #: src/windows/main_window.vala:1341
 msgid "No installed apps to update"
-msgstr "Жаңарту үшін орнатылған қолданбалар жоқ"
+msgstr "Немає встановлених програм для оновлення"
 
 #: src/windows/main_window.vala:1381
 #, c-format
 msgid "Updated %d app(s)"
-msgstr "%d қолданба жаңартылды"
+msgstr "Оновлено програму(и) %d"
 
 #: src/windows/main_window.vala:1384
 #, c-format
 msgid "%d update(s) failed"
-msgstr "%d жаңарту сәтсіз аяқталды"
+msgstr "Не вдалося оновити %d"
 
 #: src/windows/main_window.vala:1392
 msgid "Add update addresses in Details to enable updates"
-msgstr ""
-"Жаңартуларды іске қосу үшін \"Толығырақ\" ішіне жаңарту адрестерін қосыңыз"
+msgstr "Щоб увімкнути оновлення, додайте адреси оновлення в Деталі"
 
 #: src/windows/main_window.vala:1394
 msgid "All supported apps are already up to date"
-msgstr "Барлық қолдауы бар қолданбалар ескірмеген"
+msgstr "Усі підтримувані програми вже оновлені"
 
 #: src/windows/main_window.vala:1398
 #, c-format
 msgid "%d app(s) use unsupported update links"
-msgstr "%d қолданба қолдау көрсетілмейтін жаңарту сілтемелерін қолданады"
+msgstr "Додатки %d використовують непідтримувані посилання для оновлення"
 
 #: src/windows/main_window.vala:1461
 #, c-format
 msgid "Update available for %s"
-msgstr "%s үшін жаңарту бар"
+msgstr "Доступне оновлення для %s"
 
 #: src/windows/main_window.vala:1501
 msgid "General"
-msgstr "Жалпы"
+msgstr "Загальний"
 
 #: src/windows/main_window.vala:1505
 msgid "Navigation"
-msgstr "Навигация"
+msgstr "Навігація"
 
 #: src/windows/main_window.vala:1509
 msgid "Window"
-msgstr "Терезе"
+msgstr "Вікно"
 
 #: src/windows/main_window.vala:1511
 msgid "Check for updates"
-msgstr "Жаңартуларды тексеру"
+msgstr "Перевірте наявність оновлень"
 
 #: src/windows/main_window.vala:1512
 msgid "Show main menu"
-msgstr "Бас мәзірді көрсету"
+msgstr "Показати головне меню"
 
 #: src/windows/main_window.vala:1514
 msgid "Show shortcuts"
-msgstr "Жарлықтарды көрсету"
+msgstr "Показати ярлики"
 
 #: src/windows/main_window.vala:1516
 msgid "Close window"
-msgstr "Терезені жабу"
+msgstr "Закрити вікно"
 
 #: src/windows/main_window.vala:1517
 msgid "Quit AppManager"
-msgstr "AppManager-ден шығу"
+msgstr "Закрийте AppManager"
 
 #: src/windows/main_window.vala:1534
 msgid "Credits"
-msgstr "Алғыс"
+msgstr "Кредити"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
 msgid "Installation"
-msgstr "Орнату"
+msgstr "монтаж"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
-"AppImage файлдарының қайда орнатылатынын баптау (бастапқы: ~/Applications)"
+"Налаштувати місце встановлення AppImages (за замовчуванням: ~/Applications)"
 
 #: src/windows/preferences_window.vala:63
 msgid "Installation directory"
-msgstr "Орнату бумасы"
+msgstr "Каталог встановлення"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr "Буманы шолу"
+msgstr "Перегляньте папку"
 
 #: src/windows/preferences_window.vala:86
 msgid "Reset to default"
-msgstr "Бастапқы мәніне қайтару"
+msgstr "Скинути до замовчування"
 
 #: src/windows/preferences_window.vala:96
 msgid "Apply changes"
-msgstr "Өзгерістерді іске асыру"
+msgstr "Застосувати зміни"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr "Ұстап апарып тастау терезесін өткізіп жіберу"
+msgstr "Пропустити вікно перетягування"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr "AppImage файлдарын ашқанда орнату сұхбат терезесін тікелей көрсету"
+msgstr ""
+"Відображати діалогове вікно встановлення безпосередньо під час відкриття "
+"AppImages"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
 msgid "Automatic updates"
-msgstr "Автоматты жаңартулар"
+msgstr "Автоматичні оновлення"
 
 #: src/windows/preferences_window.vala:118
 msgid "Configure automatic update checking"
-msgstr "Автоматты жаңартуды тексеруді баптау"
+msgstr "Налаштувати автоматичну перевірку оновлень"
 
 #: src/windows/preferences_window.vala:124
 msgid "Open update log"
-msgstr "Жаңарту журналын ашу"
+msgstr "Відкрити журнал оновлень"
 
 #. Background update check expander row
 #: src/windows/preferences_window.vala:138
 msgid "Background update check"
-msgstr "Фондық режимде жаңартуды тексеру"
+msgstr "Фонова перевірка оновлень"
 
 #: src/windows/preferences_window.vala:139
 msgid "Will notify when new app updates are available"
-msgstr "Қолданбаның жаңа жаңартулары қолжетімді болғанда хабарлайды"
+msgstr "Сповіщатиме, коли будуть доступні нові оновлення програми"
 
 #. Auto update apps toggle (inside expander)
 #: src/windows/preferences_window.vala:150
 msgid "Auto update apps"
-msgstr "Қолданбаларды автожаңарту"
+msgstr "Автоматичне оновлення програм"
 
 #: src/windows/preferences_window.vala:151
 msgid "Will update apps automatically in background"
-msgstr "Қолданбаларды фонда автоматты түрде жаңартады"
+msgstr "Автоматично оновлюватиме програми у фоновому режимі"
 
 #. Check interval (inside expander)
 #: src/windows/preferences_window.vala:157
 msgid "Check interval"
-msgstr "Тексеру аралығы"
+msgstr "Інтервал перевірки"
 
 #: src/windows/preferences_window.vala:159
 msgid "Daily"
-msgstr "Күн сайын"
+msgstr "Щодня"
 
 #: src/windows/preferences_window.vala:160
 msgid "Weekly"
-msgstr "Апта сайын"
+msgstr "Щотижня"
 
 #: src/windows/preferences_window.vala:161
 msgid "Monthly"
-msgstr "Ай сайын"
+msgstr "Щомісяця"
 
 #. Thumbnails group
 #: src/windows/preferences_window.vala:186
 msgid "Thumbnails"
-msgstr "Нобайлар"
+msgstr "Мініатюри"
 
 #: src/windows/preferences_window.vala:189
 msgid "AppImage Thumbnailer"
-msgstr "AppImage нобайлар жасаушысы"
+msgstr "AppImage Thumbnailer"
 
 #: src/windows/preferences_window.vala:190
 msgid "Install appimage-thumbnailer to generate thumbnails for AppImages"
 msgstr ""
-"AppImage файлдары үшін нобайларды жасау үшін appimage-thumbnailer орнату"
+"Встановіть appimage-thumbnailer, щоб генерувати мініатюри для AppImages"
 
 #: src/windows/preferences_window.vala:199
 msgid "Hide Nautilus thumbnail background"
-msgstr "Nautilus нобайларының фонын жасыру"
+msgstr "Сховати фон мініатюри Nautilus"
 
 #: src/windows/preferences_window.vala:200
 msgid "Remove the alpha checkerboard behind thumbnails and icons"
-msgstr "Нобайлар мен таңбашалар артындағы мөлдір торкөзді өшіру"
+msgstr "Видаліть альфа-шашку за ескізами та піктограмами"
 
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
@@ -1040,72 +1038,71 @@ msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
-"API жылдамдығының шегін сағатына 60-тан 5000 сұрауға дейін көтеру үшін "
-"GitHub көмегімен аутентификациядан өтіңіз."
+"Пройдіть автентифікацію за допомогою GitHub, щоб збільшити ліміт швидкості "
+"API з 60 до 5000 запитів на годину"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr "Жеке қол жеткізу белгісі"
+msgstr "Особистий маркер доступу"
 
 #: src/windows/preferences_window.vala:226
 msgid "Apply token"
-msgstr "Токенді қолдану"
+msgstr "Застосувати маркер"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr "GitHub таңбалауышы сақталды"
+msgstr "Маркер GitHub збережено"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr "Таза белгі"
+msgstr "Очистити маркер"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr "GitHub таңбалауышы тазартылды"
+msgstr "Маркер GitHub очищено"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr "Сынақ белгісі"
+msgstr "Тестовий маркер"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
-msgstr "Токеннің жұмыс істейтінін және тарифтік шектеу күйін тексеріңіз"
+msgstr "Перевірте, чи працює ваш маркер, і перевірте стан обмеження швидкості"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr "Сынақ"
+msgstr "Тест"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr "Сынақталуда…"
+msgstr "Тестування…"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr "GitHub жүйесінде таңбалауыш жасаңыз"
+msgstr "Створіть маркер на GitHub"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
-"Тек оқуға арналған жалпы репо қатынасы бар ұсақ түйіршікті таңбалауыш "
-"жеткілікті"
+"Досить детального токена з доступом до публічного репо лише для читання"
 
 #: src/windows/preferences_window.vala:342
 msgid "Select Installation Directory"
-msgstr "Орнату бумасын таңдау"
+msgstr "Виберіть каталог встановлення"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr "Жарамсыз жол"
+msgstr "Недійсний шлях"
 
 #: src/windows/preferences_window.vala:419
 msgid "Installation directory updated"
-msgstr "Орнату бумасы жаңартылды"
+msgstr "Оновлено каталог встановлення"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr "Орнатылған қолданбаларды жылжыту керек пе?"
+msgstr "Перемістити встановлені програми?"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1113,76 +1110,75 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
-"Бұл %d орнатылған қолданбаны жаңа орынға жылжытады. Бұл қолданбаларыңыздың "
-"өлшеміне байланысты біраз уақыт алуы мүмкін."
+"Це перемістить %d встановлені програми в нове розташування. Це може зайняти "
+"деякий час залежно від розміру ваших програм."
 
 #: src/windows/preferences_window.vala:433
 msgid "Move Apps"
-msgstr "Қолданбаларды жылжыту"
+msgstr "Перемістити додатки"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr "Қолданбалар жылжытылуда…"
+msgstr "Переміщення програм…"
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr "Қолданбаларыңыз жылжытылып жатқанда күте тұрыңыз."
+msgstr "Будь ласка, зачекайте, поки ваші програми переміщуються."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr "Қолданбалар сәтті жылжытылды"
+msgstr "Програми успішно переміщено"
 
 #: src/windows/preferences_window.vala:504
 msgid "Migration Failed"
-msgstr "Көшіру сәтсіз аяқталды"
+msgstr "Помилка міграції"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr "Белгісіз қате орын алды"
+msgstr "Сталася невідома помилка"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr "ОК"
+msgstr "добре"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
-"Аутентификация орындалмады — таңбалауыш жарамсыз немесе мерзімі өтіп кеткен"
+msgstr "Помилка автентифікації — маркер недійсний або прострочений"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr "Қол жеткізуге тыйым салынған — таңбалауышта қажетті рұқсаттар жоқ"
+msgstr "Доступ заборонено — токен не має необхідних дозволів"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr "Токен жарамды — %s / %s сұраулар қалды"
+msgstr "Маркер дійсний — залишилося %s / %s запитів"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr "Токен жарамды"
+msgstr "Токен дійсний"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr "Күтпеген жауап (%u)"
+msgstr "Неочікувана відповідь (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr "Қосылым қатесі: %s"
+msgstr "Помилка підключення: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr "Arnis Kemlers"
+msgstr "Арніс Кемлерс"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr "GNOME үшін ұстап әкеліп тастайтын AppImage орнатқышы"
+msgstr "Інсталятор AppImage для GNOME з функцією перетягування"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1190,7 +1186,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-"AppManager сізге macOS жүйесінен шабыттанған, үйреншікті ұстап әкеліп тастау"
-" жұмыс ағынымен AppImage файлдарын орнатуға немесе өшіруге мүмкіндік береді."
-" Ол жұмыс үстелімен интеграцияны, таңбашаны шығарып алуды, орындалатын "
-"биттерді және Nautilus контекстік мәзірлерін басқарады."
+"AppManager дозволяє встановлювати або видаляти AppImages за допомогою "
+"знайомого робочого процесу перетягування, натхненного macOS. Він керує "
+"інтеграцією робочого столу, вилученням піктограм, виконуваних бітів і "
+"контекстних меню Nautilus."

@@ -24,11 +24,11 @@ msgstr "AppImage không tương thích"
 
 #: src/application.vala:247
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
 msgstr ""
-"AppImage này không tương thích hoặc bị hỏng. Thiếu các tệp bắt buộc "
-"(AppRun, .desktop hoặc biểu tượng)."
+"AppImage này không tương thích hoặc bị hỏng. Thiếu các tệp bắt buộc (AppRun,"
+" .desktop hoặc biểu tượng)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -62,8 +62,8 @@ msgstr "Mở %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "Không thể xác minh nguồn gốc của ứng dụng %s. Bạn có chắc chắn muốn mở nó "
 "không?"
@@ -356,7 +356,8 @@ msgstr "Đã cập nhật"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
 "Xác thực GitHub không thành công (401). Kiểm tra token của bạn trong Tùy "
 "chọn → GitHub."
@@ -373,7 +374,8 @@ msgstr ""
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
-"Truy cập GitHub bị cấm (403). Token của bạn có thể thiếu các quyền cần thiết."
+"Truy cập GitHub bị cấm (403). Token của bạn có thể thiếu các quyền cần "
+"thiết."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
@@ -533,13 +535,13 @@ msgid ""
 "Update info lets AppManager fetch new builds for you. Paste the download "
 "link and AppManager will do the rest."
 msgstr ""
-"Thông tin cập nhật cho phép AppManager tìm nạp các bản dựng mới cho bạn. Dán "
-"liên kết tải xuống và AppManager sẽ thực hiện phần còn lại."
+"Thông tin cập nhật cho phép AppManager tìm nạp các bản dựng mới cho bạn. Dán"
+" liên kết tải xuống và Apvà AppManager sẽ thực hiện phần còn lại."
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Hiện tại, các định dạng URL GitHub và GitLab được hỗ trợ đầy đủ. Liên kết "
@@ -598,9 +600,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "Hash SHA256 không khớp. Xác minh không thành công."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Kéo và thả để cài đặt vào Ứng dụng"
+msgstr "Kéo và thả để cài đặt vào %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -1032,8 +1034,8 @@ msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
-"Xác thực bằng GitHub để tăng giới hạn tốc độ API từ 60 lên 5.000 yêu cầu mỗi "
-"giờ"
+"Xác thực bằng GitHub để tăng giới hạn tốc độ API từ 60 lên 5.000 yêu cầu mỗi"
+" giờ"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
@@ -1063,7 +1065,8 @@ msgstr "Token kiểm tra"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
-msgstr "Xác minh token của bạn hoạt động và kiểm tra trạng thái giới hạn tỷ lệ"
+msgstr ""
+"Xác minh token của bạn hoạt động và kiểm tra trạng thái giới hạn tỷ lệ"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
@@ -1179,26 +1182,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-"AppManager cho phép bạn cài đặt hoặc gỡ cài đặt AppImages bằng quy trình làm "
-"việc kéo và thả quen thuộc lấy cảm hứng từ macOS. Nó xử lý việc tích hợp máy "
-"tính để bàn, trích xuất biểu tượng, các bit thực thi và menu ngữ cảnh "
+"AppManager cho phép bạn cài đặt hoặc gỡ cài đặt AppImages bằng quy trình làm"
+" việc kéo và thả quen thuộc lấy cảm hứng từ macOS. Nó xử lý việc tích hợp "
+"máy tính để bàn, trích xuất biểu tượng, các bit thực thi và menu ngữ cảnh "
 "Nautilus."
-
-#~ msgid "Applications"
-#~ msgstr "Ứng dụng"
-
-#~ msgid ""
-#~ "Initial preview with drag-and-drop installs, dual install modes, Nautilus "
-#~ "menus, and preferences UI."
-#~ msgstr ""
-#~ "Bản xem trước ban đầu với cài đặt kéo và thả, chế độ cài đặt kép, menu "
-#~ "Nautilus và giao diện người dùng tùy chọn."
-
-#~ msgid ""
-#~ "Added optional background update checks powered by the XDG Background "
-#~ "portal. Users grant permission on first launch, can pick an interval, and "
-#~ "receive a notification when updates are detected."
-#~ msgstr ""
-#~ "Đã thêm kiểm tra cập nhật nền tùy chọn được cung cấp bởi cổng XDG "
-#~ "Background. Người dùng cấp quyền trong lần khởi chạy đầu tiên, có thể "
-#~ "chọn khoảng thời gian và nhận thông báo khi phát hiện thấy bản cập nhật."

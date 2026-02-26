@@ -23,8 +23,8 @@ msgstr "AppImage incompatível"
 
 #: src/application.vala:247
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
 msgstr ""
 "Este AppImage é incompatível ou está corrompido. Arquivos necessários "
 "ausentes (AppRun, .desktop ou ícone)"
@@ -61,11 +61,11 @@ msgstr "Abrir %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
-"A origem do aplicativo %s não pôde ser verificada. Tem certeza de que deseja "
-"abri-lo?"
+"A origem do aplicativo %s não pôde ser verificada. Tem certeza de que deseja"
+" abri-lo?"
 
 #: src/application.vala:363 src/windows/drop_window.vala:244
 msgid "Install the AppImage to add it to your applications."
@@ -355,10 +355,11 @@ msgstr "Atualizado"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
-msgstr ""
-"Falha na autenticação do GitHub (401). Verifique seu token em Preferências → "
+"GitHub authentication failed (401). Check your token in Preferences → "
 "GitHub."
+msgstr ""
+"Falha na autenticação do GitHub (401). Verifique seu token em Preferências →"
+" GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
@@ -390,7 +391,8 @@ msgstr "Não é possível determinar a URL de download a partir da URL zsync"
 #: src/windows/details_window.vala:100
 #, c-format
 msgid "⚠️ '%s' is not in $PATH. App will not launch from the terminal"
-msgstr "⚠️ '%s' não está no $PATH. O aplicativo não será iniciado pelo terminal"
+msgstr ""
+"⚠️ '%s' não está no $PATH. O aplicativo não será iniciado pelo terminal"
 
 #: src/windows/details_window.vala:160
 msgid "Show in Files"
@@ -538,13 +540,13 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
-"Atualmente, os formatos de URL do GitHub e GitLab são totalmente suportados. "
-"Links de download direto também funcionam se o servidor fornecer cabeçalhos "
-"Last-Modified ou Content-Length."
+"Atualmente, os formatos de URL do GitHub e GitLab são totalmente suportados."
+" Links de download direto também funcionam se o servidor fornecer cabeçalhos"
+" Last-Modified ou Content-Length."
 
 #: src/windows/details_window.vala:891
 msgid "Update links"
@@ -598,9 +600,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "O hash SHA256 não corresponde. A verificação falhou."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Arraste e solte para instalar em Aplicativos"
+msgstr "Arraste e solte para instalar em %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -1187,31 +1189,3 @@ msgstr ""
 "trabalho familiar de \"arrastar e soltar\" inspirado no macOS. Ele gerencia "
 "a integração com a área de trabalho, extração de ícones, permissões de "
 "execução e menus de contexto do Nautilus."
-
-#~ msgid "Applications"
-#~ msgstr "Aplicativos"
-
-#~ msgid ""
-#~ "Initial preview with drag-and-drop installs, dual install modes, Nautilus "
-#~ "menus, and preferences UI."
-#~ msgstr ""
-#~ "Versão prévia inicial com instalação por \"arrastar e soltar\", modos "
-#~ "duplos de instalação, menus do Nautilus e interface de preferências."
-
-#~ msgid ""
-#~ "Added optional background update checks powered by the XDG Background "
-#~ "portal. Users grant permission on first launch, can pick an interval, and "
-#~ "receive a notification when updates are detected."
-#~ msgstr ""
-#~ "Adicionada a verificação opcional de atualizações em segundo plano via "
-#~ "portal XDG Background. Os usuários concedem permissão no primeiro "
-#~ "lançamento, podem escolher um intervalo e recebem uma notificação quando "
-#~ "atualizações são detectadas."
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "Nenhum aplicativo AppImage instalado"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr ""
-#~ "O link de atualização é gerenciado pelo zsync e não pode ser editado"

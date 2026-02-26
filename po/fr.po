@@ -22,8 +22,8 @@ msgstr "AppImage incompatible"
 
 #: src/application.vala:247
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
 msgstr ""
 "Cet AppImage est incompatible ou corrompu. Fichiers requis manquants "
 "(AppRun, .desktop ou icône)."
@@ -61,8 +61,8 @@ msgstr "Ouvrir %s ?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "L'origine de l'application %s ne peut pas être vérifiée. Êtes-vous sûr de "
 "vouloir l'ouvrir ?"
@@ -269,7 +269,8 @@ msgstr "Le répertoire parent n'existe pas"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr "Création du répertoire impossible : écriture impossible dans le parent"
+msgstr ""
+"Création du répertoire impossible : écriture impossible dans le parent"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
@@ -356,7 +357,8 @@ msgstr "Mis à jour"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
 "L'authentification GitHub a échoué (401). Vérifiez votre jeton dans "
 "Préférences → GitHub."
@@ -539,13 +541,13 @@ msgid ""
 "link and AppManager will do the rest."
 msgstr ""
 "Les informations de mise à jour permettent à AppManager de récupérer les "
-"nouvelles versions pour vous. Collez le lien de téléchargement et AppManager "
-"fera le reste."
+"nouvelles versions pour vous. Collez le lien de téléchargement et AppManager"
+" fera le reste."
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Actuellement, les formats d'URL GitHub et GitLab sont entièrement pris en "
@@ -604,9 +606,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "Le hash SHA256 ne correspond pas. La vérification a échoué."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Glisser-déposer pour installer dans Applications"
+msgstr "Glissez-déposez pour installer dans %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -941,8 +943,8 @@ msgstr "Installation"
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
-"Configurer l'emplacement d'installation des AppImages (par défaut: ~/"
-"Applications)"
+"Configurer l'emplacement d'installation des AppImages (par défaut: "
+"~/Applications)"
 
 #: src/windows/preferences_window.vala:63
 msgid "Installation directory"
@@ -1029,7 +1031,8 @@ msgstr "Générateur de miniatures AppImage"
 #: src/windows/preferences_window.vala:190
 msgid "Install appimage-thumbnailer to generate thumbnails for AppImages"
 msgstr ""
-"Installer appimage-thumbnailer pour générer des miniatures pour les AppImages"
+"Installer appimage-thumbnailer pour générer des miniatures pour les "
+"AppImages"
 
 #: src/windows/preferences_window.vala:199
 msgid "Hide Nautilus thumbnail background"
@@ -1203,23 +1206,3 @@ msgstr ""
 "un processus familier de glisser-déposer inspiré de macOS. Il gère "
 "l'intégration au bureau, l'extraction d'icônes, les bits exécutables et les "
 "menus contextuels Nautilus."
-
-#~ msgid "Applications"
-#~ msgstr "Applications"
-
-#~ msgid ""
-#~ "Initial preview with drag-and-drop installs, dual install modes, Nautilus "
-#~ "menus, and preferences UI."
-#~ msgstr ""
-#~ "Aperçu initial avec installations par glisser-déposer, deux modes "
-#~ "d'installation, menus Nautilus et interface utilisateur des préférences."
-
-#~ msgid ""
-#~ "Added optional background update checks powered by the XDG Background "
-#~ "portal. Users grant permission on first launch, can pick an interval, and "
-#~ "receive a notification when updates are detected."
-#~ msgstr ""
-#~ "Ajout de vérifications facultatives des mises à jour en arrière-plan "
-#~ "grâce au portail XDG Background. Les utilisateurs accordent "
-#~ "l'autorisation lors du premier lancement, peuvent choisir un intervalle "
-#~ "et reçoivent une notification lorsque des mises à jour sont détectées."

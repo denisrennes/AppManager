@@ -17,16 +17,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "Finn flere AppImages"
+msgstr "Inkompatibel AppImage"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "Mangler nødvendige filer (AppRun, .desktop eller ikon)"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr ""
+"Dette AppImage er inkompatibelt eller ødelagt. Mangler nødvendige filer "
+"(AppRun, .desktop eller ikon)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -39,18 +39,17 @@ msgstr "Lukk"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "Versjon ukjent"
+msgstr "ukjent"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Arkitektur uoverensstemmelse"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "Denne appen er bygget for %s og kan ikke kjøres her"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -61,10 +60,11 @@ msgstr "Åpne %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
-"Opprinnelsen til %s kan ikke verifiseres. Er du sikker på at du vil åpne den?"
+"Opprinnelsen til %s kan ikke verifiseres. Er du sikker på at du vil åpne "
+"den?"
 
 #: src/application.vala:363 src/windows/drop_window.vala:244
 msgid "Install the AppImage to add it to your applications."
@@ -237,61 +237,61 @@ msgstr "Flytt til papirkurven"
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "Banen må være absolutt"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "Dette er allerede gjeldende katalog"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "Katalog er ikke skrivbar"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "Får ikke tilgang til katalogen: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "Banen finnes, men er ikke en katalog"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "Ugyldig bane"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "Overordnet katalog finnes ikke"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr ""
+msgstr "Kan ikke opprette katalog: overordnet er ikke skrivbart"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "Får ikke tilgang til overordnet katalog: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "Kunne ikke opprette katalog: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "Kunne ikke opprette uttrukket katalog: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "Migrerer %s (%d/%d) …"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -299,6 +299,8 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"Noen apper kunne ikke migrere:\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
@@ -331,53 +333,59 @@ msgstr "Allerede oppdatert"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "Oppdatere %s?"
+msgstr "Oppdatert til %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "Serveren gir ikke endringssporingshoder"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Baseline registrert"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "Oppdater"
+msgstr "Oppdatert"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"GitHub-autentisering mislyktes (401). Sjekk tokenet ditt i Innstillinger → "
+"GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"GitHub API-hastighetsgrense er overskredet. Legg til et token i "
+"Innstillinger → GitHub for å øke grensen din."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"GitHub-tilgang forbudt (403). Tokenet ditt kan mangle de nødvendige "
+"tillatelsene."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "Ukjent zsync-kildetype"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "Ukjent zsync-kilde"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr ""
+msgstr "Kan ikke bestemme nedlastings-URL fra zsync URL"
 
 #: src/windows/details_window.vala:100
 #, c-format
@@ -530,8 +538,8 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "For øyeblikket støttes GitHub og GitLab URL-formater fullt ut. Direkte "
@@ -589,9 +597,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "SHA256-hash samsvarer ikke. Verifisering mislyktes."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Dra og slipp for å installere i Programmer"
+msgstr "Dra og slipp for å installere i %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -608,7 +616,7 @@ msgstr "Mangler nødvendige filer (AppRun, .desktop eller ikon)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "Arkitektur uoverensstemmelse"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -669,9 +677,8 @@ msgstr "Oppdatering tilgjengelig"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "Versjon ukjent"
+msgstr "Ukjent"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -732,39 +739,36 @@ msgid "Quit"
 msgstr "Avslutt"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "Avslutt AppManager"
+msgstr "Støtte AppManager"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "Kjøp meg en kaffe"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "Bli sponsor på GitHub"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "Spons meg ♡"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "Avslutt AppManager"
+msgstr "Stjerner AppManager på GitHub"
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "Avslutt AppManager"
+msgstr "Star AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "Se bidragsytere på GitHub"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "Bidragsytere"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
@@ -772,7 +776,7 @@ msgstr "Søk"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "Støtt dette prosjektet"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
@@ -793,11 +797,11 @@ msgstr "Les mer"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Bytt til rutenettvisning"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Bytt til listevisning"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -918,40 +922,36 @@ msgstr "Takk til"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "Installasjon mislyktes"
+msgstr "Installasjon"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
-msgstr ""
+msgstr "Konfigurer hvor AppImages er installert (standard: ~/Applications)"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "Installasjon mislyktes"
+msgstr "Installasjonskatalog"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Bla etter mappe"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "Gjenopprett standard"
+msgstr "Tilbakestill til standard"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "Programmer"
+msgstr "Bruk endringer"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Hopp over dra-og-slipp-vinduet"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr ""
+msgstr "Vis installasjonsdialogen direkte når du åpner AppImages"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1026,78 +1026,78 @@ msgstr "Fjern alfasjakkmønsteret bak miniatyrbilder og ikoner"
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Autentiser med GitHub for å øke API-hastighetsgrensen fra 60 til 5000 "
+"forespørsler per time"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "Personlig tilgangstoken"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "Programmer"
+msgstr "Bruk token"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "GitHub-token lagret"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Fjern token"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "GitHub-token slettet"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "Test token"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
-msgstr ""
+msgstr "Bekreft at tokenet ditt fungerer og sjekk status for rategrense"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Tester …"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "Lag et token på GitHub"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"Finkornet token med skrivebeskyttet offentlig repo-tilgang er tilstrekkelig"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "Installasjon mislyktes"
+msgstr "Velg Installasjonskatalog"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "Ugyldig bane"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "Installasjon mislyktes"
+msgstr "Installasjonskatalogen er oppdatert"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "Flytte installerte apper?"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1105,75 +1105,75 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
+"Dette vil flytte %d installerte app(er) til den nye plasseringen. Dette kan "
+"ta en stund avhengig av størrelsen på appene dine."
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "Mine apper"
+msgstr "Flytt apper"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "Flytter apper …"
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "Vent mens appene dine flyttes."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "Apper ble flyttet"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "Utpakking mislyktes"
+msgstr "Migrering mislyktes"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "Ukjent feil oppstod"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
+msgstr "Autentisering mislyktes – token er ugyldig eller utløpt"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "Tilgang forbudt – token mangler nødvendige tillatelser"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "Token er gyldig — %s / %s forespørsler gjenstår"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "Token er gyldig"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Uventet svar (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Tilkoblingsfeil: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Arnis Kemlers"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr ""
+msgstr "Dra og slipp AppImage-installasjonsprogram for GNOME"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1181,13 +1181,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-
-#~ msgid "Applications"
-#~ msgstr "Programmer"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "Ingen AppImage-apper installert"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr "Oppdateringslenken administreres av zsync og kan ikke redigeres"
+"AppManager lar deg installere eller avinstallere AppImages med en kjent dra-"
+"og-slipp-arbeidsflyt inspirert av macOS. Den håndterer "
+"skrivebordsintegrasjon, ikonutvinning, kjørbare biter og Nautilus-"
+"kontekstmenyer."

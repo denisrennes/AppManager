@@ -14,20 +14,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "Rasti daugiau AppImage"
+msgstr "Nesuderinamas programos vaizdas"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "Trūksta reikalingų failų (AppRun, .desktop arba piktograma)"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr ""
+"Šis programos vaizdas yra nesuderinamas arba sugadintas. Trūksta būtinų "
+"failų (AppRun, .desktop arba piktogramos)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -40,18 +39,17 @@ msgstr "Uždaryti"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "Versija nežinoma"
+msgstr "nežinomas"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Architektūros neatitikimas"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "Ši programa sukurta %s ir negali čia paleisti"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -62,8 +60,8 @@ msgstr "Atidaryti %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "Programos %s kilmė negali būti patvirtinta. Ar tikrai norite ją atidaryti?"
 
@@ -238,61 +236,61 @@ msgstr "Perkelti į šiukšlinę"
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "Kelias turi būti absoliutus"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "Tai jau dabartinis katalogas"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "Katalogas neįrašomas"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "Negaliu pasiekti katalogo: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "Kelias egzistuoja, bet nėra katalogas"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "Neteisingas kelias"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "Pirminio katalogo nėra"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr ""
+msgstr "Neįmanoma sukurti katalogo: tėvų negalima rašyti"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "Negalima pasiekti pirminio katalogo: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "Nepavyko sukurti katalogo: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "Nepavyko sukurti ištraukto katalogo: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "Perkeliamas %s (%d/%d)…"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -300,6 +298,8 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"Nepavyko perkelti kai kurių programų:\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
@@ -332,53 +332,59 @@ msgstr "Jau atnaujinta"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "Atnaujinti %s?"
+msgstr "Atnaujinta į %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "Serveris nepateikia pakeitimų sekimo antraščių"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Užregistruotas pradinis lygis"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "Atnaujinti"
+msgstr "Atnaujinta"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"„GitHub“ autentifikavimas nepavyko (401). Patikrinkite prieigos raktą "
+"skiltyje „Nuostatos“ → „GitHub“."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"Viršytas „GitHub“ API greičio limitas. Pridėkite prieigos raktą skiltyje "
+"„Nuostatos“ → „GitHub“, kad padidintumėte limitą."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"„GitHub“ prieiga uždrausta (403). Jūsų prieigos raktui gali trūkti reikiamų "
+"leidimų."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "Nežinomas zsync šaltinio tipas"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "Nežinomas zsync šaltinis"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr ""
+msgstr "Nepavyko nustatyti atsisiuntimo URL iš zsync URL"
 
 #: src/windows/details_window.vala:100
 #, c-format
@@ -531,8 +537,8 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Šiuo metu visiškai palaikomi GitHub ir GitLab URL formatai. Tiesioginės "
@@ -590,9 +596,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "SHA256 maiša nesutampa. Patvirtinimas nepavyko."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Vilkite ir numeskite, kad įdiegtumėte į Programas"
+msgstr "Vilkite ir numeskite, kad įdiegtumėte į %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -608,7 +614,7 @@ msgstr "Trūksta reikalingų failų (AppRun, .desktop arba piktograma)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "Architektūros neatitikimas"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -670,9 +676,8 @@ msgstr "Yra atnaujinimas"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "Versija nežinoma"
+msgstr "Nežinoma"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -733,39 +738,36 @@ msgid "Quit"
 msgstr "Išeiti"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "Išeiti iš AppManager"
+msgstr "Palaikykite „AppManager“."
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "Nupirk man kavos"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "Tapkite GitHub rėmėju"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "Rėmėk mane ♡"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "Išeiti iš AppManager"
+msgstr "Star AppManager „GitHub“."
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "Išeiti iš AppManager"
+msgstr "Star AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "Peržiūrėkite bendradarbius „GitHub“."
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "Pagalbininkai"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
@@ -773,7 +775,7 @@ msgstr "Ieškoti"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "Palaikykite šį projektą"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
@@ -794,11 +796,11 @@ msgstr "Sužinoti daugiau"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Perjungti į tinklelio rodinį"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Perjungti į sąrašo rodinį"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -921,40 +923,38 @@ msgstr "Padėkos"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "Diegimas nepavyko"
+msgstr "Montavimas"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
+"Konfigūruoti, kur yra įdiegtos programos „AppImages“ (numatytasis: "
+"~/Applications)"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "Diegimas nepavyko"
+msgstr "Diegimo katalogas"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Naršykite aplanką"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "Atkurti numatytąsias reikšmes"
+msgstr "Atstatyti į numatytuosius nustatymus"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "Programos"
+msgstr "Taikyti pakeitimus"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Praleisti vilkimo ir nuleidimo langą"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr ""
+msgstr "Rodyti diegimo dialogo langą tiesiogiai atidarant „AppImages“."
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1028,78 +1028,81 @@ msgstr "Pašalinti alfa šachmatinį foną už miniatiūrų ir piktogramų"
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Autentifikuokite naudodami „GitHub“, kad padidintumėte API dažnio ribą nuo "
+"60 iki 5 000 užklausų per valandą"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "Asmeninės prieigos raktas"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "Programos"
+msgstr "Taikyti prieigos raktą"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "GitHub prieigos raktas išsaugotas"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Išvalyti žetoną"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "„GitHub“ prieigos raktas išvalytas"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "Bandomasis ženklas"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
 msgstr ""
+"Patikrinkite, ar jūsų prieigos raktas veikia, ir patikrinkite greičio "
+"apribojimo būseną"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Testas"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Bandoma…"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "Sukurkite prieigos raktą „GitHub“."
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"Pakanka smulkiagrūdžio prieigos rakto su tik skaitymo viešąja atpirkimo "
+"prieiga"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "Diegimas nepavyko"
+msgstr "Pasirinkite diegimo katalogą"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "Neteisingas kelias"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "Diegimas nepavyko"
+msgstr "Diegimo katalogas atnaujintas"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "Perkelti įdiegtas programas?"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1107,75 +1110,76 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
+"Tai perkels %d įdiegtą (-as) programą (-as) į naują vietą. Tai gali šiek "
+"tiek užtrukti, atsižvelgiant į jūsų programų dydį."
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "Mano programos"
+msgstr "Perkelti programas"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "Perkeliamos programos…"
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "Palaukite, kol jūsų programos bus perkeltos."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "Programos sėkmingai perkeltos"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "Išskleidimas nepavyko"
+msgstr "Perkėlimas nepavyko"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "Įvyko nežinoma klaida"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
 msgstr ""
+"Autentifikavimas nepavyko – prieigos raktas netinkamas arba pasibaigęs"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "Prieiga uždrausta – prieigos raktui trūksta reikiamų leidimų"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "Ženklas galioja – liko %s / %s užklausų"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "Tokenas galioja"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Netikėtas atsakymas (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Ryšio klaida: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Arnis Kemleris"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr ""
+msgstr "Nuvilkite „AppImage“ diegimo programą, skirtą GNOME"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1183,13 +1187,6 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-
-#~ msgid "Applications"
-#~ msgstr "Programos"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "Nėra įdiegtų AppImage programų"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr "Atnaujinimo nuorodą valdo zsync ir jos negalima redaguoti"
+"„AppManager“ leidžia įdiegti arba pašalinti „AppImages“ naudojant pažįstamą "
+"nuvilkimo darbo eigą, įkvėptą „macOS“. Jis tvarko darbalaukio integravimą, "
+"piktogramų ištraukimą, vykdomuosius bitus ir „Nautilus“ kontekstinius meniu."

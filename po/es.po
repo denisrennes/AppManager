@@ -17,16 +17,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "Encontrar más AppImages"
+msgstr "Imagen de aplicación incompatible"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "Faltan archivos requeridos (AppRun, .desktop o icono)"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr ""
+"Esta AppImage es incompatible o está dañada. Faltan archivos requeridos "
+"(AppRun, .desktop o icono)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -39,18 +39,17 @@ msgstr "Cerrar"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "Versión desconocida"
+msgstr "desconocido"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Discrepancia de arquitectura"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "Esta aplicación está diseñada para %s y no se puede ejecutar aquí"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -61,8 +60,8 @@ msgstr "¿Abrir %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "No se puede verificar el origen de la aplicación %s. ¿Estás seguro de que "
 "quieres abrirla?"
@@ -333,9 +332,9 @@ msgstr "Ya está actualizado"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "¿Actualizar %s?"
+msgstr "Actualizado a %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
@@ -345,29 +344,35 @@ msgstr "El servidor no proporciona cabeceras de rastreo de cambios"
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Línea de base registrada"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "Actualizar"
+msgstr "Actualizado"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"La autenticación de GitHub falló (401). Verifique su token en Preferencias →"
+" GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"Se superó el límite de velocidad de la API de GitHub. Agregue un token en "
+"Preferencias → GitHub para aumentar su límite."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"Acceso a GitHub prohibido (403). Es posible que su token carezca de los "
+"permisos necesarios."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
@@ -533,8 +538,8 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Actualmente los formatos de URL de GitHub y GitLab son totalmente "
@@ -593,9 +598,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "El hash SHA256 no coincide. La verificación falló."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Arrastra y suelta para instalar en Aplicaciones"
+msgstr "Arrastre y suelte para instalar en %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -611,7 +616,7 @@ msgstr "Faltan archivos requeridos (AppRun, .desktop o icono)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "La arquitectura no coincide"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -672,9 +677,8 @@ msgstr "Actualización disponible"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "Versión desconocida"
+msgstr "Desconocido"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -735,9 +739,8 @@ msgid "Quit"
 msgstr "Salir"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "Salir de AppManager"
+msgstr "Administrador de aplicaciones de soporte"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
@@ -752,14 +755,12 @@ msgid "Sponsor Me ♡"
 msgstr "Patrocíname"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "Salir de AppManager"
+msgstr "Administrador de aplicaciones estrella en GitHub"
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "Salir de AppManager"
+msgstr "Administrador de aplicaciones estrella"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
@@ -796,11 +797,11 @@ msgstr "Más información"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Cambiar a vista de cuadrícula"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Cambiar a vista de lista"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -923,40 +924,38 @@ msgstr "Créditos"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "Error en la instalación"
+msgstr "Instalación"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
+"Configure dónde se instalan AppImages (predeterminado: ~/Aplicaciones)"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "Error en la instalación"
+msgstr "Directorio de instalación"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Buscar carpeta"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "Restaurar predeterminado"
+msgstr "Restablecer los valores predeterminados"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "Aplicaciones"
+msgstr "Aplicar cambios"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Saltar ventana de arrastrar y soltar"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
 msgstr ""
+"Mostrar el cuadro de diálogo de instalación directamente al abrir AppImages"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1031,75 +1030,76 @@ msgstr ""
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Autentíquese con GitHub para aumentar el límite de tasa de API de 60 a 5000 "
+"solicitudes por hora"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "token de acceso personal"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "Aplicaciones"
+msgstr "Aplicar token"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "Token de GitHub guardado"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Borrar ficha"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "Token de GitHub borrado"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "ficha de prueba"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
 msgstr ""
+"Verifique que su token funcione y verifique el estado del límite de tasa"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Prueba"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Pruebas…"
 
 #: src/windows/preferences_window.vala:284
-#, fuzzy
 msgid "Create a token on GitHub"
-msgstr "Conviertete en patrocinador en Github"
+msgstr "Crea un token en GitHub"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"El token detallado con acceso al repositorio público de solo lectura es "
+"suficiente"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "Error en la instalación"
+msgstr "Seleccionar directorio de instalación"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
 msgstr "Ruta no válida"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "Error en la instalación"
+msgstr "Directorio de instalación actualizado"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
@@ -1115,9 +1115,8 @@ msgstr ""
 "rato dependiendo del tamaño de tus apps."
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "Mis aplicaciones"
+msgstr "Mover aplicaciones"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
@@ -1135,9 +1134,8 @@ msgid "Apps moved successfully"
 msgstr "Apps movidas con éxito"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "Error en la extracción"
+msgstr "La migración falló"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
@@ -1149,35 +1147,35 @@ msgstr "OK"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
+msgstr "Error de autenticación: el token no es válido o ha caducado"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "Acceso prohibido: el token carece de los permisos necesarios"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "El token es válido: %s / %s solicitudes restantes"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "El token es válido"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Respuesta inesperada (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Error de conexión: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Arnis Kemlers"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
@@ -1191,16 +1189,5 @@ msgid ""
 msgstr ""
 "AppManager te permite instaladar o desinstalar AppImages con un flujo de "
 "trabajofamiliar de arrastrar y soltar inspirado en macOS. Maneja la "
-"integración con desktop, iconos, extracción, ejecutables y menus de contexto "
-"de Nautilus"
-
-#~ msgid "Applications"
-#~ msgstr "Aplicaciones"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "No hay aplicaciones AppImage instaladas"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr ""
-#~ "El enlace de actualización está gestionado por zsync y no se puede editar"
+"integración con desktop, iconos, extracción, ejecutables y menus de contexto"
+" de Nautilus"

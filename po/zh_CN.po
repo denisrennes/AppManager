@@ -17,16 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "发现更多 AppImage"
+msgstr "不兼容的应用程序图像"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "缺少必需文件（AppRun、.desktop 或图标）"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr "此 AppImage 不兼容或已损坏。缺少必需的文件（AppRun、.desktop 或图标）。"
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -39,18 +37,17 @@ msgstr "关闭"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "版本未知"
+msgstr "未知"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "架构不匹配"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "此应用程序是为 %s 构建的，无法在此处运行"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -61,8 +58,8 @@ msgstr "打开 %s？"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr "无法验证应用程序 %s 的来源。确定要打开它吗？"
 
 #: src/application.vala:363 src/windows/drop_window.vala:244
@@ -232,61 +229,61 @@ msgstr "移到回收站"
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "路径必须是绝对路径"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "这已经是当前目录"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "目录不可写"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "无法访问目录：%s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "路径存在但不是目录"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "路径无效"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "父目录不存在"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr ""
+msgstr "无法创建目录：父目录不可写"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "无法访问父目录：%s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "无法创建目录：%s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "无法创建解压目录：%s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "正在迁移 %s (%d/%d)..."
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -294,6 +291,8 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"部分应用程序迁移失败：\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
@@ -326,53 +325,53 @@ msgstr "已是最新版本"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "更新 %s？"
+msgstr "更新至 %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "服务器不提供更改跟踪标头"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "记录基线"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "更新"
+msgstr "已更新"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
-msgstr ""
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
+msgstr "GitHub 身份验证失败 (401)。在首选项 → GitHub 中检查您的令牌。"
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
-msgstr ""
+msgstr "超过 GitHub API 速率限制。在首选项 → GitHub 中添加令牌以增加您的限制。"
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
-msgstr ""
+msgstr "GitHub 访问被禁止 (403)。您的令牌可能缺乏所需的权限。"
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "未知的 zsync 源类型"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "未知的 zsync 源"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr ""
+msgstr "无法从 zsync URL 确定下载 URL"
 
 #: src/windows/details_window.vala:100
 #, c-format
@@ -519,18 +518,16 @@ msgstr "检查更新"
 msgid ""
 "Update info lets AppManager fetch new builds for you. Paste the download "
 "link and AppManager will do the rest."
-msgstr ""
-"更新信息让 AppManager 能够为您获取新版本。粘贴下载链接，AppManager 会完成剩余"
-"工作。"
+msgstr "更新信息让 AppManager 能够为您获取新版本。粘贴下载链接，AppManager 会完成剩余工作。"
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
-"目前完全支持 GitHub 和 GitLab URL 格式。如果服务器提供 Last-Modified 或 "
-"Content-Length 头，直接下载链接也可以使用。"
+"目前完全支持 GitHub 和 GitLab URL 格式。如果服务器提供 Last-Modified 或 Content-Length "
+"头，直接下载链接也可以使用。"
 
 #: src/windows/details_window.vala:891
 msgid "Update links"
@@ -544,8 +541,7 @@ msgstr "明白了"
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
-msgstr ""
-"解压将展开应用程序以便更快打开，但会占用更多磁盘空间。此操作无法自动撤销。"
+msgstr "解压将展开应用程序以便更快打开，但会占用更多磁盘空间。此操作无法自动撤销。"
 
 #: src/windows/details_window.vala:910
 msgid "Extract application?"
@@ -582,9 +578,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "SHA256 哈希不匹配。验证失败。"
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "拖放以安装到应用程序"
+msgstr "拖放到 %s 中安装"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -600,7 +596,7 @@ msgstr "缺少必需文件（AppRun、.desktop 或图标）"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "架构不匹配"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -661,9 +657,8 @@ msgstr "有可用更新"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "版本未知"
+msgstr "未知"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -724,39 +719,36 @@ msgid "Quit"
 msgstr "退出"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "退出 AppManager"
+msgstr "支持应用管理器"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "请我喝杯咖啡"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "成为 GitHub 上的赞助商"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "赞助我♡"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "退出 AppManager"
+msgstr "在 GitHub 上加星 AppManager"
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "退出 AppManager"
+msgstr "明星应用管理器"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "查看 GitHub 上的贡献者"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "贡献者"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
@@ -764,7 +756,7 @@ msgstr "搜索"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "支持这个项目"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
@@ -785,11 +777,11 @@ msgstr "了解更多"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "切换到网格视图"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "切换到列表视图"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -910,40 +902,36 @@ msgstr "致谢"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "安装失败"
+msgstr "安装"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
-msgstr ""
+msgstr "配置 AppImage 的安装位置（默认：~/Applications）"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "安装失败"
+msgstr "安装目录"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "浏览文件夹"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "恢复默认"
+msgstr "重置为默认值"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "应用程序"
+msgstr "应用更改"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "跳过拖放窗口"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr ""
+msgstr "打开 AppImages 时直接显示安装对话框"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1017,154 +1005,149 @@ msgstr "移除缩略图和图标后面的透明棋盘格"
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
-msgstr ""
+msgstr "通过 GitHub 进行身份验证，将 API 速率限制从每小时 60 个请求提高到 5,000 个请求"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "个人访问令牌"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "应用程序"
+msgstr "申请令牌"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "GitHub 令牌已保存"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "清除令牌"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "GitHub 令牌已清除"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "测试代币"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
-msgstr ""
+msgstr "验证您的令牌是否有效并检查速率限制状态"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "测试"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "测试..."
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "在 GitHub 上创建令牌"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
-msgstr ""
+msgstr "具有只读公共存储库访问权限的细粒度令牌就足够了"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "安装失败"
+msgstr "选择安装目录"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "无效路径"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "安装失败"
+msgstr "安装目录已更新"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "移动已安装的应用程序？"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
 msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
-msgstr ""
+msgstr "这会将 %d 安装的应用程序移动到新位置。这可能需要一段时间，具体取决于您的应用程序的大小。"
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "我的应用"
+msgstr "移动应用程序"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "移动应用程序..."
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "正在移动您的应用程序，请稍候。"
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "应用程序迁移成功"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "解压失败"
+msgstr "迁移失败"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "发生未知错误"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "好的"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
+msgstr "身份验证失败 - 令牌无效或已过期"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "访问被禁止——令牌缺乏所需的权限"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "令牌有效 — 剩余 %s / %s 请求"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "令牌有效"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "意外响应 (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "连接错误：%s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "阿尼斯·凯姆勒斯"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr ""
+msgstr "适用于 GNOME 的拖放式 AppImage 安装程序"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1172,13 +1155,5 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-
-#~ msgid "Applications"
-#~ msgstr "应用程序"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "没有已安装的 AppImage 应用"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr "更新链接由 zsync 管理，无法编辑"
+"AppManager 允许您使用受 macOS 启发的熟悉的拖放工作流程来安装或卸载 AppImages。它处理桌面集成、图标提取、可执行位和 "
+"Nautilus 上下文菜单。"

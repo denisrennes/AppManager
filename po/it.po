@@ -17,16 +17,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "Trova altri AppImage"
+msgstr "AppImage incompatibile"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "File richiesti mancanti (AppRun, .desktop o icona)"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr ""
+"Questa AppImage è incompatibile o danneggiata. File richiesti mancanti "
+"(AppRun, .desktop o icona)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -39,18 +39,17 @@ msgstr "Chiudi"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "Versione sconosciuta"
+msgstr "sconosciuto"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Mancata corrispondenza dell'architettura"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "Questa app è stata creata per %s e non può essere eseguita qui"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -61,8 +60,8 @@ msgstr "Aprire %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "L'origine dell'applicazione %s non può essere verificata. Sei sicuro di "
 "volerla aprire?"
@@ -136,8 +135,8 @@ msgid ""
 "An item named %s already exists in this location. Do you want to replace it "
 "with one you're copying?"
 msgstr ""
-"Un elemento chiamato %s esiste già in questa posizione. Vuoi sostituirlo con "
-"quello che stai copiando?"
+"Un elemento chiamato %s esiste già in questa posizione. Vuoi sostituirlo con"
+" quello che stai copiando?"
 
 #: src/application.vala:432 src/windows/drop_window.vala:462
 msgid "Stop"
@@ -238,61 +237,61 @@ msgstr "Sposta nel cestino"
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "Il percorso deve essere assoluto"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "Questa è già la directory corrente"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "La directory non è scrivibile"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "Impossibile accedere alla directory: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "Il percorso esiste ma non è una directory"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "Percorso non valido"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "La directory principale non esiste"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr ""
+msgstr "Impossibile creare la directory: il genitore non è scrivibile"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "Impossibile accedere alla directory principale: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "Impossibile creare la directory: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "Impossibile creare la directory estratta: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "Migrazione di %s (%d/%d)…"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -300,6 +299,8 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"La migrazione di alcune app non è riuscita:\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
@@ -332,53 +333,59 @@ msgstr "Già aggiornato"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "Aggiornare %s?"
+msgstr "Aggiornato a %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "Il server non fornisce intestazioni di rilevamento delle modifiche"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Linea di base registrata"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "Aggiorna"
+msgstr "Aggiornato"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"Autenticazione GitHub non riuscita (401). Controlla il tuo token in "
+"Preferenze → GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"Limite di velocità dell'API GitHub superato. Aggiungi un token in Preferenze"
+" → GitHub per aumentare il tuo limite."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"Accesso GitHub vietato (403). Il tuo token potrebbe non avere le "
+"autorizzazioni richieste."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "Tipo di origine zsync sconosciuto"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "Origine zsync sconosciuta"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr ""
+msgstr "Impossibile determinare l'URL di download dall'URL zsync"
 
 #: src/windows/details_window.vala:100
 #, c-format
@@ -531,13 +538,13 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Attualmente i formati URL di GitHub e GitLab sono completamente supportati. "
-"I link di download diretto funzionano anche se il server fornisce gli header "
-"Last-Modified o Content-Length."
+"I link di download diretto funzionano anche se il server fornisce gli header"
+" Last-Modified o Content-Length."
 
 #: src/windows/details_window.vala:891
 msgid "Update links"
@@ -591,9 +598,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "L'hash SHA256 non corrisponde. Verifica fallita."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Trascina e rilascia per installare in Applicazioni"
+msgstr "Trascina e rilascia per installare in %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -610,7 +617,7 @@ msgstr "File richiesti mancanti (AppRun, .desktop o icona)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "Mancata corrispondenza dell'architettura"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -671,9 +678,8 @@ msgstr "Aggiornamento disponibile"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "Versione sconosciuta"
+msgstr "Sconosciuto"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -734,39 +740,36 @@ msgid "Quit"
 msgstr "Esci"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "Esci da AppManager"
+msgstr "Supporta AppManager"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "Comprami un caffè"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "Diventa uno sponsor su GitHub"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "Sponsorizzami ♡"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "Esci da AppManager"
+msgstr "Stella AppManager su GitHub"
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "Esci da AppManager"
+msgstr "Star AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "Visualizza i contributori su GitHub"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "Collaboratori"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
@@ -774,7 +777,7 @@ msgstr "Cerca"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "Sostieni questo progetto"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
@@ -795,11 +798,11 @@ msgstr "Scopri di più"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Passa alla visualizzazione griglia"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Passa alla visualizzazione elenco"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -922,40 +925,40 @@ msgstr "Crediti"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "Installazione fallita"
+msgstr "Installazione"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
+"Configura dove sono installate le AppImage (impostazione predefinita: "
+"~/Applicazioni)"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "Installazione fallita"
+msgstr "Directory di installazione"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Cerca la cartella"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "Ripristina predefinito"
+msgstr "Ripristina le impostazioni predefinite"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "Applicazioni"
+msgstr "Applicare le modifiche"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Salta la finestra di trascinamento della selezione"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
 msgstr ""
+"Mostra la finestra di dialogo di installazione direttamente all'apertura di "
+"AppImages"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1029,78 +1032,81 @@ msgstr "Rimuovi la scacchiera alfa dietro miniature e icone"
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Esegui l'autenticazione con GitHub per aumentare il limite di velocità "
+"dell'API da 60 a 5.000 richieste all'ora"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "Token di accesso personale"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "Applicazioni"
+msgstr "Applica gettone"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "Token GitHub salvato"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Gettone chiaro"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "Token GitHub cancellato"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "Gettone di prova"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
 msgstr ""
+"Verifica che il tuo token funzioni e controlla lo stato del limite di "
+"velocità"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Test…"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "Crea un token su GitHub"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"È sufficiente un token a grana fine con accesso al repository pubblico di "
+"sola lettura"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "Installazione fallita"
+msgstr "Seleziona Directory di installazione"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "Percorso non valido"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "Installazione fallita"
+msgstr "Directory di installazione aggiornata"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "Spostare le app installate?"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1108,75 +1114,76 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
+"Ciò sposterà le %d app installate nella nuova posizione. L'operazione "
+"potrebbe richiedere del tempo a seconda delle dimensioni delle tue app."
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "Le mie app"
+msgstr "Sposta app"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "Spostamento delle app..."
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "Attendi mentre le tue app vengono spostate."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "Le app sono state spostate correttamente"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "Estrazione fallita"
+msgstr "Migrazione non riuscita"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "Si è verificato un errore sconosciuto"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
+msgstr "Autenticazione non riuscita: il token non è valido o è scaduto"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "Accesso vietato: il token non dispone delle autorizzazioni richieste"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "Il token è valido: %s / %s richieste rimanenti"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "Il gettone è valido"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Risposta imprevista (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Errore di connessione: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Arnis Kemlers"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
 msgstr ""
+"Trascina e rilascia il programma di installazione di AppImage per GNOME"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1184,14 +1191,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-
-#~ msgid "Applications"
-#~ msgstr "Applicazioni"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "Nessuna app AppImage installata"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr ""
-#~ "Il link di aggiornamento è gestito da zsync e non può essere modificato"
+"AppManager ti consente di installare o disinstallare AppImages con un "
+"familiare flusso di lavoro drag-and-drop ispirato a macOS. Gestisce "
+"l'integrazione desktop, l'estrazione delle icone, i bit eseguibili e i menu "
+"contestuali di Nautilus."

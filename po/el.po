@@ -19,13 +19,15 @@ msgstr ""
 
 #: src/application.vala:246
 msgid "Incompatible AppImage"
-msgstr ""
+msgstr "Μη συμβατό AppImage"
 
 #: src/application.vala:247
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
 msgstr ""
+"Αυτή η AppImage είναι ασυμβίβαστη ή κατεστραμμένη. Λείπουν τα απαιτούμενα "
+"αρχεία (AppRun, .desktop ή εικονίδιο)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -33,43 +35,46 @@ msgstr ""
 #: src/windows/dialog_window.vala:95 src/windows/drop_window.vala:99
 #: src/windows/drop_window.vala:109
 msgid "Close"
-msgstr ""
+msgstr "Κοντά"
 
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
 msgid "unknown"
-msgstr ""
+msgstr "άγνωστος"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Αρχιτεκτονική αναντιστοιχία"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
 msgstr ""
+"Αυτή η εφαρμογή έχει δημιουργηθεί για %s και δεν μπορεί να εκτελεστεί εδώ"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
 #, c-format
 msgid "Open %s?"
-msgstr ""
+msgstr "Άνοιγμα %s;"
 
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
+"Δεν είναι δυνατή η επαλήθευση της προέλευσης της εφαρμογής %s. Είστε βέβαιοι"
+" ότι θέλετε να το ανοίξετε;"
 
 #: src/application.vala:363 src/windows/drop_window.vala:244
 msgid "Install the AppImage to add it to your applications."
-msgstr ""
+msgstr "Εγκαταστήστε το AppImage για να το προσθέσετε στις εφαρμογές σας."
 
 #: src/application.vala:365 src/windows/drop_window.vala:247
 msgid "Install"
-msgstr ""
+msgstr "Εγκαθιστώ"
 
 #: src/application.vala:366 src/application.vala:397
 #: src/windows/details_window.vala:911 src/windows/drop_window.vala:248
@@ -77,40 +82,40 @@ msgstr ""
 #: src/windows/preferences_window.vala:432
 #: src/windows/preferences_window.vala:466
 msgid "Cancel"
-msgstr ""
+msgstr "Ματαίωση"
 
 #. Use icon with verification badge overlay
 #: src/application.vala:384 src/windows/drop_window.vala:418
 #, c-format
 msgid "Update %s?"
-msgstr ""
+msgstr "Ενημέρωση %s;"
 
 #. App version
 #: src/application.vala:388 src/windows/details_window.vala:135
 #: src/windows/drop_window.vala:394
 msgid "Version unknown"
-msgstr ""
+msgstr "Άγνωστη έκδοση"
 
 #: src/application.vala:393 src/application.vala:536
 #: src/windows/drop_window.vala:401 src/windows/drop_window.vala:558
 msgid "Unknown version"
-msgstr ""
+msgstr "Άγνωστη έκδοση"
 
 #: src/application.vala:394 src/windows/drop_window.vala:402
 #, c-format
 msgid "Will update to version %s"
-msgstr ""
+msgstr "Θα ενημερωθεί στην έκδοση %s"
 
 #: src/application.vala:396 src/windows/details_window.vala:819
 #: src/windows/drop_window.vala:421
 msgid "Update"
-msgstr ""
+msgstr "Εκσυγχρονίζω"
 
 #. Use icon with verification badge overlay
 #: src/application.vala:415 src/windows/drop_window.vala:448
 #, c-format
 msgid "Replace %s?"
-msgstr ""
+msgstr "Αντικατάσταση %s;"
 
 #: src/application.vala:421 src/windows/drop_window.vala:452
 #, c-format
@@ -118,11 +123,13 @@ msgid ""
 "A newer item named %s already exists in this location. Do you want to "
 "replace it with the older one you're copying?"
 msgstr ""
+"Ένα νεότερο στοιχείο με το όνομα %s υπάρχει ήδη σε αυτήν την τοποθεσία. "
+"Θέλετε να το αντικαταστήσετε με το παλαιότερο που αντιγράφετε;"
 
 #: src/application.vala:423 src/windows/drop_window.vala:454
 #, c-format
 msgid "Installed: %s | Incoming: %s"
-msgstr ""
+msgstr "Εγκατεστημένο: %s | Εισερχόμενα: %s"
 
 #: src/application.vala:427 src/windows/drop_window.vala:458
 #, c-format
@@ -130,161 +137,164 @@ msgid ""
 "An item named %s already exists in this location. Do you want to replace it "
 "with one you're copying?"
 msgstr ""
+"Ένα στοιχείο με το όνομα %s υπάρχει ήδη σε αυτήν την τοποθεσία. Θέλετε να το"
+" αντικαταστήσετε με ένα που αντιγράφετε;"
 
 #: src/application.vala:432 src/windows/drop_window.vala:462
 msgid "Stop"
-msgstr ""
+msgstr "Στάση"
 
 #: src/application.vala:433 src/windows/drop_window.vala:463
 msgid "Replace"
-msgstr ""
+msgstr "Αντικαθιστώ"
 
 #: src/application.vala:520 src/windows/drop_window.vala:541
 msgid "Successfully Updated"
-msgstr ""
+msgstr "Ενημερώθηκε με επιτυχία"
 
 #: src/application.vala:520 src/windows/drop_window.vala:539
 msgid "Successfully Installed"
-msgstr ""
+msgstr "Εγκαταστάθηκε με επιτυχία"
 
 #: src/application.vala:537 src/windows/drop_window.vala:559
 #, c-format
 msgid "Version %s"
-msgstr ""
+msgstr "Έκδοση %s"
 
 #: src/application.vala:541 src/windows/drop_window.vala:563
 msgid "Open"
-msgstr ""
+msgstr "Ανοιχτό"
 
 #: src/application.vala:542 src/windows/drop_window.vala:564
 msgid "Done"
-msgstr ""
+msgstr "Γινώμενος"
 
 #: src/application.vala:567 src/windows/drop_window.vala:590
 msgid "Installation failed"
-msgstr ""
+msgstr "Η εγκατάσταση απέτυχε"
 
 #: src/application.vala:569 src/windows/drop_window.vala:600
 msgid "Dismiss"
-msgstr ""
+msgstr "Απολύω"
 
 #: src/application.vala:777
 msgid "Uninstall failed"
-msgstr ""
+msgstr "Η απεγκατάσταση απέτυχε"
 
 #: src/application.vala:778
 #, c-format
 msgid "%s could not be removed: %s"
-msgstr ""
+msgstr "Το %s δεν ήταν δυνατό να αφαιρεθεί: %s"
 
 #: src/application.vala:785
 msgid "Moved to Trash"
-msgstr ""
+msgstr "Μεταφέρθηκε στον Κάδο απορριμμάτων"
 
 #: src/application.vala:793
 msgid "Extraction is only available for portable installations."
-msgstr ""
+msgstr "Η εξαγωγή είναι διαθέσιμη μόνο για φορητές εγκαταστάσεις."
 
 #: src/application.vala:829
 msgid "Extracted for faster launch"
-msgstr ""
+msgstr "Εξάγεται για ταχύτερη εκκίνηση"
 
 #: src/application.vala:832
 msgid "Extraction complete"
-msgstr ""
+msgstr "Η εξαγωγή ολοκληρώθηκε"
 
 #: src/application.vala:833
 #, c-format
 msgid "%s was extracted and will open faster."
-msgstr ""
+msgstr "Το %s εξήχθη και θα ανοίξει πιο γρήγορα."
 
 #: src/application.vala:844
 msgid "Extraction failed"
-msgstr ""
+msgstr "Η εξαγωγή απέτυχε"
 
 #: src/application.vala:845
 #, c-format
 msgid "%s could not be extracted: %s"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εξαγωγή του %s: %s"
 
 #: src/core/background_update_service.vala:314
 msgid "App updates available"
-msgstr ""
+msgstr "Διαθέσιμες ενημερώσεις εφαρμογών"
 
 #. Always show aggregate count
 #: src/core/background_update_service.vala:316
 #, c-format
 msgid "%d app update(s) available"
-msgstr ""
+msgstr "%d διαθέσιμες ενημερώσεις εφαρμογής"
 
 #. Build actions array: pairs of (action_key, label)
 #. "default" action is invoked when user clicks the notification body
 #: src/core/background_update_service.vala:325
 msgid "Open AppManager"
-msgstr ""
+msgstr "Ανοίξτε το AppManager"
 
 #: src/core/installer.vala:614 src/windows/details_window.vala:771
 msgid "Move to Trash"
-msgstr ""
+msgstr "Μετακίνηση στον Κάδο απορριμμάτων"
 
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "Η διαδρομή πρέπει να είναι απόλυτη"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "Αυτός είναι ήδη ο τρέχων κατάλογος"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "Ο κατάλογος δεν είναι εγγράψιμος"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "Δεν είναι δυνατή η πρόσβαση στον κατάλογο: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "Η διαδρομή υπάρχει αλλά δεν είναι κατάλογος"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "Μη έγκυρη διαδρομή"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "Ο γονικός κατάλογος δεν υπάρχει"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
 msgstr ""
+"Δεν είναι δυνατή η δημιουργία καταλόγου: ο γονέας δεν είναι εγγράψιμος"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "Δεν είναι δυνατή η πρόσβαση στον γονικό κατάλογο: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "Αποτυχία δημιουργίας καταλόγου: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "Αποτυχία δημιουργίας καταλόγου εξαγωγής: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "Μετεγκατάσταση %s (%d/%d)…"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -292,23 +302,25 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"Η μετεγκατάσταση ορισμένων εφαρμογών απέτυχε:\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
-msgstr ""
+msgstr "Δεν έχει διαμορφωθεί διεύθυνση ενημέρωσης"
 
 #: src/core/updater.vala:582 src/core/updater.vala:651
 msgid "Update source not supported"
-msgstr ""
+msgstr "Η πηγή ενημέρωσης δεν υποστηρίζεται"
 
 #: src/core/updater.vala:598 src/core/updater.vala:669
 msgid "Unable to read releases"
-msgstr ""
+msgstr "Δεν είναι δυνατή η ανάγνωση εκδόσεων"
 
 #: src/core/updater.vala:603 src/core/updater.vala:695
 #, c-format
 msgid "No matching AppImage found for %s"
-msgstr ""
+msgstr "Δεν βρέθηκε αντίστοιχη εικόνα εφαρμογής για %s"
 
 #. Version comparison: if both have versions, compare them
 #. Remote version is same or older than current
@@ -320,756 +332,797 @@ msgstr ""
 #: src/core/updater.vala:1426 src/core/updater.vala:1437
 #: src/core/updater.vala:1461
 msgid "Already up to date"
-msgstr ""
+msgstr "Ήδη ενημερωμένο"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
 #, c-format
 msgid "Updated to %s"
-msgstr ""
+msgstr "Ενημερώθηκε σε %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "Ο διακομιστής δεν παρέχει κεφαλίδες παρακολούθησης αλλαγών"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Η βασική γραμμή καταγράφηκε"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
 msgid "Updated"
-msgstr ""
+msgstr "Ενημερώθηκε"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"Ο έλεγχος ταυτότητας GitHub απέτυχε (401). Ελέγξτε το διακριτικό σας στις "
+"Προτιμήσεις → GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"Υπέρβαση του ορίου ρυθμού GitHub API. Προσθέστε ένα διακριτικό στις "
+"Προτιμήσεις → GitHub για να αυξήσετε το όριό σας."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"Απαγορεύεται η πρόσβαση στο GitHub (403). Το διακριτικό σας ενδέχεται να μην"
+" έχει τα απαιτούμενα δικαιώματα."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "Άγνωστος τύπος πηγής zsync"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "Άγνωστη πηγή zsync"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
 msgstr ""
+"Δεν είναι δυνατός ο προσδιορισμός της διεύθυνσης URL λήψης από τη διεύθυνση "
+"URL zsync"
 
 #: src/windows/details_window.vala:100
 #, c-format
 msgid "⚠️ '%s' is not in $PATH. App will not launch from the terminal"
 msgstr ""
+"⚠️ Το '%s' δεν βρίσκεται σε $PATH. Η εφαρμογή δεν θα ξεκινήσει από το "
+"τερματικό"
 
 #: src/windows/details_window.vala:160
 msgid "Show in Files"
-msgstr ""
+msgstr "Εμφάνιση στα Αρχεία"
 
 #: src/windows/details_window.vala:162
 msgid "Portable"
-msgstr ""
+msgstr "Φορητός"
 
 #: src/windows/details_window.vala:162
 msgid "Extracted"
-msgstr ""
+msgstr "Εξήχθη"
 
 #. Terminal app card (only show if is_terminal)
 #: src/windows/details_window.vala:184
 msgid "Terminal"
-msgstr ""
+msgstr "Τερματικό"
 
 #: src/windows/details_window.vala:192
 msgid "This app supports efficient delta updates"
-msgstr ""
+msgstr "Αυτή η εφαρμογή υποστηρίζει αποτελεσματικές ενημερώσεις delta"
 
 #: src/windows/details_window.vala:199
 msgid "Hidden"
-msgstr ""
+msgstr "Κεκρυμμένος"
 
 #: src/windows/details_window.vala:209
 msgid "Properties"
-msgstr ""
+msgstr "Σκηνικά θέατρου"
 
 #: src/windows/details_window.vala:214
 msgid "Command line arguments"
-msgstr ""
+msgstr "Ορίσματα γραμμής εντολών"
 
 #: src/windows/details_window.vala:246
 msgid "Update info"
-msgstr ""
+msgstr "Ενημέρωση πληροφοριών"
 
 #: src/windows/details_window.vala:252
 msgid "How update links work"
-msgstr ""
+msgstr "Πώς λειτουργούν οι σύνδεσμοι ενημέρωσης"
 
 #: src/windows/details_window.vala:271
 msgid "Update Link"
-msgstr ""
+msgstr "Ενημέρωση συνδέσμου"
 
 #: src/windows/details_window.vala:320
 msgid "Web Page"
-msgstr ""
+msgstr "Ιστοσελίδα"
 
 #: src/windows/details_window.vala:349
 msgid "Open web page"
-msgstr ""
+msgstr "Άνοιγμα ιστοσελίδας"
 
 #: src/windows/details_window.vala:363
 msgid "Advanced"
-msgstr ""
+msgstr "Προχωρημένος"
 
 #: src/windows/details_window.vala:390
 msgid "Environment Variables"
-msgstr ""
+msgstr "Μεταβλητές Περιβάλλοντος"
 
 #: src/windows/details_window.vala:391
 msgid "Set custom environment variables for this app"
-msgstr ""
+msgstr "Ορίστε προσαρμοσμένες μεταβλητές περιβάλλοντος για αυτήν την εφαρμογή"
 
 #: src/windows/details_window.vala:444
 msgid "NAME"
-msgstr ""
+msgstr "ΟΝΟΜΑ"
 
 #: src/windows/details_window.vala:458
 msgid "value"
-msgstr ""
+msgstr "αξία"
 
 #: src/windows/details_window.vala:470
 msgid "Remove variable"
-msgstr ""
+msgstr "Αφαίρεση μεταβλητής"
 
 #: src/windows/details_window.vala:595
 msgid "Keywords"
-msgstr ""
+msgstr "Λέξεις-κλειδιά"
 
 #: src/windows/details_window.vala:605
 msgid "Icon name"
-msgstr ""
+msgstr "Όνομα εικονιδίου"
 
 #: src/windows/details_window.vala:615
 msgid "Startup WM Class"
-msgstr ""
+msgstr "Startup WM Class"
 
 #: src/windows/details_window.vala:625
 msgid "Version"
-msgstr ""
+msgstr "Εκδοχή"
 
 #: src/windows/details_window.vala:637
 msgid "Hide from app drawer"
-msgstr ""
+msgstr "Απόκρυψη από το συρτάρι εφαρμογών"
 
 #: src/windows/details_window.vala:638
 msgid "Don't show in application menu"
-msgstr ""
+msgstr "Να μην εμφανίζεται στο μενού της εφαρμογής"
 
 #: src/windows/details_window.vala:649
 msgid "Add to $PATH"
-msgstr ""
+msgstr "Προσθήκη στο $PATH"
 
 #: src/windows/details_window.vala:650
 #, c-format
 msgid "Create a launcher in %s so you can run it from the terminal"
 msgstr ""
+"Δημιουργήστε ένα πρόγραμμα εκκίνησης στο %s για να μπορείτε να το εκτελέσετε"
+" από το τερματικό"
 
 #: src/windows/details_window.vala:711
 msgid "Actions"
-msgstr ""
+msgstr "Δράσεις"
 
 #. Extract button
 #: src/windows/details_window.vala:750
 msgid "Extract AppImage"
-msgstr ""
+msgstr "Εξαγωγή AppImage"
 
 #: src/windows/details_window.vala:787
 msgid "Restore default"
-msgstr ""
+msgstr "Επαναφορά προεπιλογής"
 
 #: src/windows/details_window.vala:799 src/windows/main_window.vala:493
 #: src/windows/main_window.vala:561
 msgid "Updating..."
-msgstr ""
+msgstr "Ενημέρωση..."
 
 #: src/windows/details_window.vala:801
 msgid "Checking..."
-msgstr ""
+msgstr "Ελεγχος..."
 
 #: src/windows/details_window.vala:823
 msgid "Check Update"
-msgstr ""
+msgstr "Ελέγξτε την Ενημέρωση"
 
 #: src/windows/details_window.vala:889
 msgid ""
 "Update info lets AppManager fetch new builds for you. Paste the download "
 "link and AppManager will do the rest."
 msgstr ""
+"Οι πληροφορίες ενημέρωσης επιτρέπουν στο AppManager να ανακτήσει νέες "
+"εκδόσεις για εσάς. Επικολλήστε τον σύνδεσμο λήψης και το AppManager θα κάνει"
+" τα υπόλοιπα."
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
+"Επί του παρόντος, οι μορφές URL του GitHub και του GitLab υποστηρίζονται "
+"πλήρως. Οι σύνδεσμοι απευθείας λήψης λειτουργούν επίσης εάν ο διακομιστής "
+"παρέχει κεφαλίδες Τελευταία Τροποποίηση ή Μήκος περιεχομένου."
 
 #: src/windows/details_window.vala:891
 msgid "Update links"
-msgstr ""
+msgstr "Ενημέρωση συνδέσμων"
 
 #: src/windows/details_window.vala:892
 msgid "Got it"
-msgstr ""
+msgstr "Κατάλαβα"
 
 #: src/windows/details_window.vala:909
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
 msgstr ""
+"Η εξαγωγή θα αποσυσκευάσει την εφαρμογή, ώστε να ανοίγει πιο γρήγορα, αλλά "
+"θα καταναλώσει περισσότερο χώρο στο δίσκο. Αυτή η ενέργεια δεν μπορεί να "
+"αντιστραφεί αυτόματα."
 
 #: src/windows/details_window.vala:910
 msgid "Extract application?"
-msgstr ""
+msgstr "Εξαγωγή εφαρμογής;"
 
 #: src/windows/details_window.vala:912
 msgid "Extract"
-msgstr ""
+msgstr "Εκχύλισμα"
 
 #: src/windows/dialog_window.vala:86
 msgid "App removed"
-msgstr ""
+msgstr "Η εφαρμογή καταργήθηκε"
 
 #: src/windows/dialog_window.vala:94
 msgid "The application was uninstalled successfully."
-msgstr ""
+msgstr "Η απεγκατάσταση της εφαρμογής ολοκληρώθηκε με επιτυχία."
 
 #: src/windows/drop_window.vala:56 src/windows/drop_window.vala:80
 msgid "AppImage Installer"
-msgstr ""
+msgstr "AppImage Installer"
 
 #. Add Verify button to headerbar
 #: src/windows/drop_window.vala:91 src/windows/drop_window.vala:1014
 msgid "Verify"
-msgstr ""
+msgstr "Επαληθεύω"
 
 #: src/windows/drop_window.vala:92
 msgid "Verify AppImage with SHA256 hash"
-msgstr ""
+msgstr "Επαληθεύστε το AppImage με κατακερματισμό SHA256"
 
 #. Verification failed banner
 #: src/windows/drop_window.vala:118
 msgid "SHA256 hash does not match. Verification failed."
-msgstr ""
+msgstr "Ο κατακερματισμός SHA256 δεν ταιριάζει. Η επαλήθευση απέτυχε."
 
 #: src/windows/drop_window.vala:140
 #, c-format
 msgid "Drag and drop to install into %s"
-msgstr ""
+msgstr "Σύρετε και αποθέστε για εγκατάσταση στο %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
 msgstr ""
+"Αυτή είναι μια εφαρμογή τερματικού και θα εγκατασταθεί σε φορητή λειτουργία."
 
 #: src/windows/drop_window.vala:320
 msgid "This AppImage is incompatible or corrupted"
-msgstr ""
+msgstr "Αυτή η AppImage είναι ασυμβίβαστη ή κατεστραμμένη"
 
 #: src/windows/drop_window.vala:322
 msgid "Missing required files (AppRun, .desktop, or icon)"
-msgstr ""
+msgstr "Λείπουν απαιτούμενα αρχεία (AppRun, .desktop ή εικονίδιο)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "Αρχιτεκτονική αναντιστοιχία"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
-msgstr ""
+msgstr "Δεν είναι δυνατή η προετοιμασία του AppImage για εγκατάσταση"
 
 #: src/windows/drop_window.vala:541
 msgid "Successfully Replaced"
-msgstr ""
+msgstr "Αντικαταστάθηκε με επιτυχία"
 
 #: src/windows/drop_window.vala:975
 msgid "Verify AppImage"
-msgstr ""
+msgstr "Επαληθεύστε το AppImage"
 
 #: src/windows/drop_window.vala:993
 msgid "Verify the authenticity of this AppImage."
-msgstr ""
+msgstr "Επαληθεύστε την αυθεντικότητα αυτής της AppImage."
 
 #: src/windows/drop_window.vala:999
 msgid "Enter the SHA256 hash "
-msgstr ""
+msgstr "Εισαγάγετε τον κατακερματισμό SHA256"
 
 #: src/windows/main_window.vala:56 src/windows/main_window.vala:166
 #: data/com.github.AppManager.metainfo.xml:4
 msgid "AppManager"
-msgstr ""
+msgstr "AppManager"
 
 #: src/windows/main_window.vala:215
 msgid "Get more ..."
-msgstr ""
+msgstr "Λάβετε περισσότερα..."
 
 #: src/windows/main_window.vala:227
 msgid "Find more AppImages"
-msgstr ""
+msgstr "Βρείτε περισσότερες AppImages"
 
 #: src/windows/main_window.vala:228
 msgid "Browse these sources to discover and download AppImages"
 msgstr ""
+"Περιηγηθείτε σε αυτές τις πηγές για να ανακαλύψετε και να κατεβάσετε το "
+"AppImages"
 
 #: src/windows/main_window.vala:278 src/windows/main_window.vala:350
 msgid "No AppImage apps installed"
-msgstr ""
+msgstr "Δεν έχουν εγκατασταθεί εφαρμογές AppImage"
 
 #: src/windows/main_window.vala:283
 msgid "Download AppImage and double click to install with AppManager"
 msgstr ""
+"Κατεβάστε το AppImage και κάντε διπλό κλικ για εγκατάσταση με το AppManager"
 
 #: src/windows/main_window.vala:350
 msgid "No results found"
-msgstr ""
+msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: src/windows/main_window.vala:429 src/windows/main_window.vala:892
 msgid "My Apps"
-msgstr ""
+msgstr "Οι εφαρμογές μου"
 
 #: src/windows/main_window.vala:500 src/windows/main_window.vala:568
 msgid "Update available"
-msgstr ""
+msgstr "Διαθέσιμη ενημέρωση"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
 msgid "Unknown"
-msgstr ""
+msgstr "Αγνωστος"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
-msgstr ""
+msgstr "εξάγονται"
 
 #: src/windows/main_window.vala:691
 msgid "Updated just now"
-msgstr ""
+msgstr "Ενημερώθηκε μόλις τώρα"
 
 #: src/windows/main_window.vala:691
 msgid "Installed just now"
-msgstr ""
+msgstr "Εγκαταστάθηκε μόλις τώρα"
 
 #: src/windows/main_window.vala:699
 #, c-format
 msgid "Updated %d min ago"
-msgstr ""
+msgstr "Ενημερώθηκε πριν από %d λεπτά"
 
 #: src/windows/main_window.vala:699
 #, c-format
 msgid "Installed %d min ago"
-msgstr ""
+msgstr "Εγκαταστάθηκε πριν από %d λεπτά"
 
 #: src/windows/main_window.vala:707
 #, c-format
 msgid "Updated %d hours ago"
-msgstr ""
+msgstr "Ενημερώθηκε πριν από %d ώρες"
 
 #: src/windows/main_window.vala:707
 #, c-format
 msgid "Installed %d hours ago"
-msgstr ""
+msgstr "Εγκαταστάθηκε πριν από %d ώρες"
 
 #: src/windows/main_window.vala:714
 #, c-format
 msgid "Updated %d days ago"
-msgstr ""
+msgstr "Ενημερώθηκε πριν από %d ημέρες"
 
 #: src/windows/main_window.vala:714
 #, c-format
 msgid "Installed %d days ago"
-msgstr ""
+msgstr "Εγκαταστάθηκε πριν από %d ημέρες"
 
 #: src/windows/main_window.vala:730 src/windows/preferences_window.vala:34
 msgid "Preferences"
-msgstr ""
+msgstr "Προτιμήσεις"
 
 #: src/windows/main_window.vala:731
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Συντομεύσεις πληκτρολογίου"
 
 #: src/windows/main_window.vala:732 src/windows/main_window.vala:1515
 msgid "About AppManager"
-msgstr ""
+msgstr "Σχετικά με το AppManager"
 
 #: src/windows/main_window.vala:733
 msgid "Quit"
-msgstr ""
+msgstr "Εγκαταλείπω"
 
 #: src/windows/main_window.vala:745
 msgid "Support AppManager"
-msgstr ""
+msgstr "Υποστήριξη AppManager"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "Αγόρασέ μου έναν καφέ"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "Γίνετε χορηγός στο GitHub"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "Χορηγός με ♡"
 
 #: src/windows/main_window.vala:795
 msgid "Star AppManager on GitHub"
-msgstr ""
+msgstr "Star AppManager στο GitHub"
 
 #: src/windows/main_window.vala:800
 msgid "Star AppManager"
-msgstr ""
+msgstr "Star AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "Προβολή συντελεστών στο GitHub"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "Συνεισφέροντες"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
-msgstr ""
+msgstr "Ερευνα"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "Υποστηρίξτε αυτό το έργο"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
-msgstr ""
+msgstr "Περισσότερες ενέργειες"
 
 #: src/windows/main_window.vala:870
 msgid "Search apps..."
-msgstr ""
+msgstr "Αναζήτηση εφαρμογών..."
 
 #. FUSE is not installed warning banner
 #: src/windows/main_window.vala:878
 msgid "FUSE is not installed. Some AppImages may fail to run"
 msgstr ""
+"Το FUSE δεν έχει εγκατασταθεί. Ορισμένες AppImages ενδέχεται να μην "
+"εκτελούνται"
 
 #: src/windows/main_window.vala:880
 msgid "Learn More"
-msgstr ""
+msgstr "Μάθετε περισσότερα"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Μετάβαση σε προβολή πλέγματος"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Μετάβαση σε προβολή λίστας"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
-msgstr ""
+msgstr "Οι ενημερώσεις εκτελούνται ήδη"
 
 #: src/windows/main_window.vala:1047
 msgid "Cancel update"
-msgstr ""
+msgstr "Ακύρωση ενημέρωσης"
 
 #: src/windows/main_window.vala:1078
 msgid "Cancelling..."
-msgstr ""
+msgstr "Ακύρωση..."
 
 #: src/windows/main_window.vala:1104
 msgid "Update check cancelled"
-msgstr ""
+msgstr "Ο έλεγχος ενημέρωσης ακυρώθηκε"
 
 #: src/windows/main_window.vala:1134
 #, c-format
 msgid "%d app(s) have updates"
-msgstr ""
+msgstr "Οι %d εφαρμογές έχουν ενημερώσεις"
 
 #: src/windows/main_window.vala:1137
 msgid "No updates available right now"
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμες ενημερώσεις αυτήν τη στιγμή"
 
 #: src/windows/main_window.vala:1144
 msgid "Nothing queued for updating"
-msgstr ""
+msgstr "Δεν υπάρχει τίποτα στην ουρά για ενημέρωση"
 
 #: src/windows/main_window.vala:1171
 msgid "Update cancelled"
-msgstr ""
+msgstr "Η ενημέρωση ακυρώθηκε"
 
 #: src/windows/main_window.vala:1308
 msgid "Checking updates"
-msgstr ""
+msgstr "Έλεγχος ενημερώσεων"
 
 #: src/windows/main_window.vala:1311
 msgid "Update Apps"
-msgstr ""
+msgstr "Ενημέρωση εφαρμογών"
 
 #: src/windows/main_window.vala:1314
 msgid "Updating apps"
-msgstr ""
+msgstr "Ενημέρωση εφαρμογών"
 
 #: src/windows/main_window.vala:1317
 msgid "Check updates"
-msgstr ""
+msgstr "Ελέγξτε τις ενημερώσεις"
 
 #: src/windows/main_window.vala:1341
 msgid "No installed apps to update"
-msgstr ""
+msgstr "Δεν υπάρχουν εγκατεστημένες εφαρμογές για ενημέρωση"
 
 #: src/windows/main_window.vala:1381
 #, c-format
 msgid "Updated %d app(s)"
-msgstr ""
+msgstr "Ενημερώθηκαν %d εφαρμογές"
 
 #: src/windows/main_window.vala:1384
 #, c-format
 msgid "%d update(s) failed"
-msgstr ""
+msgstr "%d η ενημέρωση(εις) απέτυχε"
 
 #: src/windows/main_window.vala:1392
 msgid "Add update addresses in Details to enable updates"
 msgstr ""
+"Προσθέστε διευθύνσεις ενημέρωσης στις Λεπτομέρειες για να ενεργοποιήσετε τις"
+" ενημερώσεις"
 
 #: src/windows/main_window.vala:1394
 msgid "All supported apps are already up to date"
-msgstr ""
+msgstr "Όλες οι υποστηριζόμενες εφαρμογές είναι ήδη ενημερωμένες"
 
 #: src/windows/main_window.vala:1398
 #, c-format
 msgid "%d app(s) use unsupported update links"
 msgstr ""
+"Οι %d εφαρμογές χρησιμοποιούν μη υποστηριζόμενους συνδέσμους ενημέρωσης"
 
 #: src/windows/main_window.vala:1461
 #, c-format
 msgid "Update available for %s"
-msgstr ""
+msgstr "Διαθέσιμη ενημέρωση για %s"
 
 #: src/windows/main_window.vala:1501
 msgid "General"
-msgstr ""
+msgstr "Γενικός"
 
 #: src/windows/main_window.vala:1505
 msgid "Navigation"
-msgstr ""
+msgstr "Πλοήγηση"
 
 #: src/windows/main_window.vala:1509
 msgid "Window"
-msgstr ""
+msgstr "Παράθυρο"
 
 #: src/windows/main_window.vala:1511
 msgid "Check for updates"
-msgstr ""
+msgstr "Ελέγξτε για ενημερώσεις"
 
 #: src/windows/main_window.vala:1512
 msgid "Show main menu"
-msgstr ""
+msgstr "Εμφάνιση του κύριου μενού"
 
 #: src/windows/main_window.vala:1514
 msgid "Show shortcuts"
-msgstr ""
+msgstr "Εμφάνιση συντομεύσεων"
 
 #: src/windows/main_window.vala:1516
 msgid "Close window"
-msgstr ""
+msgstr "Κλείσιμο παραθύρου"
 
 #: src/windows/main_window.vala:1517
 msgid "Quit AppManager"
-msgstr ""
+msgstr "Κλείστε το AppManager"
 
 #: src/windows/main_window.vala:1534
 msgid "Credits"
-msgstr ""
+msgstr "Πιστώσεις"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
 msgid "Installation"
-msgstr ""
+msgstr "Εγκατάσταση"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr ""
+"Διαμόρφωση του σημείου εγκατάστασης του AppImages (προεπιλογή: "
+"~/Applications)"
 
 #: src/windows/preferences_window.vala:63
 msgid "Installation directory"
-msgstr ""
+msgstr "Κατάλογος εγκατάστασης"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Αναζήτηση για φάκελο"
 
 #: src/windows/preferences_window.vala:86
 msgid "Reset to default"
-msgstr ""
+msgstr "Επαναφορά στην προεπιλογή"
 
 #: src/windows/preferences_window.vala:96
 msgid "Apply changes"
-msgstr ""
+msgstr "Εφαρμόστε αλλαγές"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Παράλειψη παραθύρου μεταφοράς και απόθεσης"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr ""
+msgstr "Εμφάνιση διαλόγου εγκατάστασης απευθείας όταν ανοίγετε το AppImages"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
 msgid "Automatic updates"
-msgstr ""
+msgstr "Αυτόματες ενημερώσεις"
 
 #: src/windows/preferences_window.vala:118
 msgid "Configure automatic update checking"
-msgstr ""
+msgstr "Διαμόρφωση ελέγχου αυτόματης ενημέρωσης"
 
 #: src/windows/preferences_window.vala:124
 msgid "Open update log"
-msgstr ""
+msgstr "Ανοίξτε το αρχείο καταγραφής ενημερώσεων"
 
 #. Background update check expander row
 #: src/windows/preferences_window.vala:138
 msgid "Background update check"
-msgstr ""
+msgstr "Έλεγχος ενημέρωσης φόντου"
 
 #: src/windows/preferences_window.vala:139
 msgid "Will notify when new app updates are available"
-msgstr ""
+msgstr "Θα ειδοποιηθεί όταν είναι διαθέσιμες νέες ενημερώσεις εφαρμογής"
 
 #. Auto update apps toggle (inside expander)
 #: src/windows/preferences_window.vala:150
 msgid "Auto update apps"
-msgstr ""
+msgstr "Αυτόματη ενημέρωση εφαρμογών"
 
 #: src/windows/preferences_window.vala:151
 msgid "Will update apps automatically in background"
-msgstr ""
+msgstr "Θα ενημερώνει αυτόματα τις εφαρμογές στο παρασκήνιο"
 
 #. Check interval (inside expander)
 #: src/windows/preferences_window.vala:157
 msgid "Check interval"
-msgstr ""
+msgstr "Ελέγξτε το διάστημα"
 
 #: src/windows/preferences_window.vala:159
 msgid "Daily"
-msgstr ""
+msgstr "Καθημερινά"
 
 #: src/windows/preferences_window.vala:160
 msgid "Weekly"
-msgstr ""
+msgstr "Εβδομαδιαίος"
 
 #: src/windows/preferences_window.vala:161
 msgid "Monthly"
-msgstr ""
+msgstr "Μηνιαίος"
 
 #. Thumbnails group
 #: src/windows/preferences_window.vala:186
 msgid "Thumbnails"
-msgstr ""
+msgstr "Μικρογραφίες"
 
 #: src/windows/preferences_window.vala:189
 msgid "AppImage Thumbnailer"
-msgstr ""
+msgstr "AppImage Thumbnailer"
 
 #: src/windows/preferences_window.vala:190
 msgid "Install appimage-thumbnailer to generate thumbnails for AppImages"
 msgstr ""
+"Εγκαταστήστε το appimage-thumbnailer για να δημιουργήσετε μικρογραφίες για "
+"AppImages"
 
 #: src/windows/preferences_window.vala:199
 msgid "Hide Nautilus thumbnail background"
-msgstr ""
+msgstr "Απόκρυψη φόντου μικρογραφίας Nautilus"
 
 #: src/windows/preferences_window.vala:200
 msgid "Remove the alpha checkerboard behind thumbnails and icons"
-msgstr ""
+msgstr "Αφαιρέστε το σκακιέρα άλφα πίσω από τις μικρογραφίες και τα εικονίδια"
 
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Πραγματοποιήστε έλεγχο ταυτότητας με το GitHub για να αυξήσετε το όριο "
+"ρυθμού API από 60 σε 5.000 αιτήματα ανά ώρα"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "Προσωπικό διακριτικό πρόσβασης"
 
 #: src/windows/preferences_window.vala:226
 msgid "Apply token"
-msgstr ""
+msgstr "Εφαρμογή διακριτικού"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "Το διακριτικό GitHub αποθηκεύτηκε"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Διαγραφή διακριτικού"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "Το διακριτικό GitHub διαγράφηκε"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "Δοκιμαστικό διακριτικό"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
 msgstr ""
+"Επαληθεύστε ότι το διακριτικό σας λειτουργεί και ελέγξτε την κατάσταση ορίου"
+" τιμών"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Δοκιμή"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Δοκιμή…"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "Δημιουργήστε ένα διακριτικό στο GitHub"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"Αρκεί ένα λεπτόκοκκο διακριτικό με πρόσβαση στο δημόσιο repo μόνο για "
+"ανάγνωση"
 
 #: src/windows/preferences_window.vala:342
 msgid "Select Installation Directory"
-msgstr ""
+msgstr "Επιλέξτε Κατάλογος εγκατάστασης"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "Μη έγκυρη διαδρομή"
 
 #: src/windows/preferences_window.vala:419
 msgid "Installation directory updated"
-msgstr ""
+msgstr "Ο κατάλογος εγκατάστασης ενημερώθηκε"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "Μετακίνηση εγκατεστημένων εφαρμογών;"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1077,73 +1130,78 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
+"Αυτό θα μετακινήσει τις %d εγκατεστημένες εφαρμογές στη νέα τοποθεσία. Αυτό "
+"μπορεί να διαρκέσει λίγο, ανάλογα με το μέγεθος των εφαρμογών σας."
 
 #: src/windows/preferences_window.vala:433
 msgid "Move Apps"
-msgstr ""
+msgstr "Μετακίνηση εφαρμογών"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "Μετακίνηση εφαρμογών…"
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "Περιμένετε όσο μετακινούνται οι εφαρμογές σας."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "Οι εφαρμογές μετακινήθηκαν με επιτυχία"
 
 #: src/windows/preferences_window.vala:504
 msgid "Migration Failed"
-msgstr ""
+msgstr "Η μετεγκατάσταση απέτυχε"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "Παρουσιάστηκε άγνωστο σφάλμα"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "ΕΝΤΑΞΕΙ"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
 msgstr ""
+"Ο έλεγχος ταυτότητας απέτυχε — το διακριτικό δεν είναι έγκυρο ή έχει λήξει"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
 msgstr ""
+"Απαγορεύεται η πρόσβαση — το διακριτικό δεν διαθέτει τα απαιτούμενα "
+"δικαιώματα"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "Το διακριτικό είναι έγκυρο — απομένουν αιτήματα %s / %s"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "Το διακριτικό είναι έγκυρο"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Απροσδόκητη απάντηση (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Σφάλμα σύνδεσης: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Άρνις Κέμλερς"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr ""
+msgstr "Σύρετε και αποθέστε το πρόγραμμα εγκατάστασης AppImage για το GNOME"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1151,3 +1209,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
+"Το AppManager σάς επιτρέπει να εγκαταστήσετε ή να απεγκαταστήσετε το "
+"AppImages με μια οικεία ροή εργασίας μεταφοράς και απόθεσης εμπνευσμένη από "
+"το macOS. Χειρίζεται την ενοποίηση επιφάνειας εργασίας, την εξαγωγή "
+"εικονιδίων, τα εκτελέσιμα bit και τα μενού περιβάλλοντος Nautilus."

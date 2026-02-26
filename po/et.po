@@ -17,16 +17,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/application.vala:246
-#, fuzzy
 msgid "Incompatible AppImage"
-msgstr "Leia rohkem AppImage'e"
+msgstr "Ühildumatu AppImage"
 
 #: src/application.vala:247
-#, fuzzy
 msgid ""
-"This AppImage is incompatible or corrupted. Missing required files "
-"(AppRun, .desktop, or icon)."
-msgstr "Puuduvad vajalikud failid (AppRun, .desktop või ikoon)"
+"This AppImage is incompatible or corrupted. Missing required files (AppRun, "
+".desktop, or icon)."
+msgstr ""
+"See AppImage ei ühildu või on rikutud. Puuduvad vajalikud failid (AppRun, "
+".desktop või ikoon)."
 
 #. Architecture mismatch banner
 #: src/application.vala:248 src/application.vala:260 src/application.vala:780
@@ -39,18 +39,17 @@ msgstr "Sulge"
 #. Check architecture
 #. Check architecture compatibility
 #: src/application.vala:256 src/windows/drop_window.vala:330
-#, fuzzy
 msgid "unknown"
-msgstr "Versioon teadmata"
+msgstr "teadmata"
 
 #: src/application.vala:258
 msgid "Architecture Mismatch"
-msgstr ""
+msgstr "Arhitektuuri mittevastavus"
 
 #: src/application.vala:259 src/windows/drop_window.vala:331
 #, c-format
 msgid "This app is built for %s and cannot run here"
-msgstr ""
+msgstr "See rakendus on loodud %s jaoks ja seda ei saa siin käivitada"
 
 #. Use app icon with warning badge overlay
 #: src/application.vala:356 src/windows/drop_window.vala:234
@@ -61,8 +60,8 @@ msgstr "Avada %s?"
 #: src/application.vala:360 src/windows/drop_window.vala:237
 #, c-format
 msgid ""
-"Origins of %s application can not be verified. Are you sure you want to open "
-"it?"
+"Origins of %s application can not be verified. Are you sure you want to open"
+" it?"
 msgstr ""
 "Rakenduse %s päritolu ei saa kinnitada. Kas oled kindel, et soovid seda "
 "avada?"
@@ -238,61 +237,61 @@ msgstr "Teisalda prügikasti"
 #. Check if path is absolute
 #: src/core/path_migration_service.vala:42
 msgid "Path must be absolute"
-msgstr ""
+msgstr "Tee peab olema absoluutne"
 
 #. Check if it's the same as current
 #: src/core/path_migration_service.vala:47
 msgid "This is already the current directory"
-msgstr ""
+msgstr "See on juba praegune kataloog"
 
 #: src/core/path_migration_service.vala:56
 msgid "Directory is not writable"
-msgstr ""
+msgstr "Kataloog ei ole kirjutatav"
 
 #: src/core/path_migration_service.vala:59
 #, c-format
 msgid "Cannot access directory: %s"
-msgstr ""
+msgstr "Kataloogile ei pääse juurde: %s"
 
 #. Check if it's a directory
 #: src/core/path_migration_service.vala:63
 msgid "Path exists but is not a directory"
-msgstr ""
+msgstr "Tee on olemas, kuid see ei ole kataloog"
 
 #: src/core/path_migration_service.vala:69
 msgid "Invalid path"
-msgstr ""
+msgstr "Vale tee"
 
 #: src/core/path_migration_service.vala:72
 msgid "Parent directory does not exist"
-msgstr ""
+msgstr "Ülemkataloogi pole olemas"
 
 #: src/core/path_migration_service.vala:77
 msgid "Cannot create directory: parent is not writable"
-msgstr ""
+msgstr "Kataloogi ei saa luua: vanem ei ole kirjutatav"
 
 #: src/core/path_migration_service.vala:80
 #, c-format
 msgid "Cannot access parent directory: %s"
-msgstr ""
+msgstr "Ei pääse juurde emakataloogile: %s"
 
 #. Create new directory
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:170
 #, c-format
 msgid "Failed to create directory: %s"
-msgstr ""
+msgstr "Kataloogi loomine ebaõnnestus: %s"
 
 #. Exception path - clear flag since no signal will be emitted
 #: src/core/path_migration_service.vala:178
 #, c-format
 msgid "Failed to create extracted directory: %s"
-msgstr ""
+msgstr "Ekstrakti kataloogi loomine ebaõnnestus: %s"
 
 #: src/core/path_migration_service.vala:189
 #, c-format
 msgid "Migrating %s (%d/%d)…"
-msgstr ""
+msgstr "%s (%d/%d) üleviimine…"
 
 #: src/core/path_migration_service.vala:215
 #, c-format
@@ -300,6 +299,8 @@ msgid ""
 "Some apps failed to migrate:\n"
 "%s"
 msgstr ""
+"Mõne rakenduse üleviimine ebaõnnestus:\n"
+"%s"
 
 #: src/core/updater.vala:577 src/core/updater.vala:642
 msgid "No update address configured"
@@ -332,53 +333,59 @@ msgstr "Juba ajakohane"
 
 #: src/core/updater.vala:726 src/core/updater.vala:1527
 #: src/core/updater.vala:1614
-#, fuzzy, c-format
+#, c-format
 msgid "Updated to %s"
-msgstr "Uuendada %s?"
+msgstr "Värskendati %s"
 
 #: src/core/updater.vala:797 src/core/updater.vala:827
 #: src/core/updater.vala:1367
 msgid "Server does not provide change tracking headers"
-msgstr ""
+msgstr "Server ei paku muudatuste jälgimise päiseid"
 
 #: src/core/updater.vala:805 src/core/updater.vala:1376
 #: src/core/updater.vala:1455
 msgid "Baseline recorded"
-msgstr ""
+msgstr "Algtase registreeritud"
 
 #: src/core/updater.vala:858 src/core/updater.vala:1528
 #: src/core/updater.vala:1615
-#, fuzzy
 msgid "Updated"
-msgstr "Uuenda"
+msgstr "Uuendatud"
 
 #: src/core/updater.vala:965
 msgid ""
-"GitHub authentication failed (401). Check your token in Preferences → GitHub."
+"GitHub authentication failed (401). Check your token in Preferences → "
+"GitHub."
 msgstr ""
+"GitHubi autentimine ebaõnnestus (401). Kontrollige oma luba jaotises "
+"Eelistused → GitHub."
 
 #: src/core/updater.vala:970
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
 msgstr ""
+"GitHubi API kiiruse limiit on ületatud. Limiidi suurendamiseks lisage tunnus"
+" jaotises Eelistused → GitHub."
 
 #: src/core/updater.vala:972
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
+"GitHubile juurdepääs keelatud (403). Teie märgil võivad puududa nõutavad "
+"õigused."
 
 #: src/core/updater.vala:1286
 msgid "Unknown zsync source type"
-msgstr ""
+msgstr "Tundmatu zsynci allika tüüp"
 
 #: src/core/updater.vala:1397
 msgid "Unknown zsync source"
-msgstr ""
+msgstr "Tundmatu zsynci allikas"
 
 #: src/core/updater.vala:1568
 msgid "Cannot determine download URL from zsync URL"
-msgstr ""
+msgstr "Zsynci URL-ist ei saa allalaadimise URL-i määrata"
 
 #: src/windows/details_window.vala:100
 #, c-format
@@ -531,8 +538,8 @@ msgstr ""
 
 #: src/windows/details_window.vala:890
 msgid ""
-"Currently GitHub and GitLab URL formats are fully supported. Direct download "
-"links also work if the server provides Last-Modified or Content-Length "
+"Currently GitHub and GitLab URL formats are fully supported. Direct download"
+" links also work if the server provides Last-Modified or Content-Length "
 "headers."
 msgstr ""
 "Praegu on täielikult toetatud GitHub ja GitLab URL-i vormingud. Otselingid "
@@ -589,9 +596,9 @@ msgid "SHA256 hash does not match. Verification failed."
 msgstr "SHA256 räsi ei kattu. Kinnitamine ebaõnnestus."
 
 #: src/windows/drop_window.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "Drag and drop to install into %s"
-msgstr "Lohista rakendustesse paigaldamiseks"
+msgstr "Lohistage, et installida kausta %s"
 
 #: src/windows/drop_window.vala:242
 msgid "This is a terminal application and will be installed in portable mode."
@@ -607,7 +614,7 @@ msgstr "Puuduvad vajalikud failid (AppRun, .desktop või ikoon)"
 
 #: src/windows/drop_window.vala:333
 msgid "Architecture mismatch"
-msgstr ""
+msgstr "Arhitektuuri mittevastavus"
 
 #: src/windows/drop_window.vala:498
 msgid "Unable to prepare AppImage for installation"
@@ -668,9 +675,8 @@ msgstr "Uuendus saadaval"
 
 #. App name label (same size as list view)
 #: src/windows/main_window.vala:575
-#, fuzzy
 msgid "Unknown"
-msgstr "Versioon teadmata"
+msgstr "Tundmatu"
 
 #: src/windows/main_window.vala:634
 msgid "extracted"
@@ -731,39 +737,36 @@ msgid "Quit"
 msgstr "Välju"
 
 #: src/windows/main_window.vala:745
-#, fuzzy
 msgid "Support AppManager"
-msgstr "Sulge AppManager"
+msgstr "Toetage AppManagerit"
 
 #: src/windows/main_window.vala:760
 msgid "Buy Me a Coffee"
-msgstr ""
+msgstr "Osta mulle kohvi"
 
 #: src/windows/main_window.vala:779
 msgid "Become a sponsor on GitHub"
-msgstr ""
+msgstr "Hakka GitHubi sponsoriks"
 
 #: src/windows/main_window.vala:784
 msgid "Sponsor Me ♡"
-msgstr ""
+msgstr "Sponsor mind ♡"
 
 #: src/windows/main_window.vala:795
-#, fuzzy
 msgid "Star AppManager on GitHub"
-msgstr "Sulge AppManager"
+msgstr "Star AppManager GitHubis"
 
 #: src/windows/main_window.vala:800
-#, fuzzy
 msgid "Star AppManager"
-msgstr "Sulge AppManager"
+msgstr "Star AppManager"
 
 #: src/windows/main_window.vala:811
 msgid "View contributors on GitHub"
-msgstr ""
+msgstr "Vaadake kaastöölisi GitHubis"
 
 #: src/windows/main_window.vala:816 src/windows/main_window.vala:1533
 msgid "Contributors"
-msgstr ""
+msgstr "Kaastöölised"
 
 #: src/windows/main_window.vala:839 src/windows/main_window.vala:1513
 msgid "Search"
@@ -771,7 +774,7 @@ msgstr "Otsi"
 
 #: src/windows/main_window.vala:845
 msgid "Support this project"
-msgstr ""
+msgstr "Toetage seda projekti"
 
 #: src/windows/main_window.vala:855
 msgid "More actions"
@@ -792,11 +795,11 @@ msgstr "Lisateave"
 
 #: src/windows/main_window.vala:926
 msgid "Switch to grid view"
-msgstr ""
+msgstr "Lülitu ruudustikuvaatele"
 
 #: src/windows/main_window.vala:929
 msgid "Switch to list view"
-msgstr ""
+msgstr "Lülitu loendivaatele"
 
 #: src/windows/main_window.vala:999 src/windows/main_window.vala:1070
 msgid "Updates already running"
@@ -917,40 +920,36 @@ msgstr "Tänuavaldused"
 
 #. Installation directory group
 #: src/windows/preferences_window.vala:59
-#, fuzzy
 msgid "Installation"
-msgstr "Paigaldamine ebaõnnestus"
+msgstr "Paigaldamine"
 
 #: src/windows/preferences_window.vala:60
 msgid "Configure where AppImages are installed (default: ~/Applications)"
-msgstr ""
+msgstr "Seadistage, kuhu AppImages installitakse (vaikimisi: ~/Applications)"
 
 #: src/windows/preferences_window.vala:63
-#, fuzzy
 msgid "Installation directory"
-msgstr "Paigaldamine ebaõnnestus"
+msgstr "Installikataloog"
 
 #: src/windows/preferences_window.vala:78
 msgid "Browse for folder"
-msgstr ""
+msgstr "Sirvige kausta"
 
 #: src/windows/preferences_window.vala:86
-#, fuzzy
 msgid "Reset to default"
-msgstr "Taasta vaikeväärtus"
+msgstr "Lähtestage vaikeseadetele"
 
 #: src/windows/preferences_window.vala:96
-#, fuzzy
 msgid "Apply changes"
-msgstr "Rakendused"
+msgstr "Rakenda muudatused"
 
 #: src/windows/preferences_window.vala:107
 msgid "Skip drag-and-drop window"
-msgstr ""
+msgstr "Jäta pukseerimisaken vahele"
 
 #: src/windows/preferences_window.vala:108
 msgid "Show install dialog directly when opening AppImages"
-msgstr ""
+msgstr "Rakenduse AppImages avamisel kuvab installidialoogi otse"
 
 #. Automatic updates group
 #: src/windows/preferences_window.vala:117
@@ -1024,78 +1023,78 @@ msgstr "Eemalda alfa-ruudustik pisipiltide ja ikoonide tagant"
 #. GitHub authentication group
 #: src/windows/preferences_window.vala:211
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/windows/preferences_window.vala:212
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
+"Autentige GitHubiga, et tõsta API kiiruse limiiti 60-lt 5000 päringule "
+"tunnis"
 
 #: src/windows/preferences_window.vala:215
 msgid "Personal access token"
-msgstr ""
+msgstr "Isiklik juurdepääsuluba"
 
 #: src/windows/preferences_window.vala:226
-#, fuzzy
 msgid "Apply token"
-msgstr "Rakendused"
+msgstr "Rakenda märk"
 
 #: src/windows/preferences_window.vala:229
 #: src/windows/preferences_window.vala:248
 msgid "GitHub token saved"
-msgstr ""
+msgstr "GitHubi tunnus on salvestatud"
 
 #: src/windows/preferences_window.vala:235
 msgid "Clear token"
-msgstr ""
+msgstr "Tühjenda märk"
 
 #: src/windows/preferences_window.vala:239
 msgid "GitHub token cleared"
-msgstr ""
+msgstr "GitHubi tunnus on kustutatud"
 
 #. Test token row
 #: src/windows/preferences_window.vala:255
 msgid "Test token"
-msgstr ""
+msgstr "Testimismärk"
 
 #: src/windows/preferences_window.vala:256
 msgid "Verify your token works and check rate limit status"
-msgstr ""
+msgstr "Kontrollige oma märgi toimimist ja kontrollige kiiruspiirangu olekut"
 
 #: src/windows/preferences_window.vala:260
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/windows/preferences_window.vala:269
 msgid "Testing…"
-msgstr ""
+msgstr "Testimine…"
 
 #: src/windows/preferences_window.vala:284
 msgid "Create a token on GitHub"
-msgstr ""
+msgstr "Looge GitHubis tunnus"
 
 #: src/windows/preferences_window.vala:285
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr ""
+"Piisab kirjutuskaitstud avaliku repo juurdepääsuga peeneteralisest märgist"
 
 #: src/windows/preferences_window.vala:342
-#, fuzzy
 msgid "Select Installation Directory"
-msgstr "Paigaldamine ebaõnnestus"
+msgstr "Valige Installikataloog"
 
 #: src/windows/preferences_window.vala:409
 msgid "Invalid Path"
-msgstr ""
+msgstr "Kehtetu tee"
 
 #: src/windows/preferences_window.vala:419
-#, fuzzy
 msgid "Installation directory updated"
-msgstr "Paigaldamine ebaõnnestus"
+msgstr "Installikataloogi värskendati"
 
 #: src/windows/preferences_window.vala:429
 msgid "Move Installed Apps?"
-msgstr ""
+msgstr "Kas teisaldada installitud rakendused?"
 
 #: src/windows/preferences_window.vala:430
 #, c-format
@@ -1103,75 +1102,75 @@ msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
 "while depending on the size of your apps."
 msgstr ""
+"See teisaldab %d installitud rakenduse(d) uude asukohta. See võib teie "
+"rakenduste suurusest olenevalt veidi aega võtta."
 
 #: src/windows/preferences_window.vala:433
-#, fuzzy
 msgid "Move Apps"
-msgstr "Minu rakendused"
+msgstr "Rakenduste teisaldamine"
 
 #. Kill background daemon if running - it may interfere with migration
 #. by monitoring folders and triggering reconciliation
 #. Create progress dialog
 #: src/windows/preferences_window.vala:465
 msgid "Moving Apps…"
-msgstr ""
+msgstr "Rakenduste teisaldamine…"
 
 #: src/windows/preferences_window.vala:465
 msgid "Please wait while your apps are being moved."
-msgstr ""
+msgstr "Oodake, kuni teie rakendusi teisaldatakse."
 
 #: src/windows/preferences_window.vala:502
 msgid "Apps moved successfully"
-msgstr ""
+msgstr "Rakenduste teisaldamine õnnestus"
 
 #: src/windows/preferences_window.vala:504
-#, fuzzy
 msgid "Migration Failed"
-msgstr "Ekstraheerimine ebaõnnestus"
+msgstr "Migreerimine ebaõnnestus"
 
 #: src/windows/preferences_window.vala:504
 msgid "Unknown error occurred"
-msgstr ""
+msgstr "Ilmnes tundmatu viga"
 
 #: src/windows/preferences_window.vala:522
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/windows/preferences_window.vala:560
 msgid "Authentication failed — token is invalid or expired"
-msgstr ""
+msgstr "Autentimine ebaõnnestus – luba on kehtetu või aegunud"
 
 #: src/windows/preferences_window.vala:562
 msgid "Access forbidden — token lacks required permissions"
-msgstr ""
+msgstr "Juurdepääs keelatud – tokenil puuduvad nõutavad õigused"
 
 #: src/windows/preferences_window.vala:568
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
-msgstr ""
+msgstr "Token on kehtiv – %s / %s taotlust on jäänud"
 
 #: src/windows/preferences_window.vala:570
 msgid "Token is valid"
-msgstr ""
+msgstr "Token on kehtiv"
 
 #: src/windows/preferences_window.vala:573
 #, c-format
 msgid "Unexpected response (%u)"
-msgstr ""
+msgstr "Ootamatu vastus (%u)"
 
 #: src/windows/preferences_window.vala:576
 #, c-format
 msgid "Connection error: %s"
-msgstr ""
+msgstr "Ühenduse viga: %s"
 
 #: data/com.github.AppManager.metainfo.xml:6
 #: data/com.github.AppManager.metainfo.xml:8
 msgid "Arnis Kemlers"
-msgstr ""
+msgstr "Arnis Kemlers"
 
 #: data/com.github.AppManager.metainfo.xml:9
 msgid "Drag-and-drop AppImage installer for GNOME"
-msgstr ""
+msgstr "Drag-and-drop AppImage installer GNOME jaoks"
 
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -1179,13 +1178,7 @@ msgid ""
 "drop workflow inspired by macOS. It handles desktop integration, icon "
 "extraction, executable bits, and Nautilus context menus."
 msgstr ""
-
-#~ msgid "Applications"
-#~ msgstr "Rakendused"
-
-#, fuzzy
-#~ msgid "Only AppImage files can be installed"
-#~ msgstr "Ühtegi AppImage rakendust pole paigaldatud"
-
-#~ msgid "Update link is managed by zsync and cannot be edited"
-#~ msgstr "Uuenduslinki haldab zsync ja seda ei saa muuta"
+"AppManager võimaldab teil installida või desinstallida AppImages, kasutades "
+"tuttavat macOS-ist inspireeritud pukseerimise töövoogu. See tegeleb töölaua "
+"integreerimise, ikooni ekstraheerimise, käivitatavate bittide ja Nautiluse "
+"kontekstimenüüdega."
