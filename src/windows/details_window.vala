@@ -988,7 +988,6 @@ namespace AppManager {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
             box.set_halign(Gtk.Align.CENTER);
             if (shift_held) {
-                box.append(new Gtk.Image.from_icon_name("edit-delete-symbolic"));
                 box.append(new Gtk.Label(_("Delete Permanently")));
             } else {
                 box.append(new Gtk.Image.from_icon_name("user-trash-symbolic"));
