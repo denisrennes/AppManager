@@ -1506,35 +1506,9 @@ namespace AppManager.Core {
                 }
             }
             
-            // Fallback to fingerprint comparison for zsync URLs without version or SHA-1 info
-            debug("probe_zsync[%s]: falling back to HTTP fingerprint (no version or SHA-1 available)",
-                record.name ?? record.id);
-            try {
-                var message = send_head(zsync_source.zsync_url, cancellable);
-                var fingerprint = build_direct_fingerprint(message);
-                
-                if (fingerprint == null) {
-                    return new UpdateProbeResult(record, false, null, UpdateSkipReason.NO_TRACKING_HEADERS, _("Server does not provide change tracking headers"));
-                }
-                
-                var stored = get_stored_fingerprint(record);
-                
-                if (stored == null) {
-                    // First time: record baseline fingerprint
-                    store_fingerprint(record, message);
-                    registry.persist(false);
-                    return new UpdateProbeResult(record, false, fingerprint, UpdateSkipReason.ALREADY_CURRENT, _("Baseline recorded"));
-                }
-                
-                if (stored == fingerprint) {
-                    return new UpdateProbeResult(record, false, fingerprint, UpdateSkipReason.ALREADY_CURRENT, _("Already up to date"));
-                }
-                
-                return new UpdateProbeResult(record, true, fingerprint);
-            } catch (Error e) {
-                warning("Failed to probe zsync for %s: %s", record.name, e.message);
-                return new UpdateProbeResult(record, false, null, null, e.message);
-            }
+            // No version or SHA-1 available — cannot determine update state
+            warning("probe_zsync[%s]: no version or SHA-1 available to compare", record.name ?? record.id);
+            return new UpdateProbeResult(record, false, null, null, _("Unable to determine update state"));
         }
 
         /**
@@ -1587,34 +1561,6 @@ namespace AppManager.Core {
                     return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), new_version, UpdateSkipReason.ALREADY_CURRENT);
                 }
                 // SHA-1 mismatch or no stored SHA-1: proceed with update
-            } else {
-                // Fallback to fingerprint comparison for zsync URLs without version or SHA-1 info
-                try {
-                    var message = send_head(zsync_url, cancellable);
-                    var fingerprint = build_direct_fingerprint(message);
-                    
-                    if (fingerprint != null) {
-                        var stored = get_stored_fingerprint(record);
-                        
-                        if (stored == null) {
-                            // First time: record baseline fingerprint and skip
-                            store_fingerprint(record, message);
-                            registry.persist(false);
-                            record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
-                            log_update_event(record, "SKIP", "baseline recorded");
-                            return new UpdateResult(record, UpdateStatus.SKIPPED, _("Baseline recorded"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
-                        }
-                        
-                        if (stored == fingerprint) {
-                            record_skipped(record, UpdateSkipReason.ALREADY_CURRENT);
-                            log_update_event(record, "SKIP", "already current");
-                            return new UpdateResult(record, UpdateStatus.SKIPPED, _("Already up to date"), fingerprint, UpdateSkipReason.ALREADY_CURRENT);
-                        }
-                    }
-                } catch (Error e) {
-                    // Non-fatal: continue with update attempt if fingerprint check fails
-                    warning("Failed to check zsync fingerprint for %s: %s", record.name, e.message);
-                }
             }
             
             var zsync_bin = AppPaths.zsync_path;
@@ -1647,16 +1593,6 @@ namespace AppManager.Core {
                         new_version != null && new_version.strip() != "") {
                         debug("update_zsync[%s]: storing version from GitHub API: %s", record.name ?? record.id, new_version);
                         new_record.version = new_version;
-                    }
-                    
-                    // Update fingerprint for future checks (fallback method)
-                    try {
-                        var message = send_head(zsync_url, null);
-                        if (new_record != null) {
-                            store_fingerprint(new_record, message);
-                        }
-                    } catch (Error e) {
-                        // Non-fatal: fingerprint update failed
                     }
                     
                     // Persist changes - use registry.update() to re-insert the record
