@@ -28,6 +28,7 @@ namespace AppManager {
         private Gee.HashSet<string> pending_update_keys;
         private Gee.HashMap<string, int64?> record_size_cache;
         private Gee.HashSet<string> updating_records;
+        private Gee.HashMap<string, UpdateIndicator> update_indicators; // outlive row rebuilds so animations continue
         private Gee.HashMap<string, string> failed_update_keys; // key -> error message
         private DetailsWindow? active_details_window;
         private const string SHORTCUTS_RESOURCE = "/com/github/AppManager/ui/main-window-shortcuts.ui";
@@ -78,7 +79,9 @@ namespace AppManager {
             this.pending_update_keys = new Gee.HashSet<string>();
             this.record_size_cache = new Gee.HashMap<string, int64?>();
             this.updating_records = new Gee.HashSet<string>();
+            this.update_indicators = new Gee.HashMap<string, UpdateIndicator>();
             this.failed_update_keys = new Gee.HashMap<string, string>();
+            connect_updater_signals();
             this.active_details_window = null;
             this.app_rows = new Gee.ArrayList<Adw.PreferencesRow>();
             this.view_mode = settings.get_string("app-list-view-mode");
@@ -637,13 +640,12 @@ namespace AppManager {
                 suffix_box.set_valign(Gtk.Align.CENTER);
 
                 var state_key = record_state_key(record);
-                if (updating_records.contains(state_key)) {
-                    var spinner = new Gtk.Spinner();
-                    spinner.set_size_request(16, 16);
-                    spinner.set_valign(Gtk.Align.CENTER);
-                    spinner.set_tooltip_text(_("Updating..."));
-                    spinner.spinning = true;
-                    suffix_box.append(spinner);
+                var indicator = take_update_indicator(state_key);
+                if (indicator != null) {
+                    indicator.halign = Gtk.Align.CENTER;
+                    indicator.valign = Gtk.Align.CENTER;
+                    indicator.remove_css_class("grid-update-progress");
+                    suffix_box.append(indicator);
                 } else if (pending_update_keys.contains(state_key)) {
                     var update_dot = new Gtk.Label("●");
                     update_dot.add_css_class("update-indicator");
@@ -708,15 +710,12 @@ namespace AppManager {
 
             // Status overlay: spinner or update dot
             var state_key = record_state_key(record);
-            if (updating_records.contains(state_key)) {
-                var spinner = new Gtk.Spinner();
-                spinner.set_size_request(18, 18);
-                spinner.spinning = true;
-                spinner.set_halign(Gtk.Align.END);
-                spinner.set_valign(Gtk.Align.END);
-                spinner.add_css_class("grid-update-spinner");
-                spinner.set_tooltip_text(_("Updating..."));
-                overlay.add_overlay(spinner);
+            var indicator = take_update_indicator(state_key);
+            if (indicator != null) {
+                indicator.halign = Gtk.Align.END;
+                indicator.valign = Gtk.Align.END;
+                indicator.add_css_class("grid-update-progress");
+                overlay.add_overlay(indicator);
             } else if (pending_update_keys.contains(state_key)) {
                 var update_dot = new Gtk.Label("●");
                 update_dot.add_css_class("grid-update-indicator");
@@ -1518,19 +1517,26 @@ namespace AppManager {
             update_cancellable = new GLib.Cancellable();
             set_update_button_state(UpdateWorkflowState.UPDATING);
             foreach (var key in pending_update_keys) {
-                updating_records.add(key);
+                begin_update_indicator(key);
+            }
+            // Only the apps the check found, not every update-enabled app.
+            var records = new Gee.ArrayList<InstallationRecord>();
+            foreach (var record in registry.list()) {
+                if (pending_update_keys.contains(record_state_key(record))) {
+                    records.add(record);
+                }
             }
             refresh_installations();
-            start_update_install_async.begin();
+            start_update_install_async.begin(records);
         }
 
-        private async void start_update_install_async() {
+        private async void start_update_install_async(Gee.ArrayList<InstallationRecord> records) {
             SourceFunc callback = start_update_install_async.callback;
             Gee.ArrayList<UpdateResult>? results = null;
             var cancellable = update_cancellable;
 
             new Thread<void>("appmgr-update", () => {
-                results = updater.update_all(cancellable);
+                results = updater.update_records(records.to_array(), cancellable);
                 Idle.add((owned) callback);
             });
 
@@ -1539,6 +1545,7 @@ namespace AppManager {
             if (cancellable != null && cancellable.is_cancelled()) {
                 add_toast(_("Update cancelled"));
                 updating_records.clear();
+                update_indicators.clear();
                 refresh_installations();
                 update_global_update_state_from_pending();
                 return;
@@ -1552,7 +1559,7 @@ namespace AppManager {
 
         private void trigger_single_update(InstallationRecord record) {
             var key = record_state_key(record);
-            updating_records.add(key);
+            begin_update_indicator(key);
             failed_update_keys.unset(key);  // Clear any previous failure
             if (active_details_window != null && active_details_window.matches_record(record)) {
                 // Order matters: set_update_loading first, then set_update_updating
@@ -1589,6 +1596,7 @@ namespace AppManager {
         private void finalize_single_update(UpdateResult result) {
             var key = record_state_key(result.record);
             updating_records.remove(key);
+            drop_unfinished_indicator(key);
             // Always remove from pending - whether success or failure
             pending_update_keys.remove(key);
             if (result.status == UpdateStatus.UPDATED) {
@@ -1616,6 +1624,7 @@ namespace AppManager {
             foreach (var result in results) {
                 var key = record_state_key(result.record);
                 updating_records.remove(key);
+                drop_unfinished_indicator(key);
                 if (result.status == UpdateStatus.UPDATED) {
                     failed_update_keys.unset(key);
                     record_size_cache.unset(result.record.id);
@@ -1872,6 +1881,100 @@ namespace AppManager {
             CHECKING,
             READY_TO_UPDATE,
             UPDATING
+        }
+
+        private void begin_update_indicator(string key) {
+            updating_records.add(key);
+            var indicator = new UpdateIndicator();
+            indicator.pixel_size = 20;
+            update_indicators.set(key, indicator);
+        }
+
+        // Detaches a live indicator from the row being replaced, so the rebuilt row can adopt it.
+        private UpdateIndicator? take_update_indicator(string key) {
+            var indicator = update_indicators.get(key);
+            if (indicator != null && indicator.get_parent() != null) {
+                indicator.unparent();
+            }
+            return indicator;
+        }
+
+        // Covers results that arrive without a finishing signal (e.g. a TLS session error).
+        private void drop_unfinished_indicator(string key) {
+            var indicator = update_indicators.get(key);
+            if (indicator != null && indicator.phase != UpdatePhase.DONE) {
+                update_indicators.unset(key);
+            }
+        }
+
+        // Updater signals fire on worker threads; state changes run on the main loop.
+        private void connect_updater_signals() {
+            updater.record_checking.connect((r) => post_update_phase(r, UpdatePhase.CHECKING));
+            updater.record_downloading.connect((r) => post_update_phase(r, UpdatePhase.DOWNLOADING));
+            updater.record_download_progress.connect((r, received, total) => post_update_phase(r, UpdatePhase.DOWNLOADING, received, total));
+            updater.record_installing.connect((r) => post_update_phase(r, UpdatePhase.INSTALLING));
+            updater.record_succeeded.connect((r) => post_update_finished(r, UpdateStatus.UPDATED));
+            updater.record_failed.connect((r, reason) => post_update_finished(r, UpdateStatus.FAILED, reason));
+            updater.record_skipped.connect((r, reason) => post_update_finished(r, UpdateStatus.SKIPPED));
+        }
+
+        private void post_update_phase(InstallationRecord record, UpdatePhase phase, int64 received = 0, int64 total = 0) {
+            var key = record_state_key(record);
+            Idle.add(() => {
+                var indicator = update_indicators.get(key);
+                if (indicator != null && updating_records.contains(key)) {
+                    indicator.show_phase(phase, received, total);
+                }
+                return Source.REMOVE;
+            });
+        }
+
+        // Settles one app as soon as it finishes, so the batch does not hold every indicator.
+        private void post_update_finished(InstallationRecord record, UpdateStatus status, string? reason = null) {
+            var key = record_state_key(record);
+            Idle.add(() => {
+                if (!updating_records.contains(key)) {
+                    return Source.REMOVE;
+                }
+                updating_records.remove(key);
+                var cancelled = update_state == UpdateWorkflowState.UPDATING
+                    && update_cancellable != null && update_cancellable.is_cancelled();
+                var indicator = update_indicators.get(key);
+                if (status == UpdateStatus.UPDATED) {
+                    pending_update_keys.remove(key);
+                    failed_update_keys.unset(key);
+                    staged_updates.remove(record.id);
+                    staged_updates.save();
+                    if (indicator != null) {
+                        indicator.show_phase(UpdatePhase.DONE);
+                        Timeout.add_seconds(3, () => {
+                            // A newer update of the same app may own the key by now.
+                            if (update_indicators.get(key) == indicator) {
+                                update_indicators.unset(key);
+                                refresh_installations();
+                            }
+                            return Source.REMOVE;
+                        });
+                    }
+                } else {
+                    update_indicators.unset(key);
+                    if (!cancelled) {
+                        // A cancelled app stays pending so it can be retried.
+                        pending_update_keys.remove(key);
+                        if (status == UpdateStatus.FAILED) {
+                            failed_update_keys.set(key, reason ?? _("Update failed"));
+                            staged_updates.remove(record.id);
+                            staged_updates.save();
+                        }
+                    }
+                }
+                if (active_details_window != null && active_details_window.matches_record(record)) {
+                    active_details_window.set_update_loading(false);
+                }
+                refresh_installations();
+                sync_details_window_state(record);
+                return Source.REMOVE;
+            });
         }
 
         private void ensure_shortcuts_window() {

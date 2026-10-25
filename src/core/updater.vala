@@ -55,6 +55,8 @@ namespace AppManager.Core {
     public class Updater : Object {
         public signal void record_checking(InstallationRecord record);
         public signal void record_downloading(InstallationRecord record);
+        public signal void record_download_progress(InstallationRecord record, int64 received, int64 total);
+        public signal void record_installing(InstallationRecord record);
         public signal void record_succeeded(InstallationRecord record);
         public signal void record_failed(InstallationRecord record, string reason);
         public signal void record_skipped(InstallationRecord record, UpdateSkipReason reason);
@@ -65,6 +67,7 @@ namespace AppManager.Core {
         private string user_agent;
         private const int MAX_PARALLEL_JOBS = 5;
         private const int MAX_ASSET_VERIFY_DEPTH = 3;
+        private const int64 PROGRESS_INTERVAL_US = 250000;
         private static string? _system_arch = null;
 
         public Updater(InstallationRegistry registry, Installer installer) {
@@ -74,6 +77,9 @@ namespace AppManager.Core {
             user_agent = "AppManager/%s".printf(Core.APPLICATION_VERSION);
             session.user_agent = user_agent;
             session.timeout = 60;
+            // libsecret registers this enum without a once-guard. A first use racing
+            // across the worker pool leaves it invalid and every token lookup failing.
+            typeof(Secret.SchemaAttributeType).ensure();
         }
 
         /**
@@ -155,16 +161,20 @@ namespace AppManager.Core {
                     filtered.add(records[i]);
                 }
             }
-            if (filtered.size == 0) {
+            return update_records(filtered.to_array(), cancellable);
+        }
+
+        public ArrayList<UpdateResult> update_records(InstallationRecord[] records, GLib.Cancellable? cancellable = null) {
+            if (records.length == 0) {
                 return new ArrayList<UpdateResult>();
             }
             ArrayList<UpdateResult> result = new ArrayList<UpdateResult>();
             try {
                 TlsSession.with_session(() => {
-                    result = update_records_parallel(filtered.to_array(), cancellable);
+                    result = update_records_parallel(records, cancellable);
                 });
             } catch (Error e) {
-                warning("update_all: TLS session error: %s", e.message);
+                warning("update_records: TLS session error: %s", e.message);
             }
             return result;
         }
@@ -615,8 +625,9 @@ namespace AppManager.Core {
 
             try {
                 pool = new ThreadPool<RecordTask>.with_owned_data((task) => {
+                    var outcome = update_record(task.record, cancellable);
                     slots_lock.lock();
-                    slots[task.index] = update_record(task.record, cancellable);
+                    slots[task.index] = outcome;
                     slots_lock.unlock();
                 }, MAX_PARALLEL_JOBS, false);
 
@@ -705,11 +716,12 @@ namespace AppManager.Core {
         }
 
         private UpdateResult update_record(InstallationRecord record, GLib.Cancellable? cancellable) {
+            record_checking(record);
+
             // Check if app uses zsync delta updates
             if (record.zsync_update_info != null && record.zsync_update_info.strip() != "") {
                 var zsync_source = resolve_zsync_source(record.zsync_update_info, record.prerelease_enabled);
                 if (zsync_source != null) {
-                    record_checking(record);
                     return update_zsync(record, zsync_source, cancellable);
                 }
             }
@@ -720,8 +732,6 @@ namespace AppManager.Core {
                 log_update_event(record, "SKIP", "no update url configured");
                 return new UpdateResult(record, UpdateStatus.SKIPPED, _("No update address configured"), null, UpdateSkipReason.NO_UPDATE_URL);
             }
-
-            record_checking(record);
 
             var source = resolve_update_source(update_url, record.version, record.prerelease_enabled);
             if (source == null) {
@@ -776,14 +786,14 @@ namespace AppManager.Core {
                     return new UpdateResult(record, UpdateStatus.SKIPPED, _("No matching AppImage found for %s").printf(get_system_arch()), latest, UpdateSkipReason.MISSING_ASSET);
                 }
 
-                record_downloading(record);
-
                 // Try candidates up to MAX_ASSET_VERIFY_DEPTH, verifying identity
                 int depth = int.min(candidates.size, MAX_ASSET_VERIFY_DEPTH);
                 string? last_mismatch_msg = null;
                 for (int ci = 0; ci < depth; ci++) {
                     var asset = candidates[ci];
-                    var download = download_file(asset.download_url, cancellable);
+                    record_downloading(record);
+                    var download = download_file(record, asset.download_url, cancellable);
+                    record_installing(record);
                     try {
                         var verify_error = verify_appimage_identity(download.file_path, record);
                         if (verify_error != null) {
@@ -945,7 +955,8 @@ namespace AppManager.Core {
 
                 record_downloading(record);
 
-                var download = download_file(source.url, cancellable);
+                var download = download_file(record, source.url, cancellable);
+                record_installing(record);
                 InstallationRecord? new_record = null;
                 try {
                     // Verify identity before installing
@@ -1371,7 +1382,7 @@ namespace AppManager.Core {
             return v.length > 0 ? v : null;
         }
 
-        private DownloadArtifact download_file(string url, GLib.Cancellable? cancellable) throws Error {
+        private DownloadArtifact download_file(InstallationRecord record, string url, GLib.Cancellable? cancellable) throws Error {
             var temp_dir = AppManager.Utils.FileUtils.create_temp_dir("appmgr-update-");
             var target_name = derive_filename(url);
             var dest_path = Path.build_filename(temp_dir, target_name);
@@ -1389,10 +1400,20 @@ namespace AppManager.Core {
                 }
 
                 var output = File.new_for_path(dest_path).replace(null, false, FileCreateFlags.REPLACE_DESTINATION, cancellable);
+                var total = message.response_headers.get_content_length();
+                int64 received = 0;
+                int64 last_emit = 0;
                 uint8[] buffer = new uint8[64 * 1024];
                 ssize_t read;
                 while ((read = input.read(buffer, cancellable)) > 0) {
                     output.write(buffer[0:read], cancellable);
+                    received += read;
+                    // Throttled: listeners marshal every emission to the main loop.
+                    var now = GLib.get_monotonic_time();
+                    if (now - last_emit >= PROGRESS_INTERVAL_US) {
+                        last_emit = now;
+                        record_download_progress(record, received, total);
+                    }
                 }
                 output.close(cancellable);
                 input.close(cancellable);
@@ -1737,6 +1758,7 @@ namespace AppManager.Core {
                     }
 
                     // Upgrade using the downloaded file
+                    record_installing(record);
                     var new_record = installer.upgrade(output_path, record);
                     
                     // Store SHA-1 from zsync header for future update checks
@@ -1825,7 +1847,8 @@ namespace AppManager.Core {
 
                 record_downloading(record);
 
-                var download = download_file(download_url, cancellable);
+                var download = download_file(record, download_url, cancellable);
+                record_installing(record);
                 InstallationRecord? new_record = null;
                 try {
                     new_record = installer.upgrade(download.file_path, record);
