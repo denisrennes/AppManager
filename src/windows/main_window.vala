@@ -1547,6 +1547,8 @@ namespace AppManager {
                 updating_records.clear();
                 update_indicators.clear();
                 refresh_installations();
+                // Leave UPDATING first: the helper ignores calls while busy.
+                set_update_button_state(UpdateWorkflowState.READY_TO_CHECK);
                 update_global_update_state_from_pending();
                 return;
             }

@@ -40,36 +40,26 @@ namespace AppManager.Utils {
 
         public void show_phase(UpdatePhase phase, int64 received = 0, int64 total = 0) {
             this.phase = phase;
-            string description;
             switch (phase) {
                 case UpdatePhase.CHECKING:
                     state = 1;
-                    description = _("Checking...");
                     break;
                 case UpdatePhase.DOWNLOADING:
                     state = STATE_DOWNLOADING;
                     if (total > 0) {
                         state += (uint) (int64.min(received, total) * PROGRESS_STEPS / total);
-                        description = _("Downloading %s of %s").printf(UiUtils.format_size(received), UiUtils.format_size(total));
-                    } else {
-                        description = _("Downloading");
                     }
                     break;
                 case UpdatePhase.INSTALLING:
                     state = STATE_INSTALLING;
-                    description = _("Installing...");
                     break;
                 case UpdatePhase.DONE:
                     state = STATE_DONE;
-                    description = _("Updated");
                     break;
                 default:
                     state = 0;
-                    description = _("Waiting...");
                     break;
             }
-            tooltip_text = description;
-            update_property(Gtk.AccessibleProperty.LABEL, description, -1);
             if (svg != null) {
                 svg.state = state;
             }
