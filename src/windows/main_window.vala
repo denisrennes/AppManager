@@ -27,7 +27,7 @@ namespace AppManager {
         private GLib.Cancellable? update_cancellable;
         private Gee.HashSet<string> pending_update_keys;
         private Gee.HashMap<string, int64?> record_size_cache;
-        private Gee.HashSet<string> updating_records;
+        private Gee.HashMap<string, InstallationRecord> updating_records; // key -> record as it was before the update
         private Gee.HashMap<string, UpdateIndicator> update_indicators; // outlive row rebuilds so animations continue
         private Gee.HashMap<string, string> failed_update_keys; // key -> error message
         private DetailsWindow? active_details_window;
@@ -78,7 +78,7 @@ namespace AppManager {
             this.staged_updates = new StagedUpdatesManager();
             this.pending_update_keys = new Gee.HashSet<string>();
             this.record_size_cache = new Gee.HashMap<string, int64?>();
-            this.updating_records = new Gee.HashSet<string>();
+            this.updating_records = new Gee.HashMap<string, InstallationRecord>();
             this.update_indicators = new Gee.HashMap<string, UpdateIndicator>();
             this.failed_update_keys = new Gee.HashMap<string, string>();
             connect_updater_signals();
@@ -418,7 +418,7 @@ namespace AppManager {
             ensure_apps_group_present();
             clear_apps_group_rows();
 
-            var all_records = registry.list();
+            var all_records = with_updating_records(registry.list());
             has_installations = all_records.length > 0;
             update_fuse_banner(all_records);
             var filtered_list = new Gee.ArrayList<InstallationRecord>();
@@ -1516,14 +1516,12 @@ namespace AppManager {
 
             update_cancellable = new GLib.Cancellable();
             set_update_button_state(UpdateWorkflowState.UPDATING);
-            foreach (var key in pending_update_keys) {
-                begin_update_indicator(key);
-            }
             // Only the apps the check found, not every update-enabled app.
             var records = new Gee.ArrayList<InstallationRecord>();
             foreach (var record in registry.list()) {
                 if (pending_update_keys.contains(record_state_key(record))) {
                     records.add(record);
+                    begin_update_indicator(record);
                 }
             }
             refresh_installations();
@@ -1561,7 +1559,7 @@ namespace AppManager {
 
         private void trigger_single_update(InstallationRecord record) {
             var key = record_state_key(record);
-            begin_update_indicator(key);
+            begin_update_indicator(record);
             failed_update_keys.unset(key);  // Clear any previous failure
             if (active_details_window != null && active_details_window.matches_record(record)) {
                 // Order matters: set_update_loading first, then set_update_updating
@@ -1597,7 +1595,7 @@ namespace AppManager {
 
         private void finalize_single_update(UpdateResult result) {
             var key = record_state_key(result.record);
-            updating_records.remove(key);
+            updating_records.unset(key);
             drop_unfinished_indicator(key);
             // Always remove from pending - whether success or failure
             pending_update_keys.remove(key);
@@ -1625,7 +1623,7 @@ namespace AppManager {
             bool staged_changed = false;
             foreach (var result in results) {
                 var key = record_state_key(result.record);
-                updating_records.remove(key);
+                updating_records.unset(key);
                 drop_unfinished_indicator(key);
                 if (result.status == UpdateStatus.UPDATED) {
                     failed_update_keys.unset(key);
@@ -1885,11 +1883,32 @@ namespace AppManager {
             UPDATING
         }
 
-        private void begin_update_indicator(string key) {
-            updating_records.add(key);
+        private void begin_update_indicator(InstallationRecord record) {
+            var key = record_state_key(record);
+            updating_records.set(key, record);
             var indicator = new UpdateIndicator();
             indicator.pixel_size = 20;
             update_indicators.set(key, indicator);
+        }
+
+        // An upgrade unregisters the old record before registering the new one.
+        // Keep the old record listed in between so the row does not blink out.
+        private InstallationRecord[] with_updating_records(InstallationRecord[] records) {
+            if (updating_records.size == 0) {
+                return records;
+            }
+            var listed = new Gee.HashSet<string>();
+            var result = new Gee.ArrayList<InstallationRecord>();
+            foreach (var record in records) {
+                listed.add(record_state_key(record));
+                result.add(record);
+            }
+            foreach (var entry in updating_records.entries) {
+                if (!listed.contains(entry.key)) {
+                    result.add(entry.value);
+                }
+            }
+            return result.to_array();
         }
 
         // Detaches a live indicator from the row being replaced, so the rebuilt row can adopt it.
@@ -1924,7 +1943,7 @@ namespace AppManager {
             var key = record_state_key(record);
             Idle.add(() => {
                 var indicator = update_indicators.get(key);
-                if (indicator != null && updating_records.contains(key)) {
+                if (indicator != null && updating_records.has_key(key)) {
                     indicator.show_phase(phase, received, total);
                 }
                 return Source.REMOVE;
@@ -1935,10 +1954,10 @@ namespace AppManager {
         private void post_update_finished(InstallationRecord record, UpdateStatus status, string? reason = null) {
             var key = record_state_key(record);
             Idle.add(() => {
-                if (!updating_records.contains(key)) {
+                if (!updating_records.has_key(key)) {
                     return Source.REMOVE;
                 }
-                updating_records.remove(key);
+                updating_records.unset(key);
                 var cancelled = update_state == UpdateWorkflowState.UPDATING
                     && update_cancellable != null && update_cancellable.is_cancelled();
                 var indicator = update_indicators.get(key);
@@ -2324,7 +2343,7 @@ namespace AppManager {
         private void show_detail_page(InstallationRecord record) {
             var key = record_state_key(record);
             var has_update = pending_update_keys.contains(key);
-            var is_updating = updating_records.contains(key);
+            var is_updating = updating_records.has_key(key);
             var details_window = new DetailsWindow(record, registry, installer, has_update);
             if (is_updating) {
                 details_window.set_update_loading(true);
