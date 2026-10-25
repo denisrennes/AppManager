@@ -45,8 +45,10 @@ namespace AppManager.Core {
         };
 
         private static TlsSession? _instance = null;
+        private static Mutex instance_mutex;
 
         public static TlsSession get_default() {
+            instance_mutex.lock();
             if (_instance == null) {
                 _instance = new TlsSession();
                 // Reap our /tmp symlinks on any normal process exit (GUI
@@ -56,11 +58,13 @@ namespace AppManager.Core {
                 // covered; cleanup_stale() reaps those next launch.
                 Posix.atexit(at_exit_cleanup);
             }
-            return _instance;
+            var instance = _instance;
+            instance_mutex.unlock();
+            return instance;
         }
 
         private static void at_exit_cleanup() {
-            if (_instance != null) {
+            if (_instance != null && _instance.lock_fd >= 0) {
                 _instance.remove_symlinks();
             }
         }
@@ -150,28 +154,59 @@ namespace AppManager.Core {
             return x == "" ? null : x;
         }
 
-        public void acquire() {
-            ensure_initialized();
-
+        public void acquire() throws FileError {
             mutex.lock();
-            refcount++;
-            bool first = (refcount == 1);
-            mutex.unlock();
-
-            if (nothing_to_do || !first) return;
-
-            lock_fd = Posix.open(LOCK_FILE, Posix.O_CREAT | Posix.O_RDWR, 0666);
-            if (lock_fd < 0) {
-                warning("TlsSession: open %s failed: %s",
-                        LOCK_FILE, Posix.strerror(Posix.errno));
-            } else if (flock(lock_fd, FLOCK_LOCK_EX) != 0) {
-                warning("TlsSession: flock %s failed: %s",
-                        LOCK_FILE, Posix.strerror(Posix.errno));
-                Posix.close(lock_fd);
-                lock_fd = -1;
+            try {
+                ensure_initialized();
+                if (!nothing_to_do && refcount == 0) {
+                    lock_fd = open_lock_file(LOCK_FILE);
+                    int result = -1;
+                    do {
+                        result = flock(lock_fd, FLOCK_LOCK_EX);
+                    } while (result != 0 && Posix.errno == Posix.EINTR);
+                    if (result != 0) {
+                        int err = Posix.errno;
+                        Posix.close(lock_fd);
+                        lock_fd = -1;
+                        throw new FileError.FAILED(
+                            "TlsSession: flock %s failed: %s", LOCK_FILE, Posix.strerror(err));
+                    }
+                    create_symlinks();
+                }
+                // Publish the session only after the lock and links are ready.
+                refcount++;
+            } finally {
+                mutex.unlock();
             }
+        }
 
-            create_symlinks();
+        internal static int open_lock_file(string path) throws FileError {
+            // flock needs no write access. Never use O_CREAT on an existing
+            // foreign-owned /tmp file: Linux protected_regular rejects it.
+            int flags = Posix.O_RDONLY | Posix.O_CLOEXEC | Posix.O_NOFOLLOW | Posix.O_NONBLOCK;
+            int fd = Posix.open(path, flags | Posix.O_CREAT | Posix.O_EXCL, 0644);
+            if (fd >= 0) {
+                // Keep it readable by other users even with a private umask.
+                if (Posix.fchmod(fd, 0644) != 0) {
+                    int err = Posix.errno;
+                    Posix.close(fd);
+                    throw new FileError.FAILED(
+                        "TlsSession: chmod %s failed: %s", path, Posix.strerror(err));
+                }
+            } else if (Posix.errno == Posix.EEXIST) {
+                fd = Posix.open(path, flags);
+            }
+            if (fd < 0) {
+                int err = Posix.errno;
+                throw new FileError.FAILED(
+                    "TlsSession: open %s failed: %s", path, Posix.strerror(err));
+            }
+            Posix.Stat st;
+            if (Posix.fstat(fd, out st) != 0 || !Posix.S_ISREG(st.st_mode)) {
+                Posix.close(fd);
+                throw new FileError.INVAL("TlsSession: %s is not a regular lock file", path);
+            }
+            return fd;
         }
 
         public void release() {
@@ -182,18 +217,14 @@ namespace AppManager.Core {
                 return;
             }
             refcount--;
-            bool last = (refcount == 0);
-            mutex.unlock();
+            if (!nothing_to_do && refcount == 0) {
+                remove_symlinks();
 
-            if (nothing_to_do || !last) return;
-
-            remove_symlinks();
-
-            if (lock_fd >= 0) {
                 flock(lock_fd, FLOCK_LOCK_UN);
                 Posix.close(lock_fd);
                 lock_fd = -1;
             }
+            mutex.unlock();
         }
 
         private void create_symlinks() {
@@ -268,13 +299,15 @@ namespace AppManager.Core {
         }
 
         private void do_cleanup_stale() {
+            mutex.lock();
             ensure_initialized();
-            if (nothing_to_do) return;
-
-            unlink_if_stale_and_owned(tmp_path_for(tok_bin));
-            unlink_if_stale_and_owned(tmp_path_for(tok_lib));
-            unlink_if_stale_and_owned(tmp_path_for(tok_share));
-            unlink_if_stale_and_owned(HOST_CERTS_LINK);
+            if (!nothing_to_do && refcount == 0) {
+                unlink_if_stale_and_owned(tmp_path_for(tok_bin));
+                unlink_if_stale_and_owned(tmp_path_for(tok_lib));
+                unlink_if_stale_and_owned(tmp_path_for(tok_share));
+                unlink_if_stale_and_owned(HOST_CERTS_LINK);
+            }
+            mutex.unlock();
         }
 
         private static void unlink_if_stale_and_owned(string? path) {
