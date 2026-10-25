@@ -26,10 +26,10 @@
     <copyright>© Marcus Holland-Moritz</copyright>
     <license>GPL-3.0</license>
   </bundle>
-  <bundle type="legal">
-    <name>zsync2</name>
-    <copyright>© AppImageCommunity, © Colin Phipps</copyright>
-    <license>Artistic-2.0</license>
+  <bundle type="legal" xmlns:its="http://www.w3.org/2005/11/its" its:translate="no">
+    <name>zsync-rs</name>
+    <copyright>© Rabindra Dhakal</copyright>
+    <license>MIT</license>
   </bundle>
   <description>
     <p>AppManager lets you install or uninstall AppImages with a familiar drag-and-drop workflow inspired by macOS. It handles desktop integration, icon extraction, executable bits, and app updates.</p>

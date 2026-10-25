@@ -49,7 +49,7 @@ and known limitations.
 - `valac`, `meson` (>= 0.64), `ninja`, `gettext`, `glib-compile-schemas`
 - Libraries: `libadwaita-1` (>= 1.6), `gtk4`, `glib-2.0` (>= 2.74), `gio-2.0`, `gio-unix-2.0`, `gmodule-2.0`, `json-glib-1.0`, `gee-0.8`, `libsoup-3.0`, `libsecret-1`, `gnutls` (>= 3.6.13)
 - Optional, for sandbox hardening: `libseccomp` (syscall filtering), `wayland-client` plus `wayland-scanner` (compositor-side isolation). Both are found automatically and can be turned off with `-Dseccomp=disabled` and `-Dwayland_security_context=disabled`.
-- Runtime tools: `unsquashfs`, `dwarfsextract`; optionally `zsync2` (or `zsync`) for delta updates
+- Runtime tools: `unsquashfs`, `dwarfsextract`; optionally `zsync-rs` for delta updates
 - Runtime tools for sandboxing: `bwrap`, `xdg-dbus-proxy`, `fusermount3`, `squashfuse`, `dwarfs`
 
 ## Install
@@ -119,7 +119,7 @@ meson compile -C build
 meson install -C build
 ```
 
-By default the build bundles its helper tools: it downloads `dwarfsextract` and the `dwarfs` FUSE driver, `zsync2` and `squashfuse`, and compiles `unsquashfs` from source. This needs network access. To use the host's tools instead, pass any of `-Dbundle_dwarfs=false`, `-Dbundle_zsync=false`, `-Dbundle_squashfuse=false`, `-Dbundle_unsquashfs=false`.
+By default the build bundles its helper tools: it downloads `dwarfsextract` and the `dwarfs` FUSE driver and `squashfuse`, compiles `unsquashfs` from source, and builds `zsync-rs` with `cargo`. This needs network access. To use the host's tools instead, pass any of `-Dbundle_dwarfs=false`, `-Dbundle_zsync=false`, `-Dbundle_squashfuse=false`, `-Dbundle_unsquashfs=false`.
 
 ## CLI helpers
 

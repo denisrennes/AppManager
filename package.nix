@@ -24,11 +24,22 @@
 , squashfsTools
 , squashfuse
 , dwarfs
-, zsync
+, rustPlatform
 , bubblewrap
 , xdg-dbus-proxy
 }:
 
+let
+  # Delta update client: the zsync-rs library plus progress output, installed
+  # as zsync-rs like the bundled build.
+  zsync-rs = rustPlatform.buildRustPackage {
+    pname = "app-manager-zsync";
+    version = "0.1.0";
+    src = ./tools/zsync-rs;
+    cargoLock.lockFile = ./tools/zsync-rs/Cargo.lock;
+    doCheck = false;
+  };
+in
 stdenv.mkDerivation(finalAttrs: {
   pname = "app-manager";
   version = let
@@ -82,7 +93,7 @@ stdenv.mkDerivation(finalAttrs: {
       squashfsTools
       squashfuse
       dwarfs
-      zsync
+      zsync-rs
       # Sandbox runtime dependencies, resolved from PATH at launch.
       bubblewrap
       xdg-dbus-proxy

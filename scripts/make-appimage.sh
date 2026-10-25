@@ -114,17 +114,6 @@ bundle_lib() {
 bundle_lib "libgee-0.8.so"
 bundle_lib "libsoup-3.0.so"
 
-# Bundle zsync2's dependencies (e.g. libssl/libcrypto 1.1) that were
-# extracted by fetch-zsync-tools.sh into BUILD_DIR/lib/
-if [ -d "$BUILD_DIR/lib" ]; then
-    for lib in "$BUILD_DIR/lib"/*.so*; do
-        if [ -f "$lib" ]; then
-            cp -L "$lib" "$APPDIR/usr/lib/"
-            echo "Bundled zsync2 dep: $(basename "$lib")"
-        fi
-    done
-fi
-
 # Create AppRun script that sets up environment for GSettings schemas
 # and bundled libraries
 cat > "$APPDIR/AppRun" << 'EOF'

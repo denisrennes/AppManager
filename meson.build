@@ -72,16 +72,10 @@ dwarfs_arch_map = {
 dwarfs_arch = dwarfs_arch_map.get(host_cpu, '')
 bundle_dwarfs = get_option('bundle_dwarfs')
 
-# Zsync tools bundling (uses same architecture mapping)
+# zsync-rs bundling (built from source with cargo)
 zsync_tools_dir = get_option('prefix') / get_option('bindir')
 bundle_zsync = get_option('bundle_zsync')
-
-# Map Meson's cpu_family to zsync2's naming convention
-zsync_arch_map = {
-  'x86_64': 'x86_64',
-  'aarch64': 'aarch64',
-}
-zsync_arch = zsync_arch_map.get(host_cpu, '')
+cargo = find_program('cargo', required: false)
 
 # SquashFS tools bundling (unsquashfs)
 unsquashfs_version = '4.7.5'
@@ -278,18 +272,19 @@ elif bundle_squashfuse and squashfuse_arch == ''
   warning('squashfuse bundling requested but architecture "@0@" is not supported'.format(host_cpu))
 endif
 
-# Fetch and install zsync2 if requested and supported
-if bundle_zsync and zsync_arch != ''
-  fetch_zsync_script = files('scripts/fetch-zsync-tools.sh')
+# Build and install zsync-rs if requested
+if bundle_zsync and cargo.found()
+  build_zsync_script = files('scripts/build-zsync-rs.sh')
   zsync_tools = custom_target('zsync-tools',
-    output: ['zsync2'],
+    output: ['zsync-rs'],
     build_by_default: bundle_zsync,
-    command: ['sh', fetch_zsync_script, zsync_arch, meson.current_build_dir()],
+    command: ['sh', build_zsync_script, cargo, meson.project_source_root() / 'tools' / 'zsync-rs', meson.current_build_dir()],
+    depend_files: files('tools/zsync-rs/Cargo.toml', 'tools/zsync-rs/Cargo.lock', 'tools/zsync-rs/src/main.rs'),
     install: true,
     install_dir: zsync_tools_dir
   )
-elif bundle_zsync and zsync_arch == ''
-  warning('Zsync tools bundling requested but architecture "@0@" is not supported'.format(host_cpu))
+elif bundle_zsync
+  warning('zsync-rs bundling requested but cargo was not found; updates will use full downloads unless zsync-rs is on PATH')
 endif
 
 # Build and install unsquashfs if requested

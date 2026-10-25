@@ -1,0 +1,13 @@
+[package]
+name = "app-manager-zsync"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+
+[[bin]]
+name = "zsync-rs"
+path = "src/main.rs"
+
+[dependencies]
+zsync-rs = "=0.2.1"

@@ -168,30 +168,25 @@ namespace AppManager.Core {
         }
 
         /**
-         * Returns the path to the zsync2 binary if available, null otherwise.
+         * Returns the path to the zsync-rs client if available, null otherwise.
          * Searches in the following order:
          *   1. APP_MANAGER_ZSYNC_PATH environment variable
-         *   2. System PATH (covers native installs and AppImages, where the
-         *      bundled bin dir is prepended to $PATH by AppRun)
-         *   3. Legacy zsync fallback
+         *   2. Bundled zsync-rs on the system PATH (covers native installs and
+         *      AppImages, where the bundled bin dir is prepended to $PATH by AppRun)
+         * Other zsync clients are not used: only zsync-rs reports progress, and
+         * stock zsync cannot fetch https URLs.
          */
         public static string? zsync_path {
             owned get {
                 // 1. Explicit environment override (full path to binary)
                 var env_path = Environment.get_variable("APP_MANAGER_ZSYNC_PATH");
-                if (env_path != null && env_path.strip() != "" && 
+                if (env_path != null && env_path.strip() != "" &&
                     FileUtils.test(env_path.strip(), FileTest.IS_EXECUTABLE)) {
                     return env_path.strip();
                 }
 
                 // 2. PATH lookup
-                var found = Environment.find_program_in_path("zsync2");
-                if (found != null && found.strip() != "") {
-                    return found;
-                }
-
-                // 3. Legacy zsync as final fallback
-                found = Environment.find_program_in_path("zsync");
+                var found = Environment.find_program_in_path("zsync-rs");
                 if (found != null && found.strip() != "") {
                     return found;
                 }
@@ -201,7 +196,7 @@ namespace AppManager.Core {
         }
 
         /**
-         * Returns true if zsync2 (or compatible zsync) is available.
+         * Returns true if a zsync client is available.
          */
         public static bool zsync_available {
             get {

@@ -1667,7 +1667,7 @@ namespace AppManager.Core {
 
         /**
          * Perform a zsync delta update.
-         * Uses zsync2 to efficiently download only changed blocks.
+         * Uses a zsync client to download only changed blocks.
          */
         private UpdateResult update_zsync(InstallationRecord record, UpdateSource source, GLib.Cancellable? cancellable) {
             if (!(source is ZsyncDirectSource)) {
@@ -1725,7 +1725,7 @@ namespace AppManager.Core {
             var zsync_bin = AppPaths.zsync_path;
             if (zsync_bin == null) {
                 // Fall back to full download if zsync is not available
-                warning("zsync2 not available, falling back to full download for %s", record.name);
+                warning("zsync client not available, falling back to full download for %s", record.name);
                 return update_zsync_fallback(record, zsync_url, new_version, cancellable);
             }
 
@@ -1737,23 +1737,26 @@ namespace AppManager.Core {
                 
                 string output_path;
                 try {
-                    // Hand zsync2 the original .zsync URL and let it (libcurl) handle
+                    // Hand the zsync client the original .zsync URL and let it handle
                     // any HTTP redirects. We previously substituted in a libsoup-
                     // resolved URL, but that broke signed-URL hosts (GitHub's
                     // release-assets endpoint, Azure Blob SAS) by stripping the SAS
-                    // query string during zsync2's relative-URL resolution.
+                    // query string during the client's relative-URL resolution.
                     //
                     // The original zsync_url and parsed zsync_info are passed so the
                     // output filename is derived from a clean source (not from the
-                    // URL passed to zsync2, which can be a long signed string).
+                    // URL passed to the client, which can be a long signed string).
                     try {
                         output_path = run_zsync(zsync_bin, zsync_url, zsync_url, zsync_info, record, record.installed_path, temp_dir, cancellable);
                     } catch (Error zerr) {
+                        if (zerr is IOError.CANCELLED) {
+                            throw zerr;
+                        }
                         // Delta update failed (network, redirect, signed URL, etc.).
                         // Fall back to a full HTTP download so the user still gets
                         // the update, just without the bandwidth savings.
-                        warning("zsync2 delta failed for %s (%s); falling back to full download", record.name, zerr.message);
-                        log_update_event(record, "FALLBACK", "zsync2 failed: %s".printf(zerr.message));
+                        warning("zsync delta failed for %s (%s); falling back to full download", record.name, zerr.message);
+                        log_update_event(record, "FALLBACK", "zsync failed: %s".printf(zerr.message));
                         return update_zsync_fallback(record, zsync_url, new_version, cancellable);
                     }
 
@@ -1902,9 +1905,9 @@ namespace AppManager.Core {
         }
 
         /**
-         * Execute zsync2 to perform delta download.
-         * @param zsync_path Path to zsync2 binary
-         * @param zsync_arg URL or local-file path passed to zsync2 as the .zsync source
+         * Execute the zsync client to perform delta download.
+         * @param zsync_path Path to the zsync-rs client
+         * @param zsync_arg URL of the .zsync file passed to the client
          * @param original_zsync_url Original (pre-redirect) .zsync URL - used only to derive a clean output filename
          * @param zsync_info Parsed zsync header (for canonical Filename)
          * @param record Installation record (for fallback filename)
@@ -1947,10 +1950,10 @@ namespace AppManager.Core {
             }
             var output_path = Path.build_filename(output_dir, output_name);
 
-            // Build zsync2 command
-            // zsync2 -i <seed> -o <output> <zsync_arg>   (zsync_arg may be a URL or a local file path)
+            // Build the zsync command
+            // zsync-rs -i <seed> -o <output> <zsync_arg>
             // Only seed from a regular file. Extracted installs pass a directory as
-            // the seed path (no single AppImage exists), which zsync2 cannot use;
+            // the seed path (no single AppImage exists), which zsync cannot use;
             // omit -i so it downloads in full rather than erroring into the fallback.
             var seed_file = File.new_for_path(seed_path);
             string[] argv;
@@ -1969,30 +1972,38 @@ namespace AppManager.Core {
                 };
             }
 
-            debug("Running zsync2: %s", string.joinv(" ", argv));
+            debug("Running zsync: %s", string.joinv(" ", argv));
 
-            string stdout_buf;
-            string stderr_buf;
-            int exit_status;
-
-            Process.spawn_sync(
-                output_dir,
-                argv,
-                Environ.get(),
-                SpawnFlags.SEARCH_PATH,
-                null,
-                out stdout_buf,
-                out stderr_buf,
-                out exit_status
-            );
-
-            if (exit_status != 0) {
-                var error_msg = stderr_buf.strip();
-                if (error_msg == "") {
-                    error_msg = stdout_buf.strip();
+            // Read the output while it runs: the bundled zsync-rs prints
+            // "progress <done> <total>" lines. stderr is merged so a chatty
+            // client cannot block on a full, unread pipe.
+            var launcher = new SubprocessLauncher(SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_MERGE);
+            launcher.set_cwd(output_dir);
+            var process = launcher.spawnv(argv);
+            var output = new StringBuilder();
+            try {
+                var lines = new DataInputStream(process.get_stdout_pipe());
+                string? line;
+                while ((line = lines.read_line(null, cancellable)) != null) {
+                    var parts = line.strip().split(" ");
+                    if (parts.length == 3 && parts[0] == "progress") {
+                        record_download_progress(record, int64.parse(parts[1]), int64.parse(parts[2]));
+                    } else {
+                        output.append(line).append_c('\n');
+                    }
                 }
+                process.wait(cancellable);
+            } catch (Error e) {
+                process.force_exit();
+                throw e;
+            }
+
+            if (!process.get_successful()) {
+                var error_msg = output.str.strip();
                 if (error_msg == "") {
-                    error_msg = "zsync2 exited with code %d".printf(exit_status);
+                    error_msg = process.get_if_exited()
+                        ? "zsync exited with code %d".printf(process.get_exit_status())
+                        : "zsync was terminated";
                 }
                 throw new GLib.IOError.FAILED("zsync failed: %s", error_msg);
             }
