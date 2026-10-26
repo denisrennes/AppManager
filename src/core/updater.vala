@@ -1951,7 +1951,7 @@ namespace AppManager.Core {
             var output_path = Path.build_filename(output_dir, output_name);
 
             // Build the zsync command
-            // zsync-rs -i <seed> -o <output> <zsync_arg>
+            // zsync-rs --json -i <seed> -o <output> <zsync_arg>
             // Only seed from a regular file. Extracted installs pass a directory as
             // the seed path (no single AppImage exists), which zsync cannot use;
             // omit -i so it downloads in full rather than erroring into the fallback.
@@ -1960,6 +1960,7 @@ namespace AppManager.Core {
             if (seed_file.query_file_type(FileQueryInfoFlags.NONE) == FileType.REGULAR) {
                 argv = {
                     zsync_path,
+                    "--json",
                     "-i", seed_path,
                     "-o", output_path,
                     zsync_arg
@@ -1967,6 +1968,7 @@ namespace AppManager.Core {
             } else {
                 argv = {
                     zsync_path,
+                    "--json",
                     "-o", output_path,
                     zsync_arg
                 };
@@ -1974,22 +1976,41 @@ namespace AppManager.Core {
 
             debug("Running zsync: %s", string.joinv(" ", argv));
 
-            // Read the output while it runs: the bundled zsync-rs prints
-            // "progress <done> <total>" lines. stderr is merged so a chatty
-            // client cannot block on a full, unread pipe.
+            // Read the output while it runs: with --json, zsync-rs prints one
+            // event per line on stdout. stderr is merged so a chatty client
+            // cannot block on a full, unread pipe.
             var launcher = new SubprocessLauncher(SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_MERGE);
             launcher.set_cwd(output_dir);
             var process = launcher.spawnv(argv);
             var output = new StringBuilder();
+            string? zsync_error = null;
             try {
                 var lines = new DataInputStream(process.get_stdout_pipe());
+                var parser = new Json.Parser();
                 string? line;
                 while ((line = lines.read_line(null, cancellable)) != null) {
-                    var parts = line.strip().split(" ");
-                    if (parts.length == 3 && parts[0] == "progress") {
-                        record_download_progress(record, int64.parse(parts[1]), int64.parse(parts[2]));
-                    } else {
+                    Json.Object? event = null;
+                    if (line.has_prefix("{")) {
+                        try {
+                            parser.load_from_data(line);
+                            event = parser.get_root().get_object();
+                        } catch (Error e) {
+                            event = null;
+                        }
+                    }
+                    if (event == null) {
                         output.append(line).append_c('\n');
+                        continue;
+                    }
+                    switch (event.get_string_member_with_default("event", "")) {
+                        case "progress":
+                            record_download_progress(record,
+                                event.get_int_member_with_default("done_bytes", 0),
+                                event.get_int_member_with_default("total_bytes", 0));
+                            break;
+                        case "error":
+                            zsync_error = event.get_string_member_with_default("message", "");
+                            break;
                     }
                 }
                 process.wait(cancellable);
@@ -1999,7 +2020,8 @@ namespace AppManager.Core {
             }
 
             if (!process.get_successful()) {
-                var error_msg = output.str.strip();
+                // stderr also carries informational lines, so prefer the error event.
+                var error_msg = (zsync_error ?? output.str).strip();
                 if (error_msg == "") {
                     error_msg = process.get_if_exited()
                         ? "zsync exited with code %d".printf(process.get_exit_status())

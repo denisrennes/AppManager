@@ -25,19 +25,27 @@
 , squashfuse
 , dwarfs
 , rustPlatform
+, fetchCrate
 , bubblewrap
 , xdg-dbus-proxy
 }:
 
 let
-  # Delta update client: the zsync-rs library plus progress output, installed
-  # as zsync-rs like the bundled build.
-  zsync-rs = rustPlatform.buildRustPackage {
-    pname = "app-manager-zsync";
-    version = "0.1.0";
-    src = ./tools/zsync-rs;
-    cargoLock.lockFile = ./tools/zsync-rs/Cargo.lock;
+  # Delta update client, installed as zsync-rs like the bundled build.
+  # Keep the version in step with zsync_rs_version in meson.build.
+  zsync-rs = rustPlatform.buildRustPackage rec {
+    pname = "zsync-rs";
+    version = "0.2.2";
+    src = fetchCrate {
+      inherit pname version;
+      hash = "sha256-AINru0ZTx2fjXdutvkPnWQHpDh0CIXlmXsb1MFuBoeI=";
+    };
+    cargoHash = "sha256-ciZvM3Ii8B4k04lbhYc0DVDbYpSdWetn8RDfxQudfxQ=";
+    cargoBuildFlags = [ "--bin" "zsync" ];
     doCheck = false;
+    postInstall = ''
+      mv $out/bin/zsync $out/bin/zsync-rs
+    '';
   };
 in
 stdenv.mkDerivation(finalAttrs: {

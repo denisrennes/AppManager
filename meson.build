@@ -72,7 +72,8 @@ dwarfs_arch_map = {
 dwarfs_arch = dwarfs_arch_map.get(host_cpu, '')
 bundle_dwarfs = get_option('bundle_dwarfs')
 
-# zsync-rs bundling (built from source with cargo)
+# zsync-rs bundling (built from crates.io with cargo)
+zsync_rs_version = '0.2.2'
 zsync_tools_dir = get_option('prefix') / get_option('bindir')
 bundle_zsync = get_option('bundle_zsync')
 cargo = find_program('cargo', required: false)
@@ -278,8 +279,7 @@ if bundle_zsync and cargo.found()
   zsync_tools = custom_target('zsync-tools',
     output: ['zsync-rs'],
     build_by_default: bundle_zsync,
-    command: ['sh', build_zsync_script, cargo, meson.project_source_root() / 'tools' / 'zsync-rs', meson.current_build_dir()],
-    depend_files: files('tools/zsync-rs/Cargo.toml', 'tools/zsync-rs/Cargo.lock', 'tools/zsync-rs/src/main.rs'),
+    command: ['sh', build_zsync_script, cargo, zsync_rs_version, meson.current_build_dir()],
     install: true,
     install_dir: zsync_tools_dir
   )
