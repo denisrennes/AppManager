@@ -24,10 +24,12 @@ namespace AppManager {
         private Gtk.Widget bottom_bar_widget;
         private Gtk.Button? update_button;
         private Gtk.Button? cancel_button;
+        private Gtk.Button? clear_updates_button;
         private Gtk.Label? update_button_label_widget;
         private Adw.Spinner? update_button_spinner_widget;
         private UpdateWorkflowState update_state = UpdateWorkflowState.READY_TO_CHECK;
         private GLib.Cancellable? update_cancellable;
+        private int single_probe_count = 0;
         private Gee.HashSet<string> pending_update_keys;
         private Gee.HashMap<string, int64?> record_size_cache;
         private Gee.HashMap<string, InstallationRecord> updating_records; // key -> record as it was before the update
@@ -461,6 +463,7 @@ namespace AppManager {
             prune_size_cache(filtered_list);
             update_apps_group_title(filtered_list.size);
             update_update_button_sensitive();
+            update_clear_button_visibility();
 
             if (filtered_list.size == 0) {
                 var message = current_search_query != "" ? _("No results found") : _("No AppImage apps installed");
@@ -1435,12 +1438,25 @@ namespace AppManager {
                 cancel_button.set_visible(false);
                 cancel_button.clicked.connect(handle_cancel_clicked);
             }
+            if (clear_updates_button == null) {
+                clear_updates_button = new Gtk.Button();
+                clear_updates_button.set_icon_name("edit-clear-all-symbolic");
+                clear_updates_button.set_tooltip_text(_("Clear pending updates"));
+                clear_updates_button.add_css_class("clear-updates-button");
+                clear_updates_button.set_valign(Gtk.Align.CENTER);
+                clear_updates_button.set_visible(false);
+                clear_updates_button.clicked.connect(handle_clear_pending_updates_clicked);
+            }
             if (update_button.get_parent() == null) {
                 header.pack_end(update_button);
             }
             if (cancel_button.get_parent() == null) {
                 header.pack_end(cancel_button);
             }
+            if (clear_updates_button.get_parent() == null) {
+                header.pack_end(clear_updates_button);
+            }
+            update_clear_button_visibility();
         }
 
         private void handle_update_button_clicked() {
@@ -1465,6 +1481,29 @@ namespace AppManager {
                     cancel_button.set_sensitive(false);
                 }
             }
+        }
+
+        private void handle_clear_pending_updates_clicked() {
+            if (update_state == UpdateWorkflowState.CHECKING
+                || update_state == UpdateWorkflowState.UPDATING
+                || !single_update_cancellables.is_empty
+                || !updating_records.is_empty
+                || single_probe_count > 0
+                || pending_update_keys.size == 0) {
+                return;
+            }
+
+            pending_update_keys.clear();
+            staged_updates.clear();
+            staged_updates.save();
+
+            if (active_details_window != null) {
+                active_details_window.set_update_available(false);
+            }
+
+            update_global_update_state_from_pending();
+            refresh_installations();
+            add_toast(_("Pending updates cleared"));
         }
 
         private void setup_escape_controller() {
@@ -1802,6 +1841,20 @@ namespace AppManager {
             if (state == UpdateWorkflowState.READY_TO_UPDATE || state == UpdateWorkflowState.UPDATING) {
                 update_button.add_css_class("suggested-action");
             }
+
+            update_clear_button_visibility();
+        }
+
+        private void update_clear_button_visibility() {
+            if (clear_updates_button == null) {
+                return;
+            }
+            bool idle = update_state != UpdateWorkflowState.CHECKING
+                && update_state != UpdateWorkflowState.UPDATING
+                && single_update_cancellables.is_empty
+                && updating_records.is_empty
+                && single_probe_count == 0;
+            clear_updates_button.set_visible(idle && pending_update_keys.size > 0);
         }
 
         private void update_update_button_sensitive(bool force_busy = false) {
@@ -1910,6 +1963,7 @@ namespace AppManager {
                 source.set_update_loading(true);
                 source.set_update_failed(null);
             }
+            single_probe_count++;
             refresh_installations();
             start_single_probe_async.begin(record, source);
         }
@@ -1928,9 +1982,11 @@ namespace AppManager {
             if (source != null) {
                 source.set_update_loading(false);
             }
+            single_probe_count = int.max(0, single_probe_count - 1);
             if (result != null) {
                 handle_single_probe_result(result, source);
             }
+            update_clear_button_visibility();
         }
 
         private void handle_single_probe_result(UpdateProbeResult result, DetailsWindow? source) {

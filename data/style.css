@@ -93,7 +93,8 @@
 .update-failed-button {
     color: @warning_color;
 }
-.cancel-update-button {
+.cancel-update-button,
+.clear-updates-button {
     min-width: 20px;
     min-height: 20px;
     padding: 3px;
@@ -103,10 +104,12 @@
     box-shadow: none;
     transition: background-color 150ms ease;
 }
-.cancel-update-button:hover {
+.cancel-update-button:hover,
+.clear-updates-button:hover {
     background-color: alpha(currentColor, 0.16);
 }
-.cancel-update-button:active {
+.cancel-update-button:active,
+.clear-updates-button:active {
     background-color: alpha(currentColor, 0.24);
 }
 .clickable-icon-column {
