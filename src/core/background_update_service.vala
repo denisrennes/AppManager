@@ -11,6 +11,8 @@ namespace AppManager.Core {
         private DBusConnection? dbus_connection = null;
         private uint action_signal_id = 0;
         private bool check_in_progress = false;
+        private Cancellable? check_cancellable = null;
+        private MainLoop? daemon_loop = null;
 
         public BackgroundUpdateService(GLib.Settings settings, InstallationRegistry registry, Installer installer) {
             this.settings = settings;
@@ -252,26 +254,47 @@ X-XDP-Autostart=com.github.AppManager
 
             bool auto_update_enabled = settings.get_boolean("auto-update-apps");
             bool check_completed = false;
+            ArrayList<UpdateResult>? update_results = null;
+            ArrayList<UpdateProbeResult>? probe_results = null;
+            if (auto_update_enabled) {
+                log_debug("background update: performing auto-updates");
+            } else {
+                log_debug("background update: probing for updates (notify-only mode)");
+            }
 
-            try {
-                TlsSession.with_session(() => {
-                    if (auto_update_enabled) {
-                        // Auto-update mode: download and install updates
-                        perform_auto_updates(cancellable);
-                    } else {
-                        // Notify-only mode: probe for updates and send notification
-                        perform_update_probe(cancellable);
-                    }
-                    check_completed = true;
-                });
-            } catch (Error e) {
-                warning("background_check: TLS session error: %s", e.message);
+            // Off the main loop, so a stop signal can cancel a running check.
+            SourceFunc callback = perform_background_check.callback;
+            new Thread<void>("appmgr-background-check", () => {
+                try {
+                    TlsSession.with_session(() => {
+                        if (auto_update_enabled) {
+                            // Auto-update mode: download and install updates
+                            update_results = updater.update_all(cancellable);
+                        } else {
+                            // Notify-only mode: probe for updates and send notification
+                            probe_results = updater.probe_updates(cancellable);
+                        }
+                        check_completed = true;
+                    });
+                } catch (Error e) {
+                    warning("background_check: TLS session error: %s", e.message);
+                }
+                Idle.add((owned) callback);
+            });
+            yield;
+
+            bool cancelled = cancellable != null && cancellable.is_cancelled();
+            if (update_results != null) {
+                handle_update_results(update_results, cancelled);
+            } else if (probe_results != null && !cancelled) {
+                // A partial probe must not replace the staged updates.
+                handle_probe_results(probe_results);
             }
 
             // Only stamp on a completed check. A failed run (TLS error, no
             // network) must retry on the next tick instead of consuming the
-            // full update-check-interval (issue #141).
-            if (check_completed) {
+            // full update-check-interval (issue #141). So does a stopped one.
+            if (check_completed && !cancelled) {
                 settings.set_int64("last-update-check", new GLib.DateTime.now_utc().to_unix());
             } else {
                 log_debug("background update: check did not complete; will retry on next tick");
@@ -279,13 +302,10 @@ X-XDP-Autostart=com.github.AppManager
         }
 
         /**
-         * Probes for available updates and sends a notification if any are found.
+         * Stages the updates a probe found and sends a notification if any.
          * Does not download or install updates. Saves staged updates to disk.
          */
-        private void perform_update_probe(Cancellable? cancellable) {
-            log_debug("background update: probing for updates (notify-only mode)");
-
-            var probe_results = updater.probe_updates(cancellable);
+        private void handle_probe_results(ArrayList<UpdateProbeResult> probe_results) {
             int updates_available = 0;
             var app_names = new Gee.ArrayList<string>();
 
@@ -322,13 +342,9 @@ X-XDP-Autostart=com.github.AppManager
         }
 
         /**
-         * Downloads and installs available updates (original behavior).
+         * Logs auto-update results, updates staged updates and notifies about failures.
          */
-        private void perform_auto_updates(Cancellable? cancellable) {
-            log_debug("background update: performing auto-updates");
-
-            var results = updater.update_all(cancellable);
-
+        private void handle_update_results(ArrayList<UpdateResult> results, bool cancelled) {
             int updated = 0;
             int skipped = 0;
             int failed = 0;
@@ -349,6 +365,11 @@ X-XDP-Autostart=com.github.AppManager
                         append_update_log("SKIPPED %s: %s".printf(result.record.name ?? result.record.id, result.message));
                         break;
                     case UpdateStatus.FAILED:
+                        // After a stop request this is the cancellation itself:
+                        // keep the update staged for the next run.
+                        if (cancelled) {
+                            break;
+                        }
                         failed++;
                         append_update_log("FAILED %s: %s".printf(result.record.name ?? result.record.id, result.message));
                         // Remove from staged updates so it doesn't reappear as pending
@@ -531,10 +552,24 @@ X-XDP-Autostart=com.github.AppManager
                 return;
             }
             check_in_progress = true;
-            perform_background_check.begin(null, (obj, res) => {
+            check_cancellable = new Cancellable();
+            perform_background_check.begin(check_cancellable, (obj, res) => {
                 perform_background_check.end(res);
                 check_in_progress = false;
+                if (check_cancellable.is_cancelled()) {
+                    daemon_loop.quit();
+                }
             });
+        }
+
+        // A running check is cancelled and quits the loop once it returns, so
+        // an install already under way finishes instead of being cut off.
+        private void stop_daemon() {
+            if (check_in_progress) {
+                check_cancellable.cancel();
+            } else {
+                daemon_loop.quit();
+            }
         }
 
         public bool should_check_now() {
@@ -557,6 +592,7 @@ X-XDP-Autostart=com.github.AppManager
             log_debug("background daemon: starting persistent service");
 
             var loop = new MainLoop();
+            daemon_loop = loop;
 
             // Quit cleanly when the session manager / systemd asks us to stop.
             // GApplication installs no signal handlers and this daemon runs its
@@ -565,12 +601,12 @@ X-XDP-Autostart=com.github.AppManager
             // handlers first so a stop request during the initial check is honored.
             Unix.signal_add(Posix.Signal.TERM, () => {
                 log_debug("background daemon: SIGTERM received, stopping");
-                loop.quit();
+                stop_daemon();
                 return Source.REMOVE;
             });
             Unix.signal_add(Posix.Signal.INT, () => {
                 log_debug("background daemon: SIGINT received, stopping");
-                loop.quit();
+                stop_daemon();
                 return Source.REMOVE;
             });
 
