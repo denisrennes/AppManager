@@ -876,10 +876,10 @@ namespace AppManager.Core {
         // Reported like a failure so the UI settles the app (it stays pending),
         // but logged as a cancellation, not an error.
         private UpdateResult update_cancelled(InstallationRecord record) {
-            const string MESSAGE = "Update cancelled";
-            record_failed(record, MESSAGE);
-            log_update_event(record, "CANCELLED", MESSAGE);
-            return new UpdateResult(record, UpdateStatus.FAILED, MESSAGE);
+            string message = _("Update cancelled");
+            record_failed(record, message);
+            log_update_event(record, "CANCELLED", message);
+            return new UpdateResult(record, UpdateStatus.FAILED, message);
         }
         // ─────────────────────────────────────────────────────────────────────
         // Direct URL Updates (Last-Modified + Content-Length based)

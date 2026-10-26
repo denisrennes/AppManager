@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-10 16:54+0300\n"
+"POT-Creation-Date: 2026-10-26 22:02+0200\n"
 "PO-Revision-Date: 2026-02-26 10:50+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,81 +17,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/application.vala:366
+#: src/application.vala:368
 msgid "Invalid install link"
 msgstr ""
 
-#: src/application.vala:374 src/application.vala:512 src/application.vala:515
-#: src/windows/drop_window.vala:184
+#: src/application.vala:376 src/application.vala:514 src/application.vala:517
+#: src/windows/drop_window.vala:187
 msgid "Download failed"
 msgstr ""
 
-#: src/application.vala:429
+#: src/application.vala:431
 msgid "Downloading"
 msgstr ""
 
-#: src/application.vala:436 src/application.vala:727
-#: src/windows/drop_window.vala:420
+#: src/application.vala:438 src/application.vala:729
+#: src/windows/drop_window.vala:425
 msgid "Install"
 msgstr "설치하다"
 
-#: src/application.vala:438 src/application.vala:728 src/application.vala:1256
-#: src/windows/details_window.vala:1345 src/windows/details_window.vala:1366
-#: src/windows/details_window.vala:2024 src/windows/details_window.vala:2091
-#: src/windows/details_window.vala:2108 src/windows/drop_window.vala:421
-#: src/windows/drop_window.vala:1318 src/windows/main_window.vala:1998
-#: src/windows/main_window.vala:2047 src/windows/preferences_window.vala:655
-#: src/windows/preferences_window.vala:685
+#: src/application.vala:440 src/application.vala:730 src/application.vala:1282
+#: src/windows/details_window.vala:1639 src/windows/details_window.vala:1660
+#: src/windows/details_window.vala:2395 src/windows/details_window.vala:2462
+#: src/windows/details_window.vala:2479 src/windows/drop_window.vala:426
+#: src/windows/drop_window.vala:1349 src/windows/main_window.vala:2361
+#: src/windows/main_window.vala:2410 src/windows/preferences_window.vala:749
+#: src/windows/preferences_window.vala:779
 msgid "Cancel"
 msgstr "취소"
 
-#: src/application.vala:470
+#: src/application.vala:472
 msgid "Checking AppHub sandbox policy…"
 msgstr ""
 
-#: src/application.vala:474
+#: src/application.vala:476
 #, c-format
 msgid "Downloading %s of %s"
 msgstr ""
 
-#: src/application.vala:477
+#: src/application.vala:479
 #, c-format
 msgid "Downloading %s"
 msgstr ""
 
-#: src/application.vala:479 src/windows/drop_window.vala:131
-#: src/windows/main_window.vala:2059
+#: src/application.vala:481 src/windows/drop_window.vala:134
+#: src/windows/main_window.vala:2422
 msgid "Starting…"
 msgstr "시작 중…"
 
-#: src/application.vala:531 src/application.vala:552 src/application.vala:656
-#: src/application.vala:660 src/application.vala:1272 src/application.vala:1384
-#: src/application.vala:1396 src/windows/dialog_window.vala:121
-#: src/windows/drop_window.vala:231 src/windows/drop_window.vala:241
-#: src/windows/main_window.vala:1979
+#: src/application.vala:533 src/application.vala:554 src/application.vala:658
+#: src/application.vala:662 src/application.vala:1298 src/application.vala:1410
+#: src/application.vala:1422 src/windows/dialog_window.vala:121
+#: src/windows/drop_window.vala:236 src/windows/drop_window.vala:246
+#: src/windows/main_window.vala:2342
 msgid "Close"
 msgstr "닫다"
 
-#: src/application.vala:550
+#: src/application.vala:552
 msgid "Cannot install from this location"
 msgstr ""
 
-#: src/application.vala:551
+#: src/application.vala:553
 #, c-format
 msgid ""
 "This AppImage is already inside the install folder (%s). Move it elsewhere "
 "first to install it."
 msgstr ""
 
-#: src/application.vala:588
+#: src/application.vala:590
 msgid "Cannot read AppImage"
 msgstr ""
 
-#: src/application.vala:594
+#: src/application.vala:596
 msgid "Incompatible AppImage"
 msgstr "호환되지 않는 앱 이미지"
 
-#: src/application.vala:595
+#: src/application.vala:597
 msgid ""
 "This AppImage is incompatible or corrupted. Missing required files "
 "(AppRun, .desktop, or icon)."
@@ -99,48 +99,48 @@ msgstr ""
 "이 AppImage는 호환되지 않거나 손상되었습니다. 필수 파일(AppRun, .desktop 또"
 "는 아이콘)이 누락되었습니다."
 
-#: src/application.vala:603 src/windows/drop_window.vala:498
+#: src/application.vala:605 src/windows/drop_window.vala:503
 msgid "unknown"
 msgstr "알려지지 않은"
 
-#: src/application.vala:604
+#: src/application.vala:606
 msgid "Architecture Mismatch"
 msgstr "아키텍처 불일치"
 
-#: src/application.vala:605 src/windows/drop_window.vala:499
+#: src/application.vala:607 src/windows/drop_window.vala:504
 #, c-format
 msgid "This app is built for %s and cannot run here"
 msgstr "이 앱은 %s용으로 제작되었으므로 여기서 실행할 수 없습니다."
 
-#: src/application.vala:714 src/windows/drop_window.vala:407
+#: src/application.vala:716 src/windows/drop_window.vala:412
 #, c-format
 msgid "Open %s?"
 msgstr "%s을 열까요?"
 
-#: src/application.vala:722 src/windows/drop_window.vala:410
+#: src/application.vala:724 src/windows/drop_window.vala:415
 #, c-format
 msgid ""
 "Origins of %s application can not be verified. Are you sure you want to open "
 "it?"
 msgstr "%s 애플리케이션의 출처를 확인할 수 없습니다. 정말로 열어보시겠어요?"
 
-#: src/application.vala:725 src/windows/drop_window.vala:417
+#: src/application.vala:727 src/windows/drop_window.vala:422
 msgid "Install the AppImage to add it to your applications."
 msgstr "AppImage를 설치하여 애플리케이션에 추가하세요."
 
-#: src/application.vala:745 src/windows/drop_window.vala:555
+#: src/application.vala:747 src/windows/drop_window.vala:560
 #, c-format
 msgid "Replace %s?"
 msgstr "%s을 바꾸시겠습니까?"
 
-#: src/application.vala:756 src/windows/drop_window.vala:559
+#: src/application.vala:758 src/windows/drop_window.vala:564
 #, c-format
 msgid ""
 "An older item named \"%s\" already exists in this location. Do you want to "
 "replace it with newer one you're copying?"
 msgstr ""
 
-#: src/application.vala:758 src/windows/drop_window.vala:561
+#: src/application.vala:760 src/windows/drop_window.vala:566
 #, c-format
 msgid ""
 "A newer item named %s already exists in this location. Do you want to "
@@ -149,7 +149,7 @@ msgstr ""
 "%s이라는 새로운 항목이 이미 이 위치에 있습니다. 복사 중인 이전 항목으로 바꾸"
 "시겠습니까?"
 
-#: src/application.vala:760 src/windows/drop_window.vala:563
+#: src/application.vala:762 src/windows/drop_window.vala:568
 #, c-format
 msgid ""
 "An item named %s already exists in this location. Do you want to replace it "
@@ -157,64 +157,65 @@ msgid ""
 msgstr ""
 "%s이라는 항목이 이 위치에 이미 존재합니다. 복사 중인 항목으로 바꾸시겠습니까?"
 
-#: src/application.vala:763 src/windows/drop_window.vala:567
+#: src/application.vala:765 src/windows/drop_window.vala:572
 #, c-format
 msgid "Installed: %s | Incoming: %s"
 msgstr "설치됨: %s | 수신: %s"
 
-#: src/application.vala:769 src/windows/drop_window.vala:572
+#: src/application.vala:771 src/windows/drop_window.vala:577
 msgid "Keep Both"
 msgstr ""
 
-#: src/application.vala:770 src/windows/drop_window.vala:573
+#: src/application.vala:772 src/windows/drop_window.vala:578
 msgid "Stop"
 msgstr "멈추기"
 
-#: src/application.vala:771 src/windows/details_window.vala:1347
-#: src/windows/drop_window.vala:574
+#: src/application.vala:773 src/windows/details_window.vala:1641
+#: src/windows/drop_window.vala:579
 msgid "Replace"
 msgstr "바꾸기"
 
-#: src/application.vala:861 src/windows/drop_window.vala:658
+#: src/application.vala:863 src/windows/drop_window.vala:663
 msgid "Successfully Updated"
 msgstr "성공적으로 업데이트되었습니다"
 
-#: src/application.vala:861 src/windows/drop_window.vala:656
+#: src/application.vala:863 src/windows/drop_window.vala:661
 msgid "Successfully Installed"
 msgstr "성공적으로 설치되었습니다"
 
-#: src/application.vala:877 src/windows/drop_window.vala:675
+#: src/application.vala:879 src/windows/drop_window.vala:680
 msgid "Unknown version"
 msgstr "알 수 없는 버전"
 
-#: src/application.vala:878 src/windows/app_image_info_window.vala:72
-#: src/windows/drop_window.vala:676
+#: src/application.vala:880 src/windows/app_image_info_window.vala:72
+#: src/windows/drop_window.vala:681
 #, c-format
 msgid "Version %s"
 msgstr "버전 %s"
 
-#: src/application.vala:882 src/windows/details_window.vala:184
-#: src/windows/drop_window.vala:680 src/windows/drop_window.vala:819
+#: src/application.vala:884 src/windows/details_window.vala:378
+#: src/windows/drop_window.vala:685 src/windows/drop_window.vala:824
 msgid "Open"
 msgstr "열기"
 
-#: src/application.vala:883 src/windows/drop_window.vala:681
+#: src/application.vala:885 src/windows/drop_window.vala:686
 msgid "Done"
 msgstr "완료"
 
-#: src/application.vala:908 src/windows/drop_window.vala:707
+#: src/application.vala:910 src/windows/drop_window.vala:712
 msgid "Installation failed"
 msgstr "설치 실패"
 
-#: src/application.vala:910 src/windows/drop_window.vala:717
+#: src/application.vala:912 src/windows/drop_window.vala:722
+#: src/windows/main_window.vala:1115
 msgid "Dismiss"
 msgstr "해고하다"
 
-#: src/application.vala:1025
+#: src/application.vala:1027
 msgid "Leftover portable folder found"
 msgstr ""
 
-#: src/application.vala:1026
+#: src/application.vala:1028
 #, c-format
 msgid ""
 "A leftover portable folder was found next to AppManager (%s). AppManager "
@@ -223,21 +224,21 @@ msgid ""
 "AppImages under its Applications subfolder), then delete it."
 msgstr ""
 
-#: src/application.vala:1028
+#: src/application.vala:1030
 msgid "Ignore"
 msgstr ""
 
-#: src/application.vala:1029 src/core/installer.vala:1311
-#: src/core/installer.vala:1381 src/core/path_migration_service.vala:380
-#: src/windows/details_window.vala:2012 src/windows/details_window.vala:2053
+#: src/application.vala:1031 src/core/installer.vala:1506
+#: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
+#: src/windows/details_window.vala:2383 src/windows/details_window.vala:2424
 msgid "Move to Trash"
 msgstr "휴지통으로 이동"
 
-#: src/application.vala:1253
+#: src/application.vala:1279
 msgid "Cannot move to trash"
 msgstr "휴지통으로 이동"
 
-#: src/application.vala:1254
+#: src/application.vala:1280
 #, c-format
 msgid ""
 "%s could not be moved to the trash. Do you want to delete it permanently "
@@ -246,65 +247,65 @@ msgid ""
 "This action cannot be undone."
 msgstr ""
 
-#: src/application.vala:1257 src/core/installer.vala:1311
-#: src/core/installer.vala:1381 src/core/path_migration_service.vala:380
-#: src/windows/details_window.vala:2008 src/windows/details_window.vala:2025
-#: src/windows/details_window.vala:2047
+#: src/application.vala:1283 src/core/installer.vala:1506
+#: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
+#: src/windows/details_window.vala:2379 src/windows/details_window.vala:2396
+#: src/windows/details_window.vala:2418
 msgid "Delete Permanently"
 msgstr "영구 삭제"
 
-#: src/application.vala:1269
+#: src/application.vala:1295
 msgid "Uninstall failed"
 msgstr "제거 실패"
 
-#: src/application.vala:1270
+#: src/application.vala:1296
 #, c-format
 msgid "%s could not be removed: %s"
 msgstr "%s을(를) 제거할 수 없습니다: %s"
 
-#: src/application.vala:1278
+#: src/application.vala:1304
 msgid "Deleted permanently"
 msgstr "영구적으로 삭제됨"
 
-#: src/application.vala:1280 src/application.vala:1286
+#: src/application.vala:1306 src/application.vala:1312
 #, fuzzy, c-format
 msgid "%s moved to Trash"
 msgstr "휴지통으로 이동됨"
 
-#: src/application.vala:1281
+#: src/application.vala:1307
 msgid "Undo"
 msgstr "실행 취소"
 
-#: src/application.vala:1319
+#: src/application.vala:1345
 msgid "Undo failed"
 msgstr "제거 실패"
 
-#: src/application.vala:1322
+#: src/application.vala:1348
 msgid "Restored"
 msgstr "기본값 복원"
 
-#: src/application.vala:1342
+#: src/application.vala:1368
 msgid "Extraction is only available for portable installations."
 msgstr "추출은 휴대용 설치에만 사용할 수 있습니다."
 
-#: src/application.vala:1378
+#: src/application.vala:1404
 msgid "Extracted for faster launch"
 msgstr "더 빠른 실행을 위해 추출됨"
 
-#: src/application.vala:1381
+#: src/application.vala:1407
 msgid "Extraction complete"
 msgstr "추출 완료"
 
-#: src/application.vala:1382
+#: src/application.vala:1408
 #, c-format
 msgid "%s was extracted and will open faster."
 msgstr "%s이(가) 추출되었으며 더 빨리 열립니다."
 
-#: src/application.vala:1393
+#: src/application.vala:1419
 msgid "Extraction failed"
 msgstr "추출 실패"
 
-#: src/application.vala:1394
+#: src/application.vala:1420
 #, c-format
 msgid "%s could not be extracted: %s"
 msgstr "%s을(를) 추출할 수 없습니다: %s"
@@ -368,8 +369,8 @@ msgstr ""
 msgid "The downloaded file does not match the checksum in the install link."
 msgstr ""
 
-#: src/core/appimg_link.vala:199 src/core/apphub_policy.vala:438
-#: src/core/installer.vala:374 src/core/installer.vala:432
+#: src/core/appimg_link.vala:199 src/core/apphub_policy.vala:439
+#: src/core/installer.vala:374 src/core/installer.vala:433
 msgid "The AppHub sandbox policy could not be matched to this download."
 msgstr ""
 
@@ -384,47 +385,47 @@ msgid ""
 "supported."
 msgstr ""
 
-#: src/core/apphub_policy.vala:278 src/core/apphub_policy.vala:288
+#: src/core/apphub_policy.vala:279 src/core/apphub_policy.vala:289
 msgid "This AppHub artifact is not available for installation."
 msgstr ""
 
-#: src/core/apphub_policy.vala:305
+#: src/core/apphub_policy.vala:306
 msgid "Unable to retrieve the AppHub sandbox policy."
 msgstr ""
 
-#: src/core/background_update_service.vala:316
-#: src/core/background_update_service.vala:473
+#: src/core/background_update_service.vala:336
+#: src/core/background_update_service.vala:494
 msgid "App updates available"
 msgstr "앱 업데이트 가능"
 
-#: src/core/background_update_service.vala:317
-#: src/core/background_update_service.vala:474
+#: src/core/background_update_service.vala:337
+#: src/core/background_update_service.vala:495
 #, c-format
 msgid "%d app update(s) available"
 msgstr "%d 앱 업데이트 사용 가능"
 
-#: src/core/background_update_service.vala:367
+#: src/core/background_update_service.vala:388
 msgid "App updates failed"
 msgstr "앱 업데이트 가능"
 
-#: src/core/background_update_service.vala:368
+#: src/core/background_update_service.vala:389
 #, c-format
 msgid "%d app update(s) failed"
 msgstr "%d 업데이트 실패"
 
-#: src/core/background_update_service.vala:389
+#: src/core/background_update_service.vala:410
 msgid "Open AppManager"
 msgstr "앱 관리자 열기"
 
-#: src/core/installer.vala:424
+#: src/core/installer.vala:425
 msgid "AppHub sandbox policies require a portable installation."
 msgstr ""
 
-#: src/core/installer.vala:425
+#: src/core/installer.vala:426
 msgid "Install bubblewrap to apply the AppHub sandbox policy."
 msgstr ""
 
-#: src/core/installer.vala:939
+#: src/core/installer.vala:1106
 msgid "Unable to write the sandbox manifest."
 msgstr ""
 
@@ -490,75 +491,79 @@ msgstr ""
 "일부 앱을 이전하지 못했습니다:\n"
 "%s"
 
-#: src/core/updater.vala:633 src/core/updater.vala:700
+#: src/core/updater.vala:675 src/core/updater.vala:749
 msgid "No update address configured"
 msgstr "업데이트 주소가 구성되지 않았습니다."
 
-#: src/core/updater.vala:638 src/core/updater.vala:709
+#: src/core/updater.vala:680 src/core/updater.vala:759
 msgid "Update source not supported"
 msgstr "업데이트 소스가 지원되지 않습니다."
 
-#: src/core/updater.vala:654 src/core/updater.vala:727
+#: src/core/updater.vala:696 src/core/updater.vala:777
 msgid "Unable to read releases"
 msgstr "릴리스를 읽을 수 없습니다."
 
-#: src/core/updater.vala:659 src/core/updater.vala:755
+#: src/core/updater.vala:701 src/core/updater.vala:805
 #, c-format
 msgid "No matching AppImage found for %s"
 msgstr "%s에 대해 일치하는 AppImage가 없습니다."
 
-#: src/core/updater.vala:669 src/core/updater.vala:675
-#: src/core/updater.vala:739 src/core/updater.vala:747
-#: src/core/updater.vala:897 src/core/updater.vala:922
-#: src/core/updater.vala:1556 src/core/updater.vala:1572
-#: src/core/updater.vala:1668 src/core/updater.vala:1679
+#: src/core/updater.vala:713 src/core/updater.vala:718
+#: src/core/updater.vala:791 src/core/updater.vala:798
+#: src/core/updater.vala:959 src/core/updater.vala:986
+#: src/core/updater.vala:1640 src/core/updater.vala:1656
+#: src/core/updater.vala:1752 src/core/updater.vala:1763
 msgid "Already up to date"
 msgstr "이미 최신 상태입니다."
 
-#: src/core/updater.vala:802 src/core/updater.vala:1748
-#: src/core/updater.vala:1847
+#: src/core/updater.vala:852 src/core/updater.vala:1836
+#: src/core/updater.vala:1939
 #, c-format
 msgid "Updated to %s"
 msgstr "%s으로 업데이트됨"
 
-#: src/core/updater.vala:812 src/core/updater.vala:814
+#: src/core/updater.vala:862 src/core/updater.vala:864
 msgid "App identity mismatch"
 msgstr "아키텍처 불일치"
 
-#: src/core/updater.vala:885 src/core/updater.vala:915
+#: src/core/updater.vala:879
+msgid "Update cancelled"
+msgstr "업데이트가 취소되었습니다."
+
+#: src/core/updater.vala:947 src/core/updater.vala:979
 msgid "Server does not provide change tracking headers"
 msgstr "서버는 변경 내용 추적 헤더를 제공하지 않습니다."
 
-#: src/core/updater.vala:893
+#: src/core/updater.vala:955
 msgid "Baseline recorded"
 msgstr "기준선이 기록되었습니다."
 
-#: src/core/updater.vala:955 src/core/updater.vala:1749
-#: src/core/updater.vala:1848
+#: src/core/updater.vala:1020 src/core/updater.vala:1837
+#: src/core/updater.vala:1940
 msgid "Updated"
 msgstr "업데이트됨"
 
-#: src/core/updater.vala:1070 src/core/updater.vala:1078
+#: src/core/updater.vala:1138 src/core/updater.vala:1146
 msgid "Downloaded file is not a valid AppImage"
 msgstr "다운로드한 파일이 유효한 AppImage가 아닙니다"
 
-#: src/core/updater.vala:1081
+#: src/core/updater.vala:1149
 #, c-format
 msgid "AppImage architecture '%s' is incompatible with this system"
 msgstr "AppImage 아키텍처 '%s'이(가) 이 시스템과 호환되지 않습니다"
 
-#: src/core/updater.vala:1131
+#: src/core/updater.vala:1199
 #, c-format
 msgid "App identity mismatch: expected '%s' but got '%s'"
 msgstr "앱 식별자 불일치: '%s'이(가) 예상되었지만 '%s'을(를) 받았습니다"
 
-#: src/core/updater.vala:1173
+#: src/core/updater.vala:1241
 msgid ""
 "GitHub authentication failed (401). Check your token in Preferences → GitHub."
 msgstr ""
 "GitHub 인증에 실패했습니다(401). 환경 설정 → GitHub에서 토큰을 확인하세요."
 
-#: src/core/updater.vala:1178
+#: src/core/updater.vala:1246
 msgid ""
 "GitHub API rate limit exceeded. Add a token in Preferences → GitHub to "
 "increase your limit."
@@ -566,29 +571,29 @@ msgstr ""
 "GitHub API 비율 제한을 초과했습니다. 한도를 늘리려면 환경 설정 → GitHub에 토"
 "큰을 추가하세요."
 
-#: src/core/updater.vala:1180
+#: src/core/updater.vala:1248
 msgid ""
 "GitHub access forbidden (403). Your token may lack the required permissions."
 msgstr ""
 "GitHub 액세스가 금지되었습니다(403). 토큰에 필요한 권한이 부족할 수 있습니다."
 
-#: src/core/updater.vala:1512
+#: src/core/updater.vala:1592
 msgid "Unknown zsync source type"
 msgstr "알 수 없는 zsync 소스 유형"
 
-#: src/core/updater.vala:1537 src/core/updater.vala:1656
+#: src/core/updater.vala:1621 src/core/updater.vala:1740
 msgid "Malformed zsync file (no checksum)"
 msgstr "잘못된 zsync 파일 (체크섬 없음)"
 
-#: src/core/updater.vala:1552
+#: src/core/updater.vala:1636
 msgid "Failed to compute local checksum"
 msgstr "로컬 체크섬을 계산하지 못했습니다"
 
-#: src/core/updater.vala:1633
+#: src/core/updater.vala:1717
 msgid "Unknown zsync source"
 msgstr "알 수 없는 zsync 소스"
 
-#: src/core/updater.vala:1801
+#: src/core/updater.vala:1892
 msgid "Cannot determine download URL from zsync URL"
 msgstr "zsync URL에서 다운로드 URL을 확인할 수 없습니다."
 
@@ -596,7 +601,7 @@ msgstr "zsync URL에서 다운로드 URL을 확인할 수 없습니다."
 msgid "AppImage Info"
 msgstr ""
 
-#: src/windows/app_image_info_window.vala:79 src/windows/main_window.vala:1845
+#: src/windows/app_image_info_window.vala:79 src/windows/main_window.vala:2207
 msgid "General"
 msgstr "일반적인"
 
@@ -605,7 +610,7 @@ msgid "File"
 msgstr ""
 
 #: src/windows/app_image_info_window.vala:82
-#: src/windows/details_window.vala:822
+#: src/windows/details_window.vala:1064
 msgid "Location"
 msgstr ""
 
@@ -622,7 +627,7 @@ msgid "Architecture"
 msgstr ""
 
 #: src/windows/app_image_info_window.vala:85
-#: src/windows/app_image_info_window.vala:154 src/windows/main_window.vala:709
+#: src/windows/app_image_info_window.vala:154 src/windows/main_window.vala:750
 msgid "Unknown"
 msgstr "알려지지 않은"
 
@@ -634,7 +639,7 @@ msgstr ""
 msgid "SHA-256"
 msgstr ""
 
-#: src/windows/app_image_info_window.vala:105 src/windows/drop_window.vala:821
+#: src/windows/app_image_info_window.vala:105 src/windows/drop_window.vala:826
 msgid "Copy"
 msgstr ""
 
@@ -662,70 +667,94 @@ msgstr ""
 msgid "Filesystem"
 msgstr ""
 
-#: src/windows/details_window.vala:115
+#: src/windows/details_window.vala:300
 #, c-format
 msgid "⚠️ '%s' is not in $PATH. App will not launch from the terminal"
 msgstr "⚠️ '%s'이(가) $PATH에 없습니다. 터미널에서 앱이 실행되지 않습니다"
 
-#: src/windows/details_window.vala:241 src/windows/drop_window.vala:824
+#: src/windows/details_window.vala:305
+msgid "FUSE is missing, this app cannot run."
+msgstr ""
+
+#: src/windows/details_window.vala:306 src/windows/main_window.vala:1112
+msgid "Learn more"
+msgstr ""
+
+#: src/windows/details_window.vala:436 src/windows/drop_window.vala:829
 msgid "Show in Files"
 msgstr "파일로 표시"
 
-#: src/windows/details_window.vala:243 src/windows/details_window.vala:609
+#: src/windows/details_window.vala:438 src/windows/details_window.vala:851
 msgid "Portable"
 msgstr "포터블"
 
-#: src/windows/details_window.vala:243
+#: src/windows/details_window.vala:438
 msgid "Extracted"
 msgstr "추출됨"
 
-#: src/windows/details_window.vala:262
+#: src/windows/details_window.vala:457
 msgid "App version"
 msgstr "버전"
 
-#: src/windows/details_window.vala:273
+#: src/windows/details_window.vala:468
 msgid "Terminal"
 msgstr "단말기"
 
-#: src/windows/details_window.vala:281
+#: src/windows/details_window.vala:476
 msgid "This app supports efficient delta updates"
 msgstr "이 앱은 효율적인 델타 업데이트를 지원합니다."
 
-#: src/windows/details_window.vala:288
+#: src/windows/details_window.vala:483
 msgid "Hidden"
 msgstr "숨겨진"
 
-#: src/windows/details_window.vala:299
+#: src/windows/details_window.vala:494
 msgid "Web"
 msgstr ""
 
-#: src/windows/details_window.vala:318
+#: src/windows/details_window.vala:513
 msgid "Properties"
 msgstr "속성"
 
-#: src/windows/details_window.vala:323
+#: src/windows/details_window.vala:518
 msgid "Command line arguments"
 msgstr "명령줄 인수"
 
-#: src/windows/details_window.vala:362 src/windows/details_window.vala:418
+#: src/windows/details_window.vala:560
+msgid "Start on login"
+msgstr ""
+
+#: src/windows/details_window.vala:561
+msgid "Run this app automatically when you log in"
+msgstr ""
+
+#: src/windows/details_window.vala:578
+msgid "Extra arguments at login"
+msgstr ""
+
+#: src/windows/details_window.vala:591
+msgid "Delay in seconds"
+msgstr ""
+
+#: src/windows/details_window.vala:604 src/windows/details_window.vala:660
 msgid "App Updates"
 msgstr ""
 
-#: src/windows/details_window.vala:363
+#: src/windows/details_window.vala:605
 msgid "Edit app update details"
 msgstr ""
 
-#: src/windows/details_window.vala:366 src/windows/details_window.vala:411
+#: src/windows/details_window.vala:608 src/windows/details_window.vala:653
 msgid "On"
 msgstr ""
 
-#: src/windows/details_window.vala:366 src/windows/details_window.vala:411
-#: src/windows/details_window.vala:609 src/windows/details_window.vala:656
-#: src/windows/details_window.vala:728
+#: src/windows/details_window.vala:608 src/windows/details_window.vala:653
+#: src/windows/details_window.vala:851 src/windows/details_window.vala:898
+#: src/windows/details_window.vala:970
 msgid "Off"
 msgstr ""
 
-#: src/windows/details_window.vala:385
+#: src/windows/details_window.vala:627
 msgid ""
 "Update info lets AppManager fetch new builds for you. Paste the download "
 "link and AppManager will do the rest."
@@ -733,7 +762,7 @@ msgstr ""
 "업데이트 정보를 통해 AppManager가 새 빌드를 가져올 수 있습니다. 다운로드 링크"
 "를 붙여넣으면 AppManager가 나머지 작업을 수행합니다."
 
-#: src/windows/details_window.vala:386
+#: src/windows/details_window.vala:628
 msgid ""
 "Currently GitHub and GitLab URL formats are fully supported. Direct download "
 "links also work if the server provides Last-Modified or Content-Length "
@@ -742,121 +771,123 @@ msgstr ""
 "현재 GitHub 및 GitLab URL 형식이 완벽하게 지원됩니다. 서버가 Last-Modified 또"
 "는 Content-Length 헤더를 제공하는 경우에도 직접 다운로드 링크가 작동합니다."
 
-#: src/windows/details_window.vala:388
+#: src/windows/details_window.vala:630
 msgid "Update links"
 msgstr "링크 업데이트"
 
-#: src/windows/details_window.vala:395
+#: src/windows/details_window.vala:637
 msgid "Enable app updates"
 msgstr ""
 
-#: src/windows/details_window.vala:422
+#: src/windows/details_window.vala:664
 msgid "Update details"
 msgstr ""
 
-#: src/windows/details_window.vala:432
+#: src/windows/details_window.vala:674
 msgid "Pre-release Updates"
 msgstr "프리릴리스 업데이트"
 
-#: src/windows/details_window.vala:433
+#: src/windows/details_window.vala:675
 msgid "Include pre-release versions when checking for updates"
 msgstr "업데이트 확인 시 프리릴리스 버전 포함"
 
-#: src/windows/details_window.vala:454
+#: src/windows/details_window.vala:696
 msgid "Update link is managed by the embedded zsync update mechanism"
 msgstr "업데이트 링크는 내장된 zsync 업데이트 메커니즘에 의해 관리됩니다"
 
-#: src/windows/details_window.vala:488
+#: src/windows/details_window.vala:730
 msgid "Update Link"
 msgstr "업데이트 링크"
 
-#: src/windows/details_window.vala:545
+#: src/windows/details_window.vala:787
 msgid "Web Page"
 msgstr "웹페이지"
 
-#: src/windows/details_window.vala:580
+#: src/windows/details_window.vala:822
 msgid "Open web page"
 msgstr "웹페이지 열기"
 
-#: src/windows/details_window.vala:612 src/windows/details_window.vala:728
+#: src/windows/details_window.vala:854 src/windows/details_window.vala:970
 msgid "Standard"
 msgstr ""
 
-#: src/windows/details_window.vala:613 src/windows/details_window.vala:728
+#: src/windows/details_window.vala:855 src/windows/details_window.vala:970
 msgid "Strict"
 msgstr ""
 
-#: src/windows/details_window.vala:614 src/windows/details_window.vala:730
+#: src/windows/details_window.vala:856 src/windows/details_window.vala:972
 msgid "AppHub"
 msgstr ""
 
-#: src/windows/details_window.vala:615 src/windows/details_window.vala:728
+#: src/windows/details_window.vala:857 src/windows/details_window.vala:970
 msgid "Custom"
 msgstr ""
 
-#: src/windows/details_window.vala:623 src/windows/details_window.vala:1279
+#: src/windows/details_window.vala:865 src/windows/details_window.vala:1569
 msgid "Privacy & Security"
 msgstr ""
 
-#: src/windows/details_window.vala:624
+#: src/windows/details_window.vala:866
 msgid "Run this app isolated from the rest of your files"
 msgstr ""
 
-#: src/windows/details_window.vala:656
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
+#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
 msgid "Read-only"
 msgstr ""
 
-#: src/windows/details_window.vala:656
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
+#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
 msgid "Read and write"
 msgstr ""
 
-#: src/windows/details_window.vala:683
+#: src/windows/details_window.vala:925
 msgid "Sandboxing is not available for this app"
 msgstr ""
 
-#: src/windows/details_window.vala:685
+#: src/windows/details_window.vala:927
 msgid "Only apps installed in portable mode can be sandboxed."
 msgstr ""
 
-#: src/windows/details_window.vala:686
+#: src/windows/details_window.vala:928
 msgid "AppManager cannot sandbox itself."
 msgstr ""
 
-#: src/windows/details_window.vala:688
+#: src/windows/details_window.vala:930
 msgid "Sandboxing requires bubblewrap"
 msgstr ""
 
-#: src/windows/details_window.vala:689 src/windows/preferences_window.vala:391
+#: src/windows/details_window.vala:931 src/windows/preferences_window.vala:399
 msgid "Install the bubblewrap and xdg-dbus-proxy packages to use this."
 msgstr ""
 
-#: src/windows/details_window.vala:700 src/windows/preferences_window.vala:352
+#: src/windows/details_window.vala:942 src/windows/preferences_window.vala:355
 msgid "Portable folders"
 msgstr ""
 
-#: src/windows/details_window.vala:704
+#: src/windows/details_window.vala:946
 #, fuzzy
 msgid "Portable .home folder"
 msgstr "포터블"
 
-#: src/windows/details_window.vala:705
+#: src/windows/details_window.vala:947
 msgid "Store the app's home directory in a .home folder next to the AppImage"
 msgstr ""
 
-#: src/windows/details_window.vala:710
+#: src/windows/details_window.vala:952
 #, fuzzy
 msgid "Portable .config folder"
 msgstr "포터블"
 
-#: src/windows/details_window.vala:711
+#: src/windows/details_window.vala:953
 msgid "Store the app's config in a .config folder next to the AppImage"
 msgstr ""
 
-#: src/windows/details_window.vala:717
+#: src/windows/details_window.vala:959
 msgid "Sandbox"
 msgstr ""
 
-#: src/windows/details_window.vala:718
+#: src/windows/details_window.vala:960
 msgid ""
 "A sandboxed app gets its own home folder and cannot read the rest of yours. "
 "Standard keeps the network and sound working; Strict takes both away. Apps "
@@ -864,446 +895,491 @@ msgid ""
 "misbehave."
 msgstr ""
 
-#: src/windows/details_window.vala:725
+#: src/windows/details_window.vala:967
 msgid "Profile"
 msgstr ""
 
-#: src/windows/details_window.vala:734
+#: src/windows/details_window.vala:976
 msgid "AppHub sandbox template"
 msgstr ""
 
-#: src/windows/details_window.vala:742
+#: src/windows/details_window.vala:984
 msgid "Access"
 msgstr ""
 
-#: src/windows/details_window.vala:746
+#: src/windows/details_window.vala:988
 msgid "Network"
 msgstr ""
 
-#: src/windows/details_window.vala:750
+#: src/windows/details_window.vala:992
 msgid "Sound"
 msgstr ""
 
-#: src/windows/details_window.vala:751
+#: src/windows/details_window.vala:993
 msgid "Includes microphone: playback and recording share one connection."
 msgstr ""
 
-#: src/windows/details_window.vala:757
+#: src/windows/details_window.vala:999
 msgid "Display"
 msgstr ""
 
-#: src/windows/details_window.vala:760
+#: src/windows/details_window.vala:1002
 msgid "Prefer Wayland when available; otherwise use X11."
 msgstr ""
 
-#: src/windows/details_window.vala:761
+#: src/windows/details_window.vala:1003
 msgid "Wayland and X11"
 msgstr ""
 
-#: src/windows/details_window.vala:761
+#: src/windows/details_window.vala:1003
 msgid "Prefer Wayland, otherwise X11"
 msgstr ""
 
-#: src/windows/details_window.vala:761
+#: src/windows/details_window.vala:1003
 msgid "Wayland only"
 msgstr ""
 
-#: src/windows/details_window.vala:761
+#: src/windows/details_window.vala:1003
 msgid "X11 only"
 msgstr ""
 
-#: src/windows/details_window.vala:761
+#: src/windows/details_window.vala:1003
 msgid "None"
 msgstr ""
 
-#: src/windows/details_window.vala:767
+#: src/windows/details_window.vala:1009
 msgid "Full session bus"
 msgstr ""
 
-#: src/windows/details_window.vala:768
+#: src/windows/details_window.vala:1010
 msgid ""
 "Unfiltered access to desktop services. Weakens the sandbox, so grant it only "
 "to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:776 src/windows/details_window.vala:897
+#: src/windows/details_window.vala:1018 src/windows/details_window.vala:1181
 msgid "Devices"
 msgstr ""
 
-#: src/windows/details_window.vala:779
+#: src/windows/details_window.vala:1021
 msgid "Hardware acceleration"
 msgstr ""
 
-#: src/windows/details_window.vala:780
+#: src/windows/details_window.vala:1022
 msgid ""
 "Access to the graphics card. Without it most apps fall back to software "
 "rendering."
 msgstr ""
 
-#: src/windows/details_window.vala:786
+#: src/windows/details_window.vala:1028
 msgid "Camera"
 msgstr ""
 
-#: src/windows/details_window.vala:787
+#: src/windows/details_window.vala:1029
 msgid "Direct device access."
 msgstr ""
 
-#: src/windows/details_window.vala:793
+#: src/windows/details_window.vala:1035
 msgid "Game controllers"
 msgstr ""
 
-#: src/windows/details_window.vala:794
+#: src/windows/details_window.vala:1036
 msgid ""
 "Also exposes keyboards and mice, so grant it only to apps that need a "
 "gamepad."
 msgstr ""
 
-#: src/windows/details_window.vala:800
+#: src/windows/details_window.vala:1042
 msgid "Bluetooth"
 msgstr ""
 
-#: src/windows/details_window.vala:807
+#: src/windows/details_window.vala:1049
 msgid "Services"
 msgstr ""
 
-#: src/windows/details_window.vala:810
+#: src/windows/details_window.vala:1052
 msgid "Notifications"
 msgstr ""
 
-#: src/windows/details_window.vala:816
+#: src/windows/details_window.vala:1058
 msgid "Accessibility"
 msgstr ""
 
-#: src/windows/details_window.vala:816
+#: src/windows/details_window.vala:1058
 msgid "Connect to the desktop accessibility service through a filtered bus."
 msgstr ""
 
-#: src/windows/details_window.vala:822
+#: src/windows/details_window.vala:1064
 msgid ""
 "Reaches the system location service. AppManager alone enforces this - it "
 "does not appear in your desktop's location settings."
 msgstr ""
 
-#: src/windows/details_window.vala:828
+#: src/windows/details_window.vala:1070
 msgid "Network information"
 msgstr ""
 
-#: src/windows/details_window.vala:828
+#: src/windows/details_window.vala:1070
 msgid "Read network status and interface information from NetworkManager."
 msgstr ""
 
-#: src/windows/details_window.vala:836 src/windows/details_window.vala:890
+#: src/windows/details_window.vala:1076
+msgid "Online accounts"
+msgstr ""
+
+#: src/windows/details_window.vala:1076
+msgid ""
+"Use GNOME Online Accounts and Evolution Data Server to read and change mail, "
+"calendar and contact data. The app can reach every configured account, so "
+"grant it only to apps you trust."
+msgstr ""
+
+#: src/windows/details_window.vala:1082
+msgid "Keyring"
+msgstr ""
+
+#: src/windows/details_window.vala:1082
+msgid ""
+"Save logins in GNOME Keyring or KWallet. The app can also read every "
+"password stored there, so grant it only to apps you trust."
+msgstr ""
+
+#: src/windows/details_window.vala:1088
+msgid "System authentication"
+msgstr ""
+
+#: src/windows/details_window.vala:1088
+msgid ""
+"Unlock with your system password or fingerprint. The app can also see your "
+"other processes and read their command lines and environment, so grant it "
+"only to apps you trust."
+msgstr ""
+
+#: src/windows/details_window.vala:1094
+msgid "Screenshots"
+msgstr ""
+
+#: src/windows/details_window.vala:1094
+msgid ""
+"Take screenshots with the desktop's screenshot tool. They are saved in "
+"Pictures, so the app also needs that folder."
+msgstr ""
+
+#: src/windows/details_window.vala:1102 src/windows/details_window.vala:1174
 msgid "Folders"
 msgstr ""
 
-#: src/windows/details_window.vala:837
+#: src/windows/details_window.vala:1103
 msgid ""
 "Folders shared with the app. Choose read-only or read and write access. "
 "Other folders stay hidden, including anything you pick in a file dialog "
 "inside the app."
 msgstr ""
 
-#: src/windows/details_window.vala:840
+#: src/windows/details_window.vala:1111 src/windows/preferences_window.vala:437
+msgid "Add folder"
+msgstr ""
+
+#: src/windows/details_window.vala:1123
 msgid "Downloads"
 msgstr ""
 
-#: src/windows/details_window.vala:843
+#: src/windows/details_window.vala:1126
 msgid "Documents"
 msgstr ""
 
-#: src/windows/details_window.vala:846
+#: src/windows/details_window.vala:1129
 msgid "Desktop"
 msgstr ""
 
-#: src/windows/details_window.vala:849
+#: src/windows/details_window.vala:1132
 msgid "Pictures"
 msgstr ""
 
-#: src/windows/details_window.vala:852
+#: src/windows/details_window.vala:1135
 msgid "Videos"
 msgstr ""
 
-#: src/windows/details_window.vala:855
+#: src/windows/details_window.vala:1138
 msgid "Music"
 msgstr ""
 
-#: src/windows/details_window.vala:861
+#: src/windows/details_window.vala:1145
 msgid "Additional imported permissions"
 msgstr ""
 
-#: src/windows/details_window.vala:862
+#: src/windows/details_window.vala:1146
 msgid ""
 "Access defined by the AppHub template. Choosing Standard or Strict replaces "
 "these permissions."
 msgstr ""
 
-#: src/windows/details_window.vala:870
+#: src/windows/details_window.vala:1154
 msgid "Session bus"
 msgstr ""
 
-#: src/windows/details_window.vala:877
+#: src/windows/details_window.vala:1161
 msgid "System bus"
 msgstr ""
 
-#: src/windows/details_window.vala:883
+#: src/windows/details_window.vala:1167
 msgid "Full system bus"
 msgstr ""
 
-#: src/windows/details_window.vala:903
+#: src/windows/details_window.vala:1187
 msgid "Host process access"
 msgstr ""
 
-#: src/windows/details_window.vala:903 src/windows/details_window.vala:904
+#: src/windows/details_window.vala:1187 src/windows/details_window.vala:1188
 msgid "Host IPC access"
 msgstr ""
 
-#: src/windows/details_window.vala:912
+#: src/windows/details_window.vala:1196
 msgid "Media controls"
 msgstr ""
 
-#: src/windows/details_window.vala:925
-msgid "Special permissions"
-msgstr ""
-
-#: src/windows/details_window.vala:926
-msgid ""
-"Additional folders this app may read and write. A symlink only works if you "
-"also add the folder it points at."
-msgstr ""
-
-#: src/windows/details_window.vala:930 src/windows/preferences_window.vala:428
-msgid "Add folder"
-msgstr ""
-
-#: src/windows/details_window.vala:941
+#: src/windows/details_window.vala:1209
 msgid "Global sandbox"
 msgstr ""
 
-#: src/windows/details_window.vala:942
+#: src/windows/details_window.vala:1210
 msgid ""
 "Folders granted to every sandboxed app. Change them in AppManager "
 "preferences."
 msgstr ""
 
-#: src/windows/details_window.vala:1028
+#: src/windows/details_window.vala:1298
 msgid ""
 "Off while this app is sandboxed. The sandbox gives it a home folder of its "
 "own, and anything these folders held has been moved into that."
 msgstr ""
 
-#: src/windows/details_window.vala:1029
+#: src/windows/details_window.vala:1299
 msgid ""
 "The AppImage runtime redirects the app's home and config into folders next "
 "to the AppImage, so its data travels with the file. A sandboxed app never "
 "runs that runtime, so this and the sandbox are alternatives."
 msgstr ""
 
-#: src/windows/details_window.vala:1058 src/windows/preferences_window.vala:457
+#: src/windows/details_window.vala:1345 src/windows/preferences_window.vala:534
 msgid "Remove folder"
 msgstr ""
 
-#: src/windows/details_window.vala:1147
+#: src/windows/details_window.vala:1437
 msgid "Unable to restore the AppHub profile"
 msgstr ""
 
-#: src/windows/details_window.vala:1148 src/windows/preferences_window.vala:747
+#: src/windows/details_window.vala:1438 src/windows/preferences_window.vala:841
 msgid "OK"
 msgstr "좋아요"
 
-#: src/windows/details_window.vala:1212
+#: src/windows/details_window.vala:1502
 msgid ".home"
 msgstr ""
 
-#: src/windows/details_window.vala:1229
+#: src/windows/details_window.vala:1519
 msgid ".config"
 msgstr ""
 
-#: src/windows/details_window.vala:1255 src/windows/preferences_window.vala:496
+#: src/windows/details_window.vala:1545 src/windows/preferences_window.vala:590
 msgid "Select Folder to Share"
 msgstr ""
 
-#: src/windows/details_window.vala:1284 src/windows/details_window.vala:1318
+#: src/windows/details_window.vala:1574 src/windows/details_window.vala:1608
 msgid "Advanced Settings"
 msgstr ""
 
-#: src/windows/details_window.vala:1285
+#: src/windows/details_window.vala:1575
 msgid ""
 "Change app icon, Startup WM Class, Keywords, $PATH or environment variables"
 msgstr ""
 
-#: src/windows/details_window.vala:1302
+#: src/windows/details_window.vala:1592
 msgid "App Settings"
 msgstr ""
 
-#: src/windows/details_window.vala:1342
+#: src/windows/details_window.vala:1636
 msgid "This app already has sandbox data"
 msgstr ""
 
-#: src/windows/details_window.vala:1343
+#: src/windows/details_window.vala:1637
 msgid ""
 "Its portable folders and its sandboxed home both hold data. Merge keeps what "
 "is already in the sandbox and moves the rest in. Replace discards the "
 "sandboxed data and uses the portable folders instead."
 msgstr ""
 
-#: src/windows/details_window.vala:1346
+#: src/windows/details_window.vala:1640
 msgid "Merge"
 msgstr ""
 
-#: src/windows/details_window.vala:1363
+#: src/windows/details_window.vala:1657
 #, c-format
 msgid "Remove portable %s folder?"
 msgstr ""
 
-#: src/windows/details_window.vala:1364
+#: src/windows/details_window.vala:1658
 #, c-format
 msgid ""
 "The %s folder next to this AppImage will be permanently removed, including "
 "any data it contains."
 msgstr ""
 
-#: src/windows/details_window.vala:1367
+#: src/windows/details_window.vala:1661
 #, fuzzy
 msgid "Remove Data"
 msgstr "변수 제거"
 
-#: src/windows/details_window.vala:1385
+#: src/windows/details_window.vala:1679
 msgid "Environment Variables"
 msgstr "환경 변수"
 
-#: src/windows/details_window.vala:1386
+#: src/windows/details_window.vala:1680
 msgid "Set custom environment variables for this app"
 msgstr "이 앱의 맞춤 환경 변수 설정"
 
-#: src/windows/details_window.vala:1448
+#: src/windows/details_window.vala:1742
 msgid "NAME"
 msgstr "이름"
 
-#: src/windows/details_window.vala:1464
+#: src/windows/details_window.vala:1758
 msgid "value"
 msgstr "값"
 
-#: src/windows/details_window.vala:1478
+#: src/windows/details_window.vala:1771
 msgid "Remove variable"
 msgstr "변수 제거"
 
-#: src/windows/details_window.vala:1611
+#: src/windows/details_window.vala:1904
 msgid "App Name"
 msgstr ""
 
-#: src/windows/details_window.vala:1626
+#: src/windows/details_window.vala:1919
 msgid "Keywords"
 msgstr "키워드"
 
-#: src/windows/details_window.vala:1637
+#: src/windows/details_window.vala:1930
 msgid "Icon name"
 msgstr "아이콘 이름"
 
-#: src/windows/details_window.vala:1648
+#: src/windows/details_window.vala:1941
 msgid "Startup WM Class"
 msgstr "스타트업WM클래스"
 
-#: src/windows/details_window.vala:1659
+#: src/windows/details_window.vala:1952
 msgid "Version"
 msgstr "버전"
 
-#: src/windows/details_window.vala:1680
+#: src/windows/details_window.vala:1973
 msgid "Hide from app drawer"
 msgstr "앱 서랍에서 숨기기"
 
-#: src/windows/details_window.vala:1681
+#: src/windows/details_window.vala:1974
 msgid "Don't show in application menu"
 msgstr "애플리케이션 메뉴에 표시하지 않음"
 
-#: src/windows/details_window.vala:1695
+#: src/windows/details_window.vala:1988
 msgid "Add to $PATH"
 msgstr "$PATH에 추가"
 
-#: src/windows/details_window.vala:1696
+#: src/windows/details_window.vala:1989
 #, c-format
 msgid "Create a launcher in %s so you can run it from the terminal"
 msgstr "터미널에서 실행할 수 있도록 %s에 실행 프로그램을 만듭니다."
 
-#: src/windows/details_window.vala:1763
+#: src/windows/details_window.vala:2041
+#, c-format
+msgid "Not added to $PATH: '%s' already exists in %s"
+msgstr ""
+
+#: src/windows/details_window.vala:2062
 msgid "Actions"
 msgstr "액션"
 
-#: src/windows/details_window.vala:1802
+#: src/windows/details_window.vala:2079 src/windows/details_window.vala:2196
+#: src/windows/main_window.vala:1435
+msgid "Cancel update"
+msgstr "업데이트 취소"
+
+#: src/windows/details_window.vala:2109
 msgid "Extract AppImage"
 msgstr "앱 이미지 추출"
 
-#: src/windows/details_window.vala:1844
+#: src/windows/details_window.vala:2155
 msgid "Restore default"
 msgstr "기본값 복원"
 
-#: src/windows/details_window.vala:1856 src/windows/main_window.vala:609
-#: src/windows/main_window.vala:683
+#: src/windows/details_window.vala:2196
+msgid "Installation cannot be cancelled"
+msgstr ""
+
+#: src/windows/details_window.vala:2208
 msgid "Updating..."
 msgstr "업데이트 중..."
 
-#: src/windows/details_window.vala:1858
+#: src/windows/details_window.vala:2210
 msgid "Checking..."
 msgstr "확인 중..."
 
-#: src/windows/details_window.vala:1878
-msgid "Update"
-msgstr "업데이트"
-
-#: src/windows/details_window.vala:1885
+#: src/windows/details_window.vala:2225
 msgid "Update Failed"
 msgstr "업데이트 가능"
 
-#: src/windows/details_window.vala:1892
+#: src/windows/details_window.vala:2234
+msgid "Update"
+msgstr "업데이트"
+
+#: src/windows/details_window.vala:2239
 msgid "Check Update"
 msgstr "업데이트 확인"
 
-#: src/windows/details_window.vala:2013
+#: src/windows/details_window.vala:2384
 msgid "Hold Shift to delete permanently"
 msgstr "영구 삭제하려면 Shift를 누르세요"
 
-#: src/windows/details_window.vala:2020 src/windows/details_window.vala:2048
+#: src/windows/details_window.vala:2391 src/windows/details_window.vala:2419
 #, c-format
 msgid "<b>%s</b> will be permanently deleted. This action cannot be undone."
 msgstr "<b>%s</b>이(가) 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다."
 
-#: src/windows/details_window.vala:2021 src/windows/details_window.vala:2046
+#: src/windows/details_window.vala:2392 src/windows/details_window.vala:2417
 msgid "Delete permanently?"
 msgstr "영구 삭제하시겠습니까?"
 
-#: src/windows/details_window.vala:2049
+#: src/windows/details_window.vala:2420
 msgid "Delete All Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2050
+#: src/windows/details_window.vala:2421
 msgid "Permanently erase user data to save space"
 msgstr ""
 
-#: src/windows/details_window.vala:2052
+#: src/windows/details_window.vala:2423
 msgid "Move to Trash?"
 msgstr ""
 
-#: src/windows/details_window.vala:2054
+#: src/windows/details_window.vala:2425
 #, c-format
 msgid "<b>%s</b> will be moved to the Trash."
 msgstr ""
 
-#: src/windows/details_window.vala:2055
+#: src/windows/details_window.vala:2426
 msgid "Trash All Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2056
+#: src/windows/details_window.vala:2427
 msgid "Move user data to Trash along with the app"
 msgstr ""
 
-#: src/windows/details_window.vala:2072
+#: src/windows/details_window.vala:2443
 msgid "Keep User Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2073
+#: src/windows/details_window.vala:2444
 msgid "Allow restoring personal settings &amp; content"
 msgstr ""
 
-#: src/windows/details_window.vala:2106
+#: src/windows/details_window.vala:2477
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
@@ -1311,11 +1387,11 @@ msgstr ""
 "압축을 풀면 응용 프로그램의 압축이 풀려 더 빨리 열리지만 더 많은 디스크 공간"
 "을 소비하게 됩니다. 이 작업은 자동으로 되돌릴 수 없습니다."
 
-#: src/windows/details_window.vala:2107
+#: src/windows/details_window.vala:2478
 msgid "Extract application?"
 msgstr "애플리케이션을 추출하시겠습니까?"
 
-#: src/windows/details_window.vala:2109
+#: src/windows/details_window.vala:2480
 msgid "Extract"
 msgstr "추출"
 
@@ -1327,674 +1403,679 @@ msgstr "앱이 삭제됨"
 msgid "The application was uninstalled successfully."
 msgstr "애플리케이션이 성공적으로 제거되었습니다."
 
-#: src/windows/drop_window.vala:75 src/windows/drop_window.vala:105
-#: src/windows/drop_window.vala:929
+#: src/windows/drop_window.vala:78 src/windows/drop_window.vala:108
+#: src/windows/drop_window.vala:960
 msgid "AppImage Installer"
 msgstr "AppImage 설치 프로그램"
 
-#: src/windows/drop_window.vala:170 src/windows/drop_window.vala:281
+#: src/windows/drop_window.vala:173 src/windows/drop_window.vala:286
 #, c-format
 msgid "Drag and drop to install into %s"
 msgstr "드래그 앤 드롭하여 %s에 설치"
 
-#: src/windows/drop_window.vala:223 src/windows/drop_window.vala:1324
+#: src/windows/drop_window.vala:228 src/windows/drop_window.vala:1355
 msgid "Verify"
 msgstr "검증"
 
-#: src/windows/drop_window.vala:224
+#: src/windows/drop_window.vala:229
 msgid "Verify AppImage with SHA256 hash"
 msgstr "SHA256 해시로 AppImage 무결성 검사"
 
-#: src/windows/drop_window.vala:250
+#: src/windows/drop_window.vala:255
 msgid "SHA256 hash does not match. Verification failed."
 msgstr "SHA256 해시가 일치하지 않습니다. 무결성 검사에 실패했습니다."
 
-#: src/windows/drop_window.vala:415
+#: src/windows/drop_window.vala:420
 msgid "This is a terminal application and will be installed in portable mode."
 msgstr "이것은 터미널 애플리케이션이며 휴대용 모드로 설치됩니다."
 
-#: src/windows/drop_window.vala:488
+#: src/windows/drop_window.vala:493
 msgid "This AppImage is incompatible or corrupted"
 msgstr "이 AppImage는 호환되지 않거나 손상되었습니다."
 
-#: src/windows/drop_window.vala:490
+#: src/windows/drop_window.vala:495
 msgid "Missing required files (AppRun, .desktop, or icon)"
 msgstr "필수 파일 누락(AppRun, .desktop 또는 아이콘)"
 
-#: src/windows/drop_window.vala:501
+#: src/windows/drop_window.vala:506
 msgid "Architecture mismatch"
 msgstr "아키텍처 불일치"
 
-#: src/windows/drop_window.vala:614
+#: src/windows/drop_window.vala:619
 msgid "Unable to prepare AppImage for installation"
 msgstr "AppImage 설치를 준비할 수 없습니다."
 
-#: src/windows/drop_window.vala:658
+#: src/windows/drop_window.vala:663
 msgid "Successfully Replaced"
 msgstr "성공적으로 교체됨"
 
-#: src/windows/drop_window.vala:820
+#: src/windows/drop_window.vala:825
 msgid "Get Info"
 msgstr ""
 
-#: src/windows/drop_window.vala:827
+#: src/windows/drop_window.vala:832
 msgid "New Terminal at Folder"
 msgstr ""
 
-#: src/windows/drop_window.vala:1285
+#: src/windows/drop_window.vala:1316
 msgid "Verify AppImage"
 msgstr "AppImage 확인"
 
-#: src/windows/drop_window.vala:1303
+#: src/windows/drop_window.vala:1334
 msgid "Verify the authenticity of this AppImage."
 msgstr "이 AppImage의 신뢰성을 확인하세요."
 
-#: src/windows/drop_window.vala:1309
+#: src/windows/drop_window.vala:1340
 msgid "Enter the SHA256 hash "
 msgstr "SHA256 해시를 입력하세요."
 
-#: src/windows/main_window.vala:71 src/windows/main_window.vala:221
+#: src/windows/main_window.vala:79 src/windows/main_window.vala:240
 msgid "AppManager"
 msgstr "AppManager"
 
-#: src/windows/main_window.vala:196
+#: src/windows/main_window.vala:215
 msgid "No Apps Yet"
 msgstr "아직 앱이 없습니다"
 
-#: src/windows/main_window.vala:200
+#: src/windows/main_window.vala:219
 msgid ""
 "To install AppImages, drag and drop them onto this window or double click "
 "the file"
 msgstr ""
 
-#: src/windows/main_window.vala:280
+#: src/windows/main_window.vala:299
 msgid "Get more ..."
 msgstr "더 많은 AppImage 찾기..."
 
-#: src/windows/main_window.vala:292
+#: src/windows/main_window.vala:311
 msgid "Find more AppImages"
 msgstr "더 많은 AppImage 찾기"
 
-#: src/windows/main_window.vala:293
+#: src/windows/main_window.vala:312
 msgid "Browse these sources to discover and download AppImages"
 msgstr "AppImage를 검색하고 다운로드하려면 다음 소스를 찾아보세요."
 
-#: src/windows/main_window.vala:319
+#: src/windows/main_window.vala:315
+msgid "AppHub (Recommended)"
+msgstr ""
+
+#: src/windows/main_window.vala:348
 msgid "Import AppImages from folder ..."
 msgstr "폴더에서 AppImages 가져오기 ..."
 
-#: src/windows/main_window.vala:357 src/windows/main_window.vala:436
+#: src/windows/main_window.vala:387 src/windows/main_window.vala:469
 msgid "No AppImage apps installed"
 msgstr "AppImage 앱이 설치되지 않았습니다."
 
-#: src/windows/main_window.vala:362
+#: src/windows/main_window.vala:392
 msgid ""
 "To install AppImages, drag and drop them onto this window or double click "
 "the files"
 msgstr ""
 
-#: src/windows/main_window.vala:436
+#: src/windows/main_window.vala:469
 msgid "No results found"
 msgstr "검색결과가 없습니다"
 
-#: src/windows/main_window.vala:515 src/windows/main_window.vala:1081
+#: src/windows/main_window.vala:547 src/windows/main_window.vala:1131
 msgid "My Apps"
 msgstr "내 앱"
 
-#: src/windows/main_window.vala:616 src/windows/main_window.vala:690
+#: src/windows/main_window.vala:671 src/windows/main_window.vala:742
 msgid "Update available"
 msgstr "업데이트 가능"
 
-#: src/windows/main_window.vala:802
+#: src/windows/main_window.vala:842
 msgid "extracted"
 msgstr "추출됨"
 
-#: src/windows/main_window.vala:863
+#: src/windows/main_window.vala:903
 #, fuzzy
 msgid "Imported just now"
 msgstr "방금 업데이트됨"
 
-#: src/windows/main_window.vala:863
+#: src/windows/main_window.vala:903
 msgid "Updated just now"
 msgstr "방금 업데이트됨"
 
-#: src/windows/main_window.vala:863
+#: src/windows/main_window.vala:903
 msgid "Installed just now"
 msgstr "방금 설치됨"
 
-#: src/windows/main_window.vala:871
+#: src/windows/main_window.vala:911
 #, fuzzy, c-format
 msgid "Imported %d min ago"
 msgstr "%d분 전에 업데이트됨"
 
-#: src/windows/main_window.vala:871
+#: src/windows/main_window.vala:911
 #, c-format
 msgid "Updated %d min ago"
 msgstr "%d분 전에 업데이트됨"
 
-#: src/windows/main_window.vala:871
+#: src/windows/main_window.vala:911
 #, c-format
 msgid "Installed %d min ago"
 msgstr "%d분 전에 설치됨"
 
-#: src/windows/main_window.vala:879
+#: src/windows/main_window.vala:919
 #, fuzzy, c-format
 msgid "Imported %d hours ago"
 msgstr "%d시간 전에 업데이트됨"
 
-#: src/windows/main_window.vala:879
+#: src/windows/main_window.vala:919
 #, c-format
 msgid "Updated %d hours ago"
 msgstr "%d시간 전에 업데이트됨"
 
-#: src/windows/main_window.vala:879
+#: src/windows/main_window.vala:919
 #, c-format
 msgid "Installed %d hours ago"
 msgstr "%d시간 전에 설치됨"
 
-#: src/windows/main_window.vala:886
+#: src/windows/main_window.vala:926
 #, fuzzy, c-format
 msgid "Imported %d days ago"
 msgstr "%d일 전에 업데이트됨"
 
-#: src/windows/main_window.vala:886
+#: src/windows/main_window.vala:926
 #, c-format
 msgid "Updated %d days ago"
 msgstr "%d일 전에 업데이트됨"
 
-#: src/windows/main_window.vala:886
+#: src/windows/main_window.vala:926
 #, c-format
 msgid "Installed %d days ago"
 msgstr "%d일 전에 설치됨"
 
-#: src/windows/main_window.vala:905 src/windows/main_window.vala:1264
+#: src/windows/main_window.vala:944 src/windows/main_window.vala:1325
 msgid "Leave Fullscreen"
 msgstr "전체 화면 나가기"
 
-#: src/windows/main_window.vala:905 src/windows/main_window.vala:1264
+#: src/windows/main_window.vala:944 src/windows/main_window.vala:1325
 msgid "Fullscreen"
 msgstr "전체 화면"
 
-#: src/windows/main_window.vala:910 src/windows/preferences_window.vala:36
+#: src/windows/main_window.vala:949 src/windows/preferences_window.vala:37
 msgid "Preferences"
 msgstr "환경설정"
 
-#: src/windows/main_window.vala:911
+#: src/windows/main_window.vala:950 src/windows/main_window.vala:2199
 msgid "Keyboard shortcuts"
 msgstr "키보드 단축키"
 
-#: src/windows/main_window.vala:912 src/windows/main_window.vala:1859
+#: src/windows/main_window.vala:951 src/windows/main_window.vala:2222
 msgid "About AppManager"
 msgstr "앱매니저 소개"
 
-#: src/windows/main_window.vala:916
+#: src/windows/main_window.vala:955
 msgid "Quit"
 msgstr "끝내기"
 
-#: src/windows/main_window.vala:930
+#: src/windows/main_window.vala:969
 msgid "Support AppManager"
 msgstr "지원 AppManager"
 
-#: src/windows/main_window.vala:945
+#: src/windows/main_window.vala:984
 msgid "Buy Me a Coffee"
 msgstr "커피 사주세요"
 
-#: src/windows/main_window.vala:964
+#: src/windows/main_window.vala:1003
 msgid "Become a sponsor on GitHub"
 msgstr "GitHub에서 스폰서 되기"
 
-#: src/windows/main_window.vala:969
+#: src/windows/main_window.vala:1008
 msgid "Sponsor Me ♡"
 msgstr "후원해주세요 ♡"
 
-#: src/windows/main_window.vala:980
+#: src/windows/main_window.vala:1019
 msgid "Star AppManager on GitHub"
 msgstr "GitHub에서 AppManager 시작"
 
-#: src/windows/main_window.vala:985
+#: src/windows/main_window.vala:1024
 msgid "Star AppManager"
 msgstr "스타 앱매니저"
 
-#: src/windows/main_window.vala:996
+#: src/windows/main_window.vala:1035
 msgid "View contributors on GitHub"
 msgstr "GitHub에서 기여자 보기"
 
-#: src/windows/main_window.vala:1001 src/windows/main_window.vala:1878
+#: src/windows/main_window.vala:1040 src/windows/main_window.vala:2241
 msgid "Contributors"
 msgstr "기여자"
 
-#: src/windows/main_window.vala:1024 src/windows/main_window.vala:1857
+#: src/windows/main_window.vala:1063 src/windows/main_window.vala:2220
 msgid "Search"
 msgstr "찾기"
 
-#: src/windows/main_window.vala:1030
+#: src/windows/main_window.vala:1069
 msgid "Support this project"
 msgstr "이 프로젝트를 지원하세요"
 
-#: src/windows/main_window.vala:1040
+#: src/windows/main_window.vala:1079
 msgid "More actions"
 msgstr "추가 작업"
 
-#: src/windows/main_window.vala:1055
+#: src/windows/main_window.vala:1094
 msgid "Search apps..."
 msgstr "앱 검색..."
 
-#: src/windows/main_window.vala:1063
-msgid "FUSE is not installed. Some AppImages may fail to run"
-msgstr "퓨즈가 설치되지 않았습니다. 일부 AppImage가 실행되지 않을 수 있습니다."
+#: src/windows/main_window.vala:1111
+msgid "FUSE is missing, some apps may fail to run."
+msgstr ""
 
-#: src/windows/main_window.vala:1065
-msgid "Learn More"
-msgstr "자세히 알아보기"
-
-#: src/windows/main_window.vala:1086
+#: src/windows/main_window.vala:1136
 msgid "Shift+click to launch app"
 msgstr "앱을 실행하려면 Shift+클릭"
 
-#: src/windows/main_window.vala:1098
+#: src/windows/main_window.vala:1148
 msgid "Sort apps"
 msgstr ""
 
-#: src/windows/main_window.vala:1127
+#: src/windows/main_window.vala:1177
 msgid "Switch to grid view"
 msgstr "그리드 보기로 전환"
 
-#: src/windows/main_window.vala:1130
+#: src/windows/main_window.vala:1180
 msgid "Switch to list view"
 msgstr "목록 보기로 전환"
 
-#: src/windows/main_window.vala:1136
+#: src/windows/main_window.vala:1186
 msgid "Default"
 msgstr ""
 
-#: src/windows/main_window.vala:1139
+#: src/windows/main_window.vala:1189
 msgid "Name (A-Z)"
 msgstr ""
 
-#: src/windows/main_window.vala:1140
+#: src/windows/main_window.vala:1190
 msgid "Name (Z-A)"
 msgstr ""
 
-#: src/windows/main_window.vala:1144
+#: src/windows/main_window.vala:1194
 msgid "Size (smallest first)"
 msgstr ""
 
-#: src/windows/main_window.vala:1145
+#: src/windows/main_window.vala:1195
 msgid "Size (largest first)"
 msgstr ""
 
-#: src/windows/main_window.vala:1320 src/windows/main_window.vala:1391
+#: src/windows/main_window.vala:1381 src/windows/main_window.vala:1472
 msgid "Updates already running"
 msgstr "이미 실행 중인 업데이트"
 
-#: src/windows/main_window.vala:1368
-msgid "Cancel update"
-msgstr "업데이트 취소"
+#: src/windows/main_window.vala:1444
+msgid "Clear pending updates"
+msgstr ""
 
-#: src/windows/main_window.vala:1399
-msgid "Cancelling..."
-msgstr "취소 중..."
+#: src/windows/main_window.vala:1506
+msgid "Pending updates cleared"
+msgstr ""
 
-#: src/windows/main_window.vala:1425
+#: src/windows/main_window.vala:1574
 msgid "Update check cancelled"
 msgstr "업데이트 확인이 취소되었습니다."
 
-#: src/windows/main_window.vala:1455
+#: src/windows/main_window.vala:1604
 #, c-format
 msgid "%d app(s) have updates"
 msgstr "%d 앱에 업데이트가 있습니다"
 
-#: src/windows/main_window.vala:1458
+#: src/windows/main_window.vala:1607
 msgid "No updates available right now"
 msgstr "현재 사용 가능한 업데이트가 없습니다."
 
-#: src/windows/main_window.vala:1465
+#: src/windows/main_window.vala:1614
 msgid "Nothing queued for updating"
 msgstr "업데이트 대기 중인 항목이 없습니다."
 
-#: src/windows/main_window.vala:1492
-msgid "Update cancelled"
-msgstr "업데이트가 취소되었습니다."
+#: src/windows/main_window.vala:1646 src/windows/main_window.vala:1720
+msgid "Canceled"
+msgstr ""
 
-#: src/windows/main_window.vala:1557 src/windows/main_window.vala:1577
+#: src/windows/main_window.vala:1758 src/windows/main_window.vala:1779
+#: src/windows/main_window.vala:2114 src/windows/main_window.vala:2172
 msgid "Update failed"
 msgstr "업데이트 가능"
 
-#: src/windows/main_window.vala:1630
+#: src/windows/main_window.vala:1826
 msgid "Checking updates"
 msgstr "업데이트 확인 중"
 
-#: src/windows/main_window.vala:1633
+#: src/windows/main_window.vala:1829
 msgid "Update Apps"
 msgstr "앱 업데이트"
 
-#: src/windows/main_window.vala:1636
+#: src/windows/main_window.vala:1832
 msgid "Updating apps"
 msgstr "앱 업데이트 중"
 
-#: src/windows/main_window.vala:1639
+#: src/windows/main_window.vala:1835
 msgid "Check updates"
 msgstr "업데이트 확인"
 
-#: src/windows/main_window.vala:1663
+#: src/windows/main_window.vala:1873
 msgid "No installed apps to update"
 msgstr "업데이트할 설치된 앱이 없습니다."
 
-#: src/windows/main_window.vala:1703
+#: src/windows/main_window.vala:1913
 #, c-format
 msgid "Updated %d app(s)"
 msgstr "%d 앱 업데이트됨"
 
-#: src/windows/main_window.vala:1706
+#: src/windows/main_window.vala:1916
 #, c-format
 msgid "%d update(s) failed"
 msgstr "%d 업데이트 실패"
 
-#: src/windows/main_window.vala:1714
+#: src/windows/main_window.vala:1924
 msgid "Add update addresses in Details to enable updates"
 msgstr "업데이트를 활성화하려면 세부정보에 업데이트 주소를 추가하세요."
 
-#: src/windows/main_window.vala:1716
+#: src/windows/main_window.vala:1926
 msgid "All supported apps are already up to date"
 msgstr "지원되는 모든 앱이 이미 최신 상태입니다."
 
-#: src/windows/main_window.vala:1720
+#: src/windows/main_window.vala:1930
 #, c-format
 msgid "%d app(s) use unsupported update links"
 msgstr "%d 앱이 지원되지 않는 업데이트 링크를 사용합니다."
 
-#: src/windows/main_window.vala:1799
+#: src/windows/main_window.vala:2015
 #, c-format
 msgid "Update available for %s"
 msgstr "%s에 사용 가능한 업데이트"
 
-#: src/windows/main_window.vala:1849
+#: src/windows/main_window.vala:2211
 msgid "Navigation"
 msgstr "탐색"
 
-#: src/windows/main_window.vala:1853
+#: src/windows/main_window.vala:2215
 msgid "Window"
 msgstr "창문"
 
-#: src/windows/main_window.vala:1855
+#: src/windows/main_window.vala:2217
 msgid "Check for updates"
 msgstr "업데이트 확인"
 
-#: src/windows/main_window.vala:1856
+#: src/windows/main_window.vala:2218
+msgid "Update apps"
+msgstr ""
+
+#: src/windows/main_window.vala:2219
 msgid "Show main menu"
 msgstr "메인 메뉴 표시"
 
-#: src/windows/main_window.vala:1858
+#: src/windows/main_window.vala:2221
 msgid "Show shortcuts"
 msgstr "바로가기 표시"
 
-#: src/windows/main_window.vala:1860
+#: src/windows/main_window.vala:2223
 msgid "Close window"
 msgstr "창 닫기"
 
-#: src/windows/main_window.vala:1861
+#: src/windows/main_window.vala:2224
 msgid "Quit AppManager"
 msgstr "AppManager 종료"
 
-#: src/windows/main_window.vala:1862
+#: src/windows/main_window.vala:2225
 msgid "Toggle fullscreen"
 msgstr "전체 화면 전환"
 
-#: src/windows/main_window.vala:1879
+#: src/windows/main_window.vala:2242
 msgid "Credits"
 msgstr "크레딧"
 
-#: src/windows/main_window.vala:1963
+#: src/windows/main_window.vala:2326
 msgid "Select folder with AppImages"
 msgstr "AppImages가 있는 폴더 선택"
 
-#: src/windows/main_window.vala:1977
+#: src/windows/main_window.vala:2340
 msgid "Cannot import from this location"
 msgstr ""
 
-#: src/windows/main_window.vala:1978
+#: src/windows/main_window.vala:2341
 #, c-format
 msgid ""
 "This folder is inside the install folder (%s). Select a different folder to "
 "import from."
 msgstr ""
 
-#: src/windows/main_window.vala:1989
+#: src/windows/main_window.vala:2352
 msgid "Import AppImages"
 msgstr "AppImages 가져오기"
 
-#: src/windows/main_window.vala:1990
+#: src/windows/main_window.vala:2353
 #, c-format
 msgid "Install AppImages found in %s"
 msgstr "%s에서 찾은 AppImages 설치"
 
-#: src/windows/main_window.vala:1992
+#: src/windows/main_window.vala:2355
 msgid "Move AppImages"
 msgstr "AppImages 이동"
 
-#: src/windows/main_window.vala:1999
+#: src/windows/main_window.vala:2362
 msgid "Import"
 msgstr "가져오기"
 
-#: src/windows/main_window.vala:2029
+#: src/windows/main_window.vala:2392
 #, c-format
 msgid "Failed to read folder: %s"
 msgstr "폴더를 읽을 수 없습니다: %s"
 
-#: src/windows/main_window.vala:2034
+#: src/windows/main_window.vala:2397
 msgid "No AppImage files found in folder"
 msgstr "폴더에서 AppImage 파일을 찾을 수 없습니다"
 
-#: src/windows/main_window.vala:2045
+#: src/windows/main_window.vala:2408
 msgid "Importing AppImages…"
 msgstr "AppImages 가져오는 중…"
 
-#: src/windows/main_window.vala:2046
+#: src/windows/main_window.vala:2409
 #, c-format
 msgid "Installing %d AppImage(s)…"
 msgstr "%d개의 AppImage 설치 중…"
 
-#: src/windows/main_window.vala:2068
+#: src/windows/main_window.vala:2431
 msgid "Cancelling…"
 msgstr "취소하는 중…"
 
-#: src/windows/main_window.vala:2085
+#: src/windows/main_window.vala:2448
 #, c-format
 msgid "%d of %d: %s"
 msgstr "%d / %d: %s"
 
-#: src/windows/main_window.vala:2144
+#: src/windows/main_window.vala:2507
 #, c-format
 msgid "Imported %d app(s)"
 msgstr "%d개 앱을 가져왔습니다"
 
-#: src/windows/main_window.vala:2147
+#: src/windows/main_window.vala:2510
 #, fuzzy, c-format
 msgid "Skipped %d incompatible architecture app(s)"
 msgstr "이미 설치된 %d개 앱을 건너뛰었습니다"
 
-#: src/windows/main_window.vala:2150
+#: src/windows/main_window.vala:2513
 #, c-format
 msgid "%d app(s) failed to import"
 msgstr "%d개 앱을 가져오지 못했습니다"
 
-#: src/windows/main_window.vala:2153
+#: src/windows/main_window.vala:2516
 #, c-format
 msgid "Cancelled — %d app(s) not imported"
 msgstr "취소됨 — %d개 앱이 가져와지지 않았습니다"
 
-#: src/windows/preferences_window.vala:61
+#: src/windows/preferences_window.vala:62
 msgid "Installation"
 msgstr "설치"
 
-#: src/windows/preferences_window.vala:62
+#: src/windows/preferences_window.vala:63
 msgid "Configure where AppImages are installed (default: ~/Applications)"
 msgstr "AppImages가 설치된 위치 구성(기본값: ~/Applications)"
 
-#: src/windows/preferences_window.vala:65
+#: src/windows/preferences_window.vala:66
 msgid "Installation directory"
 msgstr "설치 디렉터리"
 
-#: src/windows/preferences_window.vala:81
+#: src/windows/preferences_window.vala:82
 msgid "Browse for folder"
 msgstr "폴더 찾아보기"
 
-#: src/windows/preferences_window.vala:89
+#: src/windows/preferences_window.vala:90
 msgid "Reset to default"
 msgstr "기본값으로 재설정"
 
-#: src/windows/preferences_window.vala:99
+#: src/windows/preferences_window.vala:100
 msgid "Apply changes"
 msgstr "변경사항 적용"
 
-#: src/windows/preferences_window.vala:110
+#: src/windows/preferences_window.vala:111
 msgid "Skip drag-and-drop window"
 msgstr "드래그 앤 드롭 창 건너뛰기"
 
-#: src/windows/preferences_window.vala:111
+#: src/windows/preferences_window.vala:112
 msgid "Show install dialog directly when opening AppImages"
 msgstr "AppImages를 열 때 설치 대화 상자를 직접 표시"
 
-#: src/windows/preferences_window.vala:116
+#: src/windows/preferences_window.vala:117
 msgid "Keep file extension name"
 msgstr ""
 
-#: src/windows/preferences_window.vala:117
+#: src/windows/preferences_window.vala:118
 msgid ""
 "Replace spaces with underscores in installed filenames and keep "
 "the .AppImage extension"
 msgstr ""
 
-#: src/windows/preferences_window.vala:128
+#: src/windows/preferences_window.vala:129
 msgid "Automatic updates"
 msgstr "자동 업데이트"
 
-#: src/windows/preferences_window.vala:129
+#: src/windows/preferences_window.vala:130
 msgid "Configure automatic update checking"
 msgstr "자동 업데이트 확인 구성"
 
-#: src/windows/preferences_window.vala:135
+#: src/windows/preferences_window.vala:136
 msgid "Open update log"
 msgstr "업데이트 로그 열기"
 
-#: src/windows/preferences_window.vala:149
+#: src/windows/preferences_window.vala:150
 msgid "Background update check"
 msgstr "백그라운드 업데이트 확인"
 
-#: src/windows/preferences_window.vala:150
+#: src/windows/preferences_window.vala:151
 msgid "Will notify when new app updates are available"
 msgstr "새로운 앱 업데이트가 출시되면 알려드립니다."
 
-#: src/windows/preferences_window.vala:162
+#: src/windows/preferences_window.vala:163
 msgid "Auto update apps"
 msgstr "자동 업데이트 앱"
 
-#: src/windows/preferences_window.vala:163
+#: src/windows/preferences_window.vala:164
 msgid "Will update apps automatically in background"
 msgstr "백그라운드에서 자동으로 앱을 업데이트합니다."
 
-#: src/windows/preferences_window.vala:170
+#: src/windows/preferences_window.vala:171
 msgid "Check interval"
 msgstr "점검 간격"
 
-#: src/windows/preferences_window.vala:173
+#: src/windows/preferences_window.vala:174
 msgid "Daily"
 msgstr "일일"
 
-#: src/windows/preferences_window.vala:174
+#: src/windows/preferences_window.vala:175
 msgid "Weekly"
 msgstr "주간"
 
-#: src/windows/preferences_window.vala:175
+#: src/windows/preferences_window.vala:176
 msgid "Monthly"
 msgstr "월간 간행물"
 
-#: src/windows/preferences_window.vala:200
+#: src/windows/preferences_window.vala:201
 msgid "Thumbnails"
 msgstr "썸네일"
 
-#: src/windows/preferences_window.vala:203
+#: src/windows/preferences_window.vala:204
 msgid "AppImage Thumbnailer"
 msgstr "앱이미지 썸네일러"
 
-#: src/windows/preferences_window.vala:204
+#: src/windows/preferences_window.vala:205
 msgid "Install appimage-thumbnailer to generate thumbnails for AppImages"
 msgstr "AppImages의 썸네일을 생성하려면 appimage-thumbnailer를 설치하세요."
 
-#: src/windows/preferences_window.vala:214
+#: src/windows/preferences_window.vala:215
 msgid "Hide Nautilus thumbnail background"
 msgstr "노틸러스 축소판 배경 숨기기"
 
-#: src/windows/preferences_window.vala:215
+#: src/windows/preferences_window.vala:216
 msgid "Remove the alpha checkerboard behind thumbnails and icons"
 msgstr "축소판 및 아이콘 뒤의 알파 체커보드 제거"
 
-#: src/windows/preferences_window.vala:227
+#: src/windows/preferences_window.vala:228
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/windows/preferences_window.vala:228
+#: src/windows/preferences_window.vala:229
 msgid ""
 "Authenticate with GitHub to raise the API rate limit from 60 to 5,000 "
 "requests per hour"
 msgstr ""
 "GitHub로 인증하여 API 속도 제한을 시간당 요청 60개에서 5,000개로 늘립니다."
 
-#: src/windows/preferences_window.vala:231
+#: src/windows/preferences_window.vala:232
 msgid "Personal access token"
 msgstr "개인 액세스 토큰"
 
-#: src/windows/preferences_window.vala:243
+#: src/windows/preferences_window.vala:244
 msgid "Apply token"
 msgstr "토큰 적용"
 
-#: src/windows/preferences_window.vala:246
-#: src/windows/preferences_window.vala:265
+#: src/windows/preferences_window.vala:247
+#: src/windows/preferences_window.vala:266
 msgid "GitHub token saved"
 msgstr "GitHub 토큰이 저장되었습니다."
 
-#: src/windows/preferences_window.vala:252
+#: src/windows/preferences_window.vala:253
 msgid "Clear token"
 msgstr "토큰 지우기"
 
-#: src/windows/preferences_window.vala:256
+#: src/windows/preferences_window.vala:257
 msgid "GitHub token cleared"
 msgstr "GitHub 토큰이 삭제되었습니다."
 
-#: src/windows/preferences_window.vala:272
+#: src/windows/preferences_window.vala:273
 msgid "Test token"
 msgstr "테스트 토큰"
 
-#: src/windows/preferences_window.vala:273
+#: src/windows/preferences_window.vala:274
 msgid "Verify your token works and check rate limit status"
 msgstr "토큰이 작동하는지 확인하고 속도 제한 상태를 확인하세요."
 
-#: src/windows/preferences_window.vala:278
+#: src/windows/preferences_window.vala:279
 msgid "Test"
 msgstr "테스트"
 
-#: src/windows/preferences_window.vala:287
+#: src/windows/preferences_window.vala:288
 msgid "Testing…"
 msgstr "테스트 중…"
 
-#: src/windows/preferences_window.vala:302
+#: src/windows/preferences_window.vala:303
 msgid "Create a token on GitHub"
 msgstr "GitHub에서 토큰 만들기"
 
-#: src/windows/preferences_window.vala:303
+#: src/windows/preferences_window.vala:304
 msgid "Fine-grained token with read-only public repo access is sufficient"
 msgstr "읽기 전용 공개 저장소 액세스가 가능한 세분화된 토큰이면 충분합니다."
 
-#: src/windows/preferences_window.vala:329
-#: src/windows/preferences_window.vala:439
+#: src/windows/preferences_window.vala:330
+#: src/windows/preferences_window.vala:454
 msgid "Security & Privacy"
 msgstr ""
 
-#: src/windows/preferences_window.vala:330
+#: src/windows/preferences_window.vala:331
 msgid "App sandboxing and the folders every sandboxed app may use"
 msgstr ""
 
-#: src/windows/preferences_window.vala:353
+#: src/windows/preferences_window.vala:356
 msgid ""
 "Give new apps a .home or .config folder next to the AppImage, so their data "
 "travels with the file. The AppImage runtime is what reads these, and a "
@@ -2002,73 +2083,96 @@ msgid ""
 "by default off."
 msgstr ""
 
-#: src/windows/preferences_window.vala:356
+#: src/windows/preferences_window.vala:359
 msgid "Portable .home by default"
 msgstr ""
 
-#: src/windows/preferences_window.vala:357
+#: src/windows/preferences_window.vala:360
 msgid "Create a .home folder next to every newly installed AppImage"
 msgstr ""
 
-#: src/windows/preferences_window.vala:363
+#: src/windows/preferences_window.vala:366
 msgid "Portable .config by default"
 msgstr ""
 
-#: src/windows/preferences_window.vala:364
+#: src/windows/preferences_window.vala:367
 msgid "Create a .config folder next to every newly installed AppImage"
 msgstr ""
 
-#: src/windows/preferences_window.vala:371
+#: src/windows/preferences_window.vala:374
 msgid "App sandboxing"
 msgstr ""
 
-#: src/windows/preferences_window.vala:375
+#: src/windows/preferences_window.vala:378
 msgid "Sandboxing is <b>experimental</b>"
 msgstr ""
 
-#: src/windows/preferences_window.vala:378
+#: src/windows/preferences_window.vala:381
 msgid ""
 "Sandboxed apps may misbehave or stop working entirely. If an app breaks, "
 "turn its sandbox off in that app's security settings."
 msgstr ""
 
-#: src/windows/preferences_window.vala:385
+#: src/windows/preferences_window.vala:393
 msgid "Sandbox new apps by default"
 msgstr ""
 
-#: src/windows/preferences_window.vala:386
+#: src/windows/preferences_window.vala:394
 msgid ""
 "Apps outside AppHub start on the Standard profile. AppHub downloads use the "
 "store's sandbox template. Apps already installed are left alone."
 msgstr ""
 
-#: src/windows/preferences_window.vala:422
+#: src/windows/preferences_window.vala:430
 msgid "Global folder access"
 msgstr ""
 
-#: src/windows/preferences_window.vala:423
+#: src/windows/preferences_window.vala:431
 msgid ""
-"Folders every sandboxed app may read and write, in addition to its own "
-"permissions. A symlink only works if you also add the folder it points at."
+"Folders shared with every sandboxed app, in addition to its own permissions. "
+"Choose read-only or read and write access. A symlink only works if you also "
+"add the folder it points at."
 msgstr ""
 
-#: src/windows/preferences_window.vala:565
+#: src/windows/preferences_window.vala:472
+msgid ""
+"Sandboxing gives each app a private home and limits file, device and desktop-"
+"service access. It is not a safety guarantee: broad grants weaken isolation, "
+"sound includes microphone access, and X11 can expose other apps' input and "
+"windows. Apps may need reconfiguration or fail; inaccessible files, browser "
+"links and remote folders may not work."
+msgstr ""
+
+#: src/windows/preferences_window.vala:474
+msgid "Learn more..."
+msgstr ""
+
+#: src/windows/preferences_window.vala:479
+msgid ""
+"These 15 hidden paths in your home are always shared read-only when present:"
+msgstr ""
+
+#: src/windows/preferences_window.vala:500
+msgid "About app sandboxing"
+msgstr ""
+
+#: src/windows/preferences_window.vala:659
 msgid "Select Installation Directory"
 msgstr "설치 디렉터리 선택"
 
-#: src/windows/preferences_window.vala:632
+#: src/windows/preferences_window.vala:726
 msgid "Invalid Path"
 msgstr "잘못된 경로"
 
-#: src/windows/preferences_window.vala:642
+#: src/windows/preferences_window.vala:736
 msgid "Installation directory updated"
 msgstr "설치 디렉터리가 업데이트되었습니다."
 
-#: src/windows/preferences_window.vala:652
+#: src/windows/preferences_window.vala:746
 msgid "Move Installed Apps?"
 msgstr "설치된 앱을 이동하시겠습니까?"
 
-#: src/windows/preferences_window.vala:653
+#: src/windows/preferences_window.vala:747
 #, c-format
 msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
@@ -2077,57 +2181,57 @@ msgstr ""
 "그러면 %d 설치된 앱이 새 위치로 이동됩니다. 앱 크기에 따라 시간이 걸릴 수 있"
 "습니다."
 
-#: src/windows/preferences_window.vala:656
+#: src/windows/preferences_window.vala:750
 msgid "Move Apps"
 msgstr "앱 이동"
 
-#: src/windows/preferences_window.vala:684
+#: src/windows/preferences_window.vala:778
 msgid "Moving Apps…"
 msgstr "앱 이동 중…"
 
-#: src/windows/preferences_window.vala:684
+#: src/windows/preferences_window.vala:778
 msgid "Please wait while your apps are being moved."
 msgstr "앱을 이동하는 동안 잠시 기다려 주세요."
 
-#: src/windows/preferences_window.vala:701
+#: src/windows/preferences_window.vala:795
 msgid "Stopping background service…"
 msgstr ""
 
-#: src/windows/preferences_window.vala:729
+#: src/windows/preferences_window.vala:823
 msgid "Apps moved successfully"
 msgstr "앱이 성공적으로 이동되었습니다."
 
-#: src/windows/preferences_window.vala:731
+#: src/windows/preferences_window.vala:825
 msgid "Migration Failed"
 msgstr "마이그레이션 실패"
 
-#: src/windows/preferences_window.vala:731
+#: src/windows/preferences_window.vala:825
 msgid "Unknown error occurred"
 msgstr "알 수 없는 오류가 발생했습니다."
 
-#: src/windows/preferences_window.vala:787
+#: src/windows/preferences_window.vala:881
 msgid "Authentication failed — token is invalid or expired"
 msgstr "인증 실패 - 토큰이 유효하지 않거나 만료되었습니다."
 
-#: src/windows/preferences_window.vala:789
+#: src/windows/preferences_window.vala:883
 msgid "Access forbidden — token lacks required permissions"
 msgstr "액세스 금지 — 토큰에 필수 권한이 ​​부족합니다."
 
-#: src/windows/preferences_window.vala:795
+#: src/windows/preferences_window.vala:889
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
 msgstr "토큰이 유효합니다. — %s / %s 요청이 남아 있습니다."
 
-#: src/windows/preferences_window.vala:797
+#: src/windows/preferences_window.vala:891
 msgid "Token is valid"
 msgstr "토큰이 유효합니다"
 
-#: src/windows/preferences_window.vala:800
+#: src/windows/preferences_window.vala:894
 #, c-format
 msgid "Unexpected response (%u)"
 msgstr "예상치 못한 응답(%u)"
 
-#: src/windows/preferences_window.vala:803
+#: src/windows/preferences_window.vala:897
 #, c-format
 msgid "Connection error: %s"
 msgstr "연결 오류: %s"
@@ -2194,21 +2298,6 @@ msgstr ""
 msgid "GPL-3.0"
 msgstr ""
 
-#. (itstool) path: bundle/name
-#: data/com.github.AppManager.metainfo.xml:30
-msgid "zsync2"
-msgstr ""
-
-#. (itstool) path: bundle/copyright
-#: data/com.github.AppManager.metainfo.xml:31
-msgid "© AppImageCommunity, © Colin Phipps"
-msgstr ""
-
-#. (itstool) path: bundle/license
-#: data/com.github.AppManager.metainfo.xml:32
-msgid "Artistic-2.0"
-msgstr ""
-
 #. (itstool) path: description/p
 #: data/com.github.AppManager.metainfo.xml:35
 msgid ""
@@ -2244,6 +2333,16 @@ msgstr ""
 #: data/com.github.AppManager.metainfo.xml:42
 msgid "app-manager"
 msgstr ""
+
+#~ msgid "FUSE is not installed. Some AppImages may fail to run"
+#~ msgstr ""
+#~ "퓨즈가 설치되지 않았습니다. 일부 AppImage가 실행되지 않을 수 있습니다."
+
+#~ msgid "Learn More"
+#~ msgstr "자세히 알아보기"
+
+#~ msgid "Cancelling..."
+#~ msgstr "취소 중..."
 
 #~ msgid "Import your AppImages to manage and update them here"
 #~ msgstr "AppImages를 가져와서 여기서 관리하고 업데이트하세요"
