@@ -25,7 +25,7 @@ namespace AppManager {
         private Gtk.Button? update_button;
         private Gtk.Button? cancel_button;
         private Gtk.Label? update_button_label_widget;
-        private Gtk.Spinner? update_button_spinner_widget;
+        private Adw.Spinner? update_button_spinner_widget;
         private UpdateWorkflowState update_state = UpdateWorkflowState.READY_TO_CHECK;
         private GLib.Cancellable? update_cancellable;
         private Gee.HashSet<string> pending_update_keys;
@@ -1412,7 +1412,7 @@ namespace AppManager {
                 button_box.set_valign(Gtk.Align.CENTER);
                 button_box.set_halign(Gtk.Align.CENTER);
 
-                update_button_spinner_widget = new Gtk.Spinner();
+                update_button_spinner_widget = new Adw.Spinner();
                 update_button_spinner_widget.set_visible(false);
                 update_button_spinner_widget.set_valign(Gtk.Align.CENTER);
                 button_box.append(update_button_spinner_widget);
@@ -1779,13 +1779,7 @@ namespace AppManager {
                 cancel_button.set_sensitive(busy);
             }
 
-            if (busy) {
-                update_button_spinner_widget.set_visible(true);
-                update_button_spinner_widget.start();
-            } else {
-                update_button_spinner_widget.stop();
-                update_button_spinner_widget.set_visible(false);
-            }
+            update_button_spinner_widget.set_visible(busy);
 
             string label;
             switch (state) {
