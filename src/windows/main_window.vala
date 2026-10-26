@@ -9,6 +9,8 @@ namespace AppManager {
         private Settings settings;
         private Updater updater;
         private Adw.PreferencesGroup apps_group;
+        private Gtk.ListBox apps_list_box;
+        private AnimatedAppView animated_list;
         private Adw.PreferencesPage general_page;
         private Gtk.Stack content_stack;
         private Gtk.Box empty_state_box;
@@ -16,6 +18,7 @@ namespace AppManager {
         private Gee.ArrayList<Adw.PreferencesRow> app_rows;
         private Adw.Dialog? shortcuts_window;
         private Adw.NavigationView navigation_view;
+        private Adw.NavigationPage? root_page;
         private Adw.ToastOverlay toast_overlay;
         private Adw.BottomSheet bottom_sheet;
         private Gtk.Widget bottom_bar_widget;
@@ -29,6 +32,7 @@ namespace AppManager {
         private Gee.HashMap<string, int64?> record_size_cache;
         private Gee.HashMap<string, InstallationRecord> updating_records; // key -> record as it was before the update
         private Gee.HashMap<string, UpdateIndicator> update_indicators; // outlive row rebuilds so animations continue
+        private Gee.HashMap<string, GLib.Cancellable> single_update_cancellables; // per-app updates started from details
         private Gee.HashMap<string, string> failed_update_keys; // key -> error message
         private DetailsWindow? active_details_window;
         private const string SHORTCUTS_RESOURCE = "/com/github/AppManager/ui/main-window-shortcuts.ui";
@@ -47,6 +51,7 @@ namespace AppManager {
 
         // Grid view fields
         private Gtk.FlowBox? grid_flow_box;
+        private AnimatedAppView? animated_grid;
         private Gtk.ScrolledWindow? grid_scroll;
         private Adw.SplitButton? view_sort_button;
         private Gtk.Box? apps_title_bar;
@@ -80,6 +85,7 @@ namespace AppManager {
             this.record_size_cache = new Gee.HashMap<string, int64?>();
             this.updating_records = new Gee.HashMap<string, InstallationRecord>();
             this.update_indicators = new Gee.HashMap<string, UpdateIndicator>();
+            this.single_update_cancellables = new Gee.HashMap<string, GLib.Cancellable>();
             this.failed_update_keys = new Gee.HashMap<string, string>();
             connect_updater_signals();
             this.active_details_window = null;
@@ -98,6 +104,7 @@ namespace AppManager {
             build_ui();
             setup_window_actions();
             setup_drag_drop();
+            setup_escape_controller();
             load_staged_updates();
             refresh_installations();
             registry.changed.connect(on_registry_changed);
@@ -163,10 +170,17 @@ namespace AppManager {
             general_page.add_css_class("main-apps-page");
 
             apps_group = new Adw.PreferencesGroup();
+            apps_list_box = new Gtk.ListBox();
+            apps_list_box.selection_mode = Gtk.SelectionMode.NONE;
+            apps_list_box.add_css_class("boxed-list");
+            animated_list = new AnimatedAppView(apps_list_box);
+            apps_group.add(animated_list);
             general_page.add(apps_group);
 
             // Grid view: FlowBox in its own ScrolledWindow for smooth scrolling
             grid_flow_box = new Gtk.FlowBox();
+            animated_grid = new AnimatedAppView(grid_flow_box);
+            animated_grid.valign = Gtk.Align.START;
             grid_flow_box.set_valign(Gtk.Align.START);
             grid_flow_box.set_halign(Gtk.Align.FILL);
             grid_flow_box.set_homogeneous(true);
@@ -181,7 +195,7 @@ namespace AppManager {
             grid_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             grid_scroll.set_hexpand(true);
             grid_scroll.set_vexpand(true);
-            grid_scroll.set_child(grid_flow_box);
+            grid_scroll.set_child(animated_grid);
 
             empty_state_box = build_empty_state();
 
@@ -220,7 +234,7 @@ namespace AppManager {
             content_overlay.add_overlay(hint_box);
 
             var root_toolbar = create_toolbar_with_header(content_overlay, true);
-            var root_page = new Adw.NavigationPage(root_toolbar, "main");
+            root_page = new Adw.NavigationPage(root_toolbar, "main");
             root_page.title = _("AppManager");
             navigation_view.add(root_page);
 
@@ -347,6 +361,7 @@ namespace AppManager {
         private void ensure_apps_group_present() {
             if (apps_group == null) {
                 apps_group = new Adw.PreferencesGroup();
+                apps_group.add(animated_list);
             }
             if (apps_group.get_parent() == null) {
                 general_page.add(apps_group);
@@ -360,7 +375,7 @@ namespace AppManager {
 
             foreach (var row in app_rows) {
                 if (row.get_parent() != null) {
-                    apps_group.remove(row);
+                    apps_list_box.remove(row);
                 }
             }
             app_rows.clear();
@@ -416,6 +431,7 @@ namespace AppManager {
         private void refresh_installations() {
             debug("MainWindow: refresh_installations called");
             ensure_apps_group_present();
+            animated_list.begin_reorder(view_mode == "list" && sort_mode == "default");
             clear_apps_group_rows();
 
             var all_records = with_updating_records(registry.list());
@@ -457,12 +473,11 @@ namespace AppManager {
             sort_records(sorted);
 
             if (view_mode == "grid") {
-                clear_grid_children();
                 show_grid_state();
                 populate_grid(sorted);
             } else {
                 show_list_state();
-                populate_group(apps_group, sorted);
+                populate_list(sorted);
             }
         }
 
@@ -590,7 +605,7 @@ namespace AppManager {
             return name_box;
         }
 
-        private void populate_group(Adw.PreferencesGroup group, Gee.ArrayList<InstallationRecord> records) {
+        private void populate_list(Gee.ArrayList<InstallationRecord> records) {
             foreach (var record in records) {
                 var row = new Adw.ActionRow();
                 row.update_property(Gtk.AccessibleProperty.LABEL, record.name, -1);
@@ -652,18 +667,14 @@ namespace AppManager {
                     update_dot.set_valign(Gtk.Align.CENTER);
                     update_dot.set_tooltip_text(_("Update available"));
                     suffix_box.append(update_dot);
-                } else if (failed_update_keys.has_key(state_key)) {
-                    var warn_icon = new Gtk.Image.from_icon_name("dialog-warning-symbolic");
-                    warn_icon.add_css_class("update-warning-indicator");
-                    warn_icon.set_valign(Gtk.Align.CENTER);
-                    warn_icon.set_tooltip_text(failed_update_keys.get(state_key));
-                    suffix_box.append(warn_icon);
                 }
+                row.tooltip_text = failed_update_keys.get(state_key);
 
                 suffix_box.append(arrow);
                 row.add_suffix(suffix_box);
 
-                group.add(row);
+                row.set_data<string>("app-id", state_key);
+                apps_list_box.append(row);
                 app_rows.add(row);
             }
         }
@@ -681,10 +692,14 @@ namespace AppManager {
         }
 
         private void populate_grid(Gee.ArrayList<InstallationRecord> records) {
+            animated_grid.begin_reorder(sort_mode == "default");
             clear_grid_children();
             foreach (var record in records) {
                 var cell = build_grid_cell(record);
-                grid_flow_box.append(cell);
+                var child = new Gtk.FlowBoxChild();
+                child.set_data<string>("app-id", record_state_key(record));
+                child.set_child(cell);
+                grid_flow_box.append(child);
             }
         }
 
@@ -723,15 +738,8 @@ namespace AppManager {
                 update_dot.set_valign(Gtk.Align.END);
                 update_dot.set_tooltip_text(_("Update available"));
                 overlay.add_overlay(update_dot);
-            } else if (failed_update_keys.has_key(state_key)) {
-                var warn_icon = new Gtk.Image.from_icon_name("dialog-warning-symbolic");
-                warn_icon.add_css_class("grid-update-warning");
-                warn_icon.set_pixel_size(18);
-                warn_icon.set_halign(Gtk.Align.END);
-                warn_icon.set_valign(Gtk.Align.END);
-                warn_icon.set_tooltip_text(failed_update_keys.get(state_key));
-                overlay.add_overlay(warn_icon);
             }
+            cell_box.tooltip_text = failed_update_keys.get(state_key);
 
             cell_box.append(overlay);
 
@@ -1081,8 +1089,17 @@ namespace AppManager {
                 
                 search_entry = new Gtk.SearchEntry();
                 search_entry.placeholder_text = _("Search apps...");
+                search_entry.set_hexpand(true);
                 search_entry.search_changed.connect(on_search_changed);
-                search_bar.set_child(search_entry);
+
+                // Fill the window with the search field, but keep it readable
+                // on very wide windows.
+                var search_clamp = new Adw.Clamp();
+                search_clamp.set_maximum_size(600);
+                search_clamp.set_hexpand(true);
+                search_clamp.set_child(search_entry);
+
+                search_bar.set_child(search_clamp);
                 search_bar.connect_entry(search_entry);
                 
                 toolbar.add_top_bar(search_bar);
@@ -1413,7 +1430,8 @@ namespace AppManager {
                 cancel_button = new Gtk.Button();
                 cancel_button.set_icon_name("process-stop-symbolic");
                 cancel_button.set_tooltip_text(_("Cancel update"));
-                cancel_button.add_css_class("flat");
+                cancel_button.add_css_class("cancel-update-button");
+                cancel_button.set_valign(Gtk.Align.CENTER);
                 cancel_button.set_visible(false);
                 cancel_button.clicked.connect(handle_cancel_clicked);
             }
@@ -1443,11 +1461,56 @@ namespace AppManager {
         private void handle_cancel_clicked() {
             if (update_cancellable != null && !update_cancellable.is_cancelled()) {
                 update_cancellable.cancel();
-                add_toast(_("Cancelling..."));
                 if (cancel_button != null) {
                     cancel_button.set_sensitive(false);
                 }
             }
+        }
+
+        private void setup_escape_controller() {
+            if (root_page == null) {
+                return;
+            }
+            var controller = new Gtk.EventControllerKey();
+            // Capture so the navigation view cannot consume Escape first.
+            controller.set_propagation_phase(Gtk.PropagationPhase.CAPTURE);
+            controller.key_pressed.connect((keyval, keycode, state) => {
+                if (keyval != Gdk.Key.Escape) {
+                    return false;
+                }
+                // The window receives Escape for the details page too; ask the
+                // visible page to cancel before navigation consumes the key.
+                if (active_details_window != null && active_details_window.cancel_update_with_escape()) {
+                    return true;
+                }
+                // Otherwise a pushed details page keeps its normal Escape
+                // behavior and the navigation view pops it.
+                if (navigation_view.visible_page != root_page) {
+                    return false;
+                }
+                if (update_state == UpdateWorkflowState.UPDATING
+                    || update_state == UpdateWorkflowState.CHECKING) {
+                    if (cancel_button == null || !cancel_button.get_visible() || !cancel_button.get_sensitive()) {
+                        return false;
+                    }
+                    handle_cancel_clicked();
+                    return true;
+                }
+
+                // Updates started from details keep running after going back;
+                // Escape stops them too.
+                bool cancelled = false;
+                foreach (var cancellable in single_update_cancellables.values) {
+                    if (!cancellable.is_cancelled()) {
+                        cancellable.cancel();
+                        cancelled = true;
+                    }
+                }
+                return cancelled;
+            });
+            // Listen on the window itself so Escape works regardless of which
+            // child currently holds focus.
+            ((Gtk.Widget) this).add_controller(controller);
         }
 
         private void start_update_check() {
@@ -1541,9 +1604,12 @@ namespace AppManager {
             yield;
 
             if (cancellable != null && cancellable.is_cancelled()) {
-                add_toast(_("Update cancelled"));
+                add_toast(_("Canceled"));
                 updating_records.clear();
                 update_indicators.clear();
+                foreach (var record in records) {
+                    sync_details_window_state(record);
+                }
                 refresh_installations();
                 // Leave UPDATING first: the helper ignores calls while busy.
                 set_update_button_state(UpdateWorkflowState.READY_TO_CHECK);
@@ -1559,6 +1625,8 @@ namespace AppManager {
 
         private void trigger_single_update(InstallationRecord record) {
             var key = record_state_key(record);
+            var cancellable = new GLib.Cancellable();
+            single_update_cancellables.set(key, cancellable);
             begin_update_indicator(record);
             failed_update_keys.unset(key);  // Clear any previous failure
             if (active_details_window != null && active_details_window.matches_record(record)) {
@@ -1568,19 +1636,57 @@ namespace AppManager {
                 active_details_window.set_update_updating(true);
             }
             refresh_installations();
-            trigger_single_update_async.begin(record);
+            trigger_single_update_async.begin(record, cancellable);
         }
 
-        private async void trigger_single_update_async(InstallationRecord record) {
+        private void cancel_app_update(InstallationRecord record) {
+            var cancellable = single_update_cancellables.get(record_state_key(record));
+            if (cancellable != null) {
+                if (!cancellable.is_cancelled()) {
+                    cancellable.cancel();
+                }
+                return;
+            }
+
+            // The app is part of a batch update: the same flat cancel control
+            // stops the current update operation.
+            if (update_state == UpdateWorkflowState.UPDATING
+                && update_cancellable != null && !update_cancellable.is_cancelled()) {
+                update_cancellable.cancel();
+                if (cancel_button != null) {
+                    cancel_button.set_sensitive(false);
+                }
+            }
+        }
+
+        private async void trigger_single_update_async(InstallationRecord record, GLib.Cancellable cancellable) {
             SourceFunc callback = trigger_single_update_async.callback;
             UpdateResult? result = null;
+            var key = record_state_key(record);
 
             new Thread<void>("appmgr-update-single", () => {
-                result = updater.update_single(record);
+                result = updater.update_single(record, cancellable);
                 Idle.add((owned) callback);
             });
 
             yield;
+
+            if (single_update_cancellables.get(key) == cancellable) {
+                single_update_cancellables.unset(key);
+            }
+
+            var cancelled = cancellable.is_cancelled()
+                && (result == null || result.status == UpdateStatus.FAILED);
+            if (cancelled) {
+                add_toast(_("Canceled"));
+                updating_records.unset(key);
+                update_indicators.unset(key);
+                failed_update_keys.unset(key);
+                refresh_installations();
+                sync_details_window_state(record);
+                update_global_update_state_from_pending();
+                return;
+            }
 
             if (active_details_window != null && active_details_window.matches_record(record)) {
                 active_details_window.set_update_loading(false);
@@ -1596,7 +1702,7 @@ namespace AppManager {
         private void finalize_single_update(UpdateResult result) {
             var key = record_state_key(result.record);
             updating_records.unset(key);
-            drop_unfinished_indicator(key);
+            finish_update_indicator(key, result.status, result.message);
             // Always remove from pending - whether success or failure
             pending_update_keys.remove(key);
             if (result.status == UpdateStatus.UPDATED) {
@@ -1624,7 +1730,7 @@ namespace AppManager {
             foreach (var result in results) {
                 var key = record_state_key(result.record);
                 updating_records.unset(key);
-                drop_unfinished_indicator(key);
+                finish_update_indicator(key, result.status, result.message);
                 if (result.status == UpdateStatus.UPDATED) {
                     failed_update_keys.unset(key);
                     record_size_cache.unset(result.record.id);
@@ -1804,10 +1910,13 @@ namespace AppManager {
             // Clear any previous failure when re-checking
             var key = record_state_key(record);
             failed_update_keys.unset(key);
+            update_indicators.unset(key);
             if (source != null) {
+                source.set_update_progress(null);
                 source.set_update_loading(true);
                 source.set_update_failed(null);
             }
+            refresh_installations();
             start_single_probe_async.begin(record, source);
         }
 
@@ -1874,6 +1983,8 @@ namespace AppManager {
             } else {
                 active_details_window.set_update_failed(null);
             }
+            var indicator = update_indicators.get(key);
+            active_details_window.set_update_progress(indicator != null ? indicator.status : null);
         }
 
         private enum UpdateWorkflowState {
@@ -1889,6 +2000,19 @@ namespace AppManager {
             var indicator = new UpdateIndicator();
             indicator.pixel_size = 20;
             update_indicators.set(key, indicator);
+            failed_update_keys.unset(key);
+            var window_ref = WeakRef(this);
+            var indicator_ref = WeakRef(indicator);
+            indicator.status.dismissed.connect(() => {
+                var window = window_ref.get() as MainWindow;
+                var current_indicator = indicator_ref.get() as UpdateIndicator;
+                if (window != null && current_indicator != null && window.update_indicators.get(key) == current_indicator) {
+                    window.update_indicators.unset(key);
+                    window.refresh_installations();
+                    window.sync_details_window_state(record);
+                }
+            });
+            sync_details_window_state(record);
         }
 
         // An upgrade unregisters the old record before registering the new one.
@@ -1914,16 +2038,31 @@ namespace AppManager {
         // Detaches a live indicator from the row being replaced, so the rebuilt row can adopt it.
         private UpdateIndicator? take_update_indicator(string key) {
             var indicator = update_indicators.get(key);
+            // Rebuild a saved failure badge if transient progress was cleared,
+            // for example when cancelling a different app's update batch.
+            if (indicator == null && failed_update_keys.has_key(key)) {
+                indicator = new UpdateIndicator();
+                indicator.pixel_size = 20;
+                indicator.show_phase(UpdatePhase.FAILED, 0, 0, failed_update_keys.get(key));
+                update_indicators.set(key, indicator);
+            }
             if (indicator != null && indicator.get_parent() != null) {
                 indicator.unparent();
             }
             return indicator;
         }
 
-        // Covers results that arrive without a finishing signal (e.g. a TLS session error).
-        private void drop_unfinished_indicator(string key) {
+        // Also covers results that arrive without a finishing signal (e.g. a TLS session error).
+        private void finish_update_indicator(string key, UpdateStatus status, string? message = null) {
             var indicator = update_indicators.get(key);
-            if (indicator != null && indicator.phase != UpdatePhase.DONE) {
+            if (indicator == null) {
+                return;
+            }
+            if (status == UpdateStatus.UPDATED) {
+                indicator.show_phase(UpdatePhase.DONE);
+            } else if (status == UpdateStatus.FAILED) {
+                indicator.show_phase(UpdatePhase.FAILED, 0, 0, message ?? _("Update failed"));
+            } else {
                 update_indicators.unset(key);
             }
         }
@@ -1960,25 +2099,22 @@ namespace AppManager {
                 updating_records.unset(key);
                 var cancelled = update_state == UpdateWorkflowState.UPDATING
                     && update_cancellable != null && update_cancellable.is_cancelled();
-                var indicator = update_indicators.get(key);
+                var single_cancellable = single_update_cancellables.get(key);
+                if (single_cancellable != null && single_cancellable.is_cancelled()) {
+                    cancelled = true;
+                }
                 if (status == UpdateStatus.UPDATED) {
                     pending_update_keys.remove(key);
                     failed_update_keys.unset(key);
                     staged_updates.remove(record.id);
                     staged_updates.save();
-                    if (indicator != null) {
-                        indicator.show_phase(UpdatePhase.DONE);
-                        Timeout.add_seconds(3, () => {
-                            // A newer update of the same app may own the key by now.
-                            if (update_indicators.get(key) == indicator) {
-                                update_indicators.unset(key);
-                                refresh_installations();
-                            }
-                            return Source.REMOVE;
-                        });
-                    }
+                    finish_update_indicator(key, status);
                 } else {
-                    update_indicators.unset(key);
+                    if (cancelled) {
+                        update_indicators.unset(key);
+                    } else {
+                        finish_update_indicator(key, status, reason);
+                    }
                     if (!cancelled) {
                         // A cancelled app stays pending so it can be retried.
                         pending_update_keys.remove(key);
@@ -2345,8 +2481,10 @@ namespace AppManager {
             var has_update = pending_update_keys.contains(key);
             var is_updating = updating_records.has_key(key);
             var details_window = new DetailsWindow(record, registry, installer, has_update);
+            var indicator = update_indicators.get(key);
+            details_window.set_update_progress(indicator != null ? indicator.status : null);
             if (is_updating) {
-                details_window.set_update_loading(true);
+                details_window.set_update_updating(true);
             }
             if (failed_update_keys.has_key(key)) {
                 details_window.set_update_failed(failed_update_keys.get(key));
@@ -2360,6 +2498,9 @@ namespace AppManager {
             });
             details_window.update_requested.connect((r) => {
                 trigger_single_update(r);
+            });
+            details_window.update_cancel_requested.connect((r) => {
+                cancel_app_update(r);
             });
             details_window.check_update_requested.connect((r) => {
                 start_single_probe(r, details_window);

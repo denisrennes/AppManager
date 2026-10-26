@@ -1,6 +1,6 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:gpa='https://www.gtk.org/grappa' width='16' height='16' viewBox='0 0 16 16'
      gpa:version='1' gpa:state='0'
-     gpa:state-names='waiting checking downloading p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 installing done'>
+     gpa:state-names='waiting checking downloading p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 installing done failed'>
   <!-- App update progress, one state per phase; p1..p20 fill the rim in 5% steps.
        Effects are SMIL only: gpa transitions delay state changes, and GTK 4.22
        drops visibility updates when states change faster than that delay. -->
@@ -53,4 +53,12 @@
         pathLength='1' stroke-dasharray='1' gpa:stroke='#ffffff' gpa:states='done'>
     <animate attributeName='stroke-dashoffset' values='1;1;0' keyTimes='0;0.4;1' dur='550ms' begin='gpa:states(done).begin' fill='freeze'/>
   </path>
+  <circle cx='8' cy='8' r='7.25' gpa:fill='warning' gpa:states='failed'>
+    <animate attributeName='r' from='2' to='7.25' dur='250ms' begin='gpa:states(failed).begin' fill='freeze'/>
+  </circle>
+  <path d='M 8 4.2 L 8 8.8' fill='none' stroke-width='1.6' stroke-linecap='round'
+        pathLength='1' stroke-dasharray='1' gpa:stroke='#1c1c1c' gpa:states='failed'>
+    <animate attributeName='stroke-dashoffset' values='1;1;0' keyTimes='0;0.4;1' dur='450ms' begin='gpa:states(failed).begin' fill='freeze'/>
+  </path>
+  <circle cx='8' cy='11.4' r='0.9' gpa:fill='#1c1c1c' gpa:states='failed'/>
 </svg>

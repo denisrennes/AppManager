@@ -79,28 +79,35 @@
     border-radius: 50%;
     padding: 0px 2px;
 }
-.grid-update-progress {
+.grid-update-progress > image {
     background-color: alpha(@window_bg_color, 0.8);
     border-radius: 50%;
     padding: 2px;
 }
 /* The update check sits on the success background, so white stays readable in dark mode */
 .update-indicator {
-    -gtk-icon-palette: success @success_bg_color;
+    -gtk-icon-palette: success @success_bg_color, warning @warning_bg_color;
 }
 
-/* Warning indicators for failed updates */
-.update-warning-indicator {
-    color: @warning_color;
-}
-.grid-update-warning {
-    color: @warning_color;
-    background-color: alpha(@window_bg_color, 0.8);
-    border-radius: 50%;
-    padding: 2px;
-}
+/* The details button carries the same persistent failure state as the library. */
 .update-failed-button {
     color: @warning_color;
+}
+.cancel-update-button {
+    min-width: 20px;
+    min-height: 20px;
+    padding: 3px;
+    border-width: 0;
+    border-radius: 999px;
+    background-color: alpha(currentColor, 0.08);
+    box-shadow: none;
+    transition: background-color 150ms ease;
+}
+.cancel-update-button:hover {
+    background-color: alpha(currentColor, 0.16);
+}
+.cancel-update-button:active {
+    background-color: alpha(currentColor, 0.24);
 }
 .clickable-icon-column {
     padding: 8px 14px;

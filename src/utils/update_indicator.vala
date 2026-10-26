@@ -4,13 +4,79 @@ namespace AppManager.Utils {
         CHECKING,
         DOWNLOADING,
         INSTALLING,
-        DONE
+        DONE,
+        FAILED
+    }
+
+    /** One update's lifecycle, shared by the library and details presentations. */
+    public class UpdateIndicatorState : Object {
+        public const uint DISMISS_DURATION = 350;
+        private uint hold_source = 0;
+        private uint dismiss_source = 0;
+
+        public UpdatePhase phase { get; private set; default = UpdatePhase.WAITING; }
+        public int64 received { get; private set; default = 0; }
+        public int64 total { get; private set; default = 0; }
+        public string? message { get; private set; }
+        public bool dismissing { get; private set; default = false; }
+        public bool finished { get; private set; default = false; }
+        public int64 dismiss_started_at { get; private set; default = 0; }
+        public bool terminal {
+            get { return phase == UpdatePhase.DONE || phase == UpdatePhase.FAILED; }
+        }
+
+        public signal void changed();
+        public signal void dismissed();
+
+        public void show_phase(UpdatePhase phase, int64 received = 0, int64 total = 0, string? message = null) {
+            // Finalization and registry refreshes must not restart the badge's lifetime.
+            if (this.phase == phase && terminal) {
+                if (phase == UpdatePhase.FAILED && message != null && message != this.message) {
+                    this.message = message;
+                    changed();
+                }
+                return;
+            }
+            if (hold_source != 0) {
+                Source.remove(hold_source);
+                hold_source = 0;
+            }
+            if (dismiss_source != 0) {
+                Source.remove(dismiss_source);
+                dismiss_source = 0;
+            }
+            this.phase = phase;
+            this.received = received;
+            this.total = total;
+            this.message = message;
+            dismissing = false;
+            finished = false;
+            dismiss_started_at = 0;
+            changed();
+            // Failures remain visible until another check/update replaces them.
+            if (phase == UpdatePhase.DONE) {
+                hold_source = Timeout.add(3000, () => {
+                    hold_source = 0;
+                    dismissing = true;
+                    dismiss_started_at = get_monotonic_time();
+                    changed();
+                    dismiss_source = Timeout.add(DISMISS_DURATION, () => {
+                        dismiss_source = 0;
+                        finished = true;
+                        changed();
+                        dismissed();
+                        return Source.REMOVE;
+                    });
+                    return Source.REMOVE;
+                });
+            }
+        }
     }
 
     /**
      * Per-app update progress, drawn by an animated Gtk.Svg (GTK 4.22).
      * States in update-progress.svg: waiting, checking, downloading,
-     * p1..p20 (rim filled in 5% steps), installing, done.
+     * p1..p20 (rim filled in 5% steps), installing, done, failed.
      */
     public class UpdateIndicator : Adw.Bin {
         private const string RESOURCE = "/com/github/AppManager/update-progress.svg";
@@ -18,36 +84,55 @@ namespace AppManager.Utils {
         private const uint PROGRESS_STEPS = 20;
         private const uint STATE_INSTALLING = 23;
         private const uint STATE_DONE = 24;
+        private const uint STATE_FAILED = 25;
 
         private Gtk.Image image;
         private Gtk.Svg? svg = null;
         private uint state = 0;
+        private Adw.TimedAnimation dismiss_animation;
+        private double display_scale = 1;
+        private bool dismissal_started = false;
 
-        public UpdatePhase phase { get; private set; default = UpdatePhase.WAITING; }
+        public UpdateIndicatorState status { get; private set; }
+        public UpdatePhase phase { get { return status.phase; } }
 
         public int pixel_size {
             get { return image.pixel_size; }
             set { image.pixel_size = value; }
         }
 
-        public UpdateIndicator() {
+        public UpdateIndicator(UpdateIndicatorState? status = null) {
+            this.status = status ?? new UpdateIndicatorState();
             image = new Gtk.Image();
             image.add_css_class("update-indicator");
             child = image;
+            can_target = false;
+            weak UpdateIndicator indicator = this;
+            var target = new Adw.CallbackAnimationTarget((value) => {
+                indicator.display_scale = value;
+                indicator.queue_draw();
+            });
+            dismiss_animation = new Adw.TimedAnimation(this, 1, 0, UpdateIndicatorState.DISMISS_DURATION, target);
+            dismiss_animation.easing = Adw.Easing.EASE_IN_CUBIC;
             realize.connect(start_playing);
-            show_phase(UpdatePhase.WAITING);
+            map.connect(sync_state);
+            this.status.changed.connect(sync_state);
+            sync_state();
         }
 
-        public void show_phase(UpdatePhase phase, int64 received = 0, int64 total = 0) {
-            this.phase = phase;
+        public void show_phase(UpdatePhase phase, int64 received = 0, int64 total = 0, string? message = null) {
+            status.show_phase(phase, received, total, message);
+        }
+
+        private void sync_state() {
             switch (phase) {
                 case UpdatePhase.CHECKING:
                     state = 1;
                     break;
                 case UpdatePhase.DOWNLOADING:
                     state = STATE_DOWNLOADING;
-                    if (total > 0) {
-                        state += (uint) (int64.min(received, total) * PROGRESS_STEPS / total);
+                    if (status.total > 0) {
+                        state += (uint) (int64.min(status.received, status.total) * PROGRESS_STEPS / status.total);
                     }
                     break;
                 case UpdatePhase.INSTALLING:
@@ -56,6 +141,9 @@ namespace AppManager.Utils {
                 case UpdatePhase.DONE:
                     state = STATE_DONE;
                     break;
+                case UpdatePhase.FAILED:
+                    state = STATE_FAILED;
+                    break;
                 default:
                     state = 0;
                     break;
@@ -63,6 +151,41 @@ namespace AppManager.Utils {
             if (svg != null) {
                 svg.state = state;
             }
+            tooltip_text = status.message;
+            visible = !status.finished;
+            if (!status.dismissing) {
+                dismiss_animation.reset();
+                display_scale = 1;
+                dismissal_started = false;
+            } else if (!dismissal_started && get_mapped() && !status.finished) {
+                dismissal_started = true;
+                // A details page opened mid-dismissal joins the same timeline.
+                double elapsed = (get_monotonic_time() - status.dismiss_started_at) / 1000.0;
+                double t = double.min(1, elapsed / UpdateIndicatorState.DISMISS_DURATION);
+                dismiss_animation.value_from = 1 - t * t * t;
+                dismiss_animation.duration = (uint) double.max(1, UpdateIndicatorState.DISMISS_DURATION - elapsed);
+                dismiss_animation.play();
+            }
+            queue_draw();
+        }
+
+        public override void snapshot(Gtk.Snapshot snapshot) {
+            if (display_scale <= 0) {
+                return;
+            }
+            snapshot.save();
+            float cx = get_width() / 2.0f;
+            float cy = get_height() / 2.0f;
+            snapshot.translate(Graphene.Point() { x = cx, y = cy });
+            snapshot.scale((float) display_scale, (float) display_scale);
+            snapshot.translate(Graphene.Point() { x = -cx, y = -cy });
+            base.snapshot(snapshot);
+            snapshot.restore();
+        }
+
+        public override void unmap() {
+            base.unmap();
+            dismissal_started = false;
         }
 
         // A state set before playback is lost when the SVG timeline starts,

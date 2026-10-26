@@ -8,7 +8,8 @@ app_sources = files(
   'windows/app_image_info_window.vala',
   'windows/details_window.vala',
   'utils/ui_utils.vala',
-  'utils/update_indicator.vala'
+  'utils/update_indicator.vala',
+  'utils/animated_app_view.vala'
 )
 
 app_resources = gnome.compile_resources('app-manager-resources',

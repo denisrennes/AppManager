@@ -3,6 +3,156 @@ using AppManager.Utils;
 using Gee;
 
 namespace AppManager {
+    /**
+     * Centers a two-button row and draws an optional leading action in the
+     * side space. The leading action is deliberately excluded from measure()
+     * so showing it never changes the row's minimum width or the window size.
+     * When the side space is too small, only the content's left edge gives
+     * way; its right edge and the trailing button stay in place.
+     */
+    private class LeadingActionRow : Gtk.Widget {
+        private const int GAP = 8;
+        private Gtk.Widget content;
+        private Gtk.Widget? leading;
+        private Gtk.Widget? shrink_target;
+        private int base_content_width;
+        private int base_target_width;
+        private int last_target;
+        private Adw.TimedAnimation shrink_animation;
+
+        public LeadingActionRow(Gtk.Widget content, Gtk.Widget shrink_target) {
+            this.content = content;
+            this.shrink_target = shrink_target;
+            content.set_parent(this);
+            halign = Gtk.Align.FILL;
+            hexpand = true;
+
+            base_target_width = shrink_target.width_request;
+            Gtk.Requisition min_size, natural_size;
+            content.get_preferred_size(out min_size, out natural_size);
+            base_content_width = natural_size.width;
+            last_target = base_target_width;
+
+            var target = new Adw.CallbackAnimationTarget((value) => {
+                shrink_target.width_request = (int) Math.round(value);
+                queue_allocate();
+            });
+            shrink_animation = new Adw.TimedAnimation(this, base_target_width, base_target_width, 220, target);
+            shrink_animation.easing = Adw.Easing.EASE_OUT_CUBIC;
+            map.connect(() => {
+                last_target = -1;
+                queue_allocate();
+            });
+        }
+
+        public void set_leading(Gtk.Widget widget) {
+            leading = widget;
+            widget.set_parent(this);
+        }
+
+        public void set_leading_visible(bool visible) {
+            if (leading == null || leading.visible == visible) {
+                return;
+            }
+            leading.visible = visible;
+            last_target = -1;
+            queue_allocate();
+        }
+
+        private int leading_reserve() {
+            if (leading == null) {
+                return 0;
+            }
+            Gtk.Requisition min_size, natural_size;
+            leading.get_preferred_size(out min_size, out natural_size);
+            return natural_size.width + GAP;
+        }
+
+        public override Gtk.SizeRequestMode get_request_mode() {
+            return content.get_request_mode();
+        }
+
+        public override void measure(Gtk.Orientation orientation, int for_size,
+                                     out int minimum, out int natural,
+                                     out int minimum_baseline, out int natural_baseline) {
+            content.measure(orientation, for_size, out minimum, out natural,
+                out minimum_baseline, out natural_baseline);
+            if (orientation == Gtk.Orientation.HORIZONTAL) {
+                // The leading action never changes the row's required width.
+                minimum = int.max(minimum, base_content_width);
+                natural = int.max(natural, base_content_width);
+            }
+        }
+
+        public override void size_allocate(int width, int height, int baseline) {
+            int reserve = leading != null ? leading_reserve() : 0;
+            int base_left = (width - base_content_width) / 2;
+            int target = base_target_width;
+            if (leading != null && leading.visible) {
+                // Only the Update button's left edge gives way, and only by the
+                // amount the side space is short of the leading action's width.
+                int needed = int.max(0, reserve - base_left);
+                target = base_target_width - int.min(needed, reserve);
+            }
+
+            if (target != last_target) {
+                last_target = target;
+                if (target != shrink_target.width_request) {
+                    if (Adw.get_enable_animations(this)) {
+                        shrink_animation.value_from = shrink_target.width_request;
+                        shrink_animation.value_to = target;
+                        shrink_animation.play();
+                    } else {
+                        shrink_target.width_request = target;
+                        queue_allocate();
+                    }
+                }
+            }
+
+            Gtk.Requisition content_min, content_natural;
+            content.get_preferred_size(out content_min, out content_natural);
+            int content_width = int.min(content_natural.width, width);
+            // Keep the content row's right edge fixed: shrinking moves only the
+            // Update button's left edge, leaving Update's right edge and the
+            // Extract button in place.
+            int content_x = int.max(0, base_left + base_content_width - content_width);
+            var content_transform = new Gsk.Transform().translate(Graphene.Point() {
+                x = content_x,
+                y = 0
+            });
+            content.allocate(content_width, height, -1, content_transform);
+
+            if (leading != null && leading.visible) {
+                Gtk.Requisition leading_min, leading_natural;
+                leading.get_preferred_size(out leading_min, out leading_natural);
+                int leading_x = content_x - reserve;
+                int leading_y = (height - leading_natural.height) / 2;
+                var leading_transform = new Gsk.Transform().translate(Graphene.Point() {
+                    x = leading_x,
+                    y = leading_y
+                });
+                leading.allocate(leading_natural.width, leading_natural.height, -1, leading_transform);
+            }
+        }
+
+        public override void snapshot(Gtk.Snapshot snapshot) {
+            snapshot_child(content, snapshot);
+            if (leading != null && leading.get_visible()) {
+                snapshot_child(leading, snapshot);
+            }
+        }
+
+        protected override void dispose() {
+            if (content != null && content.get_parent() == this) {
+                content.unparent();
+            }
+            if (leading != null && leading.get_parent() == this) {
+                leading.unparent();
+            }
+            base.dispose();
+        }
+    }
+
     public class DetailsWindow : Adw.NavigationPage {
         private InstallationRecord record;
         private InstallationRegistry registry;
@@ -12,7 +162,13 @@ namespace AppManager {
         private bool update_updating = false;  // true when actually updating (vs just checking)
         private string? update_failure_message = null;  // non-null when last update failed
         private Gtk.Button? update_button;
-        private Gtk.Spinner? update_spinner;
+        private UpdateIndicator? update_indicator;
+        private UpdateIndicatorState? update_progress_state;
+        private ulong update_progress_changed_id = 0;
+        private Gtk.Overlay? update_wrapper;
+        private Gtk.Button? cancel_update_button;
+        private LeadingActionRow? actions_row;
+        private bool cancel_pressed = false;
         private Gtk.Button? extract_button;
         private Adw.Banner? path_banner;
         private Adw.SwitchRow? path_row;
@@ -26,6 +182,7 @@ namespace AppManager {
         
         public signal void uninstall_requested(InstallationRecord record, bool permanently, bool preserve_portable);
         public signal void update_requested(InstallationRecord record);
+        public signal void update_cancel_requested(InstallationRecord record);
         public signal void check_update_requested(InstallationRecord record);
         public signal void extract_requested(InstallationRecord record);
 
@@ -46,6 +203,14 @@ namespace AppManager {
             return record.name.down() == other.name.down();
         }
 
+        public override void dispose() {
+            if (update_progress_state != null && update_progress_changed_id != 0) {
+                update_progress_state.disconnect(update_progress_changed_id);
+                update_progress_changed_id = 0;
+            }
+            base.dispose();
+        }
+
         public void set_update_available(bool available) {
             update_available = available;
             refresh_update_button();
@@ -63,6 +228,26 @@ namespace AppManager {
 
         public void set_update_failed(string? message) {
             update_failure_message = message;
+            refresh_update_button();
+        }
+
+        public void set_update_progress(UpdateIndicatorState? state) {
+            if (update_progress_state == state) {
+                refresh_update_button();
+                return;
+            }
+            if (update_progress_state != null && update_progress_changed_id != 0) {
+                update_progress_state.disconnect(update_progress_changed_id);
+                update_progress_changed_id = 0;
+            }
+            update_progress_state = state;
+            if (state != null) {
+                update_progress_changed_id = state.changed.connect(refresh_update_button);
+            } else {
+                update_loading = false;
+                update_updating = false;
+            }
+            rebuild_update_indicator();
             refresh_update_button();
         }
 
@@ -1877,15 +2062,29 @@ namespace AppManager {
             actions_group.title = _("Actions");
             
             var actions_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 8);
-            actions_box.set_halign(Gtk.Align.CENTER);
+            actions_box.set_halign(Gtk.Align.FILL);
+            actions_box.set_hexpand(true);
             actions_group.add(actions_box);
 
-            // First row: Update and Extract buttons
+            // The stop control uses the empty space to the left of the
+            // Update/Extract pair. When space is tight, only Update's left
+            // edge gives way so the pair's right side stays put.
             var row1 = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 8);
             row1.set_halign(Gtk.Align.CENTER);
 
-            // Update button with spinner overlay
-            var update_wrapper = new Gtk.Overlay();
+            // Same round stop control as the main window's update header.
+            cancel_update_button = new Gtk.Button.from_icon_name("process-stop-symbolic");
+            cancel_update_button.add_css_class("cancel-update-button");
+            cancel_update_button.set_valign(Gtk.Align.CENTER);
+            cancel_update_button.set_tooltip_text(_("Cancel update"));
+            cancel_update_button.visible = false;
+            cancel_update_button.clicked.connect(() => {
+                request_cancel_update();
+            });
+
+
+            // The same animated phase/progress badge used in the library.
+            update_wrapper = new Gtk.Overlay();
             update_button = new Gtk.Button();
             update_button.add_css_class("pill");
             update_button.width_request = 200;
@@ -1902,15 +2101,9 @@ namespace AppManager {
             });
             update_wrapper.set_child(update_button);
             
-            update_spinner = new Gtk.Spinner();
-            update_spinner.valign = Gtk.Align.CENTER;
-            update_spinner.halign = Gtk.Align.START;
-            update_spinner.margin_start = 12;
-            update_spinner.visible = false;
-            update_wrapper.add_overlay(update_spinner);
+            rebuild_update_indicator();
             
             row1.append(update_wrapper);
-            refresh_update_button();
 
             // Extract button
             extract_button = new Gtk.Button.with_label(_("Extract AppImage"));
@@ -1924,13 +2117,17 @@ namespace AppManager {
             });
             row1.append(extract_button);
 
-            actions_box.append(row1);
+            actions_row = new LeadingActionRow(row1, update_button);
+            actions_row.set_leading(cancel_update_button);
+            actions_box.append(actions_row);
+            refresh_update_button();
 
             // Second row: Delete button
             delete_button = new Gtk.Button();
             delete_button.add_css_class("pill");
             delete_button.width_request = 200;
             delete_button.hexpand = false;
+            delete_button.set_halign(Gtk.Align.CENTER);
             update_delete_button_label();
             delete_button.add_css_class("destructive-action");
             delete_button.clicked.connect(() => {
@@ -1960,47 +2157,83 @@ namespace AppManager {
             return button;
         }
 
+        private void rebuild_update_indicator() {
+            if (update_wrapper == null) {
+                return;
+            }
+            if (update_indicator != null && update_indicator.get_parent() is Gtk.Overlay) {
+                ((Gtk.Overlay) update_indicator.get_parent()).remove_overlay(update_indicator);
+            }
+            update_indicator = new UpdateIndicator(update_progress_state);
+            update_indicator.pixel_size = 20;
+            update_indicator.valign = Gtk.Align.CENTER;
+            update_indicator.halign = Gtk.Align.START;
+            update_indicator.margin_start = 12;
+            update_indicator.visible = false;
+            update_wrapper.add_overlay(update_indicator);
+        }
+
         private void refresh_update_button() {
-            if (update_button == null || update_spinner == null) {
+            if (update_button == null || update_indicator == null) {
                 return;
             }
 
-            if (update_loading) {
-                if (update_updating) {
+            var progress = update_progress_state;
+            bool loading = progress != null ? !progress.terminal && !progress.finished : update_loading;
+            bool updating = progress != null ? !progress.terminal && !progress.finished : update_updating;
+            bool installing = progress != null && progress.phase == UpdatePhase.INSTALLING;
+            var failure_message = update_failure_message
+                ?? (progress != null && progress.phase == UpdatePhase.FAILED ? progress.message : null);
+            update_loading = loading;
+            if (!updating) {
+                cancel_pressed = false;
+            }
+            if (actions_row != null) {
+                actions_row.set_leading_visible(updating);
+            }
+            if (cancel_update_button != null) {
+                cancel_update_button.sensitive = updating && !installing && !cancel_pressed;
+                cancel_update_button.set_tooltip_text(installing ? _("Installation cannot be cancelled") : _("Cancel update"));
+            }
+            update_button.set_tooltip_text(null);
+            update_indicator.visible = progress != null ? !progress.finished : loading || failure_message != null;
+            if (progress == null && loading) {
+                update_indicator.show_phase(update_updating ? UpdatePhase.INSTALLING : UpdatePhase.CHECKING);
+            } else if (progress == null && failure_message != null) {
+                update_indicator.show_phase(UpdatePhase.FAILED, 0, 0, failure_message);
+            }
+
+            if (loading) {
+                if (progress != null || update_updating) {
                     update_button.set_label(_("Updating..."));
                 } else {
                     update_button.set_label(_("Checking..."));
                 }
-                update_spinner.visible = true;
-                update_spinner.start();
                 update_button.sensitive = false;
                 update_button.remove_css_class("suggested-action");
                 update_button.remove_css_class("update-failed-button");
                 return;
             }
 
-            update_spinner.visible = false;
-            update_spinner.stop();
             update_button.sensitive = true;
             update_updating = false;  // Reset updating state
             update_button.remove_css_class("update-failed-button");
 
-            if (update_available) {
+            if (failure_message != null) {
+                var warn_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
+                warn_box.set_halign(Gtk.Align.CENTER);
+                warn_box.append(new Gtk.Label(_("Update Failed")));
+                update_button.set_child(warn_box);
+                update_button.remove_css_class("suggested-action");
+                update_button.add_css_class("update-failed-button");
+                update_button.set_tooltip_text(failure_message);
+            } else if (update_available) {
                 var update_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
                 update_box.set_halign(Gtk.Align.CENTER);
                 update_box.append(new Gtk.Image.from_icon_name("software-update-available-symbolic"));
                 update_box.append(new Gtk.Label(_("Update")));
                 update_button.set_child(update_box);
                 update_button.add_css_class("suggested-action");
-            } else if (update_failure_message != null) {
-                var warn_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-                warn_box.set_halign(Gtk.Align.CENTER);
-                warn_box.append(new Gtk.Image.from_icon_name("dialog-warning-symbolic"));
-                warn_box.append(new Gtk.Label(_("Update Failed")));
-                update_button.set_child(warn_box);
-                update_button.remove_css_class("suggested-action");
-                update_button.add_css_class("update-failed-button");
-                update_button.set_tooltip_text(update_failure_message);
             } else {
                 update_button.set_child(null);
                 update_button.set_label(_("Check Update"));
@@ -2106,6 +2339,30 @@ namespace AppManager {
                     ((Gtk.Widget) toplevel).add_controller(key_controller);
                 }
             });
+        }
+
+        private bool can_cancel_update() {
+            var progress = update_progress_state;
+            bool updating = progress != null ? !progress.terminal && !progress.finished : update_updating;
+            bool installing = progress != null && progress.phase == UpdatePhase.INSTALLING;
+            return updating && !installing;
+        }
+
+        public bool cancel_update_with_escape() {
+            if (!can_cancel_update()) {
+                return false;
+            }
+            request_cancel_update();
+            return true;
+        }
+
+        private void request_cancel_update() {
+            if (cancel_pressed) {
+                return;
+            }
+            cancel_pressed = true;
+            refresh_update_button();
+            update_cancel_requested(record);
         }
 
         private bool is_path_trashable() {
