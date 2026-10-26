@@ -347,7 +347,7 @@ namespace AppManager.Core {
          * Resolve zsync update info to a ZsyncDirectSource.
          * Handles both direct zsync URLs and gh-releases-zsync format.
          */
-        private ZsyncDirectSource? resolve_zsync_source(string zsync_info, bool include_prerelease = false) {
+        private ZsyncDirectSource? resolve_zsync_source(string zsync_info, bool include_prerelease = false, GLib.Cancellable? cancellable = null) {
             // Direct zsync URL: zsync|https://example.com/app.zsync
             var zsync_direct = ZsyncDirectSource.parse(zsync_info);
             if (zsync_direct != null) {
@@ -356,14 +356,14 @@ namespace AppManager.Core {
 
             // GitHub releases zsync: gh-releases-zsync|owner|repo|tag|pattern
             // This returns the source with version info for comparison
-            return resolve_gh_releases_zsync_source(zsync_info, include_prerelease);
+            return resolve_gh_releases_zsync_source(zsync_info, include_prerelease, cancellable);
         }
 
         // ─────────────────────────────────────────────────────────────────────
         // Update Source Resolution
         // ─────────────────────────────────────────────────────────────────────
 
-        private UpdateSource? resolve_update_source(string update_url, string? record_version, bool include_prerelease = false) {
+        private UpdateSource? resolve_update_source(string update_url, string? record_version, bool include_prerelease = false, GLib.Cancellable? cancellable = null) {
             // First check for zsync-specific formats from .upd_info
             var zsync_direct = ZsyncDirectSource.parse(update_url);
             if (zsync_direct != null) {
@@ -371,7 +371,7 @@ namespace AppManager.Core {
             }
 
             // Handle gh-releases-zsync by resolving to actual zsync URL with version
-            var resolved_zsync_source = resolve_gh_releases_zsync_source(update_url, include_prerelease);
+            var resolved_zsync_source = resolve_gh_releases_zsync_source(update_url, include_prerelease, cancellable);
             if (resolved_zsync_source != null) {
                 return resolved_zsync_source;
             }
@@ -400,7 +400,7 @@ namespace AppManager.Core {
          * Format: gh-releases-zsync|owner|repo|tag|filename-pattern
          * Returns the resolved ZsyncDirectSource with version, or null if resolution fails.
          */
-        private ZsyncDirectSource? resolve_gh_releases_zsync_source(string update_info, bool include_prerelease = false) {
+        private ZsyncDirectSource? resolve_gh_releases_zsync_source(string update_info, bool include_prerelease = false, GLib.Cancellable? cancellable = null) {
             if (!update_info.has_prefix("gh-releases-zsync|")) {
                 return null;
             }
@@ -431,7 +431,7 @@ namespace AppManager.Core {
                 try {
                     var tag_url = "https://api.github.com/repos/%s/%s/releases/tags/%s".printf(
                         owner, repo, GLib.Uri.escape_string(tag, null, false));
-                    var tag_root = fetch_json(tag_url, "application/vnd.github+json", null);
+                    var tag_root = fetch_json(tag_url, "application/vnd.github+json", cancellable);
                     if (tag_root != null && tag_root.get_node_type() == Json.NodeType.OBJECT) {
                         var source = find_zsync_asset_with_version(tag_root.get_object(), pattern);
                         if (source != null) return source;
@@ -452,7 +452,7 @@ namespace AppManager.Core {
                     api_url = "https://api.github.com/repos/%s/%s/releases?per_page=10".printf(owner, repo);
                 }
 
-                var root = fetch_json(api_url, "application/vnd.github+json", null);
+                var root = fetch_json(api_url, "application/vnd.github+json", cancellable);
                 if (root == null) return null;
 
                 // Find matching asset
@@ -488,7 +488,9 @@ namespace AppManager.Core {
                     }
                 }
             } catch (Error e) {
-                warning("Failed to resolve gh-releases-zsync: %s", e.message);
+                if (!(e is IOError.CANCELLED)) {
+                    warning("Failed to resolve gh-releases-zsync: %s", e.message);
+                }
             }
 
             return null;
@@ -595,6 +597,10 @@ namespace AppManager.Core {
 
             try {
                 pool = new ThreadPool<RecordTask>.with_owned_data((task) => {
+                    // A cancelled check skips the apps still queued.
+                    if (cancellable != null && cancellable.is_cancelled()) {
+                        return;
+                    }
                     var probe = probe_record(task.record, cancellable);
 
                     slots_lock.lock();
@@ -625,6 +631,10 @@ namespace AppManager.Core {
 
             try {
                 pool = new ThreadPool<RecordTask>.with_owned_data((task) => {
+                    // A cancelled batch skips the apps still queued.
+                    if (cancellable != null && cancellable.is_cancelled()) {
+                        return;
+                    }
                     var outcome = update_record(task.record, cancellable);
                     slots_lock.lock();
                     slots[task.index] = outcome;
@@ -654,18 +664,18 @@ namespace AppManager.Core {
         private UpdateProbeResult probe_record(InstallationRecord record, GLib.Cancellable? cancellable) {
             // Check if app uses zsync delta updates
             if (record.zsync_update_info != null && record.zsync_update_info.strip() != "") {
-                var zsync_source = resolve_zsync_source(record.zsync_update_info, record.prerelease_enabled);
+                var zsync_source = resolve_zsync_source(record.zsync_update_info, record.prerelease_enabled, cancellable);
                 if (zsync_source != null) {
                     return probe_zsync(record, zsync_source, cancellable);
                 }
             }
-            
+
             var update_url = read_update_url(record);
             if (update_url == null || update_url.strip() == "") {
                 return new UpdateProbeResult(record, false, null, UpdateSkipReason.NO_UPDATE_URL, _("No update address configured"));
             }
 
-            var source = resolve_update_source(update_url, record.version, record.prerelease_enabled);
+            var source = resolve_update_source(update_url, record.version, record.prerelease_enabled, cancellable);
             if (source == null) {
                 return new UpdateProbeResult(record, false, null, UpdateSkipReason.UNSUPPORTED_SOURCE, _("Update source not supported"));
             }
@@ -710,7 +720,9 @@ namespace AppManager.Core {
 
                 return new UpdateProbeResult(record, true, latest ?? release.tag_name);
             } catch (Error e) {
-                warning("Failed to check updates for %s: %s", record.name, e.message);
+                if (!(e is IOError.CANCELLED)) {
+                    warning("Failed to check updates for %s: %s", record.name, e.message);
+                }
                 return new UpdateProbeResult(record, false, null, null, e.message);
             }
         }
@@ -720,12 +732,16 @@ namespace AppManager.Core {
 
             // Check if app uses zsync delta updates
             if (record.zsync_update_info != null && record.zsync_update_info.strip() != "") {
-                var zsync_source = resolve_zsync_source(record.zsync_update_info, record.prerelease_enabled);
+                var zsync_source = resolve_zsync_source(record.zsync_update_info, record.prerelease_enabled, cancellable);
                 if (zsync_source != null) {
                     return update_zsync(record, zsync_source, cancellable);
                 }
             }
-            
+            // A cancelled lookup returns no source, which is not a skip.
+            if (cancellable != null && cancellable.is_cancelled()) {
+                return update_cancelled(record);
+            }
+
             var update_url = read_update_url(record);
             if (update_url == null || update_url.strip() == "") {
                 record_skipped(record, UpdateSkipReason.NO_UPDATE_URL);
@@ -733,7 +749,10 @@ namespace AppManager.Core {
                 return new UpdateResult(record, UpdateStatus.SKIPPED, _("No update address configured"), null, UpdateSkipReason.NO_UPDATE_URL);
             }
 
-            var source = resolve_update_source(update_url, record.version, record.prerelease_enabled);
+            var source = resolve_update_source(update_url, record.version, record.prerelease_enabled, cancellable);
+            if (cancellable != null && cancellable.is_cancelled()) {
+                return update_cancelled(record);
+            }
             if (source == null) {
                 record_skipped(record, UpdateSkipReason.UNSUPPORTED_SOURCE);
                 log_update_event(record, "SKIP", "unsupported update source");
@@ -844,11 +863,23 @@ namespace AppManager.Core {
                 log_update_event(record, "FAILED", "identity mismatch after %d candidate(s)".printf(depth));
                 return new UpdateResult(record, UpdateStatus.FAILED, last_mismatch_msg ?? _("App identity mismatch"), latest, UpdateSkipReason.APP_IDENTITY_MISMATCH);
             } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    return update_cancelled(record);
+                }
                 warning("Failed to update %s: %s", record.name, e.message);
                 record_failed(record, e.message);
                 log_update_event(record, "FAILED", e.message);
                 return new UpdateResult(record, UpdateStatus.FAILED, e.message);
             }
+        }
+
+        // Reported like a failure so the UI settles the app (it stays pending),
+        // but logged as a cancellation, not an error.
+        private UpdateResult update_cancelled(InstallationRecord record) {
+            const string MESSAGE = "Update cancelled";
+            record_failed(record, MESSAGE);
+            log_update_event(record, "CANCELLED", MESSAGE);
+            return new UpdateResult(record, UpdateStatus.FAILED, MESSAGE);
         }
         // ─────────────────────────────────────────────────────────────────────
         // Direct URL Updates (Last-Modified + Content-Length based)
@@ -930,7 +961,9 @@ namespace AppManager.Core {
 
                 return new UpdateProbeResult(record, true, current_fingerprint);
             } catch (Error e) {
-                warning("Failed to check direct update for %s: %s", record.name, e.message);
+                if (!(e is IOError.CANCELLED)) {
+                    warning("Failed to check direct update for %s: %s", record.name, e.message);
+                }
                 return new UpdateProbeResult(record, false, null, UpdateSkipReason.API_UNAVAILABLE, e.message);
             }
         }
@@ -986,6 +1019,9 @@ namespace AppManager.Core {
                 log_update_event(record, "UPDATED", "direct url fingerprint=%s".printf(current_fingerprint));
                 return new UpdateResult(new_record ?? record, UpdateStatus.UPDATED, _("Updated"), current_fingerprint);
             } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    return update_cancelled(record);
+                }
                 warning("Failed to update %s via direct URL: %s", record.name, e.message);
                 record_failed(record, e.message);
                 log_update_event(record, "FAILED", e.message);
@@ -1540,7 +1576,9 @@ namespace AppManager.Core {
                 
                 return info;
             } catch (Error e) {
-                warning("Failed to fetch zsync file info from %s: %s", zsync_url, e.message);
+                if (!(e is IOError.CANCELLED)) {
+                    warning("Failed to fetch zsync file info from %s: %s", zsync_url, e.message);
+                }
                 return null;
             }
         }
@@ -1566,7 +1604,11 @@ namespace AppManager.Core {
             
             // Fetch zsync file info (contains SHA-1 of the remote AppImage)
             var zsync_info = fetch_zsync_file_info(zsync_source.zsync_url, cancellable);
-            
+            // A cancelled fetch returns no header; that is not a malformed file.
+            if (cancellable != null && cancellable.is_cancelled()) {
+                return new UpdateProbeResult(record, false);
+            }
+
             // Resolve remote SHA-1 from zsync header (required for update checks)
             string? remote_sha1 = null;
             if (zsync_info != null && zsync_info.sha1 != null && zsync_info.sha1.strip() != "") {
@@ -1800,6 +1842,9 @@ namespace AppManager.Core {
                     AppManager.Utils.FileUtils.remove_dir_recursive(temp_dir);
                 }
             } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    return update_cancelled(record);
+                }
                 warning("Zsync update failed for %s: %s", record.name, e.message);
                 record_failed(record, e.message);
                 log_update_event(record, "FAILED", "zsync: %s".printf(e.message));
@@ -1897,6 +1942,9 @@ namespace AppManager.Core {
                 // Return new_record so the UI can refresh with updated data
                 return new UpdateResult(new_record ?? record, UpdateStatus.UPDATED, version_msg, new_version);
             } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    return update_cancelled(record);
+                }
                 warning("Fallback update failed for %s: %s", record.name, e.message);
                 record_failed(record, e.message);
                 log_update_event(record, "FAILED", e.message);
