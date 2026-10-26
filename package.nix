@@ -35,12 +35,12 @@ let
   # Keep the version in step with zsync_rs_version in meson.build.
   zsync-rs = rustPlatform.buildRustPackage rec {
     pname = "zsync-rs";
-    version = "0.2.2";
+    version = "0.3.0";
     src = fetchCrate {
       inherit pname version;
-      hash = "sha256-AINru0ZTx2fjXdutvkPnWQHpDh0CIXlmXsb1MFuBoeI=";
+      hash = "sha256-LAU51dbMNl79reHkC6EyHfyZANyFVqgmceOzs54iB10=";
     };
-    cargoHash = "sha256-ciZvM3Ii8B4k04lbhYc0DVDbYpSdWetn8RDfxQudfxQ=";
+    cargoHash = "sha256-HUba2g4UTzsDc62DoDVyrYWSN3kGyeo28nHFPR5C0Ic=";
     cargoBuildFlags = [ "--bin" "zsync" ];
     doCheck = false;
     postInstall = ''

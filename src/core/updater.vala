@@ -2052,9 +2052,12 @@ namespace AppManager.Core {
                     }
                     switch (event.get_string_member_with_default("event", "")) {
                         case "progress":
-                            record_download_progress(record,
-                                event.get_int_member_with_default("done_bytes", 0),
-                                event.get_int_member_with_default("total_bytes", 0));
+                            // Scan phases count bytes read from the seed, not the target.
+                            if (event.get_string_member_with_default("phase", "") == "download") {
+                                record_download_progress(record,
+                                    event.get_int_member_with_default("done_bytes", 0),
+                                    event.get_int_member_with_default("total_bytes", 0));
+                            }
                             break;
                         case "error":
                             zsync_error = event.get_string_member_with_default("message", "");

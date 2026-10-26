@@ -73,7 +73,7 @@ dwarfs_arch = dwarfs_arch_map.get(host_cpu, '')
 bundle_dwarfs = get_option('bundle_dwarfs')
 
 # zsync-rs bundling (built from crates.io with cargo)
-zsync_rs_version = '0.2.2'
+zsync_rs_version = '0.3.0'
 zsync_tools_dir = get_option('prefix') / get_option('bindir')
 bundle_zsync = get_option('bundle_zsync')
 cargo = find_program('cargo', required: false)
