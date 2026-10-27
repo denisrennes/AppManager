@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 22:02+0200\n"
+"POT-Creation-Date: 2026-10-27 12:22+0200\n"
 "PO-Revision-Date: 2026-07-26 12:00+0000\n"
 "Last-Translator: denisrennes\n"
 "Language-Team: French\n"
@@ -35,12 +35,12 @@ msgid "Install"
 msgstr "Installer"
 
 #: src/application.vala:440 src/application.vala:730 src/application.vala:1282
-#: src/windows/details_window.vala:1639 src/windows/details_window.vala:1660
-#: src/windows/details_window.vala:2395 src/windows/details_window.vala:2462
-#: src/windows/details_window.vala:2479 src/windows/drop_window.vala:426
+#: src/windows/details_window.vala:1649 src/windows/details_window.vala:1670
+#: src/windows/details_window.vala:2405 src/windows/details_window.vala:2472
+#: src/windows/details_window.vala:2489 src/windows/drop_window.vala:426
 #: src/windows/drop_window.vala:1349 src/windows/main_window.vala:2361
-#: src/windows/main_window.vala:2410 src/windows/preferences_window.vala:749
-#: src/windows/preferences_window.vala:779
+#: src/windows/main_window.vala:2410 src/windows/preferences_window.vala:767
+#: src/windows/preferences_window.vala:797
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -176,7 +176,7 @@ msgstr "Conserver les deux"
 msgid "Stop"
 msgstr "Arrêter"
 
-#: src/application.vala:773 src/windows/details_window.vala:1641
+#: src/application.vala:773 src/windows/details_window.vala:1651
 #: src/windows/drop_window.vala:579
 msgid "Replace"
 msgstr "Remplacer"
@@ -241,7 +241,7 @@ msgstr "Ignorer"
 
 #: src/application.vala:1031 src/core/installer.vala:1506
 #: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
-#: src/windows/details_window.vala:2383 src/windows/details_window.vala:2424
+#: src/windows/details_window.vala:2393 src/windows/details_window.vala:2434
 msgid "Move to Trash"
 msgstr "Mettre à la corbeille"
 
@@ -264,8 +264,8 @@ msgstr ""
 
 #: src/application.vala:1283 src/core/installer.vala:1506
 #: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
-#: src/windows/details_window.vala:2379 src/windows/details_window.vala:2396
-#: src/windows/details_window.vala:2418
+#: src/windows/details_window.vala:2389 src/windows/details_window.vala:2406
+#: src/windows/details_window.vala:2428
 msgid "Delete Permanently"
 msgstr "Supprimer définitivement"
 
@@ -640,7 +640,7 @@ msgid "File"
 msgstr "Fichier"
 
 #: src/windows/app_image_info_window.vala:82
-#: src/windows/details_window.vala:1064
+#: src/windows/details_window.vala:1071
 msgid "Location"
 msgstr "Localisation"
 
@@ -860,7 +860,7 @@ msgstr "AppHub"
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: src/windows/details_window.vala:865 src/windows/details_window.vala:1569
+#: src/windows/details_window.vala:865 src/windows/details_window.vala:1579
 msgid "Privacy & Security"
 msgstr "Vie privée et Sécurité"
 
@@ -868,13 +868,13 @@ msgstr "Vie privée et Sécurité"
 msgid "Run this app isolated from the rest of your files"
 msgstr "Lance cette application isolée du reste de vos fichiers"
 
-#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
-#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1224
+#: src/windows/details_window.vala:1334 src/windows/preferences_window.vala:546
 msgid "Read-only"
 msgstr "Lecture seule"
 
-#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
-#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1224
+#: src/windows/details_window.vala:1334 src/windows/preferences_window.vala:546
 msgid "Read and write"
 msgstr "Lecture et Écriture"
 
@@ -1009,7 +1009,7 @@ msgstr ""
 "Accès sans restriction aux services du bureau. Cela affaiblit la sandbox, ne "
 "l'accordez donc qu'aux applications auxquelles vous faites confiance."
 
-#: src/windows/details_window.vala:1018 src/windows/details_window.vala:1181
+#: src/windows/details_window.vala:1018 src/windows/details_window.vala:1188
 msgid "Devices"
 msgstr "Périphériques"
 
@@ -1046,26 +1046,34 @@ msgstr ""
 "l'accordez donc qu'aux applications qui ont besoin d'une manette de jeu."
 
 #: src/windows/details_window.vala:1042
+msgid "Security keys"
+msgstr "Clés de sécurité"
+
+#: src/windows/details_window.vala:1043
+msgid "FIDO2 and U2F keys. Plug the key in before starting the app."
+msgstr "Clés FIDO2 et U2F. Branchez la clé avant de lancer l'application."
+
+#: src/windows/details_window.vala:1049
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: src/windows/details_window.vala:1049
+#: src/windows/details_window.vala:1056
 msgid "Services"
 msgstr "Services"
 
-#: src/windows/details_window.vala:1052
+#: src/windows/details_window.vala:1059
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/windows/details_window.vala:1058
+#: src/windows/details_window.vala:1065
 msgid "Accessibility"
 msgstr "Accessibilité"
 
-#: src/windows/details_window.vala:1058
+#: src/windows/details_window.vala:1065
 msgid "Connect to the desktop accessibility service through a filtered bus."
 msgstr "Se connecter au service d'accessibilité du bureau via un bus filtré."
 
-#: src/windows/details_window.vala:1064
+#: src/windows/details_window.vala:1071
 msgid ""
 "Reaches the system location service. AppManager alone enforces this - it "
 "does not appear in your desktop's location settings."
@@ -1074,62 +1082,62 @@ msgstr ""
 "fonctionnalité, elle n'apparaît pas dans les paramètres de localisation de "
 "votre bureau."
 
-#: src/windows/details_window.vala:1070
+#: src/windows/details_window.vala:1077
 msgid "Network information"
 msgstr "Information Réseau"
 
-#: src/windows/details_window.vala:1070
+#: src/windows/details_window.vala:1077
 msgid "Read network status and interface information from NetworkManager."
 msgstr ""
 "Lire l'état du réseau et les informations des interfaces via NetworkManager."
 
-#: src/windows/details_window.vala:1076
+#: src/windows/details_window.vala:1083
 msgid "Online accounts"
 msgstr ""
 
-#: src/windows/details_window.vala:1076
+#: src/windows/details_window.vala:1083
 msgid ""
 "Use GNOME Online Accounts and Evolution Data Server to read and change mail, "
 "calendar and contact data. The app can reach every configured account, so "
 "grant it only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1082
+#: src/windows/details_window.vala:1089
 msgid "Keyring"
 msgstr ""
 
-#: src/windows/details_window.vala:1082
+#: src/windows/details_window.vala:1089
 msgid ""
 "Save logins in GNOME Keyring or KWallet. The app can also read every "
 "password stored there, so grant it only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1088
+#: src/windows/details_window.vala:1095
 msgid "System authentication"
 msgstr ""
 
-#: src/windows/details_window.vala:1088
+#: src/windows/details_window.vala:1095
 msgid ""
 "Unlock with your system password or fingerprint. The app can also see your "
 "other processes and read their command lines and environment, so grant it "
 "only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1094
+#: src/windows/details_window.vala:1101
 msgid "Screenshots"
 msgstr ""
 
-#: src/windows/details_window.vala:1094
+#: src/windows/details_window.vala:1101
 msgid ""
 "Take screenshots with the desktop's screenshot tool. They are saved in "
 "Pictures, so the app also needs that folder."
 msgstr ""
 
-#: src/windows/details_window.vala:1102 src/windows/details_window.vala:1174
+#: src/windows/details_window.vala:1109 src/windows/details_window.vala:1181
 msgid "Folders"
 msgstr "Dossiers"
 
-#: src/windows/details_window.vala:1103
+#: src/windows/details_window.vala:1110
 msgid ""
 "Folders shared with the app. Choose read-only or read and write access. "
 "Other folders stay hidden, including anything you pick in a file dialog "
@@ -1140,39 +1148,39 @@ msgstr ""
 "ceux que vous sélectionnez dans une boîte de dialogue de sélection de "
 "fichiers au sein de l'application."
 
-#: src/windows/details_window.vala:1111 src/windows/preferences_window.vala:437
+#: src/windows/details_window.vala:1118 src/windows/preferences_window.vala:437
 msgid "Add folder"
 msgstr "Ajouter un dossier"
 
-#: src/windows/details_window.vala:1123
+#: src/windows/details_window.vala:1130
 msgid "Downloads"
 msgstr "Téléchargements"
 
-#: src/windows/details_window.vala:1126
+#: src/windows/details_window.vala:1133
 msgid "Documents"
 msgstr "Documents"
 
-#: src/windows/details_window.vala:1129
+#: src/windows/details_window.vala:1136
 msgid "Desktop"
 msgstr "Bureau"
 
-#: src/windows/details_window.vala:1132
+#: src/windows/details_window.vala:1139
 msgid "Pictures"
 msgstr "Images"
 
-#: src/windows/details_window.vala:1135
+#: src/windows/details_window.vala:1142
 msgid "Videos"
 msgstr "Vidéos"
 
-#: src/windows/details_window.vala:1138
+#: src/windows/details_window.vala:1145
 msgid "Music"
 msgstr "Musique"
 
-#: src/windows/details_window.vala:1145
+#: src/windows/details_window.vala:1152
 msgid "Additional imported permissions"
 msgstr "Autorisations supplémentaires importées"
 
-#: src/windows/details_window.vala:1146
+#: src/windows/details_window.vala:1153
 msgid ""
 "Access defined by the AppHub template. Choosing Standard or Strict replaces "
 "these permissions."
@@ -1180,35 +1188,35 @@ msgstr ""
 "Accès défini par le modèle AppHub. Choisir Standard ou Strict remplace ces "
 "autorisations."
 
-#: src/windows/details_window.vala:1154
+#: src/windows/details_window.vala:1161
 msgid "Session bus"
 msgstr "Bus de session"
 
-#: src/windows/details_window.vala:1161
+#: src/windows/details_window.vala:1168
 msgid "System bus"
 msgstr "Bus système"
 
-#: src/windows/details_window.vala:1167
+#: src/windows/details_window.vala:1174
 msgid "Full system bus"
 msgstr "Bus système non-restreint"
 
-#: src/windows/details_window.vala:1187
+#: src/windows/details_window.vala:1194
 msgid "Host process access"
 msgstr "Accès au process hôte"
 
-#: src/windows/details_window.vala:1187 src/windows/details_window.vala:1188
+#: src/windows/details_window.vala:1194 src/windows/details_window.vala:1195
 msgid "Host IPC access"
 msgstr "Accès à l'hôte par IPC"
 
-#: src/windows/details_window.vala:1196
+#: src/windows/details_window.vala:1203
 msgid "Media controls"
 msgstr "Contrôle des médias"
 
-#: src/windows/details_window.vala:1209
+#: src/windows/details_window.vala:1216
 msgid "Global sandbox"
 msgstr "Sanbox globale"
 
-#: src/windows/details_window.vala:1210
+#: src/windows/details_window.vala:1217
 msgid ""
 "Folders granted to every sandboxed app. Change them in AppManager "
 "preferences."
@@ -1216,7 +1224,7 @@ msgstr ""
 "Dossiers fournis à chaque application en mode sandbox. Vous pouvez les "
 "modifier dans les préférences d'AppManager."
 
-#: src/windows/details_window.vala:1298
+#: src/windows/details_window.vala:1306
 msgid ""
 "Off while this app is sandboxed. The sandbox gives it a home folder of its "
 "own, and anything these folders held has been moved into that."
@@ -1225,7 +1233,7 @@ msgstr ""
 "lui attribue son propre dossier personnel, et tout ce que contenaient ces "
 "dossiers a été déplacé dedans."
 
-#: src/windows/details_window.vala:1299
+#: src/windows/details_window.vala:1307
 msgid ""
 "The AppImage runtime redirects the app's home and config into folders next "
 "to the AppImage, so its data travels with the file. A sandboxed app never "
@@ -1237,50 +1245,50 @@ msgstr ""
 "application en mode sandbox n'exécute jamais ce moteur d'exécution "
 "d'AppImage :celui-ci et le mode sandbox constituent donc deux alternatives."
 
-#: src/windows/details_window.vala:1345 src/windows/preferences_window.vala:534
+#: src/windows/details_window.vala:1353 src/windows/preferences_window.vala:552
 msgid "Remove folder"
 msgstr "Enlever un dossier"
 
-#: src/windows/details_window.vala:1437
+#: src/windows/details_window.vala:1446
 msgid "Unable to restore the AppHub profile"
 msgstr "Impossible de restaurer le profil AppHub"
 
-#: src/windows/details_window.vala:1438 src/windows/preferences_window.vala:841
+#: src/windows/details_window.vala:1447 src/windows/preferences_window.vala:859
 msgid "OK"
 msgstr "OK"
 
-#: src/windows/details_window.vala:1502
+#: src/windows/details_window.vala:1511
 msgid ".home"
 msgstr ".home"
 
-#: src/windows/details_window.vala:1519
+#: src/windows/details_window.vala:1528
 msgid ".config"
 msgstr ".config"
 
-#: src/windows/details_window.vala:1545 src/windows/preferences_window.vala:590
+#: src/windows/details_window.vala:1555 src/windows/preferences_window.vala:608
 msgid "Select Folder to Share"
 msgstr "Sélectionner le Dossier à Partager"
 
-#: src/windows/details_window.vala:1574 src/windows/details_window.vala:1608
+#: src/windows/details_window.vala:1584 src/windows/details_window.vala:1618
 msgid "Advanced Settings"
 msgstr "Paramètres avancés"
 
-#: src/windows/details_window.vala:1575
+#: src/windows/details_window.vala:1585
 msgid ""
 "Change app icon, Startup WM Class, Keywords, $PATH or environment variables"
 msgstr ""
 "Modifier l'icône d'application, la classe Startup WM, les mots clés, $PATH "
 "ou les variables d'environnement"
 
-#: src/windows/details_window.vala:1592
+#: src/windows/details_window.vala:1602
 msgid "App Settings"
 msgstr "Paramètres de l'application"
 
-#: src/windows/details_window.vala:1636
+#: src/windows/details_window.vala:1646
 msgid "This app already has sandbox data"
 msgstr "Cette application a déjà des données sandbox"
 
-#: src/windows/details_window.vala:1637
+#: src/windows/details_window.vala:1647
 msgid ""
 "Its portable folders and its sandboxed home both hold data. Merge keeps what "
 "is already in the sandbox and moves the rest in. Replace discards the "
@@ -1292,16 +1300,16 @@ msgstr ""
 "L'option Remplacer supprime les données du répertoire en mode sandbox et "
 "utilise à la place les dossiers portables."
 
-#: src/windows/details_window.vala:1640
+#: src/windows/details_window.vala:1650
 msgid "Merge"
 msgstr "Fusionner"
 
-#: src/windows/details_window.vala:1657
+#: src/windows/details_window.vala:1667
 #, c-format
 msgid "Remove portable %s folder?"
 msgstr "Supprimer le dossier portable %s ?"
 
-#: src/windows/details_window.vala:1658
+#: src/windows/details_window.vala:1668
 #, c-format
 msgid ""
 "The %s folder next to this AppImage will be permanently removed, including "
@@ -1310,163 +1318,163 @@ msgstr ""
 "Le dossier %s à côté de cet AppImage va être supprimé définitivement, y "
 "compris toutes les données qu'il contient."
 
-#: src/windows/details_window.vala:1661
+#: src/windows/details_window.vala:1671
 msgid "Remove Data"
 msgstr "Supprimer tout"
 
-#: src/windows/details_window.vala:1679
+#: src/windows/details_window.vala:1689
 msgid "Environment Variables"
 msgstr "Variables d'environnement"
 
-#: src/windows/details_window.vala:1680
+#: src/windows/details_window.vala:1690
 msgid "Set custom environment variables for this app"
 msgstr ""
 "Définir des variables d'environnement personnalisées pour cette application"
 
-#: src/windows/details_window.vala:1742
+#: src/windows/details_window.vala:1752
 msgid "NAME"
 msgstr "NOM"
 
-#: src/windows/details_window.vala:1758
+#: src/windows/details_window.vala:1768
 msgid "value"
 msgstr "valeur"
 
-#: src/windows/details_window.vala:1771
+#: src/windows/details_window.vala:1781
 msgid "Remove variable"
 msgstr "Supprimer la variable"
 
-#: src/windows/details_window.vala:1904
+#: src/windows/details_window.vala:1914
 msgid "App Name"
 msgstr "Nom de l'application"
 
-#: src/windows/details_window.vala:1919
+#: src/windows/details_window.vala:1929
 msgid "Keywords"
 msgstr "Mots-clés"
 
-#: src/windows/details_window.vala:1930
+#: src/windows/details_window.vala:1940
 msgid "Icon name"
 msgstr "Nom de l'icône"
 
-#: src/windows/details_window.vala:1941
+#: src/windows/details_window.vala:1951
 msgid "Startup WM Class"
 msgstr "Classe Startup WM"
 
-#: src/windows/details_window.vala:1952
+#: src/windows/details_window.vala:1962
 msgid "Version"
 msgstr "Version"
 
-#: src/windows/details_window.vala:1973
+#: src/windows/details_window.vala:1983
 msgid "Hide from app drawer"
 msgstr "Masquer dans le tiroir d'applications"
 
-#: src/windows/details_window.vala:1974
+#: src/windows/details_window.vala:1984
 msgid "Don't show in application menu"
 msgstr "Ne pas afficher dans le menu des applications"
 
-#: src/windows/details_window.vala:1988
+#: src/windows/details_window.vala:1998
 msgid "Add to $PATH"
 msgstr "Ajouter à $PATH"
 
-#: src/windows/details_window.vala:1989
+#: src/windows/details_window.vala:1999
 #, c-format
 msgid "Create a launcher in %s so you can run it from the terminal"
 msgstr "Créer un lanceur dans %s pour pouvoir l'exécuter depuis le terminal"
 
-#: src/windows/details_window.vala:2041
+#: src/windows/details_window.vala:2051
 #, c-format
 msgid "Not added to $PATH: '%s' already exists in %s"
 msgstr ""
 
-#: src/windows/details_window.vala:2062
+#: src/windows/details_window.vala:2072
 msgid "Actions"
 msgstr "Actions"
 
-#: src/windows/details_window.vala:2079 src/windows/details_window.vala:2196
+#: src/windows/details_window.vala:2089 src/windows/details_window.vala:2206
 #: src/windows/main_window.vala:1435
 msgid "Cancel update"
 msgstr "Annuler la mise à jour"
 
-#: src/windows/details_window.vala:2109
+#: src/windows/details_window.vala:2119
 msgid "Extract AppImage"
 msgstr "Extraire l'AppImage"
 
-#: src/windows/details_window.vala:2155
+#: src/windows/details_window.vala:2165
 msgid "Restore default"
 msgstr "Restaurer par défaut"
 
-#: src/windows/details_window.vala:2196
+#: src/windows/details_window.vala:2206
 msgid "Installation cannot be cancelled"
 msgstr ""
 
-#: src/windows/details_window.vala:2208
+#: src/windows/details_window.vala:2218
 msgid "Updating..."
 msgstr "Mise à jour en cours..."
 
-#: src/windows/details_window.vala:2210
+#: src/windows/details_window.vala:2220
 msgid "Checking..."
 msgstr "Vérification..."
 
-#: src/windows/details_window.vala:2225
+#: src/windows/details_window.vala:2235
 msgid "Update Failed"
 msgstr "La mise à jour a échoué"
 
-#: src/windows/details_window.vala:2234
+#: src/windows/details_window.vala:2244
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: src/windows/details_window.vala:2239
+#: src/windows/details_window.vala:2249
 msgid "Check Update"
 msgstr "Vérifier la mise à jour"
 
-#: src/windows/details_window.vala:2384
+#: src/windows/details_window.vala:2394
 msgid "Hold Shift to delete permanently"
 msgstr "Maintenez la touche Maj enfoncée pour supprimer définitivement"
 
-#: src/windows/details_window.vala:2391 src/windows/details_window.vala:2419
+#: src/windows/details_window.vala:2401 src/windows/details_window.vala:2429
 #, c-format
 msgid "<b>%s</b> will be permanently deleted. This action cannot be undone."
 msgstr ""
 "<b>%s</b> sera supprimé définitivement. Cette action ne peut être annulée."
 
-#: src/windows/details_window.vala:2392 src/windows/details_window.vala:2417
+#: src/windows/details_window.vala:2402 src/windows/details_window.vala:2427
 msgid "Delete permanently?"
 msgstr "Supprimer définitivement ?"
 
-#: src/windows/details_window.vala:2420
+#: src/windows/details_window.vala:2430
 msgid "Delete All Data"
 msgstr "Effacer toutes les données"
 
-#: src/windows/details_window.vala:2421
+#: src/windows/details_window.vala:2431
 msgid "Permanently erase user data to save space"
 msgstr ""
 "Effacer définitivement les données de l'utilisateur pour gagner de la place"
 
-#: src/windows/details_window.vala:2423
+#: src/windows/details_window.vala:2433
 msgid "Move to Trash?"
 msgstr "Déplacer vers la corbeille ?"
 
-#: src/windows/details_window.vala:2425
+#: src/windows/details_window.vala:2435
 #, c-format
 msgid "<b>%s</b> will be moved to the Trash."
 msgstr "<b>%s</b> sera déplacé vers la corbeille."
 
-#: src/windows/details_window.vala:2426
+#: src/windows/details_window.vala:2436
 msgid "Trash All Data"
 msgstr "Mettre toutes les données à la corbeille"
 
-#: src/windows/details_window.vala:2427
+#: src/windows/details_window.vala:2437
 msgid "Move user data to Trash along with the app"
 msgstr "Déplacer les données utilisateur à la corbeille, avec l'application"
 
-#: src/windows/details_window.vala:2443
+#: src/windows/details_window.vala:2453
 msgid "Keep User Data"
 msgstr "Conserver les données utilisateur"
 
-#: src/windows/details_window.vala:2444
+#: src/windows/details_window.vala:2454
 msgid "Allow restoring personal settings &amp; content"
 msgstr "Autoriser la restauration des paramètres personnels"
 
-#: src/windows/details_window.vala:2477
+#: src/windows/details_window.vala:2487
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
@@ -1475,11 +1483,11 @@ msgstr ""
 "rapidement, mais elle consommera plus d'espace disque. Cette action ne peut "
 "pas être annulée automatiquement."
 
-#: src/windows/details_window.vala:2478
+#: src/windows/details_window.vala:2488
 msgid "Extract application?"
 msgstr "Extraire l'application ?"
 
-#: src/windows/details_window.vala:2480
+#: src/windows/details_window.vala:2490
 msgid "Extract"
 msgstr "Extraire"
 
@@ -2274,27 +2282,54 @@ msgid ""
 "These 15 hidden paths in your home are always shared read-only when present:"
 msgstr ""
 
+#: src/windows/preferences_window.vala:493
+msgid ""
+"Every sandboxed app can also use these desktop services. They have no switch:"
+msgstr "Chaque application en sandbox peut aussi utiliser ces services du bureau. Ils n'ont pas d'interrupteur :"
+
+#: src/windows/preferences_window.vala:499
+msgid "Appearance settings, through the Settings portal"
+msgstr "Paramètres d'apparence, via le portail Settings"
+
 #: src/windows/preferences_window.vala:500
+msgid "Its own name on the session bus, so single-instance apps work"
+msgstr "Son propre nom sur le bus de session, pour que les applications à instance unique fonctionnent"
+
+#: src/windows/preferences_window.vala:501
+msgid ""
+"Sleep and shutdown notices. The app may delay sleep for a few seconds to "
+"lock or save."
+msgstr "Notifications de mise en veille et d'arrêt. L'application peut retarder la mise en veille de quelques secondes pour se verrouiller ou enregistrer."
+
+#: src/windows/preferences_window.vala:502
+msgid "Screen lock state"
+msgstr "État du verrouillage de l'écran"
+
+#: src/windows/preferences_window.vala:503
+msgid "Global menu registration, on desktops that show one"
+msgstr "Enregistrement du menu global, sur les bureaux qui en affichent un"
+
+#: src/windows/preferences_window.vala:518
 msgid "About app sandboxing"
 msgstr ""
 
-#: src/windows/preferences_window.vala:659
+#: src/windows/preferences_window.vala:677
 msgid "Select Installation Directory"
 msgstr "Sélectionner le Répertoire d'Installation"
 
-#: src/windows/preferences_window.vala:726
+#: src/windows/preferences_window.vala:744
 msgid "Invalid Path"
 msgstr "Chemin Invalide"
 
-#: src/windows/preferences_window.vala:736
+#: src/windows/preferences_window.vala:754
 msgid "Installation directory updated"
 msgstr "Le répertoire d'installation est mis à jour"
 
-#: src/windows/preferences_window.vala:746
+#: src/windows/preferences_window.vala:764
 msgid "Move Installed Apps?"
 msgstr "Déplacer les applications installées ?"
 
-#: src/windows/preferences_window.vala:747
+#: src/windows/preferences_window.vala:765
 #, c-format
 msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
@@ -2303,57 +2338,57 @@ msgstr ""
 "Cela va déplacer %d application(s) installée(s) vers le nouvel emplacement. "
 "Cela peut prendre un certain temps selon la taille de vos applications."
 
-#: src/windows/preferences_window.vala:750
+#: src/windows/preferences_window.vala:768
 msgid "Move Apps"
 msgstr "Déplacer les applications"
 
-#: src/windows/preferences_window.vala:778
+#: src/windows/preferences_window.vala:796
 msgid "Moving Apps…"
 msgstr "Déplacement d'applications en cours…"
 
-#: src/windows/preferences_window.vala:778
+#: src/windows/preferences_window.vala:796
 msgid "Please wait while your apps are being moved."
 msgstr "Patientez pendant le déplacement de vos applications."
 
-#: src/windows/preferences_window.vala:795
+#: src/windows/preferences_window.vala:813
 msgid "Stopping background service…"
 msgstr "Arrêt du service d'arrièreplan…"
 
-#: src/windows/preferences_window.vala:823
+#: src/windows/preferences_window.vala:841
 msgid "Apps moved successfully"
 msgstr "Applications déplacées avec succès"
 
-#: src/windows/preferences_window.vala:825
+#: src/windows/preferences_window.vala:843
 msgid "Migration Failed"
 msgstr "Échec de la migration"
 
-#: src/windows/preferences_window.vala:825
+#: src/windows/preferences_window.vala:843
 msgid "Unknown error occurred"
 msgstr "Une erreur inconnue est survenue"
 
-#: src/windows/preferences_window.vala:881
+#: src/windows/preferences_window.vala:899
 msgid "Authentication failed — token is invalid or expired"
 msgstr "L'authentification a échoué — jeton invalide ou expiré"
 
-#: src/windows/preferences_window.vala:883
+#: src/windows/preferences_window.vala:901
 msgid "Access forbidden — token lacks required permissions"
 msgstr "Accès refusé — permissions du jeton insuffisantes"
 
-#: src/windows/preferences_window.vala:889
+#: src/windows/preferences_window.vala:907
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
 msgstr "Le jeton est valide — %s / %s requêtes restantes"
 
-#: src/windows/preferences_window.vala:891
+#: src/windows/preferences_window.vala:909
 msgid "Token is valid"
 msgstr "Le jeton est valide"
 
-#: src/windows/preferences_window.vala:894
+#: src/windows/preferences_window.vala:912
 #, c-format
 msgid "Unexpected response (%u)"
 msgstr "Réponse imprévue (%u)"
 
-#: src/windows/preferences_window.vala:897
+#: src/windows/preferences_window.vala:915
 #, c-format
 msgid "Connection error: %s"
 msgstr "Erreur de connection : %s"

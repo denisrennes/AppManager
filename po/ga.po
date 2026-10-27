@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 22:02+0200\n"
+"POT-Creation-Date: 2026-10-27 12:22+0200\n"
 "PO-Revision-Date: 2026-03-18 14:06+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@yahoo.com>\n"
 "Language-Team: \n"
@@ -36,12 +36,12 @@ msgid "Install"
 msgstr "Suiteáil"
 
 #: src/application.vala:440 src/application.vala:730 src/application.vala:1282
-#: src/windows/details_window.vala:1639 src/windows/details_window.vala:1660
-#: src/windows/details_window.vala:2395 src/windows/details_window.vala:2462
-#: src/windows/details_window.vala:2479 src/windows/drop_window.vala:426
+#: src/windows/details_window.vala:1649 src/windows/details_window.vala:1670
+#: src/windows/details_window.vala:2405 src/windows/details_window.vala:2472
+#: src/windows/details_window.vala:2489 src/windows/drop_window.vala:426
 #: src/windows/drop_window.vala:1349 src/windows/main_window.vala:2361
-#: src/windows/main_window.vala:2410 src/windows/preferences_window.vala:749
-#: src/windows/preferences_window.vala:779
+#: src/windows/main_window.vala:2410 src/windows/preferences_window.vala:767
+#: src/windows/preferences_window.vala:797
 msgid "Cancel"
 msgstr "Cealaigh"
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Stop"
 msgstr "Stop"
 
-#: src/application.vala:773 src/windows/details_window.vala:1641
+#: src/application.vala:773 src/windows/details_window.vala:1651
 #: src/windows/drop_window.vala:579
 msgid "Replace"
 msgstr "Athsholáthair"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: src/application.vala:1031 src/core/installer.vala:1506
 #: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
-#: src/windows/details_window.vala:2383 src/windows/details_window.vala:2424
+#: src/windows/details_window.vala:2393 src/windows/details_window.vala:2434
 msgid "Move to Trash"
 msgstr "Bog go dtí an Bruscar"
 
@@ -256,8 +256,8 @@ msgstr ""
 
 #: src/application.vala:1283 src/core/installer.vala:1506
 #: src/core/installer.vala:1577 src/core/path_migration_service.vala:384
-#: src/windows/details_window.vala:2379 src/windows/details_window.vala:2396
-#: src/windows/details_window.vala:2418
+#: src/windows/details_window.vala:2389 src/windows/details_window.vala:2406
+#: src/windows/details_window.vala:2428
 msgid "Delete Permanently"
 msgstr "Scrios go Buan"
 
@@ -620,7 +620,7 @@ msgid "File"
 msgstr ""
 
 #: src/windows/app_image_info_window.vala:82
-#: src/windows/details_window.vala:1064
+#: src/windows/details_window.vala:1071
 msgid "Location"
 msgstr ""
 
@@ -838,7 +838,7 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: src/windows/details_window.vala:865 src/windows/details_window.vala:1569
+#: src/windows/details_window.vala:865 src/windows/details_window.vala:1579
 msgid "Privacy & Security"
 msgstr ""
 
@@ -846,13 +846,13 @@ msgstr ""
 msgid "Run this app isolated from the rest of your files"
 msgstr ""
 
-#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
-#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1224
+#: src/windows/details_window.vala:1334 src/windows/preferences_window.vala:546
 msgid "Read-only"
 msgstr ""
 
-#: src/windows/details_window.vala:898 src/windows/details_window.vala:1217
-#: src/windows/details_window.vala:1326 src/windows/preferences_window.vala:528
+#: src/windows/details_window.vala:898 src/windows/details_window.vala:1224
+#: src/windows/details_window.vala:1334 src/windows/preferences_window.vala:546
 msgid "Read and write"
 msgstr ""
 
@@ -972,7 +972,7 @@ msgid ""
 "to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1018 src/windows/details_window.vala:1181
+#: src/windows/details_window.vala:1018 src/windows/details_window.vala:1188
 msgid "Devices"
 msgstr ""
 
@@ -1005,396 +1005,404 @@ msgid ""
 msgstr ""
 
 #: src/windows/details_window.vala:1042
+msgid "Security keys"
+msgstr "Eochracha slándála"
+
+#: src/windows/details_window.vala:1043
+msgid "FIDO2 and U2F keys. Plug the key in before starting the app."
+msgstr "Eochracha FIDO2 agus U2F. Ceangail an eochair sula dtosaíonn tú an feidhmchlár."
+
+#: src/windows/details_window.vala:1049
 msgid "Bluetooth"
 msgstr ""
 
-#: src/windows/details_window.vala:1049
+#: src/windows/details_window.vala:1056
 msgid "Services"
 msgstr ""
 
-#: src/windows/details_window.vala:1052
+#: src/windows/details_window.vala:1059
 msgid "Notifications"
 msgstr ""
 
-#: src/windows/details_window.vala:1058
+#: src/windows/details_window.vala:1065
 msgid "Accessibility"
 msgstr ""
 
-#: src/windows/details_window.vala:1058
+#: src/windows/details_window.vala:1065
 msgid "Connect to the desktop accessibility service through a filtered bus."
 msgstr ""
 
-#: src/windows/details_window.vala:1064
+#: src/windows/details_window.vala:1071
 msgid ""
 "Reaches the system location service. AppManager alone enforces this - it "
 "does not appear in your desktop's location settings."
 msgstr ""
 
-#: src/windows/details_window.vala:1070
+#: src/windows/details_window.vala:1077
 msgid "Network information"
 msgstr ""
 
-#: src/windows/details_window.vala:1070
+#: src/windows/details_window.vala:1077
 msgid "Read network status and interface information from NetworkManager."
 msgstr ""
 
-#: src/windows/details_window.vala:1076
+#: src/windows/details_window.vala:1083
 msgid "Online accounts"
 msgstr ""
 
-#: src/windows/details_window.vala:1076
+#: src/windows/details_window.vala:1083
 msgid ""
 "Use GNOME Online Accounts and Evolution Data Server to read and change mail, "
 "calendar and contact data. The app can reach every configured account, so "
 "grant it only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1082
+#: src/windows/details_window.vala:1089
 msgid "Keyring"
 msgstr ""
 
-#: src/windows/details_window.vala:1082
+#: src/windows/details_window.vala:1089
 msgid ""
 "Save logins in GNOME Keyring or KWallet. The app can also read every "
 "password stored there, so grant it only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1088
+#: src/windows/details_window.vala:1095
 msgid "System authentication"
 msgstr ""
 
-#: src/windows/details_window.vala:1088
+#: src/windows/details_window.vala:1095
 msgid ""
 "Unlock with your system password or fingerprint. The app can also see your "
 "other processes and read their command lines and environment, so grant it "
 "only to apps you trust."
 msgstr ""
 
-#: src/windows/details_window.vala:1094
+#: src/windows/details_window.vala:1101
 msgid "Screenshots"
 msgstr ""
 
-#: src/windows/details_window.vala:1094
+#: src/windows/details_window.vala:1101
 msgid ""
 "Take screenshots with the desktop's screenshot tool. They are saved in "
 "Pictures, so the app also needs that folder."
 msgstr ""
 
-#: src/windows/details_window.vala:1102 src/windows/details_window.vala:1174
+#: src/windows/details_window.vala:1109 src/windows/details_window.vala:1181
 msgid "Folders"
 msgstr ""
 
-#: src/windows/details_window.vala:1103
+#: src/windows/details_window.vala:1110
 msgid ""
 "Folders shared with the app. Choose read-only or read and write access. "
 "Other folders stay hidden, including anything you pick in a file dialog "
 "inside the app."
 msgstr ""
 
-#: src/windows/details_window.vala:1111 src/windows/preferences_window.vala:437
+#: src/windows/details_window.vala:1118 src/windows/preferences_window.vala:437
 msgid "Add folder"
 msgstr ""
 
-#: src/windows/details_window.vala:1123
+#: src/windows/details_window.vala:1130
 msgid "Downloads"
 msgstr ""
 
-#: src/windows/details_window.vala:1126
+#: src/windows/details_window.vala:1133
 msgid "Documents"
 msgstr ""
 
-#: src/windows/details_window.vala:1129
+#: src/windows/details_window.vala:1136
 msgid "Desktop"
 msgstr ""
 
-#: src/windows/details_window.vala:1132
+#: src/windows/details_window.vala:1139
 msgid "Pictures"
 msgstr ""
 
-#: src/windows/details_window.vala:1135
+#: src/windows/details_window.vala:1142
 msgid "Videos"
 msgstr ""
 
-#: src/windows/details_window.vala:1138
+#: src/windows/details_window.vala:1145
 msgid "Music"
 msgstr ""
 
-#: src/windows/details_window.vala:1145
+#: src/windows/details_window.vala:1152
 msgid "Additional imported permissions"
 msgstr ""
 
-#: src/windows/details_window.vala:1146
+#: src/windows/details_window.vala:1153
 msgid ""
 "Access defined by the AppHub template. Choosing Standard or Strict replaces "
 "these permissions."
 msgstr ""
 
-#: src/windows/details_window.vala:1154
+#: src/windows/details_window.vala:1161
 msgid "Session bus"
 msgstr ""
 
-#: src/windows/details_window.vala:1161
+#: src/windows/details_window.vala:1168
 msgid "System bus"
 msgstr ""
 
-#: src/windows/details_window.vala:1167
+#: src/windows/details_window.vala:1174
 msgid "Full system bus"
 msgstr ""
 
-#: src/windows/details_window.vala:1187
+#: src/windows/details_window.vala:1194
 msgid "Host process access"
 msgstr ""
 
-#: src/windows/details_window.vala:1187 src/windows/details_window.vala:1188
+#: src/windows/details_window.vala:1194 src/windows/details_window.vala:1195
 msgid "Host IPC access"
 msgstr ""
 
-#: src/windows/details_window.vala:1196
+#: src/windows/details_window.vala:1203
 msgid "Media controls"
 msgstr ""
 
-#: src/windows/details_window.vala:1209
+#: src/windows/details_window.vala:1216
 msgid "Global sandbox"
 msgstr ""
 
-#: src/windows/details_window.vala:1210
+#: src/windows/details_window.vala:1217
 msgid ""
 "Folders granted to every sandboxed app. Change them in AppManager "
 "preferences."
 msgstr ""
 
-#: src/windows/details_window.vala:1298
+#: src/windows/details_window.vala:1306
 msgid ""
 "Off while this app is sandboxed. The sandbox gives it a home folder of its "
 "own, and anything these folders held has been moved into that."
 msgstr ""
 
-#: src/windows/details_window.vala:1299
+#: src/windows/details_window.vala:1307
 msgid ""
 "The AppImage runtime redirects the app's home and config into folders next "
 "to the AppImage, so its data travels with the file. A sandboxed app never "
 "runs that runtime, so this and the sandbox are alternatives."
 msgstr ""
 
-#: src/windows/details_window.vala:1345 src/windows/preferences_window.vala:534
+#: src/windows/details_window.vala:1353 src/windows/preferences_window.vala:552
 msgid "Remove folder"
 msgstr ""
 
-#: src/windows/details_window.vala:1437
+#: src/windows/details_window.vala:1446
 msgid "Unable to restore the AppHub profile"
 msgstr ""
 
-#: src/windows/details_window.vala:1438 src/windows/preferences_window.vala:841
+#: src/windows/details_window.vala:1447 src/windows/preferences_window.vala:859
 msgid "OK"
 msgstr "Ceart go leor"
 
-#: src/windows/details_window.vala:1502
+#: src/windows/details_window.vala:1511
 msgid ".home"
 msgstr ""
 
-#: src/windows/details_window.vala:1519
+#: src/windows/details_window.vala:1528
 msgid ".config"
 msgstr ""
 
-#: src/windows/details_window.vala:1545 src/windows/preferences_window.vala:590
+#: src/windows/details_window.vala:1555 src/windows/preferences_window.vala:608
 msgid "Select Folder to Share"
 msgstr ""
 
-#: src/windows/details_window.vala:1574 src/windows/details_window.vala:1608
+#: src/windows/details_window.vala:1584 src/windows/details_window.vala:1618
 msgid "Advanced Settings"
 msgstr ""
 
-#: src/windows/details_window.vala:1575
+#: src/windows/details_window.vala:1585
 msgid ""
 "Change app icon, Startup WM Class, Keywords, $PATH or environment variables"
 msgstr ""
 
-#: src/windows/details_window.vala:1592
+#: src/windows/details_window.vala:1602
 msgid "App Settings"
 msgstr ""
 
-#: src/windows/details_window.vala:1636
+#: src/windows/details_window.vala:1646
 msgid "This app already has sandbox data"
 msgstr ""
 
-#: src/windows/details_window.vala:1637
+#: src/windows/details_window.vala:1647
 msgid ""
 "Its portable folders and its sandboxed home both hold data. Merge keeps what "
 "is already in the sandbox and moves the rest in. Replace discards the "
 "sandboxed data and uses the portable folders instead."
 msgstr ""
 
-#: src/windows/details_window.vala:1640
+#: src/windows/details_window.vala:1650
 msgid "Merge"
 msgstr ""
 
-#: src/windows/details_window.vala:1657
+#: src/windows/details_window.vala:1667
 #, c-format
 msgid "Remove portable %s folder?"
 msgstr ""
 
-#: src/windows/details_window.vala:1658
+#: src/windows/details_window.vala:1668
 #, c-format
 msgid ""
 "The %s folder next to this AppImage will be permanently removed, including "
 "any data it contains."
 msgstr ""
 
-#: src/windows/details_window.vala:1661
+#: src/windows/details_window.vala:1671
 #, fuzzy
 msgid "Remove Data"
 msgstr "Bain an athróg"
 
-#: src/windows/details_window.vala:1679
+#: src/windows/details_window.vala:1689
 msgid "Environment Variables"
 msgstr "Athróga Timpeallachta"
 
-#: src/windows/details_window.vala:1680
+#: src/windows/details_window.vala:1690
 msgid "Set custom environment variables for this app"
 msgstr "Socraigh athróga timpeallachta saincheaptha don aip seo"
 
-#: src/windows/details_window.vala:1742
+#: src/windows/details_window.vala:1752
 msgid "NAME"
 msgstr "AINM"
 
-#: src/windows/details_window.vala:1758
+#: src/windows/details_window.vala:1768
 msgid "value"
 msgstr "luach"
 
-#: src/windows/details_window.vala:1771
+#: src/windows/details_window.vala:1781
 msgid "Remove variable"
 msgstr "Bain an athróg"
 
-#: src/windows/details_window.vala:1904
+#: src/windows/details_window.vala:1914
 msgid "App Name"
 msgstr ""
 
-#: src/windows/details_window.vala:1919
+#: src/windows/details_window.vala:1929
 msgid "Keywords"
 msgstr "Eochairfhocail"
 
-#: src/windows/details_window.vala:1930
+#: src/windows/details_window.vala:1940
 msgid "Icon name"
 msgstr "Ainm deilbhín"
 
-#: src/windows/details_window.vala:1941
+#: src/windows/details_window.vala:1951
 msgid "Startup WM Class"
 msgstr "Rang WM Tosaithe"
 
-#: src/windows/details_window.vala:1952
+#: src/windows/details_window.vala:1962
 msgid "Version"
 msgstr "Leagan"
 
-#: src/windows/details_window.vala:1973
+#: src/windows/details_window.vala:1983
 msgid "Hide from app drawer"
 msgstr "Folaigh ón tarraiceán aipeanna"
 
-#: src/windows/details_window.vala:1974
+#: src/windows/details_window.vala:1984
 msgid "Don't show in application menu"
 msgstr "Ná taispeáin i roghchlár an fheidhmchláir"
 
-#: src/windows/details_window.vala:1988
+#: src/windows/details_window.vala:1998
 msgid "Add to $PATH"
 msgstr "Cuir le $PATH"
 
-#: src/windows/details_window.vala:1989
+#: src/windows/details_window.vala:1999
 #, c-format
 msgid "Create a launcher in %s so you can run it from the terminal"
 msgstr "Cruthaigh lainseálaí i %s ionas gur féidir leat é a rith ón teirminéal"
 
-#: src/windows/details_window.vala:2041
+#: src/windows/details_window.vala:2051
 #, c-format
 msgid "Not added to $PATH: '%s' already exists in %s"
 msgstr ""
 
-#: src/windows/details_window.vala:2062
+#: src/windows/details_window.vala:2072
 msgid "Actions"
 msgstr "Gníomhartha"
 
-#: src/windows/details_window.vala:2079 src/windows/details_window.vala:2196
+#: src/windows/details_window.vala:2089 src/windows/details_window.vala:2206
 #: src/windows/main_window.vala:1435
 msgid "Cancel update"
 msgstr "Cealaigh an nuashonrú"
 
-#: src/windows/details_window.vala:2109
+#: src/windows/details_window.vala:2119
 msgid "Extract AppImage"
 msgstr "Sliocht Íomhá an Aip"
 
-#: src/windows/details_window.vala:2155
+#: src/windows/details_window.vala:2165
 msgid "Restore default"
 msgstr "Athchóirigh réamhshocraithe"
 
-#: src/windows/details_window.vala:2196
+#: src/windows/details_window.vala:2206
 msgid "Installation cannot be cancelled"
 msgstr ""
 
-#: src/windows/details_window.vala:2208
+#: src/windows/details_window.vala:2218
 msgid "Updating..."
 msgstr "Ag nuashonrú..."
 
-#: src/windows/details_window.vala:2210
+#: src/windows/details_window.vala:2220
 msgid "Checking..."
 msgstr "Ag seiceáil..."
 
-#: src/windows/details_window.vala:2225
+#: src/windows/details_window.vala:2235
 msgid "Update Failed"
 msgstr "Theip ar an Nuashonrú"
 
-#: src/windows/details_window.vala:2234
+#: src/windows/details_window.vala:2244
 msgid "Update"
 msgstr "Nuashonrú"
 
-#: src/windows/details_window.vala:2239
+#: src/windows/details_window.vala:2249
 msgid "Check Update"
 msgstr "Seiceáil Nuashonrú"
 
-#: src/windows/details_window.vala:2384
+#: src/windows/details_window.vala:2394
 msgid "Hold Shift to delete permanently"
 msgstr "Coinnigh Shift síos chun scriosadh go buan"
 
-#: src/windows/details_window.vala:2391 src/windows/details_window.vala:2419
+#: src/windows/details_window.vala:2401 src/windows/details_window.vala:2429
 #, c-format
 msgid "<b>%s</b> will be permanently deleted. This action cannot be undone."
 msgstr "Scriosfar <b>%s</b> go buan. Ní féidir an gníomh seo a chealú."
 
-#: src/windows/details_window.vala:2392 src/windows/details_window.vala:2417
+#: src/windows/details_window.vala:2402 src/windows/details_window.vala:2427
 msgid "Delete permanently?"
 msgstr "Scriosadh go buan?"
 
-#: src/windows/details_window.vala:2420
+#: src/windows/details_window.vala:2430
 msgid "Delete All Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2421
+#: src/windows/details_window.vala:2431
 msgid "Permanently erase user data to save space"
 msgstr ""
 
-#: src/windows/details_window.vala:2423
+#: src/windows/details_window.vala:2433
 msgid "Move to Trash?"
 msgstr ""
 
-#: src/windows/details_window.vala:2425
+#: src/windows/details_window.vala:2435
 #, c-format
 msgid "<b>%s</b> will be moved to the Trash."
 msgstr ""
 
-#: src/windows/details_window.vala:2426
+#: src/windows/details_window.vala:2436
 msgid "Trash All Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2427
+#: src/windows/details_window.vala:2437
 msgid "Move user data to Trash along with the app"
 msgstr ""
 
-#: src/windows/details_window.vala:2443
+#: src/windows/details_window.vala:2453
 msgid "Keep User Data"
 msgstr ""
 
-#: src/windows/details_window.vala:2444
+#: src/windows/details_window.vala:2454
 msgid "Allow restoring personal settings &amp; content"
 msgstr ""
 
-#: src/windows/details_window.vala:2477
+#: src/windows/details_window.vala:2487
 msgid ""
 "Extracting will unpack the application so it opens faster, but it will "
 "consume more disk space. This action cannot be reversed automatically."
@@ -1403,11 +1411,11 @@ msgstr ""
 "níos tapúla, ach úsáidfear níos mó spáis diosca dá bharr. Ní féidir an "
 "gníomh seo a aisiompú go huathoibríoch."
 
-#: src/windows/details_window.vala:2478
+#: src/windows/details_window.vala:2488
 msgid "Extract application?"
 msgstr "Feidhmchlár a bhaint amach?"
 
-#: src/windows/details_window.vala:2480
+#: src/windows/details_window.vala:2490
 msgid "Extract"
 msgstr "Sliocht"
 
@@ -2175,27 +2183,54 @@ msgid ""
 "These 15 hidden paths in your home are always shared read-only when present:"
 msgstr ""
 
+#: src/windows/preferences_window.vala:493
+msgid ""
+"Every sandboxed app can also use these desktop services. They have no switch:"
+msgstr "Is féidir le gach feidhmchlár i mbosca gainimh na seirbhísí deisce seo a úsáid freisin. Níl lasc acu:"
+
+#: src/windows/preferences_window.vala:499
+msgid "Appearance settings, through the Settings portal"
+msgstr "Socruithe cuma, tríd an tairseach Settings"
+
 #: src/windows/preferences_window.vala:500
+msgid "Its own name on the session bus, so single-instance apps work"
+msgstr "A ainm féin ar bhus an tseisiúin, ionas go n-oibreoidh feidhmchláir aon-ásc"
+
+#: src/windows/preferences_window.vala:501
+msgid ""
+"Sleep and shutdown notices. The app may delay sleep for a few seconds to "
+"lock or save."
+msgstr "Fógraí codlata agus múchta. Féadfaidh an feidhmchlár codladh a mhoilliú cúpla soicind chun glasáil nó sábháil."
+
+#: src/windows/preferences_window.vala:502
+msgid "Screen lock state"
+msgstr "Staid ghlas an scáileáin"
+
+#: src/windows/preferences_window.vala:503
+msgid "Global menu registration, on desktops that show one"
+msgstr "Clárú roghchláir dhomhanda, ar dheasca a thaispeánann ceann"
+
+#: src/windows/preferences_window.vala:518
 msgid "About app sandboxing"
 msgstr ""
 
-#: src/windows/preferences_window.vala:659
+#: src/windows/preferences_window.vala:677
 msgid "Select Installation Directory"
 msgstr "Roghnaigh Eolaire Suiteála"
 
-#: src/windows/preferences_window.vala:726
+#: src/windows/preferences_window.vala:744
 msgid "Invalid Path"
 msgstr "Cosán Neamhbhailí"
 
-#: src/windows/preferences_window.vala:736
+#: src/windows/preferences_window.vala:754
 msgid "Installation directory updated"
 msgstr "Eolaire suiteála nuashonraithe"
 
-#: src/windows/preferences_window.vala:746
+#: src/windows/preferences_window.vala:764
 msgid "Move Installed Apps?"
 msgstr "Bog Aipeanna Suiteáilte?"
 
-#: src/windows/preferences_window.vala:747
+#: src/windows/preferences_window.vala:765
 #, c-format
 msgid ""
 "This will move %d installed app(s) to the new location. This may take a "
@@ -2204,57 +2239,57 @@ msgstr ""
 "Bogfaidh sé seo %d aip(eanna) suiteáilte go dtí an suíomh nua. D’fhéadfadh "
 "sé seo tamall a thógáil ag brath ar mhéid d’aipeanna."
 
-#: src/windows/preferences_window.vala:750
+#: src/windows/preferences_window.vala:768
 msgid "Move Apps"
 msgstr "Bog Aipeanna"
 
-#: src/windows/preferences_window.vala:778
+#: src/windows/preferences_window.vala:796
 msgid "Moving Apps…"
 msgstr "Aipeanna á mbogadh…"
 
-#: src/windows/preferences_window.vala:778
+#: src/windows/preferences_window.vala:796
 msgid "Please wait while your apps are being moved."
 msgstr "Fan le do thoil fad atá do chuid aipeanna á mbogadh."
 
-#: src/windows/preferences_window.vala:795
+#: src/windows/preferences_window.vala:813
 msgid "Stopping background service…"
 msgstr ""
 
-#: src/windows/preferences_window.vala:823
+#: src/windows/preferences_window.vala:841
 msgid "Apps moved successfully"
 msgstr "Bogadh aipeanna go rathúil"
 
-#: src/windows/preferences_window.vala:825
+#: src/windows/preferences_window.vala:843
 msgid "Migration Failed"
 msgstr "Theip ar an Imirce"
 
-#: src/windows/preferences_window.vala:825
+#: src/windows/preferences_window.vala:843
 msgid "Unknown error occurred"
 msgstr "Tharla earráid anaithnid"
 
-#: src/windows/preferences_window.vala:881
+#: src/windows/preferences_window.vala:899
 msgid "Authentication failed — token is invalid or expired"
 msgstr "Theip ar fhíordheimhniú — tá an comhartha neamhbhailí nó imithe in éag"
 
-#: src/windows/preferences_window.vala:883
+#: src/windows/preferences_window.vala:901
 msgid "Access forbidden — token lacks required permissions"
 msgstr "Rochtain toirmiscthe — níl ceadanna riachtanacha ag an gcomhartha"
 
-#: src/windows/preferences_window.vala:889
+#: src/windows/preferences_window.vala:907
 #, c-format
 msgid "Token is valid — %s / %s requests remaining"
 msgstr "Tá an comhartha bailí — %s / %s iarratas fágtha"
 
-#: src/windows/preferences_window.vala:891
+#: src/windows/preferences_window.vala:909
 msgid "Token is valid"
 msgstr "Tá an comhartha bailí"
 
-#: src/windows/preferences_window.vala:894
+#: src/windows/preferences_window.vala:912
 #, c-format
 msgid "Unexpected response (%u)"
 msgstr "Freagra gan choinne (%u)"
 
-#: src/windows/preferences_window.vala:897
+#: src/windows/preferences_window.vala:915
 #, c-format
 msgid "Connection error: %s"
 msgstr "Earráid ceangail: %s"
