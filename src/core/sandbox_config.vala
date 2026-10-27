@@ -51,6 +51,7 @@ namespace AppManager.Core {
             record.sandbox_allow_dbus = false;
             record.sandbox_allow_camera = false;
             record.sandbox_allow_input = false;
+            record.sandbox_allow_security_keys = false;
             record.sandbox_allow_bluetooth = false;
             record.sandbox_allow_location = false;
             record.sandbox_allow_network_info = false;
@@ -134,14 +135,14 @@ namespace AppManager.Core {
                     record.sandbox_allow_accessibility, record.sandbox_allow_network_info, record.sandbox_allow_bluetooth,
                     record.sandbox_allow_location, record.sandbox_allow_keyring, record.sandbox_allow_online_accounts,
                     record.sandbox_allow_polkit, record.sandbox_allow_screenshots, record.sandbox_share_processes,
-                    record.sandbox_share_ipc };
+                    record.sandbox_share_ipc, record.sandbox_allow_security_keys };
                 bool[] wanted_flags = { expected.sandbox_allow_network, expected.sandbox_allow_audio, expected.sandbox_allow_x11,
                     expected.sandbox_allow_gpu, expected.sandbox_allow_camera, expected.sandbox_allow_input, expected.sandbox_allow_dbus,
                     expected.sandbox_allow_notifications, expected.sandbox_allow_tray, expected.sandbox_allow_media_controls,
                     expected.sandbox_allow_accessibility, expected.sandbox_allow_network_info, expected.sandbox_allow_bluetooth,
                     expected.sandbox_allow_location, expected.sandbox_allow_keyring, expected.sandbox_allow_online_accounts,
                     expected.sandbox_allow_polkit, expected.sandbox_allow_screenshots, expected.sandbox_share_processes,
-                    expected.sandbox_share_ipc };
+                    expected.sandbox_share_ipc, expected.sandbox_allow_security_keys };
                 for (int i = 0; i < actual_flags.length; i++) if (actual_flags[i] != wanted_flags[i]) return false;
                 foreach (var location in new string[] { "downloads", "documents", "desktop", "pictures", "videos", "music" }) {
                     if (folder_access(record, location) != folder_access(expected, location)) return false;
@@ -169,6 +170,7 @@ namespace AppManager.Core {
                 && !r.sandbox_allow_dbus
                 && !r.sandbox_allow_camera
                 && !r.sandbox_allow_input
+                && !r.sandbox_allow_security_keys
                 && !r.sandbox_allow_bluetooth
                 && !r.sandbox_allow_location
                 && !r.sandbox_allow_network_info

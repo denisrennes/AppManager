@@ -106,6 +106,7 @@ namespace AppManager.Core {
             add_gpu();
             add_camera();
             add_input();
+            add_security_keys();
             add_extra_devices();
             add_folders();
             add_buses();
@@ -938,6 +939,54 @@ x-scheme-handler/https=app-manager-open-uri.desktop
             // entirely for the same reason with none of the gamepad benefit.
             dev_bind_try("/dev/input", "/dev/input");
             ro_bind_try("/sys/class/input", "/sys/class/input");
+        }
+
+        private void add_security_keys() {
+            if (!manifest.security_keys) {
+                return;
+            }
+            // Bound per node at launch, so a key plugged in later is not seen.
+            foreach (var node in list_dev_nodes("hidraw")) {
+                uint8[] descriptor;
+                var sys = "/sys/class/hidraw/%s/device/report_descriptor".printf(Path.get_basename(node));
+                try {
+                    if (GLib.FileUtils.get_data(sys, out descriptor) && is_fido_descriptor(descriptor)) {
+                        dev_bind_try(node, node);
+                    }
+                } catch (Error e) {
+                    debug("Sandbox: cannot read %s: %s", sys, e.message);
+                }
+            }
+            // udev enumerates hidraw devices here; the nodes it names are bound above.
+            ro_bind_try("/sys/class/hidraw", "/sys/class/hidraw");
+        }
+
+        /**
+         * Whether a HID report descriptor declares the FIDO Alliance usage page
+         * (0xF1D0), the same test libfido2 makes. Walks the items rather than
+         * searching bytes, which could match inside another item's data.
+         */
+        public static bool is_fido_descriptor(uint8[] descriptor) {
+            int i = 0;
+            while (i < descriptor.length) {
+                uint8 prefix = descriptor[i];
+                if (prefix == 0xFE) {
+                    // Long item: size byte, tag byte, then data.
+                    if (i + 1 >= descriptor.length) break;
+                    i += 3 + descriptor[i + 1];
+                    continue;
+                }
+                int size = prefix & 0x03;
+                if (size == 3) size = 4;
+                uint32 value = 0;
+                for (int b = 0; b < size && i + 1 + b < descriptor.length; b++) {
+                    value |= ((uint32) descriptor[i + 1 + b]) << (8 * b);
+                }
+                // Usage Page: global item, tag 0.
+                if ((prefix & 0xFC) == 0x04 && value == 0xF1D0) return true;
+                i += 1 + size;
+            }
+            return false;
         }
 
         private void add_extra_devices() {

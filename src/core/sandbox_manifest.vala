@@ -40,6 +40,7 @@ namespace AppManager.Core {
         public bool gpu = true;
         public bool camera = false;
         public bool input = false;
+        public bool security_keys = false;
         public bool bluetooth = false;
         public bool notifications = false;
         public bool tray = false;
@@ -89,6 +90,7 @@ namespace AppManager.Core {
             m.gpu = record.sandbox_allow_gpu;
             m.camera = record.sandbox_allow_camera;
             m.input = record.sandbox_allow_input;
+            m.security_keys = record.sandbox_allow_security_keys;
             m.bluetooth = record.sandbox_allow_bluetooth;
             m.notifications = record.sandbox_allow_notifications;
             m.tray = record.sandbox_allow_tray;
@@ -233,6 +235,7 @@ namespace AppManager.Core {
                 kf.set_boolean(GROUP_PERMISSIONS, "gpu", gpu);
                 kf.set_boolean(GROUP_PERMISSIONS, "camera", camera);
                 kf.set_boolean(GROUP_PERMISSIONS, "input", input);
+                kf.set_boolean(GROUP_PERMISSIONS, "security-keys", security_keys);
                 kf.set_boolean(GROUP_PERMISSIONS, "bluetooth", bluetooth);
                 kf.set_boolean(GROUP_PERMISSIONS, "notifications", notifications);
                 kf.set_boolean(GROUP_PERMISSIONS, "tray", tray);
@@ -312,6 +315,7 @@ namespace AppManager.Core {
             m.gpu = read_bool(kf, GROUP_PERMISSIONS, "gpu", true);
             m.camera = read_bool(kf, GROUP_PERMISSIONS, "camera", false);
             m.input = read_bool(kf, GROUP_PERMISSIONS, "input", false);
+            m.security_keys = read_bool(kf, GROUP_PERMISSIONS, "security-keys", false);
             m.bluetooth = read_bool(kf, GROUP_PERMISSIONS, "bluetooth", false);
             m.notifications = read_bool(kf, GROUP_PERMISSIONS, "notifications", false);
             m.tray = read_bool(kf, GROUP_PERMISSIONS, "tray", false);
@@ -411,11 +415,13 @@ namespace AppManager.Core {
         }
 
         /**
-         * Whether a system proxy is needed: BlueZ, GeoClue2, network information or
-         * polkit.
+         * Whether a system proxy is needed: always for logind's sleep notices, unless
+         * a store template asked for no system bus. Then only BlueZ, GeoClue2, network
+         * information or polkit still need one.
          */
         public bool needs_system_bus() {
-            return system_bus_access != "full" && (bluetooth || location || network_info || polkit || system_rules.length > 0);
+            return system_bus_access != "full" && (system_bus_access != "none"
+                || bluetooth || location || network_info || polkit || system_rules.length > 0);
         }
 
         private static string read_string(KeyFile kf, string group, string key, string fallback) {

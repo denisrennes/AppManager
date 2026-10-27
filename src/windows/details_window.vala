@@ -1038,6 +1038,13 @@ namespace AppManager {
                 record.sandbox_allow_input);
             devices_group.add(input_row);
 
+            var security_keys_row = build_permission_row(
+                _("Security keys"),
+                _("FIDO2 and U2F keys. Plug the key in before starting the app."),
+                "auth-smartcard-symbolic",
+                record.sandbox_allow_security_keys);
+            devices_group.add(security_keys_row);
+
             var bluetooth_row = build_permission_row(
                 _("Bluetooth"), null, "bluetooth-active-symbolic", Core.SandboxConfig.service_enabled(record, "bluetooth"));
             service_rows.set("bluetooth", bluetooth_row);
@@ -1248,6 +1255,7 @@ namespace AppManager {
                 gpu_row.active           = record.sandbox_allow_gpu;
                 camera_row.active        = record.sandbox_allow_camera;
                 input_row.active         = record.sandbox_allow_input;
+                security_keys_row.active = record.sandbox_allow_security_keys;
                 foreach (var service in service_rows.keys) {
                     service_rows.get(service).active = Core.SandboxConfig.service_enabled(record, service);
                 }
@@ -1405,6 +1413,7 @@ namespace AppManager {
                 record.sandbox_allow_gpu           = gpu_row.active;
                 record.sandbox_allow_camera        = camera_row.active;
                 record.sandbox_allow_input         = input_row.active;
+                record.sandbox_allow_security_keys = security_keys_row.active;
                 foreach (var service in service_rows.keys) {
                     var active = service_rows.get(service).active;
                     if (active != previous_services.get(service)) Core.SandboxConfig.set_service_access(record, service, active);
@@ -1532,6 +1541,7 @@ namespace AppManager {
             gpu_row.notify["active"].connect(() => on_permission_toggled());
             camera_row.notify["active"].connect(() => on_permission_toggled());
             input_row.notify["active"].connect(() => on_permission_toggled());
+            security_keys_row.notify["active"].connect(() => on_permission_toggled());
             foreach (var row in service_rows.values) row.notify["active"].connect(() => on_permission_toggled());
             downloads_row.notify["selected"].connect(() => on_permission_toggled());
             documents_row.notify["selected"].connect(() => on_permission_toggled());

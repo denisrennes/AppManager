@@ -23,6 +23,12 @@ turn it off. Media controls and tray integration are automatic unless the templa
 disables them. Host themes, icons, fonts and desktop settings are shared read-only
 so sandboxed apps keep your desktop appearance.
 
+Every sandboxed app is also told when the system goes to sleep or shuts down and
+when the screen locks, so password managers such as Bitwarden can lock themselves.
+An app may delay sleep for a few seconds to finish locking or saving. Apps can also
+register a global menu on desktops that show one. These have no switch. An AppHub
+template that turns the system bus off also turns off the sleep notices.
+
 Folder selectors offer **Off**, **Read-only**, or **Read and write**. Use **Add
 folder** at the bottom of **Folders** to add other folders, then choose their
 access.
@@ -113,6 +119,9 @@ installs** are supported; extracted apps cannot currently be sandboxed.
 - **Display isolation varies.** X11 permits clients to observe other clients'
   input and windows. Prefer Wayland when the app supports it; additional Wayland
   isolation depends on your compositor.
+- **Security keys must be plugged in first.** The **Security keys** switch shares
+  FIDO2 and U2F keys only, not other USB or input devices. Keys are shared when
+  the app starts, so plug the key in before starting the app.
 - **Broad grants weaken isolation.** Full session bus, your whole home, or device
   access gives an app more reach. Game-controller access also exposes other input
   devices. Only grant what the app needs.

@@ -290,7 +290,39 @@ namespace AppManager.Core {
                 rules.add_all(screenshot_rules());
             }
             rules.add_all(settings_portal_rules());
+            rules.add_all(screen_lock_rules());
+            rules.add_all(app_menu_rules());
 
+            return rules;
+        }
+
+        /**
+         * Screen-lock state for every app: password managers such as Bitwarden lock
+         * their vault when the screen locks. Reading the state and hearing it change,
+         * never Lock, SetActive or idle inhibition.
+         */
+        public static Gee.ArrayList<string> screen_lock_rules() {
+            var rules = new Gee.ArrayList<string>();
+            foreach (var name in new string[] { "org.gnome.ScreenSaver", "org.freedesktop.ScreenSaver" }) {
+                var path = "/" + name.replace(".", "/");
+                rules.add("--call=%s=%s.GetActive@%s".printf(name, name, path));
+                rules.add("--broadcast=%s=%s.ActiveChanged@%s".printf(name, name, path));
+            }
+            return rules;
+        }
+
+        /**
+         * Global menu registration (KDE Plasma, Unity) for every app. Only the app's
+         * own windows: GetMenuForWindow would reveal other apps' menus. The host then
+         * calls the app's exported menu, which the proxy lets through like the tray's.
+         */
+        public static Gee.ArrayList<string> app_menu_rules() {
+            var rules = new Gee.ArrayList<string>();
+            const string service = "com.canonical.AppMenu.Registrar";
+            const string path = "/com/canonical/AppMenu/Registrar";
+            foreach (var member in new string[] { "RegisterWindow", "UnregisterWindow" }) {
+                rules.add("--call=%s=%s.%s@%s".printf(service, service, member, path));
+            }
             return rules;
         }
 
@@ -383,12 +415,16 @@ namespace AppManager.Core {
         }
 
         /**
-         * System-bus rules. Only spawned when a toggle needs it. NetworkManager has
-         * an information-only permission; UPower is not exposed.
+         * System-bus rules. Spawned for every app unless a store template asks for no
+         * system bus, see SandboxManifest.needs_system_bus. NetworkManager has an
+         * information-only permission; UPower is not exposed.
          */
         public static Gee.ArrayList<string> system_rules(SandboxManifest manifest) {
             var rules = new Gee.ArrayList<string>();
             add_exact_rules(rules, manifest.system_rules);
+            if (manifest.system_bus_access != "none") {
+                rules.add_all(logind_rules());
+            }
             if (manifest.bluetooth) {
                 rules.add("--talk=org.bluez");
             }
@@ -418,6 +454,26 @@ namespace AppManager.Core {
             }
             foreach (var member in new string[] { "Get", "GetAll" }) {
                 rules.add("--call=%s=org.freedesktop.DBus.Properties.%s@%s".printf(service, member, path));
+            }
+            return rules;
+        }
+
+        /**
+         * Sleep and shutdown notices from logind. Electron emits its "suspend" event
+         * only after PrepareForSleep, and gives up for good when logind is not on the
+         * bus, so Bitwarden's "lock on system sleep" never fires without this.
+         *
+         * Inhibit lets the app take the delay lock that holds suspend until it has
+         * locked. The proxy cannot filter arguments, so a "block" lock is possible
+         * too; flatpak grants all of logind for the same purpose.
+         */
+        public static Gee.ArrayList<string> logind_rules() {
+            var rules = new Gee.ArrayList<string>();
+            const string service = "org.freedesktop.login1";
+            const string path = "/org/freedesktop/login1";
+            rules.add("--call=%s=%s.Manager.Inhibit@%s".printf(service, service, path));
+            foreach (var member in new string[] { "PrepareForSleep", "PrepareForShutdown" }) {
+                rules.add("--broadcast=%s=%s.Manager.%s@%s".printf(service, service, member, path));
             }
             return rules;
         }

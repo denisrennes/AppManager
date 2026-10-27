@@ -490,6 +490,24 @@ namespace AppManager {
             paths.add_css_class("caption");
             content.append(paths);
 
+            var services_heading = new Gtk.Label(_("Every sandboxed app can also use these desktop services. They have no switch:"));
+            services_heading.xalign = 0;
+            services_heading.wrap = true;
+            content.append(services_heading);
+
+            string[] automatic_services = {
+                _("Appearance settings, through the Settings portal"),
+                _("Its own name on the session bus, so single-instance apps work"),
+                _("Sleep and shutdown notices. The app may delay sleep for a few seconds to lock or save."),
+                _("Screen lock state"),
+                _("Global menu registration, on desktops that show one")
+            };
+            var services = new Gtk.Label("• " + string.joinv("\n• ", automatic_services));
+            services.xalign = 0;
+            services.wrap = true;
+            services.add_css_class("caption");
+            content.append(services);
+
             var scrolled = new Gtk.ScrolledWindow();
             scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
             scrolled.child = content;

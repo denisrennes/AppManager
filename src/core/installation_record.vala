@@ -137,6 +137,9 @@ namespace AppManager.Core {
         // Game controllers: /dev/input. Off by default - that tree carries keyboards
         // and mice too, so granting it hands the app a keylogger.
         public bool sandbox_allow_input { get; set; default = false; }
+        // FIDO2/U2F security keys: only the hidraw nodes that declare the FIDO usage
+        // page, so keyboards and other HID devices stay out.
+        public bool sandbox_allow_security_keys { get; set; default = false; }
         // System-bus BlueZ access, for apps that talk to Bluetooth devices directly.
         public bool sandbox_allow_bluetooth { get; set; default = false; }
         // org.freedesktop.Notifications access through the filtered session bus. The
@@ -222,6 +225,7 @@ namespace AppManager.Core {
             sandbox_allow_gpu           = other.sandbox_allow_gpu;
             sandbox_allow_camera        = other.sandbox_allow_camera;
             sandbox_allow_input         = other.sandbox_allow_input;
+            sandbox_allow_security_keys = other.sandbox_allow_security_keys;
             sandbox_allow_bluetooth     = other.sandbox_allow_bluetooth;
             sandbox_allow_notifications = other.sandbox_allow_notifications;
             sandbox_allow_tray          = other.sandbox_allow_tray;
@@ -578,6 +582,7 @@ namespace AppManager.Core {
             put_bool(builder, "sandbox_allow_gpu", sandbox_allow_gpu);
             put_bool(builder, "sandbox_allow_camera", sandbox_allow_camera);
             put_bool(builder, "sandbox_allow_input", sandbox_allow_input);
+            put_bool(builder, "sandbox_allow_security_keys", sandbox_allow_security_keys);
             put_bool(builder, "sandbox_allow_bluetooth", sandbox_allow_bluetooth);
             put_bool(builder, "sandbox_allow_notifications", sandbox_allow_notifications);
             put_bool(builder, "sandbox_allow_tray", sandbox_allow_tray);
@@ -659,6 +664,7 @@ namespace AppManager.Core {
             sandbox_allow_gpu        = read_bool(obj, "sandbox_allow_gpu", sandbox_allow_gpu);
             sandbox_allow_camera     = read_bool(obj, "sandbox_allow_camera", sandbox_allow_camera);
             sandbox_allow_input      = read_bool(obj, "sandbox_allow_input", sandbox_allow_input);
+            sandbox_allow_security_keys = read_bool(obj, "sandbox_allow_security_keys", sandbox_allow_security_keys);
             sandbox_allow_bluetooth  = read_bool(obj, "sandbox_allow_bluetooth", sandbox_allow_bluetooth);
             sandbox_allow_notifications = read_bool(obj, "sandbox_allow_notifications", sandbox_allow_notifications);
             sandbox_allow_tray       = read_bool(obj, "sandbox_allow_tray", sandbox_allow_tray);
